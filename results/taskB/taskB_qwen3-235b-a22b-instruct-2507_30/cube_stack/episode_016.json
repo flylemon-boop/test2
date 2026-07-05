@@ -1,0 +1,36 @@
+{
+  "task": "cube_stack",
+  "trial": 16,
+  "seed": 16,
+  "success": true,
+  "final_reward": 1.0,
+  "turns": 1,
+  "elapsed_sec": 12.430114030838013,
+  "error": null,
+  "trajectory": [
+    {
+      "turn": 0,
+      "model_output": "<python_code>\nimport numpy as np\n\n# Get poses and extents of the red and green cubes\nred_position, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_position, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation for grasping and placement)\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Open gripper before approaching\nopen_gripper()\n\n# Approach the red cube with z_approach=0.1\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Perform the grasp: move down to the actual grasp position and close gripper\ngoto_pose(grasp_position, grasp_quaternion)\nclose_gripper()\n\n# Lift the red cube to a safe height (at least +0.2m above current Z)\nsafe_lift_z = grasp_position[2] + 0.2\nlift_position = np.array([grasp_position[0], grasp_position[1], safe_lift_z])\ngoto_pose(lift_position, grasp_quaternion)\n\n# Compute the stacking placement height on the green cube\nplace_z = green_position[2] + green_extent[2]/2 + red_extent[2]/2\nplacement_position = np.array([green_position[0], green_position[1], place_z])\n\n# Move laterally above the green cube with approach height\napproach_position = np.array([green_position[0], green_position[1], place_z + 0.1])\ngoto_pose(approach_position, grasp_quaternion)\n\n# Place the red cube gently using z_approach=0.1\ngoto_pose(placement_position, grasp_quaternion, z_approach=0.1)\n\n# Open gripper to release the red cube\nopen_gripper()\n\n# Optionally lift up slightly after release\nfinal_lift_z = placement_position[2] + 0.1\nfinal_position = np.array([placement_position[0], placement_position[1], final_lift_z])\ngoto_pose(final_position, grasp_quaternion)\n</python_code>",
+      "executed_action": "<python_code>\nimport numpy as np\n\n# Get poses and extents of the red and green cubes\nred_position, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_position, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation for grasping and placement)\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Open gripper before approaching\nopen_gripper()\n\n# Approach the red cube with z_approach=0.1\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Perform the grasp: move down to the actual grasp position and close gripper\ngoto_pose(grasp_position, grasp_quaternion)\nclose_gripper()\n\n# Lift the red cube to a safe height (at least +0.2m above current Z)\nsafe_lift_z = grasp_position[2] + 0.2\nlift_position = np.array([grasp_position[0], grasp_position[1], safe_lift_z])\ngoto_pose(lift_position, grasp_quaternion)\n\n# Compute the stacking placement height on the green cube\nplace_z = green_position[2] + green_extent[2]/2 + red_extent[2]/2\nplacement_position = np.array([green_position[0], green_position[1], place_z])\n\n# Move laterally above the green cube with approach height\napproach_position = np.array([green_position[0], green_position[1], place_z + 0.1])\ngoto_pose(approach_position, grasp_quaternion)\n\n# Place the red cube gently using z_approach=0.1\ngoto_pose(placement_position, grasp_quaternion, z_approach=0.1)\n\n# Open gripper to release the red cube\nopen_gripper()\n\n# Optionally lift up slightly after release\nfinal_lift_z = placement_position[2] + 0.1\nfinal_position = np.array([placement_position[0], placement_position[1], final_lift_z])\ngoto_pose(final_position, grasp_quaternion)\n</python_code>",
+      "observation": "",
+      "reward": 1.0,
+      "done": true,
+      "metadata": {
+        "tool_calling": true,
+        "tool_group": "EmbodiedRobosuiteToolGroup",
+        "tool_name": "python_code",
+        "tool_input": "import numpy as np\n\n# Get poses and extents of the red and green cubes\nred_position, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_position, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation for grasping and placement)\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Open gripper before approaching\nopen_gripper()\n\n# Approach the red cube with z_approach=0.1\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Perform the grasp: move down to the actual grasp position and close gripper\ngoto_pose(grasp_position, grasp_quaternion)\nclose_gripper()\n\n# Lift the red cube to a safe height (at least +0.2m above current Z)\nsafe_lift_z = grasp_position[2] + 0.2\nlift_position = np.array([grasp_position[0], grasp_position[1], safe_lift_z])\ngoto_pose(lift_position, grasp_quaternion)\n\n# Compute the stacking placement height on the green cube\nplace_z = green_position[2] + green_extent[2]/2 + red_extent[2]/2\nplacement_position = np.array([green_position[0], green_position[1], place_z])\n\n# Move laterally above the green cube with approach height\napproach_position = np.array([green_position[0], green_position[1], place_z + 0.1])\ngoto_pose(approach_position, grasp_quaternion)\n\n# Place the red cube gently using z_approach=0.1\ngoto_pose(placement_position, grasp_quaternion, z_approach=0.1)\n\n# Open gripper to release the red cube\nopen_gripper()\n\n# Optionally lift up slightly after release\nfinal_lift_z = placement_position[2] + 0.1\nfinal_position = np.array([placement_position[0], placement_position[1], final_lift_z])\ngoto_pose(final_position, grasp_quaternion)",
+        "data_source": "cube_stack",
+        "task_name": "cube_stack",
+        "task_completed": true,
+        "terminated": true,
+        "truncated": false,
+        "sandbox_status": "success"
+      }
+    }
+  ],
+  "env_info": {
+    "data_source": "cube_stack",
+    "task_name": "cube_stack"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "task": "peg_insertion",
+  "trial": 12,
+  "seed": 12,
+  "success": false,
+  "final_reward": 0.04439292005821106,
+  "turns": 1,
+  "elapsed_sec": 10.987263202667236,
+  "error": null,
+  "trajectory": [
+    {
+      "turn": 0,
+      "model_output": "<python_code>\nimport numpy as np\nfrom scipy.spatial.transform import Rotation\n\n# Step 1: Open gripper before grasping\nopen_gripper()\n\n# Step 2: Get the grasp pose for the extruded handle of the brown square nut\nhandle_position, handle_quaternion_wxyz = sample_grasp_pose('extruded handle of the brown square nut')\n\n# Step 3: Approach and grasp the handle\ngoto_pose(handle_position, handle_quaternion_wxyz, z_approach=0.1)  # Approach from 10cm above\ngoto_pose(handle_position, handle_quaternion_wxyz)  # Move to actual grasp pose\nclose_gripper()  # Close gripper to grasp the nut\n\n# Step 4: Get the center of the brown square block (insertion target)\nblock_center_position, block_center_quaternion_wxyz = get_object_pose('brown square block')\n\n# Step 5: Compute the relative transform between the nut's center and the handle grasp pose\n# This allows us to align the nut correctly during insertion\nnut_center_position, _ = get_object_pose('white hollow center of the brown square nut')\nrelative_offset = nut_center_position - handle_position\n\n# We also compute the desired orientation offset as a rotation\nnut_to_handle_rotation = Rotation.from_quat(handle_quaternion_wxyz).inv() * Rotation.from_quat(_)\ndesired_insertion_rotation = Rotation.from_quat(block_center_quaternion_wxyz) * nut_to_handle_rotation\n\n# Step 6: Prepare for insertion by approaching from above the block\ninsertion_position = block_center_position + np.array([0, 0, 0.1])  # 10cm above block center\ninsertion_quaternion_wxyz = desired_insertion_rotation.as_quat()  # Convert back to WXYZ\n\ngoto_pose(insertion_position, insertion_quaternion_wxyz)  # Approach insertion point from above\n\n# Step 7: Perform insertion motion\nfinal_insertion_position = block_center_position  # Target position at block center\ngoto_pose(final_insertion_position, insertion_quaternion_wxyz, z_approach=0.0)  # Insert down\n\n# Step 8: Optionally open gripper after insertion (though not required)\nopen_gripper()\n\n# Step 9: Return to home position\ngoto_home_joint_position()\n</python_code>",
+      "executed_action": "<python_code>\nimport numpy as np\nfrom scipy.spatial.transform import Rotation\n\n# Step 1: Open gripper before grasping\nopen_gripper()\n\n# Step 2: Get the grasp pose for the extruded handle of the brown square nut\nhandle_position, handle_quaternion_wxyz = sample_grasp_pose('extruded handle of the brown square nut')\n\n# Step 3: Approach and grasp the handle\ngoto_pose(handle_position, handle_quaternion_wxyz, z_approach=0.1)  # Approach from 10cm above\ngoto_pose(handle_position, handle_quaternion_wxyz)  # Move to actual grasp pose\nclose_gripper()  # Close gripper to grasp the nut\n\n# Step 4: Get the center of the brown square block (insertion target)\nblock_center_position, block_center_quaternion_wxyz = get_object_pose('brown square block')\n\n# Step 5: Compute the relative transform between the nut's center and the handle grasp pose\n# This allows us to align the nut correctly during insertion\nnut_center_position, _ = get_object_pose('white hollow center of the brown square nut')\nrelative_offset = nut_center_position - handle_position\n\n# We also compute the desired orientation offset as a rotation\nnut_to_handle_rotation = Rotation.from_quat(handle_quaternion_wxyz).inv() * Rotation.from_quat(_)\ndesired_insertion_rotation = Rotation.from_quat(block_center_quaternion_wxyz) * nut_to_handle_rotation\n\n# Step 6: Prepare for insertion by approaching from above the block\ninsertion_position = block_center_position + np.array([0, 0, 0.1])  # 10cm above block center\ninsertion_quaternion_wxyz = desired_insertion_rotation.as_quat()  # Convert back to WXYZ\n\ngoto_pose(insertion_position, insertion_quaternion_wxyz)  # Approach insertion point from above\n\n# Step 7: Perform insertion motion\nfinal_insertion_position = block_center_position  # Target position at block center\ngoto_pose(final_insertion_position, insertion_quaternion_wxyz, z_approach=0.0)  # Insert down\n\n# Step 8: Optionally open gripper after insertion (though not required)\nopen_gripper()\n\n# Step 9: Return to home position\ngoto_home_joint_position()\n</python_code>",
+      "observation": "",
+      "reward": 0.04439292005821106,
+      "done": true,
+      "metadata": {
+        "tool_calling": true,
+        "tool_group": "EmbodiedRobosuiteToolGroup",
+        "tool_name": "python_code",
+        "tool_input": "import numpy as np\nfrom scipy.spatial.transform import Rotation\n\n# Step 1: Open gripper before grasping\nopen_gripper()\n\n# Step 2: Get the grasp pose for the extruded handle of the brown square nut\nhandle_position, handle_quaternion_wxyz = sample_grasp_pose('extruded handle of the brown square nut')\n\n# Step 3: Approach and grasp the handle\ngoto_pose(handle_position, handle_quaternion_wxyz, z_approach=0.1)  # Approach from 10cm above\ngoto_pose(handle_position, handle_quaternion_wxyz)  # Move to actual grasp pose\nclose_gripper()  # Close gripper to grasp the nut\n\n# Step 4: Get the center of the brown square block (insertion target)\nblock_center_position, block_center_quaternion_wxyz = get_object_pose('brown square block')\n\n# Step 5: Compute the relative transform between the nut's center and the handle grasp pose\n# This allows us to align the nut correctly during insertion\nnut_center_position, _ = get_object_pose('white hollow center of the brown square nut')\nrelative_offset = nut_center_position - handle_position\n\n# We also compute the desired orientation offset as a rotation\nnut_to_handle_rotation = Rotation.from_quat(handle_quaternion_wxyz).inv() * Rotation.from_quat(_)\ndesired_insertion_rotation = Rotation.from_quat(block_center_quaternion_wxyz) * nut_to_handle_rotation\n\n# Step 6: Prepare for insertion by approaching from above the block\ninsertion_position = block_center_position + np.array([0, 0, 0.1])  # 10cm above block center\ninsertion_quaternion_wxyz = desired_insertion_rotation.as_quat()  # Convert back to WXYZ\n\ngoto_pose(insertion_position, insertion_quaternion_wxyz)  # Approach insertion point from above\n\n# Step 7: Perform insertion motion\nfinal_insertion_position = block_center_position  # Target position at block center\ngoto_pose(final_insertion_position, insertion_quaternion_wxyz, z_approach=0.0)  # Insert down\n\n# Step 8: Optionally open gripper after insertion (though not required)\nopen_gripper()\n\n# Step 9: Return to home position\ngoto_home_joint_position()",
+        "data_source": "peg_insertion",
+        "task_name": "peg_insertion",
+        "task_completed": false,
+        "terminated": false,
+        "truncated": false,
+        "sandbox_status": "success"
+      }
+    }
+  ],
+  "env_info": {
+    "data_source": "peg_insertion",
+    "task_name": "peg_insertion"
+  }
+}

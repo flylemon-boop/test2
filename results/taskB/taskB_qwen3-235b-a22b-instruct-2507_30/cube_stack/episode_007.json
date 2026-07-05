@@ -1,0 +1,36 @@
+{
+  "task": "cube_stack",
+  "trial": 7,
+  "seed": 7,
+  "success": true,
+  "final_reward": 1.0,
+  "turns": 1,
+  "elapsed_sec": 6.9823713302612305,
+  "error": null,
+  "trajectory": [
+    {
+      "turn": 0,
+      "model_output": "<python_code>\nimport numpy as np\n\n# Get poses and extents of the red and green cubes\nred_center, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_center, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation for grasping and placement)\ngrasp_pos, grasp_quat = sample_grasp_pose(\"red cube\")\n\n# Open gripper before grasping\nopen_gripper()\n\n# Approach the red cube with z_approach for safe descent\ngoto_pose(grasp_pos, grasp_quat, z_approach=0.1)\n\n# Close gripper to grasp the red cube\nclose_gripper()\n\n# Lift the red cube to a safe height\nsafe_height = grasp_pos[2] + 0.2\nlift_position = np.array([grasp_pos[0], grasp_pos[1], safe_height])\ngoto_pose(lift_position, grasp_quat)\n\n# Compute the stacking position on top of the green cube\nplace_z = green_center[2] + green_extent[2]/2 + red_extent[2]/2\nstack_position = np.array([green_center[0], green_center[1], place_z])\n\n# Move laterally above the green cube, then approach downward with z_approach\ngoto_pose(stack_position, grasp_quat, z_approach=0.1)\n\n# Release the red cube\nopen_gripper()\n</python_code>",
+      "executed_action": "<python_code>\nimport numpy as np\n\n# Get poses and extents of the red and green cubes\nred_center, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_center, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation for grasping and placement)\ngrasp_pos, grasp_quat = sample_grasp_pose(\"red cube\")\n\n# Open gripper before grasping\nopen_gripper()\n\n# Approach the red cube with z_approach for safe descent\ngoto_pose(grasp_pos, grasp_quat, z_approach=0.1)\n\n# Close gripper to grasp the red cube\nclose_gripper()\n\n# Lift the red cube to a safe height\nsafe_height = grasp_pos[2] + 0.2\nlift_position = np.array([grasp_pos[0], grasp_pos[1], safe_height])\ngoto_pose(lift_position, grasp_quat)\n\n# Compute the stacking position on top of the green cube\nplace_z = green_center[2] + green_extent[2]/2 + red_extent[2]/2\nstack_position = np.array([green_center[0], green_center[1], place_z])\n\n# Move laterally above the green cube, then approach downward with z_approach\ngoto_pose(stack_position, grasp_quat, z_approach=0.1)\n\n# Release the red cube\nopen_gripper()\n</python_code>",
+      "observation": "",
+      "reward": 1.0,
+      "done": true,
+      "metadata": {
+        "tool_calling": true,
+        "tool_group": "EmbodiedRobosuiteToolGroup",
+        "tool_name": "python_code",
+        "tool_input": "import numpy as np\n\n# Get poses and extents of the red and green cubes\nred_center, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_center, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation for grasping and placement)\ngrasp_pos, grasp_quat = sample_grasp_pose(\"red cube\")\n\n# Open gripper before grasping\nopen_gripper()\n\n# Approach the red cube with z_approach for safe descent\ngoto_pose(grasp_pos, grasp_quat, z_approach=0.1)\n\n# Close gripper to grasp the red cube\nclose_gripper()\n\n# Lift the red cube to a safe height\nsafe_height = grasp_pos[2] + 0.2\nlift_position = np.array([grasp_pos[0], grasp_pos[1], safe_height])\ngoto_pose(lift_position, grasp_quat)\n\n# Compute the stacking position on top of the green cube\nplace_z = green_center[2] + green_extent[2]/2 + red_extent[2]/2\nstack_position = np.array([green_center[0], green_center[1], place_z])\n\n# Move laterally above the green cube, then approach downward with z_approach\ngoto_pose(stack_position, grasp_quat, z_approach=0.1)\n\n# Release the red cube\nopen_gripper()",
+        "data_source": "cube_stack",
+        "task_name": "cube_stack",
+        "task_completed": true,
+        "terminated": true,
+        "truncated": false,
+        "sandbox_status": "success"
+      }
+    }
+  ],
+  "env_info": {
+    "data_source": "cube_stack",
+    "task_name": "cube_stack"
+  }
+}

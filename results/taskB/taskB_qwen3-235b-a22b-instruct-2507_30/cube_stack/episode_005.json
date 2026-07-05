@@ -1,0 +1,36 @@
+{
+  "task": "cube_stack",
+  "trial": 5,
+  "seed": 5,
+  "success": true,
+  "final_reward": 1.0,
+  "turns": 1,
+  "elapsed_sec": 9.035289764404297,
+  "error": null,
+  "trajectory": [
+    {
+      "turn": 0,
+      "model_output": "<python_code>\nimport numpy as np\n\n# Get poses and extents of the red and green cubes\nred_center, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_center, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation)\ngrasp_pos, grasp_quat = sample_grasp_pose(\"red cube\")\n\n# Open gripper before grasping\nopen_gripper()\n\n# Approach the red cube with z_approach=0.1\ngoto_pose(grasp_pos, grasp_quat, z_approach=0.1)\n\n# Close gripper to grasp the red cube\nclose_gripper()\n\n# Lift the red cube to a safe height\nsafe_height = grasp_pos[2] + 0.2\nlift_position = np.array([grasp_pos[0], grasp_pos[1], safe_height])\ngoto_pose(lift_position, grasp_quat)\n\n# Compute stacking height: place_z = green_center_z + half green height + half red height\nplace_z = green_center[2] + green_extent[2]/2 + red_extent[2]/2\nplace_position = np.array([green_center[0], green_center[1], place_z])\n\n# Move laterally above the green cube, then approach down with z_approach=0.1\ngoto_pose(place_position, grasp_quat, z_approach=0.1)\n\n# Release the red cube\nopen_gripper()\n\n# Optionally lift the gripper slightly after release\nfinal_lift = np.array([place_position[0], place_position[1], place_position[2] + 0.1])\ngoto_pose(final_lift, grasp_quat)\n</python_code>",
+      "executed_action": "<python_code>\nimport numpy as np\n\n# Get poses and extents of the red and green cubes\nred_center, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_center, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation)\ngrasp_pos, grasp_quat = sample_grasp_pose(\"red cube\")\n\n# Open gripper before grasping\nopen_gripper()\n\n# Approach the red cube with z_approach=0.1\ngoto_pose(grasp_pos, grasp_quat, z_approach=0.1)\n\n# Close gripper to grasp the red cube\nclose_gripper()\n\n# Lift the red cube to a safe height\nsafe_height = grasp_pos[2] + 0.2\nlift_position = np.array([grasp_pos[0], grasp_pos[1], safe_height])\ngoto_pose(lift_position, grasp_quat)\n\n# Compute stacking height: place_z = green_center_z + half green height + half red height\nplace_z = green_center[2] + green_extent[2]/2 + red_extent[2]/2\nplace_position = np.array([green_center[0], green_center[1], place_z])\n\n# Move laterally above the green cube, then approach down with z_approach=0.1\ngoto_pose(place_position, grasp_quat, z_approach=0.1)\n\n# Release the red cube\nopen_gripper()\n\n# Optionally lift the gripper slightly after release\nfinal_lift = np.array([place_position[0], place_position[1], place_position[2] + 0.1])\ngoto_pose(final_lift, grasp_quat)\n</python_code>",
+      "observation": "",
+      "reward": 1.0,
+      "done": true,
+      "metadata": {
+        "tool_calling": true,
+        "tool_group": "EmbodiedRobosuiteToolGroup",
+        "tool_name": "python_code",
+        "tool_input": "import numpy as np\n\n# Get poses and extents of the red and green cubes\nred_center, _, red_extent = get_object_pose(\"red cube\", return_bbox_extent=True)\ngreen_center, _, green_extent = get_object_pose(\"green cube\", return_bbox_extent=True)\n\n# Sample grasp pose for the red cube (to get correct orientation)\ngrasp_pos, grasp_quat = sample_grasp_pose(\"red cube\")\n\n# Open gripper before grasping\nopen_gripper()\n\n# Approach the red cube with z_approach=0.1\ngoto_pose(grasp_pos, grasp_quat, z_approach=0.1)\n\n# Close gripper to grasp the red cube\nclose_gripper()\n\n# Lift the red cube to a safe height\nsafe_height = grasp_pos[2] + 0.2\nlift_position = np.array([grasp_pos[0], grasp_pos[1], safe_height])\ngoto_pose(lift_position, grasp_quat)\n\n# Compute stacking height: place_z = green_center_z + half green height + half red height\nplace_z = green_center[2] + green_extent[2]/2 + red_extent[2]/2\nplace_position = np.array([green_center[0], green_center[1], place_z])\n\n# Move laterally above the green cube, then approach down with z_approach=0.1\ngoto_pose(place_position, grasp_quat, z_approach=0.1)\n\n# Release the red cube\nopen_gripper()\n\n# Optionally lift the gripper slightly after release\nfinal_lift = np.array([place_position[0], place_position[1], place_position[2] + 0.1])\ngoto_pose(final_lift, grasp_quat)",
+        "data_source": "cube_stack",
+        "task_name": "cube_stack",
+        "task_completed": true,
+        "terminated": true,
+        "truncated": false,
+        "sandbox_status": "success"
+      }
+    }
+  ],
+  "env_info": {
+    "data_source": "cube_stack",
+    "task_name": "cube_stack"
+  }
+}
