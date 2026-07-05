@@ -1,28 +1,25 @@
-# Task A Code Bundle
+# Task A Code
 
-This directory contains the Task A code bundle exported from the remote CUDA
-machine.
+This directory contains the runnable Task A CaP-X code copied from the remote
+CUDA machine.
 
-The full CaP-X snapshot is stored as split archive parts because large ordinary
-Git pushes are unreliable for this repository:
-
-```text
-archive/TaskA_capx_code.tar.gz.part_*
-```
-
-To reconstruct the readable code tree:
-
-```bash
-mkdir -p cap-x
-cat archive/TaskA_capx_code.tar.gz.part_* > TaskA_capx_code.tar.gz
-tar -xzf TaskA_capx_code.tar.gz -C cap-x
-```
-
-The convenience runner is also included:
+Main entry points:
 
 ```text
 run_taskA_s1.sh
+cap-x/capx/envs/launch.py
+cap-x/env_configs/
 ```
 
-The archive excludes runtime artifacts and secrets such as `.git`, `.venv`,
-`outputs`, cache files, API key files, and proxy base URL files.
+Typical remote run:
+
+```bash
+cd TaskA/cap-x
+source /root/miniconda3/etc/profile.d/conda.sh
+conda activate capx
+source .venv/bin/activate
+bash ../run_taskA_s1.sh
+```
+
+Runtime artifacts and secrets are not included: `.git`, `.venv`, `outputs`,
+cache files, API key files, and proxy base URL files were excluded.
