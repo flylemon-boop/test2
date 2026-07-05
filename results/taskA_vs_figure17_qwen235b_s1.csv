@@ -1,8 +1,0 @@
-task,figure17_task,figure17_qwen235b_s1_success_rate,ours_success_rate,delta_percentage_points,ours_completed,ours_trials
-cube_lifting,Lift,0.96,1.000,+4.0,30,30
-cube_stack,Stack,0.95,0.967,+1.7,29,30
-spill_wipe,Wipe,0.39,0.400,+1.0,12,30
-nut_assembly,Peg,0.11,0.133,+2.3,4,30
-two_arm_lift,2-Lift,0.06,0.067,+0.7,2,30
-two_arm_handover,2-Hand,0.03,0.000,-3.0,0,30
-macro_average,macro_average,0.417,0.428,+1.1,77,180

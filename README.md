@@ -90,16 +90,16 @@ The paper reports N=100 per cell, while this reproduction uses N=30 per task.
 | Cube Stack | 95.0% | 96.7% | +1.7 pp |
 | Spill Wipe | 39.0% | 40.0% | +1.0 pp |
 | Peg / Nut Assembly | 11.0% | 13.3% | +2.3 pp |
-| Two-Arm Lift | 6.0% | 6.7% | +0.7 pp |
+| Two-Arm Lift | 3.0% | 6.7% | +3.7 pp |
 | Two-Arm Handover | 3.0% | 0.0% | -3.0 pp |
-| Macro average | 41.7% | 42.8% | +1.1 pp |
+| Macro average | 41.2% | 42.8% | +1.6 pp |
 
 The reproduction is aligned with Figure 17: the macro-average success rate is
-within 1.1 percentage points, and the task difficulty ordering is preserved
+within 1.6 percentage points, and the task difficulty ordering is preserved
 up to small sampling noise from using 30 instead of 100 trials.
 
-Machine-readable Figure 17 comparison is in
-`results/taskA_vs_figure17_qwen235b_s1.csv`.
+The same success-rate comparison is also provided as a PDF table report:
+`results/taskA_figure17_comparison.pdf`.
 
 ## 4. Issues and Fixes
 
@@ -172,6 +172,7 @@ not blockers for Task A Robosuite experiments.
 ```text
 scripts/run_taskA_s1.sh
 results/taskA_s1_summary.csv
+results/taskA_figure17_comparison.pdf
 results/taskA_run_environment.md
 logs/taskA/
 experiments/taskA/taskA_qwen3-235b-a22b-instruct-2507_30/
