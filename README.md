@@ -187,6 +187,8 @@ from the remote CUDA machine. `code/cap-x/` is the submitted source snapshot
 used for the Task A run. Both include the local Robosuite/MuJoCo compatibility
 patch used during evaluation. Runtime artifacts are excluded: `.venv`,
 `outputs`, Git metadata, cache files, and local API key files are not committed.
+The bundled Robosuite documentation directory is omitted from `TaskA/` because
+it is not required for running the Task A code.
 
 Secrets such as API keys, SSH passwords, and proxy key files are intentionally
 not committed.
