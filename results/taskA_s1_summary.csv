@@ -1,7 +1,0 @@
-task,config,trials,model,code_generation_success_rate,average_reward,task_completed,success_rate,elapsed_seconds
-cube_lifting,env_configs/cube_lifting/franka_robosuite_cube_lifting_privileged.yaml,30,qwen3-235b-a22b-instruct-2507,1.000,1.000,30,1.000,177.43
-cube_stack,env_configs/cube_stack/franka_robosuite_cube_stack_privileged.yaml,30,qwen3-235b-a22b-instruct-2507,1.000,0.967,29,0.967,271.73
-spill_wipe,env_configs/spill_wipe/franka_robosuite_spill_wipe_privileged.yaml,30,qwen3-235b-a22b-instruct-2507,1.000,0.848,12,0.400,316.69
-nut_assembly,env_configs/nut_assembly/franka_robosuite_nut_assembly_privileged.yaml,30,qwen3-235b-a22b-instruct-2507,0.767,0.254,4,0.133,376.77
-two_arm_lift,env_configs/two_arm_lift/franka_robosuite_two_arm_lift_privileged.yaml,30,qwen3-235b-a22b-instruct-2507,1.000,0.062,2,0.067,669.03
-two_arm_handover,env_configs/two_arm_handover/two_arm_handover_privileged.yaml,30,qwen3-235b-a22b-instruct-2507,0.867,0.067,0,0.000,1849.42
