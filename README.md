@@ -170,6 +170,7 @@ not blockers for Task A Robosuite experiments.
 ## Repository Layout
 
 ```text
+code/cap-x/
 scripts/run_taskA_s1.sh
 results/taskA_s1_summary.csv
 results/taskA_figure17_comparison.pdf
@@ -177,6 +178,11 @@ results/taskA_run_environment.md
 logs/taskA/
 experiments/taskA/taskA_qwen3-235b-a22b-instruct-2507_30/
 ```
+
+`code/cap-x/` is a source snapshot from the CUDA machine used for the Task A
+run. It includes the local Robosuite/MuJoCo compatibility patch used during
+evaluation. Runtime artifacts are excluded: `.venv`, `outputs`, Git metadata,
+cache files, and local API key files are not committed.
 
 Secrets such as API keys, SSH passwords, and proxy key files are intentionally
 not committed.

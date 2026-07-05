@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# Local runtime environments and generated outputs
+.venv/
+outputs/
+code/cap-x/.venv/
+code/cap-x/outputs/
+
+# Local secrets
+aliyun_key
+aliyun_base_url
+*.key
+.env
