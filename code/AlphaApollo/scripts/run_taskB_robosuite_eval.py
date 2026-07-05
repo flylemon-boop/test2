@@ -13,6 +13,21 @@ from omegaconf import OmegaConf
 from alphaapollo.core.environments.embodied_robosuite.env import EmbodiedRobosuiteEnv
 
 
+def save_episode_video(env, output_dir: Path, task_name: str, trial_idx: int, success: bool) -> str | None:
+    if not hasattr(env.capx_env, "get_video_frames"):
+        return None
+    frames = env.capx_env.get_video_frames(clear=True)
+    if not frames:
+        return None
+    import imageio.v2 as imageio
+
+    video_dir = output_dir / task_name / "videos"
+    video_dir.mkdir(parents=True, exist_ok=True)
+    video_path = video_dir / f"episode_{trial_idx:03d}_success_{int(success)}.mp4"
+    imageio.mimsave(video_path, frames, fps=20)
+    return str(video_path)
+
+
 TASKS = ["cube_lift", "cube_stack", "peg_insertion"]
 
 
@@ -120,6 +135,12 @@ def run_episode(args: argparse.Namespace, task_name: str, trial_idx: int) -> Dic
     except Exception as exc:
         error = repr(exc)
     finally:
+        video_path = None
+        if args.record_video:
+            try:
+                video_path = save_episode_video(env, Path(args.output_dir), task_name, trial_idx, success)
+            except Exception as video_exc:
+                error = f"{error}; video_error={video_exc!r}" if error else f"video_error={video_exc!r}"
         try:
             env.close()
         except Exception:
@@ -136,6 +157,7 @@ def run_episode(args: argparse.Namespace, task_name: str, trial_idx: int) -> Dic
         "error": error,
         "trajectory": trajectory,
         "env_info": info,
+        "video_path": video_path,
     }
     return result
 

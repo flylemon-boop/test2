@@ -98,6 +98,9 @@ Full machine-readable outputs:
 - Task B aggregate: `results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/summary.json`
 - Task B episode JSON:
   `results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/<task>/episode_*.json`
+- Task B demo videos:
+  `results/taskB/videos/cube_lift_seed0/episode_000_success_1.mp4` and
+  `results/taskB/videos/cube_lift_seed1/episode_000_success_1.mp4`
 
 ### Task B Details
 
@@ -181,10 +184,9 @@ pip install 'pyroki @ git+https://github.com/chungmin99/pyroki.git@95afccc22658c
 
 ### Video artifacts
 
-The committed Task B run was executed without video recording. The required
-episode JSON trajectories and summaries are included. To produce demo videos,
-rerun selected successful episodes with video capture enabled and save the
-Robosuite frame buffer from the Task B wrapper.
+Two successful Task B demo videos are included under `results/taskB/videos/`.
+The Task B runner now supports `--record-video`, which exports the Robosuite
+frame buffer to an episode mp4 and records the path in the episode JSON.
 
 ## Repository Layout
 
