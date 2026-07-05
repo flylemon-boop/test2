@@ -1,0 +1,53 @@
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift 10 cm up
+pos0_lifted = pos0.copy()
+pos0_lifted[2] += lift_height
+pos1_lifted = pos1.copy()
+pos1_lifted[2] += lift_height
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1, z_approach=0.0)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis
+# This corresponds to a rotation of 90 degrees around x-axis from default [0,0,1,0] top-down
+# The desired quaternion is [0.707, 0, 0.707, 0] (w,x,y,z) which is equivalent to R.from_euler('x', 90, degrees=True).as_quat(wxyz=True)
+sideways_quat = np.array([0.707, 0, 0.707, 0])  # wxyz
+
+# Prepare approach: come in from the side at a small offset
+approach_dist = 0.05  # 5 cm approach distance
+
+# For arm 0 (assume it approaches from negative X direction relative to handle)
+approach_pos0 = handle0_pos.copy()
+approach_pos0[0] -= approach_dist  # come from -X side
+
+# For arm 1 (on opposite side, approach from positive X direction)
+approach_pos1 = handle1_pos.copy()
+approach_pos1[0] += approach_dist  # come from +X side
+
+# Move both arms to approach poses simultaneously
+goto_pose_both(approach_pos0, sideways_quat, approach_pos1, sideways_quat, z_approach=0.0)
+
+# Now move to final grasp pose using z_approach to ensure smooth downward motion
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=0.05)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms equally to raise the pot
+lift_amount = 0.1  # Lift 10 cm
+target_pos0 = handle0_pos.copy()
+target_pos0[2] += lift_amount
+target_pos1 = handle1_pos.copy()
+target_pos1[2] += lift_amount
+
+goto_pose_both(target_pos0, sideways_quat, target_pos1, sideways_quat, z_approach=0.0)

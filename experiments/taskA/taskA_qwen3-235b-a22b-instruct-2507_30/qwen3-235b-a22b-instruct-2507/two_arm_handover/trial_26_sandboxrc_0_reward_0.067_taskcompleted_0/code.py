@@ -1,0 +1,62 @@
+# Code block 0
+import numpy as np
+
+# Open both grippers initially
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Get the current hammer pose (middle of the handle)
+hammer_pos, _ = get_hammer_pose()
+
+# Define key quaternions for orientation control
+# Arm0 will approach the hammer with gripper opening along Y-axis (facing down)
+q_arm0_approach = np.array([0, 1, 0, 0])  # [0, 1, 0, 0] for Y-axis opening, facing down
+# For handover, we want Arm1 to grasp the handle — so gripper should open along Y-axis, facing down
+q_arm1_grasp = np.array([0, 0, 1, 0])  # [0, 0, 1, 0] for Arm1, opening along Y-axis
+
+# Step 1: Arm0 moves above the hammer for safe approach
+approach_offset_z = 0.1  # 10 cm above hammer for safe descent
+safe_above_hammer = hammer_pos.copy()
+safe_above_hammer[2] += approach_offset_z
+
+goto_pose_arm0(safe_above_hammer, q_arm0_approach)
+
+# Step 2: Arm0 descends and grasps the hammer handle
+goto_pose_arm0(hammer_pos, q_arm0_approach, z_approach=-approach_offset_z)  # Use z_approach to move down precisely
+close_gripper_arm0()  # Close gripper to grasp the hammer
+
+# Step 3: Arm0 lifts the hammer to a safe height for transport
+lift_height = 0.20  # Lift to just within allowed z-range (0.15–0.20)
+lifted_pos = hammer_pos.copy()
+lifted_pos[2] = lift_height
+goto_pose_arm0(lifted_pos, q_arm0_approach)
+
+# Step 4: Plan handover position near midpoint between initial arm positions
+# Midpoint in X: roughly between Arm0 (x ≈ 0.44) and Arm1 (x ≈ 1.18)
+mid_x = (0.44 + 1.18) / 2
+handover_pos = np.array([mid_x, 0.0, lift_height])  # Maintain z=0.20 for handover
+
+# Move Arm0 to handover position
+goto_pose_arm0(handover_pos, q_arm0_approach)
+
+# Step 5: Arm1 moves to handover position from its side
+# Arm1 needs to approach from the opposite side to avoid collision
+# We use a lateral offset first, then approach vertically
+arm1_approach_pos = handover_pos.copy()
+arm1_approach_pos[2] += approach_offset_z  # Approach from above
+
+goto_pose_arm1(arm1_approach_pos, q_arm1_grasp)
+
+# Descend to grasp the hammer at handover location
+goto_pose_arm1(handover_pos, q_arm1_grasp, z_approach=-approach_offset_z)
+
+# Step 6: Close Arm1 gripper to grasp the hammer handle
+close_gripper_arm1()
+
+# Step 7: Arm0 opens gripper to release the hammer
+open_gripper_arm0()
+
+# Final step: Arm0 retracts slightly upward to avoid pulling during release
+retract_pos = handover_pos.copy()
+retract_pos[2] += 0.05
+goto_pose_arm0(retract_pos, q_arm0_approach)

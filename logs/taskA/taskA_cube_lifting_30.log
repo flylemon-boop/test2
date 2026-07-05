@@ -1,0 +1,1454 @@
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python /root/autodl-tmp/cap-x/capx/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:32)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:42)
+R1Pro not installed, skipping R1Pro APIs
+LIBERO not installed!
+R1Pro not installed!
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python /root/autodl-tmp/cap-x/capx/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:32)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:42)
+INFO:pyroki_server:Loading robot URDF 'panda_description' with Pyroki...
+INFO:jax._src.xla_bridge:Unable to initialize backend 'cuda': 
+INFO:jax._src.xla_bridge:Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:jax._src.xla_bridge:Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-07-05 13:44:47.530 | INFO     | pyroki.collision._robot_collision:from_sphere_decomposition:187 - Created RobotCollision (sphere mode) with 13 links, 41 total spheres, and 626 active pairs.
+INFO:pyroki_server:PyRoki loaded and ready!
+INFO:     Started server process [20387]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8116 (Press CTRL+C to quit)
+[robosuite INFO] Loading controller configuration from: capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+API server {'_target_': 'capx.serving.launch_pyroki_server.main', 'port': 8116, 'host': '127.0.0.1', 'robot': 'panda_description', 'target_link': 'panda_hand'} started
+API server on 127.0.0.1:8116 is ready
+Running Trials:   0%|          | 0/30 [00:00<?, ?it/s]2026-07-05 13:44:53.054 | INFO     | jaxls._py310._problem:analyze:126 - Building optimization problem with 2 terms and 1 variables: 1 costs, 0 eq_zero, 1 leq_zero, 0 geq_zero
+2026-07-05 13:44:53.079 | INFO     | jaxls._py310._problem:analyze:226 - Vectorizing constraint group with 1 constraints (constraint_leq_zero), 1 variables each: augmented_limit_residual
+2026-07-05 13:44:53.179 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: _pose_cost_analytical_jac
+2026-07-05 13:44:53.190 | INFO     | jaxls._py310._problem:analyze:312 - Variable elimination: variable IDs are traced; solves will not use elimination
+R1Pro not installed, skipping R1Pro APIs
+LIBERO not installed!
+R1Pro not installed!
+INFO:     127.0.0.1:54674 - "POST /ik HTTP/1.1" 200 OK
+2026-07-05 13:44:55.952 | INFO     | jaxls._py310._problem:analyze:126 - Building optimization problem with 3 terms and 1 variables: 3 costs, 0 eq_zero, 0 leq_zero, 0 geq_zero
+2026-07-05 13:44:55.967 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: limit_residual
+2026-07-05 13:44:55.989 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: _pose_cost_analytical_jac
+2026-07-05 13:44:55.998 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: limit_velocity_cost
+2026-07-05 13:44:56.009 | INFO     | jaxls._py310._problem:analyze:312 - Variable elimination: variable IDs are traced; solves will not use elimination
+INFO:     127.0.0.1:54678 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51472 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51476 - "POST /ik HTTP/1.1" 200 OK
+Time taken to query model: 4.14 seconds
+Running Trials:   3%|▎         | 1/30 [00:10<04:54, 10.14s/it]INFO:     127.0.0.1:51492 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51504 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51514 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51520 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 1 took 9.95 seconds
+Time taken to query model: 4.39 seconds
+Running Trials:   7%|▋         | 2/30 [00:16<03:33,  7.64s/it]INFO:     127.0.0.1:44076 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44078 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44082 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44084 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 2 took 5.69 seconds
+Time taken to query model: 3.87 seconds
+Running Trials:  10%|█         | 3/30 [00:21<02:59,  6.63s/it]INFO:     127.0.0.1:44086 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44102 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44104 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44110 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 3 took 5.22 seconds
+Time taken to query model: 5.29 seconds
+Running Trials:  13%|█▎        | 4/30 [00:28<02:53,  6.65s/it]INFO:     127.0.0.1:53700 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53712 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53728 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53732 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 4 took 6.50 seconds
+Time taken to query model: 4.87 seconds
+Running Trials:  17%|█▋        | 5/30 [00:34<02:44,  6.58s/it]INFO:     127.0.0.1:41964 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41978 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41990 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42000 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 5 took 6.25 seconds
+Time taken to query model: 5.23 seconds
+Running Trials:  20%|██        | 6/30 [00:41<02:38,  6.60s/it]INFO:     127.0.0.1:42010 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42024 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42034 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42042 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 6 took 6.44 seconds
+Time taken to query model: 3.45 seconds
+Running Trials:  23%|██▎       | 7/30 [00:46<02:18,  6.02s/it]INFO:     127.0.0.1:44748 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44764 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44778 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44788 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 7 took 4.65 seconds
+Time taken to query model: 4.72 seconds
+Running Trials:  27%|██▋       | 8/30 [00:52<02:12,  6.04s/it]INFO:     127.0.0.1:44790 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44798 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44806 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44820 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 8 took 5.88 seconds
+Time taken to query model: 3.36 seconds
+Running Trials:  30%|███       | 9/30 [00:56<01:58,  5.65s/it]INFO:     127.0.0.1:57270 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57276 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57280 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57294 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 9 took 4.59 seconds
+Time taken to query model: 4.25 seconds
+Running Trials:  33%|███▎      | 10/30 [01:02<01:52,  5.63s/it]INFO:     127.0.0.1:57300 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57314 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57316 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57320 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 10 took 5.42 seconds
+Time taken to query model: 4.53 seconds
+Running Trials:  37%|███▋      | 11/30 [01:08<01:51,  5.88s/it]INFO:     127.0.0.1:53412 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53416 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53418 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53430 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 11 took 6.25 seconds
+Time taken to query model: 2.76 seconds
+Running Trials:  40%|████      | 12/30 [01:13<01:36,  5.35s/it]INFO:     127.0.0.1:53440 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53450 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53466 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 12 took 3.95 seconds
+Time taken to query model: 2.50 seconds
+Running Trials:  43%|████▎     | 13/30 [01:16<01:23,  4.89s/it]INFO:     127.0.0.1:38176 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38184 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38190 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38206 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 13 took 3.62 seconds
+Time taken to query model: 3.83 seconds
+Running Trials:  47%|████▋     | 14/30 [01:22<01:19,  4.97s/it]INFO:     127.0.0.1:38214 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38224 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38238 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 14 took 4.96 seconds
+Time taken to query model: 2.73 seconds
+Running Trials:  50%|█████     | 15/30 [01:26<01:10,  4.69s/it]INFO:     127.0.0.1:55736 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55748 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55764 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 15 took 3.86 seconds
+Time taken to query model: 3.84 seconds
+Running Trials:  53%|█████▎    | 16/30 [01:31<01:07,  4.84s/it]INFO:     127.0.0.1:55772 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55776 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55784 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55790 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 16 took 4.98 seconds
+Time taken to query model: 2.79 seconds
+Running Trials:  57%|█████▋    | 17/30 [01:35<01:00,  4.64s/it]INFO:     127.0.0.1:55798 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50744 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50748 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50752 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 17 took 3.99 seconds
+Time taken to query model: 3.12 seconds
+Running Trials:  60%|██████    | 18/30 [01:40<00:55,  4.60s/it]INFO:     127.0.0.1:50766 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50782 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50794 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50806 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 18 took 4.31 seconds
+Time taken to query model: 3.85 seconds
+Running Trials:  63%|██████▎   | 19/30 [01:45<00:52,  4.78s/it]INFO:     127.0.0.1:60680 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60684 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60688 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60690 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 19 took 5.03 seconds
+Time taken to query model: 4.05 seconds
+Running Trials:  67%|██████▋   | 20/30 [01:50<00:49,  4.97s/it]INFO:     127.0.0.1:60692 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60702 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60708 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60724 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 20 took 5.21 seconds
+Time taken to query model: 4.72 seconds
+Running Trials:  70%|███████   | 21/30 [01:56<00:47,  5.32s/it]INFO:     127.0.0.1:39760 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39766 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39772 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39774 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 21 took 5.95 seconds
+Time taken to query model: 3.83 seconds
+Running Trials:  73%|███████▎  | 22/30 [02:01<00:42,  5.29s/it]INFO:     127.0.0.1:39778 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39780 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39788 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39790 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 22 took 5.03 seconds
+Time taken to query model: 4.45 seconds
+Running Trials:  77%|███████▋  | 23/30 [02:07<00:38,  5.45s/it]INFO:     127.0.0.1:59842 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59854 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59862 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59866 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 23 took 5.64 seconds
+Time taken to query model: 4.48 seconds
+Running Trials:  80%|████████  | 24/30 [02:13<00:33,  5.57s/it]INFO:     127.0.0.1:59876 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59884 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59888 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59904 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 24 took 5.67 seconds
+Time taken to query model: 4.10 seconds
+Running Trials:  83%|████████▎ | 25/30 [02:19<00:28,  5.60s/it]INFO:     127.0.0.1:34994 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35006 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35020 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35026 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 25 took 5.48 seconds
+Time taken to query model: 5.20 seconds
+Running Trials:  87%|████████▋ | 26/30 [02:25<00:23,  5.90s/it]INFO:     127.0.0.1:54296 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54304 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54316 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54318 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 26 took 6.40 seconds
+Time taken to query model: 6.54 seconds
+Running Trials:  90%|█████████ | 27/30 [02:33<00:19,  6.55s/it]INFO:     127.0.0.1:54328 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54332 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53776 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53782 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 27 took 7.87 seconds
+Time taken to query model: 4.41 seconds
+Running Trials:  93%|█████████▎| 28/30 [02:40<00:12,  6.49s/it]INFO:     127.0.0.1:53792 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53796 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53812 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53820 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 28 took 6.15 seconds
+Time taken to query model: 4.85 seconds
+Running Trials:  97%|█████████▋| 29/30 [02:46<00:06,  6.42s/it]INFO:     127.0.0.1:35062 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35072 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35076 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35088 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 29 took 6.08 seconds
+Time taken to query model: 4.72 seconds
+Running Trials: 100%|██████████| 30/30 [02:52<00:00,  6.32s/it]Running Trials: 100%|██████████| 30/30 [02:52<00:00,  5.76s/it]
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 30 took 5.91 seconds
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_01_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above with a z_approach of 0.1 meters
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Open the gripper before grasping
+open_gripper()
+
+# Move down to the grasp position without additional approach
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in Z-axis by 0.2 meters
+lift_position = grasp_position + np.array([0.0, 0.0, 0.2])
+goto_pose(lift_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_02_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above with a z_approach of 0.1 meters to avoid collision
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Open the gripper before grasping
+open_gripper()
+
+# Move down to the actual grasp position without z_approach now
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in Z-axis by 0.2 meters
+lift_position = grasp_position + np.array([0, 0, 0.2])
+goto_pose(lift_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_03_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_04_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above with a z_approach of 0.1 meters
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Open the gripper before grasping
+open_gripper()
+
+# Move down to the grasp position without additional approach since z_approach already handled
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in Z-axis by 0.2 meters
+lift_position = grasp_position + np.array([0, 0, 0.2])
+goto_pose(lift_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_05_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_06_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from 10 cm above to avoid collision
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Move down to the actual grasp position
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis by 20 cm
+lifted_position = grasp_position + np.array([0.0, 0.0, 0.2])
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_07_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_08_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from 10 cm above
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Move down to the grasp pose
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving up 20 cm along Z-axis
+lift_position = grasp_position + np.array([0, 0, 0.2])
+goto_pose(lift_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_09_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_10_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from 10 cm above to ensure safe descent
+goto_pose(grasp_position + np.array([0.0, 0.0, 0.1]), grasp_quaternion)
+
+# Open the gripper before attempting grasp
+open_gripper()
+
+# Perform precise approach to the grasp position with z_approach of -0.1 (10 cm descent)
+goto_pose(grasp_position, grasp_quaternion, z_approach=-0.1)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in Z-axis by 20 cm
+lifted_position = grasp_position + np.array([0.0, 0.0, 0.2])
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_11_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from 10 cm above to avoid collision
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Move down to the actual grasp position
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis by 20 cm
+lifted_position = grasp_position + np.array([0.0, 0.0, 0.2])
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_12_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above with a z_approach of 0.1 meters
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis by 0.2 meters
+lift_position = grasp_position + np.array([0, 0, 0.2])
+goto_pose(lift_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_13_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_14_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube to ensure proper orientation
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above with a z_approach of 0.1 meters
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in the z-axis by 0.2 meters
+lifted_position = grasp_position + np.array([0.0, 0.0, 0.2])
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_15_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_16_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from 10 cm above to avoid collision
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Move down to the actual grasp position
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis by 20 cm
+lifted_position = grasp_position + np.array([0.0, 0.0, 0.2])
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_17_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from 10 cm above to avoid collision
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Move down to the actual grasp position
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis by 20 cm
+lifted_position = grasp_position + np.array([0.0, 0.0, 0.2])
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_18_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_19_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_20_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_21_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_22_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_23_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Move upward to lift the cube
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_24_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above with a z_approach of 0.1 meters
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Open the gripper before grasping
+open_gripper()
+
+# Move down to the grasp position without additional approach since z_approach already handled
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in Z-axis by 0.2 meters
+lift_position = grasp_position + np.array([0, 0, 0.2])
+goto_pose(lift_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_25_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_26_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above with a z_approach of 0.1 meters to avoid collision
+goto_pose(grasp_position, grasp_quaternion, z_approach=0.1)
+
+# Open the gripper before grasping
+open_gripper()
+
+# Move down to the actual grasp position without z_approach now
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in Z-axis by 0.2 meters
+lift_position = grasp_position + np.array([0, 0, 0.2])
+goto_pose(lift_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_27_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from 10 cm above to ensure safe descent
+goto_pose(grasp_position + np.array([0.0, 0.0, 0.1]), grasp_quaternion)
+
+# Open the gripper before attempting grasp
+open_gripper()
+
+# Perform precise approach to the grasp position with z_approach of -0.1 (10 cm descent)
+goto_pose(grasp_position, grasp_quaternion, z_approach=-0.1)
+
+# Close the gripper to pick up the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in Z-axis by 20 cm
+lifted_position = grasp_position + np.array([0.0, 0.0, 0.2])
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_28_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_29_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [20387]
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the grasp pose for the red cube
+grasp_position, grasp_quaternion = sample_grasp_pose("red cube")
+
+# Approach the red cube from above by adding a z offset
+z_approach_distance = 0.1  # 10 cm approach distance
+
+# Move to the approach pose above the grasp position
+goto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)
+
+# Move down to the actual grasp pose (no need to specify z_approach again)
+goto_pose(grasp_position, grasp_quaternion)
+
+# Close the gripper to grasp the red cube
+close_gripper()
+
+# Lift the red cube by moving upward in z-axis
+lift_distance = 0.2  # Lift 20 cm
+lifted_position = grasp_position + np.array([0, 0, lift_distance])
+
+# Lift the cube without any additional approach since we are already at the grasp pose
+goto_pose(lifted_position, grasp_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/cube_lifting/trial_30_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+
+Summary Statistics:
+Model: qwen3-235b-a22b-instruct-2507
+Config Path: env_configs/cube_lifting/franka_robosuite_cube_lifting_privileged.yaml
+Git Commit: 53e9966 (Dirty: True)
+Total number of trials: 30
+Code generation success rate / Average reward / Task completed: 
+1.000/1.000/30
+Average code blocks: 1.000
+Average regenerations: 0.000
+Average finishes: 0.000
+Elapsed time: 177.43 seconds

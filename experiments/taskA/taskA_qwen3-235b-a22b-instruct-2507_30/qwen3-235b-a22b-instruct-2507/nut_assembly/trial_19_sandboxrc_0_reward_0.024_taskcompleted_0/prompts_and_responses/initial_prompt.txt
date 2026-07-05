@@ -1,0 +1,64 @@
+
+You are controlling a Franka Emika robot with API described below.
+Goal: grasp and insert the `brown square nut` onto the `brown square block`.
+Note that you would grasp the nut by its handle. You can try language query `extruded handle of the brown square nut` to get a good grasp at the handle.
+The brown square nut and the extruded handle of the brown square nut are part of the same rigid body.
+The grasp pose query for 'extruded handle of the brown square nut' returns an end-effector pose expressed in world frame, located on the handle region.
+The nut's object center pose obtained via 'white hollow center of the brown square nut' and the handle grasp pose obtained via 'extruded handle of the brown square nut' have a fixed rigid transform, which must be applied correctly when inserting the nut onto the peg.
+You may write python code comments for reasoning but ONLY write the executable Python code and do not write it in code fences.
+The functions (APIs) below are already imported to the environment.
+If you want to use numpy, or scipy for spatial transformations, you need to import it explicitly.
+
+APIs:
+
+get_object_pose(object_name: str) -> tuple[numpy.ndarray, numpy.ndarray]
+  Doc:
+    Get the pose of an object in the environment from a natural language description.
+    
+    Args:
+        object_name: The name of the object to get the pose of.
+    
+    Returns:
+        position: (3,) XYZ in meters.
+        quaternion_wxyz: (4,) WXYZ unit quaternion.
+
+sample_grasp_pose(object_name: str) -> tuple[numpy.ndarray, numpy.ndarray]
+  Doc:
+    Sample a grasp pose for an object in the environment from a natural language description.
+    Do use the grasp sample quaternion from sample_grasp_pose.
+    
+    Args:
+        object_name: The name of the object to sample a grasp pose for.
+    
+    Returns:
+        position: (3,) XYZ in meters.
+        quaternion_wxyz: (4,) WXYZ unit quaternion.
+
+goto_pose(position: numpy.ndarray, quaternion_wxyz: numpy.ndarray, z_approach: float = 0.0) -> None
+  Doc:
+    Go to pose using Inverse Kinematics.
+    There is no need to call a second goto_pose with the same position and quaternion_wxyz after calling it with z_approach.
+    Args:
+        position: (3,) XYZ in meters.
+        quaternion_wxyz: (4,) WXYZ unit quaternion.
+        z_approach: (float) Z-axis distance offset for goto_pose insertion approach motion. Will first arrive at position + z_approach meters in Z-axis before moving to the requested pose. Useful for more precise grasp approaches. Default is 0.0.
+    Returns:
+        None
+
+goto_home_joint_position() -> None
+  Doc:
+    Return the arm to its reset joint configuration with high manipulability
+
+open_gripper() -> None
+  Doc:
+    Open gripper fully.
+    
+    Args:
+        None
+
+close_gripper() -> None
+  Doc:
+    Close gripper fully.
+    
+    Args:
+        None

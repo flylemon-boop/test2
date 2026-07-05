@@ -1,0 +1,103 @@
+import numpy as np
+
+# Open both grippers initially
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Get the hammer handle's initial position
+hammer_pos, _ = get_hammer_pose()
+
+# Constants
+HANDOVER_Z_MIN = 0.15
+HANDOVER_Z_MAX = 0.20
+APPROACH_HEIGHT = 0.1  # Safe approach height above table
+BUFFER = 0.08  # 8cm buffer between grippers to avoid collision
+
+# We assume that during handover, the hammer should be held vertically
+# with handle up so Arm1 can grasp the handle (not head).
+# Arm0 will first pick up the hammer from the side, lift it, then orient it upright.
+
+# Step 1: Arm0 approaches the hammer from the side (along X-axis) with gripper opening along Y
+# This allows it to grasp the middle of the hammer while lying flat
+quaternion_arm0_grasp = [0, 1, 0, 0]  # gripper opening along Y-axis
+
+# Approach from above safely
+goto_pose_arm0(hammer_pos + np.array([0, 0, APPROACH_HEIGHT]), quaternion_arm0_grasp)
+goto_pose_arm0(hammer_pos, quaternion_arm0_grasp, z_approach=0.02)
+
+# Close gripper to grasp hammer
+close_gripper_arm0()
+
+# Step 2: Lift hammer to safe height for transport
+lift_position = hammer_pos + np.array([0, 0, 0.15])
+goto_pose_arm0(lift_position, quaternion_arm0_grasp)
+
+# Step 3: Move toward center to prepare for handover
+# Midpoint between arms is roughly at x = (0.44 + 1.18)/2 ≈ 0.81
+handover_x = 0.81
+handover_y = 0.0  # keep centered in Y
+target_handover_pos = np.array([handover_x, handover_y, 0.175])  # within required z range
+
+# Re-orient hammer vertically so handle points upward
+# For vertical orientation with handle up and head down, we want gripper to open along Z
+# Use a quaternion that represents rotation from Y-opening to Z-opening (around X-axis by -90 degrees)
+# Rotation of -90 degrees around X-axis: q = [cos(-45°), sin(-45°), 0, 0] → approx [0.707, -0.707, 0, 0]
+quaternion_vertical = [0.707, -0.707, 0, 0]
+
+# Move Arm0 to handover location with vertical orientation
+goto_pose_arm0(target_handover_pos, quaternion_vertical)
+
+# Step 4: Prepare Arm1 to receive hammer handle
+# Arm1 needs to grasp the handle from below or side — safest is side grasp along Z (opening in Z direction)
+# So set gripper to open along Z-axis → reference says: [0, 0, 1, 0] for opening along Y? Wait — need correct understanding.
+
+# From reference:
+# Arm1 gripper facing down opening along Y-axis: [0, 0, 1, 0] → so Y is opening direction when "facing down"
+# But we want Arm1 to grab the vertical handle from the side — so gripper should face horizontal, opening along Z
+# To have gripper opening along Z, we rotate so tool z-axis is aligned with world X or Y?
+# Let’s reinterpret:
+
+# When gripper opens along Z (i.e., fingers move in ±Z), the palm normal should be along Z.
+# But standard Franka gripper has opening direction along its local Y.
+# Therefore, to make gripper open along world Z, we need to rotate so local Y aligns with world Z.
+
+# A rotation of +90 degrees around X-axis takes local Y → Z
+# Quaternion for +90 deg around X: [cos(45), sin(45), 0, 0] = [0.707, 0.707, 0, 0]
+
+quaternion_arm1_receive = [0.707, 0.707, 0, 0]  # opening along Z
+
+# Compute approximate handle bottom (near where Arm1 should grasp)
+handle_length_min = 0.15
+handle_length_max = 0.25
+# Assume average handle length; since hammer was grasped at center, and now vertical,
+# the handle extends downward ~half of total length
+total_length_estimate = 0.20  # rough estimate of full hammer length
+handle_half = total_length_estimate / 2
+
+# When hammer is vertical and held at center by Arm0, the bottom of the handle is at:
+handle_bottom_z = target_handover_pos[2] - handle_half
+handle_bottom_pos = np.array([target_handover_pos[0], target_handover_pos[1], handle_bottom_z])
+
+# Ensure z is within valid range
+assert HANDOVER_Z_MIN <= target_handover_pos[2] <= HANDOVER_Z_MAX, "Handover z-value out of bounds"
+
+# Arm1 moves to grasp the lower part of the handle from the side (positive X-direction)
+# Position gripper so fingers can close on the handle around its lower section
+grasp_offset_from_center = 0.06  # small offset to ensure grip on handle, not head
+arm1_approach_pos = handle_bottom_pos + np.array([-0.1, 0, 0])  # approach from negative X (right side)
+arm1_final_grasp_pos = handle_bottom_pos + np.array([-grasp_offset_from_center, 0, 0])
+
+# First move Arm1 to approach position
+goto_pose_arm1(arm1_approach_pos, quaternion_arm1_receive)
+
+# Then move to final grasp position with z_approach to gently insert
+goto_pose_arm1(arm1_final_grasp_pos, quaternion_arm1_receive, z_approach=0.02)
+
+# Close Arm1 gripper to secure handle
+close_gripper_arm1()
+
+# Now Arm0 can safely release
+open_gripper_arm0()
+
+# Final check: maintain z during handover already ensured by our path planning
+# Task complete

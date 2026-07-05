@@ -1,0 +1,37 @@
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # w, x, y, z
+
+# Define bounds for wiping based on spill extent
+half_x_extent = spill_extent[0] / 2
+half_y_extent = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_x_extent
+max_x = spill_position[0] + half_x_extent
+min_y = spill_position[1] - half_y_extent
+max_y = spill_position[1] + half_y_extent
+
+# Set z height to table surface (z = 0.0 m)
+z_height = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, y in enumerate(y_points):
+    if i % 2 == 0:
+        # Left to right
+        x_sequence = x_points
+    else:
+        # Right to left
+        x_sequence = x_points[::-1]
+    
+    for x in x_sequence:
+        goto_pose(np.array([x, y, z_height]), wiping_orientation)

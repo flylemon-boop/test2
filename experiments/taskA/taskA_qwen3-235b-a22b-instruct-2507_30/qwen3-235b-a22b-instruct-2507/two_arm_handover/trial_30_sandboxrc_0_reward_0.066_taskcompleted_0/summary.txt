@@ -1,0 +1,122 @@
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Open both grippers initially
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Get hammer handle pose
+hammer_pos, hammer_quat = get_hammer_pose()
+
+# Define useful quaternions for orientation
+# Arm0: Gripper facing down, opening along X-axis (for grasping hammer handle from top)
+q_arm0_grasp = np.array([0, 0.707, 0.707, 0])  # WXYZ
+
+# For handover, we want to rotate the hammer so that Arm1 can grasp the handle
+# Arm1 needs gripper opening along Y-axis, facing down
+q_arm1_grasp = np.array([0, 0, 1, 0])  # WXYZ
+
+# Step 1: Arm0 moves above the hammer with safe z-approach
+z_approach_height = 0.1  # Start from 10cm above
+safe_z = hammer_pos[2] + z_approach_height
+
+# Move Arm0 above hammer with approach motion
+goto_pose_arm0(
+    position=np.array([hammer_pos[0], hammer_pos[1], safe_z]),
+    quaternion_wxyz=q_arm0_grasp,
+    z_approach=0.0
+)
+
+# Then perform precise grasp motion
+goto_pose_arm0(
+    position=hammer_pos,
+    quaternion_wxyz=q_arm0_grasp,
+    z_approach=z_approach_height  # Approach from above
+)
+
+# Close Arm0 gripper to grasp hammer
+close_gripper_arm0()
+
+# Lift hammer to a safe height for transfer
+lift_height = hammer_pos[2] + 0.15
+if lift_height > 0.20:
+    lift_height = 0.20  # Ensure within allowed range for handover
+
+goto_pose_arm0(
+    position=np.array([hammer_pos[0], hammer_pos[1], lift_height]),
+    quaternion_wxyz=q_arm0_grasp,
+    z_approach=0.0
+)
+
+# Now move hammer toward handover region near midpoint between arms
+# Midpoint in x: average of initial arm positions
+mid_x = (0.44 + 1.18) / 2.0
+handover_x = mid_x
+handover_y = 0.0  # Keep centered
+handover_z = 0.175  # Within required 0.15–0.20 range
+
+# First, raise hammer slightly if needed and reorient it for handover
+# Rotate hammer to prepare for Arm1 grasp: handle should point toward Arm1 side
+# Since hammer handle was originally along +Y, we'll keep it aligned and rotate roll so Arm1 can grasp
+
+# Intermediate waypoint to avoid collision: move laterally in steps
+waypoint_x = (hammer_pos[0] + handover_x) / 2.0
+waypoint_y = (hammer_pos[1] + handover_y) / 2.0
+
+# Move in two steps to avoid swinging over table gap
+goto_pose_arm0(
+    position=np.array([waypoint_x, waypoint_y, handover_z]),
+    quaternion_wxyz=q_arm0_grasp,
+    z_approach=0.0
+)
+
+goto_pose_arm0(
+    position=np.array([handover_x, handover_y, handover_z]),
+    quaternion_wxyz=q_arm0_grasp,
+    z_approach=0.0
+)
+
+# Now Arm1 moves to grasp position at the same location but with its own orientation
+# We must ensure Arm1 approaches from its side without colliding
+
+# Arm1 goes to handover location with z_approach
+goto_pose_arm1(
+    position=np.array([handover_x, handover_y, handover_z + z_approach_height]),
+    quaternion_wxyz=q_arm1_grasp,
+    z_approach=0.0
+)
+
+goto_pose_arm1(
+    position=np.array([handover_x, handover_y, handover_z]),
+    quaternion_wxyz=q_arm1_grasp,
+    z_approach=z_approach_height
+)
+
+# Close Arm1 gripper to grasp hammer handle
+close_gripper_arm1()
+
+# Now Arm0 opens gripper to release hammer
+open_gripper_arm0()
+
+# Finally, Arm1 lifts the hammer slightly to complete handover
+final_lift_z = handover_z + 0.05
+goto_pose_arm1(
+    position=np.array([handover_x, handover_y, final_lift_z]),
+    quaternion_wxyz=q_arm1_grasp,
+    z_approach=0.0
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.06636463885137191
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------

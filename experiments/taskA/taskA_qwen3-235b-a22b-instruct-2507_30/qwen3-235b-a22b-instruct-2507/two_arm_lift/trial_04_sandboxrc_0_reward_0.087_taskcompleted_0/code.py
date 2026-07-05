@@ -1,0 +1,59 @@
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+# Lift both arms up by 10 cm initially
+lift_offset = np.array([0.0, 0.0, 0.1])
+lifted_pos0 = initial_pose0[0] + lift_offset
+lifted_pos1 = initial_pose1[0] + lift_offset
+
+goto_pose_both(lifted_pos0, initial_pose0[1], lifted_pos1, initial_pose1[1])
+
+# Get current handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis (preferred)
+# This corresponds to a rotation of 90 degrees around x-axis -> quaternion [cos(45°), sin(45°), 0, 0] = [√2/2, √2/2, 0, 0]
+# which makes the gripper vertical with fingers horizontal
+grasp_quat = np.array([np.sqrt(2)/2, np.sqrt(2)/2, 0, 0])  # w, x, y, z
+
+# Prepare approach: approach from side with 5 cm offset in z for safety
+approach_z = 0.05
+
+# Open both grippers before grasping
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms simultaneously to approach position
+goto_pose_both(
+    handle0_pos + np.array([0, 0, approach_z]), 
+    grasp_quat,
+    handle1_pos + np.array([0, 0, approach_z]),
+    grasp_quat,
+    z_approach=approach_z
+)
+
+# Perform precise grasp motion down to the handle without additional approach (z_approach=0 now)
+goto_pose_both(
+    handle0_pos,
+    grasp_quat,
+    handle1_pos,
+    grasp_quat,
+    z_approach=0.0
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift the pot up by 10 cm from handle positions
+lift_height = 0.1
+final_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+# Simultaneously lift both arms to raise the pot
+goto_pose_both(final_pos0, grasp_quat, final_pos1, grasp_quat)

@@ -1,0 +1,40 @@
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+pos0_lift = np.array([0.4, -0.2, 0.3])
+quat0_lift = np.array([1, 0, 0, 0])  # Default orientation
+pos1_lift = np.array([0.4, 0.2, 0.3])
+quat1_lift = np.array([1, 0, 0, 0])  # Default orientation
+goto_pose_both(pos0_lift, quat0_lift, pos1_lift, quat1_lift)
+
+# Get handle positions using vision detection
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientations with gripper y-axis aligned with world z-axis
+# For a sideways grasp from the side, we want the gripper's approach direction (z-axis) along the horizontal direction toward the handle
+# This corresponds to a quaternion where the gripper frame's y-axis aligns with world +Z
+# Rotation of +90 degrees around X-axis: q = [cos(45), sin(45), 0, 0] -> approximately [0.707, 0.707, 0, 0]
+side_grasp_quat = np.array([np.sqrt(2)/2, np.sqrt(2)/2, 0, 0])  # WXYZ: rotation around X by 90°
+
+# Prepare approach for grasping
+z_approach_dist = 0.05  # 5 cm above the grasp point when approaching
+
+# Go to pre-grasp poses above each handle
+pre_grasp_offset = np.array([0, 0, 0.05])
+goto_pose_arm0(handle0_pos + pre_grasp_offset, side_grasp_quat)
+goto_pose_arm1(handle1_pos + pre_grasp_offset, side_grasp_quat)
+
+# Lower to grasp pose and close grippers
+goto_pose_arm0(handle0_pos, side_grasp_quat, z_approach=0.0)
+close_gripper_arm0()
+
+goto_pose_arm1(handle1_pos, side_grasp_quat, z_approach=0.0)
+close_gripper_arm1()
+
+# Lift both arms together to same height
+lift_height = 0.2  # Lift pot 20 cm up from table
+target_lift_pos0 = np.array([handle0_pos[0], handle0_pos[1], handle0_pos[2] + lift_height])
+target_lift_pos1 = np.array([handle1_pos[0], handle1_pos[1], handle1_pos[2] + lift_height])
+
+goto_pose_both(target_lift_pos0, side_grasp_quat, target_lift_pos1, side_grasp_quat)

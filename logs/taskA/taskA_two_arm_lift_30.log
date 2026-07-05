@@ -1,0 +1,2790 @@
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python /root/autodl-tmp/cap-x/capx/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:32)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:42)
+R1Pro not installed, skipping R1Pro APIs
+LIBERO not installed!
+R1Pro not installed!
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python /root/autodl-tmp/cap-x/capx/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:32)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:42)
+INFO:pyroki_server:Loading robot URDF 'panda_description' with Pyroki...
+INFO:jax._src.xla_bridge:Unable to initialize backend 'cuda': 
+INFO:jax._src.xla_bridge:Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:jax._src.xla_bridge:Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-07-05 14:04:09.091 | INFO     | pyroki.collision._robot_collision:from_sphere_decomposition:187 - Created RobotCollision (sphere mode) with 13 links, 41 total spheres, and 626 active pairs.
+INFO:pyroki_server:PyRoki loaded and ready!
+INFO:     Started server process [39490]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8116 (Press CTRL+C to quit)
+[robosuite INFO] Loading controller configuration from: capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl2.json (composite_controller_factory.py:121)
+2026-07-05 14:04:12.168 | INFO     | pyroki.collision._robot_collision:from_urdf:95 - Created RobotCollision with 13 links and 66 active self-collision pairs.
+API server {'_target_': 'capx.serving.launch_pyroki_server.main', 'port': 8116, 'host': '127.0.0.1', 'robot': 'panda_description', 'target_link': 'panda_hand'} started
+API server on 127.0.0.1:8116 is ready
+Running Trials:   0%|          | 0/30 [00:00<?, ?it/s]2026-07-05 14:04:23.332 | INFO     | jaxls._py310._problem:analyze:126 - Building optimization problem with 2 terms and 1 variables: 1 costs, 0 eq_zero, 1 leq_zero, 0 geq_zero
+2026-07-05 14:04:23.356 | INFO     | jaxls._py310._problem:analyze:226 - Vectorizing constraint group with 1 constraints (constraint_leq_zero), 1 variables each: augmented_limit_residual
+2026-07-05 14:04:23.449 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: _pose_cost_analytical_jac
+2026-07-05 14:04:23.462 | INFO     | jaxls._py310._problem:analyze:312 - Variable elimination: variable IDs are traced; solves will not use elimination
+2026-07-05 14:04:27.102 | INFO     | jaxls._py310._problem:analyze:126 - Building optimization problem with 3 terms and 1 variables: 3 costs, 0 eq_zero, 0 leq_zero, 0 geq_zero
+2026-07-05 14:04:27.130 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: _pose_cost_analytical_jac
+2026-07-05 14:04:27.139 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: limit_velocity_cost
+2026-07-05 14:04:27.150 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: limit_residual
+2026-07-05 14:04:27.160 | INFO     | jaxls._py310._problem:analyze:312 - Variable elimination: variable IDs are traced; solves will not use elimination
+Time taken to query model: 10.23 seconds
+Running Trials:   3%|▎         | 1/30 [00:20<09:42, 20.07s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 1 took 19.82 seconds
+Time taken to query model: 12.09 seconds
+Running Trials:   7%|▋         | 2/30 [00:38<08:58, 19.23s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 2 took 18.38 seconds
+Time taken to query model: 13.14 seconds
+Running Trials:  10%|█         | 3/30 [00:58<08:47, 19.54s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 3 took 19.68 seconds
+Time taken to query model: 9.60 seconds
+Running Trials:  13%|█▎        | 4/30 [01:15<07:59, 18.43s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 4 took 16.48 seconds
+Time taken to query model: 10.34 seconds
+Running Trials:  17%|█▋        | 5/30 [01:32<07:32, 18.09s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 5 took 17.24 seconds
+Time taken to query model: 9.89 seconds
+Running Trials:  20%|██        | 6/30 [01:48<06:57, 17.38s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 6 took 15.76 seconds
+Time taken to query model: 11.93 seconds
+Running Trials:  23%|██▎       | 7/30 [02:07<06:49, 17.80s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 7 took 18.41 seconds
+Time taken to query model: 9.23 seconds
+Running Trials:  27%|██▋       | 8/30 [02:25<06:35, 17.97s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 8 took 18.10 seconds
+Time taken to query model: 10.73 seconds
+Running Trials:  30%|███       | 9/30 [02:45<06:26, 18.39s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 9 took 19.08 seconds
+Time taken to query model: 23.30 seconds
+Running Trials:  33%|███▎      | 10/30 [03:17<07:32, 22.61s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 10 took 31.81 seconds
+Time taken to query model: 10.87 seconds
+Running Trials:  37%|███▋      | 11/30 [03:36<06:49, 21.56s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 11 took 18.95 seconds
+Time taken to query model: 8.37 seconds
+Running Trials:  40%|████      | 12/30 [03:50<05:44, 19.14s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 12 took 13.37 seconds
+Time taken to query model: 9.70 seconds
+Running Trials:  43%|████▎     | 13/30 [04:05<05:07, 18.09s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 13 took 15.41 seconds
+Time taken to query model: 12.61 seconds
+Running Trials:  47%|████▋     | 14/30 [04:24<04:54, 18.39s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 14 took 18.84 seconds
+Time taken to query model: 11.54 seconds
+Running Trials:  50%|█████     | 15/30 [04:42<04:30, 18.05s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 15 took 17.04 seconds
+Time taken to query model: 7.52 seconds
+Running Trials:  53%|█████▎    | 16/30 [04:56<03:56, 16.91s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 16 took 14.02 seconds
+Time taken to query model: 23.66 seconds
+Running Trials:  57%|█████▋    | 17/30 [05:26<04:33, 21.06s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 17 took 30.47 seconds
+Time taken to query model: 27.08 seconds
+Running Trials:  60%|██████    | 18/30 [06:00<04:59, 24.94s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 18 took 33.73 seconds
+Time taken to query model: 25.79 seconds
+Running Trials:  63%|██████▎   | 19/30 [06:33<04:59, 27.24s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 19 took 32.35 seconds
+Time taken to query model: 10.76 seconds
+Running Trials:  67%|██████▋   | 20/30 [06:51<04:03, 24.38s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 20 took 17.49 seconds
+Time taken to query model: 15.37 seconds
+Running Trials:  70%|███████   | 21/30 [07:15<03:37, 24.19s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 21 took 23.50 seconds
+Time taken to query model: 22.07 seconds
+Running Trials:  73%|███████▎  | 22/30 [07:45<03:27, 25.94s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 22 took 29.78 seconds
+Time taken to query model: 43.40 seconds
+Running Trials:  77%|███████▋  | 23/30 [08:36<03:54, 33.52s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 23 took 50.92 seconds
+Time taken to query model: 11.10 seconds
+Running Trials:  80%|████████  | 24/30 [08:54<02:53, 28.96s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 24 took 18.07 seconds
+Time taken to query model: 22.42 seconds
+Running Trials:  83%|████████▎ | 25/30 [09:27<02:30, 30.02s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 25 took 32.26 seconds
+Time taken to query model: 11.06 seconds
+Running Trials:  87%|████████▋ | 26/30 [09:47<01:48, 27.09s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 26 took 20.03 seconds
+Time taken to query model: 10.61 seconds
+Running Trials:  90%|█████████ | 27/30 [10:04<01:12, 24.23s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 27 took 17.30 seconds
+Time taken to query model: 10.51 seconds
+Running Trials:  93%|█████████▎| 28/30 [10:21<00:43, 21.81s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 28 took 15.93 seconds
+Time taken to query model: 14.33 seconds
+Running Trials:  97%|█████████▋| 29/30 [10:41<00:21, 21.55s/it]Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 29 took 20.68 seconds
+Time taken to query model: 12.58 seconds
+Running Trials: 100%|██████████| 30/30 [11:01<00:00, 21.06s/it]Running Trials: 100%|██████████| 30/30 [11:01<00:00, 22.06s/it]
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 30 took 19.65 seconds
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+# Lift both arms up by 10 cm initially
+lift_offset = np.array([0.0, 0.0, 0.1])
+lifted_pos0 = initial_pose0[0] + lift_offset
+lifted_pos1 = initial_pose1[0] + lift_offset
+
+goto_pose_both(lifted_pos0, initial_pose0[1], lifted_pos1, initial_pose1[1])
+
+# Get current handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: gripper y-axis aligned with world z-axis
+# This means the gripper will approach horizontally, not from top
+# Target quaternion for sideways grasp (gripper frame): x forward, y down, z left -> we want gripper y along world z
+# Target rotation: rotate 90 degrees around x-axis from canonical [0,0,1,0] -> becomes [0.707, 0, 0, 0.707] (w,x,y,z)
+sideways_quat = np.array([np.sqrt(2)/2, np.sqrt(2)/2, 0, 0])  # 90 deg around x-axis
+
+# Prepare approach: come from 5 cm above the handle height for precision
+approach_z = 0.05
+
+# Open both grippers before grasping
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms to approach poses above the handles
+goto_pose_both(
+    handle0_pos + np.array([0, 0, approach_z]), sideways_quat,
+    handle1_pos + np.array([0, 0, approach_z]), sideways_quat,
+    z_approach=approach_z
+)
+
+# Now move down precisely to grasp poses at handle level
+goto_pose_both(
+    handle0_pos, sideways_quat,
+    handle1_pos, sideways_quat,
+    z_approach=0.0
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Slightly lift both arms simultaneously to lift the pot
+lift_height = 0.1  # Lift by 10 cm
+final_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+goto_pose_both(final_pos0, sideways_quat, final_pos1, sideways_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.0
+  Task Completed: True
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_01_sandboxrc_0_reward_0.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+# Lift both arms up by 0.1 meters in Z to clear any potential obstruction
+lift_offset = np.array([0, 0, 0.1])
+goto_pose_both(pos0 + lift_offset, quat0, pos1 + lift_offset, quat1)
+
+# Get the current positions of handle 0 and handle 1
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define desired gripper orientation: sideways grasp with gripper y-axis aligned to world z-axis
+# This means the gripper will approach from the side, not top-down.
+# Target rotation: We want the gripper's y-axis (which is forward when closing) to point upward (world z)
+# A suitable quaternion for this is a 90-degree rotation around the x-axis from default [0,0,1,0] (top-down)
+# Rotating [0,0,1,0] by 90 deg around x gives: w=cos(45)=~0.707, x=sin(45)=~0.707 -> [0.707, 0.707, 0, 0]
+side_grasp_quat = np.array([0.707, 0.707, 0, 0])  # WXYZ format
+
+# Prepare approach: we'll use a z_approach of 0.05m (approach from 5cm above target)
+z_approach = 0.05
+
+# Open both grippers before grasping
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms to approach poses above the handles
+goto_pose_both(
+    position0=handle0_pos + np.array([0, 0, z_approach]),
+    quaternion_wxyz0=side_grasp_quat,
+    position1=handle1_pos + np.array([0, 0, z_approach]),
+    quaternion_wxyz1=side_grasp_quat,
+    z_approach=0.0  # Already accounted for in position
+)
+
+# Now descend to the exact handle positions
+goto_pose_both(
+    position0=handle0_pos,
+    quaternion_wxyz0=side_grasp_quat,
+    position1=handle1_pos,
+    quaternion_wxyz1=side_grasp_quat,
+    z_approach=0.0
+)
+
+# Close both grippers simultaneously to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Now lift both arms equally to raise the pot to a higher position (e.g., 0.2m above original handle height)
+lift_height = 0.2
+target_lift0 = handle0_pos + np.array([0, 0, lift_height])
+target_lift1 = handle1_pos + np.array([0, 0, lift_height])
+
+# Lift both arms together to the same height
+goto_pose_both(
+    position0=target_lift0,
+    quaternion_wxyz0=side_grasp_quat,
+    position1=target_lift1,
+    quaternion_wxyz1=side_grasp_quat,
+    z_approach=0.0
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.015131594958232148
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_02_sandboxrc_0_reward_0.015_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0_init, quat0_init = get_arm0_gripper_pose()
+pos1_init, quat1_init = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift arms by 10 cm initially
+pos0_lifted = pos0_init + np.array([0, 0, lift_height])
+pos1_lifted = pos1_init + np.array([0, 0, lift_height])
+
+goto_pose_both(pos0_lifted, quat0_init, pos1_lifted, quat1_init)
+
+# Get current handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis
+# This means the gripper will approach horizontally, not from top
+# Desired rotation: align gripper forward (usually -z) toward the handle, and gripper y with world z
+# We use a fixed quaternion that represents this orientation
+# For Franka gripper, to have the fingers horizontal (y along world z), we can use a 90-degree rotation around x-axis
+# That would be quaternion [cos(45°), sin(45°), 0, 0] -> approx [0.707, 0.707, 0, 0]
+sideways_quat = np.array([0.707, 0.707, 0, 0])  # w, x, y, z
+
+# Approach distance for z_approach to prevent collision
+approach_distance = 0.05  # 5 cm above grasp point
+
+# Prepare arm 0 to grasp handle 0
+# Move to approach pose first, then go to exact grasp
+grasp_offset0 = np.array([-0.05, 0, 0])  # adjust x to reach handle from side
+target_pos0 = handle0_pos + grasp_offset0
+
+# Prepare arm 1 to grasp handle 1
+grasp_offset1 = np.array([0.05, 0, 0])  # opposite x direction
+target_pos1 = handle1_pos + grasp_offset1
+
+# Open both grippers
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms simultaneously to approach position
+goto_pose_both(
+    target_pos0,
+    sideways_quat,
+    target_pos1,
+    sideways_quat,
+    z_approach=approach_distance
+)
+
+# Now perform the actual grasp motion (insertion along z_approach path)
+goto_pose_both(
+    target_pos0,
+    sideways_quat,
+    target_pos1,
+    sideways_quat,
+    z_approach=0.0
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms simultaneously to raise the pot
+lift_amount = 0.1  # Lift pot by 10 cm
+lifted_pos0 = target_pos0 + np.array([0, 0, lift_amount])
+lifted_pos1 = target_pos1 + np.array([0, 0, lift_amount])
+
+goto_pose_both(lifted_pos0, sideways_quat, lifted_pos1, sideways_quat)
+
+# Final coordination: ensure both arms are at same height and stable
+# Task complete
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.07783020768268951
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_03_sandboxrc_0_reward_0.078_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+# Lift both arms up by 10 cm initially
+lift_offset = np.array([0.0, 0.0, 0.1])
+lifted_pos0 = initial_pose0[0] + lift_offset
+lifted_pos1 = initial_pose1[0] + lift_offset
+
+goto_pose_both(lifted_pos0, initial_pose0[1], lifted_pos1, initial_pose1[1])
+
+# Get current handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis (preferred)
+# This corresponds to a rotation of 90 degrees around x-axis -> quaternion [cos(45°), sin(45°), 0, 0] = [√2/2, √2/2, 0, 0]
+# which makes the gripper vertical with fingers horizontal
+grasp_quat = np.array([np.sqrt(2)/2, np.sqrt(2)/2, 0, 0])  # w, x, y, z
+
+# Prepare approach: approach from side with 5 cm offset in z for safety
+approach_z = 0.05
+
+# Open both grippers before grasping
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms simultaneously to approach position
+goto_pose_both(
+    handle0_pos + np.array([0, 0, approach_z]), 
+    grasp_quat,
+    handle1_pos + np.array([0, 0, approach_z]),
+    grasp_quat,
+    z_approach=approach_z
+)
+
+# Perform precise grasp motion down to the handle without additional approach (z_approach=0 now)
+goto_pose_both(
+    handle0_pos,
+    grasp_quat,
+    handle1_pos,
+    grasp_quat,
+    z_approach=0.0
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift the pot up by 10 cm from handle positions
+lift_height = 0.1
+final_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+# Simultaneously lift both arms to raise the pot
+goto_pose_both(final_pos0, grasp_quat, final_pos1, grasp_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.08733850640399493
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_04_sandboxrc_0_reward_0.087_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+pos0_lift = np.array([0.4, -0.2, 0.3])
+quat0_lift = np.array([1, 0, 0, 0])  # Default orientation
+pos1_lift = np.array([0.4, 0.2, 0.3])
+quat1_lift = np.array([1, 0, 0, 0])  # Default orientation
+goto_pose_both(pos0_lift, quat0_lift, pos1_lift, quat1_lift)
+
+# Get handle positions using vision detection
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientations with gripper y-axis aligned with world z-axis
+# For a sideways grasp from the side, we want the gripper's approach direction (z-axis) along the horizontal direction toward the handle
+# This corresponds to a quaternion where the gripper frame's y-axis aligns with world +Z
+# Rotation of +90 degrees around X-axis: q = [cos(45), sin(45), 0, 0] -> approximately [0.707, 0.707, 0, 0]
+side_grasp_quat = np.array([np.sqrt(2)/2, np.sqrt(2)/2, 0, 0])  # WXYZ: rotation around X by 90°
+
+# Prepare approach for grasping
+z_approach_dist = 0.05  # 5 cm above the grasp point when approaching
+
+# Go to pre-grasp poses above each handle
+pre_grasp_offset = np.array([0, 0, 0.05])
+goto_pose_arm0(handle0_pos + pre_grasp_offset, side_grasp_quat)
+goto_pose_arm1(handle1_pos + pre_grasp_offset, side_grasp_quat)
+
+# Lower to grasp pose and close grippers
+goto_pose_arm0(handle0_pos, side_grasp_quat, z_approach=0.0)
+close_gripper_arm0()
+
+goto_pose_arm1(handle1_pos, side_grasp_quat, z_approach=0.0)
+close_gripper_arm1()
+
+# Lift both arms together to same height
+lift_height = 0.2  # Lift pot 20 cm up from table
+target_lift_pos0 = np.array([handle0_pos[0], handle0_pos[1], handle0_pos[2] + lift_height])
+target_lift_pos1 = np.array([handle1_pos[0], handle1_pos[1], handle1_pos[2] + lift_height])
+
+goto_pose_both(target_lift_pos0, side_grasp_quat, target_lift_pos1, side_grasp_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.011633825665349243
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_05_sandboxrc_0_reward_0.012_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, lift both arms slightly to avoid occlusion
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+lift_offset = np.array([0.0, 0.0, 0.1])
+lifted_pos0 = initial_pose0[0] + lift_offset
+lifted_pos1 = initial_pose1[0] + lift_offset
+
+goto_pose_both(lifted_pos0, initial_pose0[1], lifted_pos1, initial_pose1[1])
+
+# Get handle positions using vision detection
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation with gripper y-axis aligned to world z-axis
+# This corresponds to a quaternion that represents a 90-degree rotation around the x-axis
+# which gives us [cos(45°), sin(45°), 0, 0] = [0.707, 0.707, 0, 0] in wxyz
+sideways_quat_wxyz = np.array([0.707, 0.707, 0, 0])  # Rotate 90° around x-axis
+
+# For arm0 (on one side), approach from the side
+approach_offset0 = np.array([-0.1, 0, 0])  # Approach along negative x
+target_pos0 = handle0_pos + approach_offset0
+
+# For arm1 (opposite side), approach from the other side
+approach_offset1 = np.array([0.1, 0, 0])   # Approach along positive x
+target_pos1 = handle1_pos + approach_offset1
+
+# Simultaneously approach both handles with z_approach for precision
+z_approach = 0.05
+goto_pose_both(
+    target_pos0, sideways_quat_wxyz,
+    target_pos1, sideways_quat_wxyz,
+    z_approach=z_approach
+)
+
+# Move to final grasp positions without z-approach now
+goto_pose_both(
+    handle0_pos, sideways_quat_wxyz,
+    handle1_pos, sideways_quat_wxyz
+)
+
+# Close both grippers simultaneously to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift the pot up by same height using both arms
+lift_height = 0.1
+final_lift_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_lift_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+goto_pose_both(
+    final_lift_pos0, sideways_quat_wxyz,
+    final_lift_pos1, sideways_quat_wxyz
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.236981007982616
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_06_sandboxrc_0_reward_0.237_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, lift both arms slightly to avoid occlusion
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+# Slight upward offset in Z to clear the table
+lift_offset = 0.1
+lifted_pos0 = initial_pose0[0] + np.array([0, 0, lift_offset])
+lifted_pos1 = initial_pose1[0] + np.array([0, 0, lift_offset])
+
+# Move both arms up simultaneously to a safe height
+goto_pose_both(lifted_pos0, initial_pose0[1], lifted_pos1, initial_pose1[1])
+
+# Get current positions of the two handles via vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: gripper y-axis aligned with world z-axis (preferred)
+# This corresponds to a quaternion that represents a 90-degree rotation around the x-axis
+# from the default [0,0,1,0] top-down orientation to a horizontal side grasp.
+# The desired orientation has gripper frame: x forward, y down, z left/right depending on arm
+# For both arms, we want the gripper's y-axis aligned with world z-axis -> use quaternion [sqrt(2)/2, 0, 0, sqrt(2)/2] (i.e., 90 deg around x)
+sideways_quat = np.array([np.sqrt(2)/2, 0, 0, np.sqrt(2)/2])  # w, x, y, z
+
+# Approach distance in Z for safer grasp (approach from above by 5cm)
+approach_height = 0.05
+
+# Prepare poses for grasping
+# Arm 0 approaches handle 0
+grasp_pos0 = handle0_pos.copy()
+grasp_pos0[2] += approach_height  # approach from above
+
+# Arm 1 approaches handle 1
+grasp_pos1 = handle1_pos.copy()
+grasp_pos1[2] += approach_height  # approach from above
+
+# Simultaneously move both arms to approach position above their respective handles
+goto_pose_both(grasp_pos0, sideways_quat, grasp_pos1, sideways_quat, z_approach=approach_height)
+
+# Now perform the actual grasp by closing both grippers
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms simultaneously to lift the pot
+lift_height = 0.1  # lift 10 cm above grasp point
+final_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+# Move both arms up together to lift the pot
+goto_pose_both(final_pos0, sideways_quat, final_pos1, sideways_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.03861944432722079
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_07_sandboxrc_0_reward_0.039_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+pos0_lift = np.array([0.5, -0.3, 0.3])
+quat0 = np.array([1.0, 0.0, 0.0, 0.0])  # Placeholder identity quaternion
+pos1_lift = np.array([0.5, 0.3, 0.3])
+quat1 = np.array([1.0, 0.0, 0.0, 0.0])  # Placeholder identity quaternion
+goto_pose_both(pos0_lift, quat0, pos1_lift, quat1)
+
+# Get handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Desired sideways grasp orientation: gripper y-axis aligned with world z-axis
+# This corresponds to a rotation of 90 degrees around the x-axis -> quaternion [cos(45°), sin(45°), 0, 0]
+# Which is approximately [0.707, 0.707, 0, 0] in wxyz format
+sideways_quat = np.array([0.707, 0.707, 0.0, 0.0])
+
+# Prepare approach: lift slightly above each handle
+approach_offset = 0.05
+handle0_approach = handle0_pos + np.array([0, 0, approach_offset])
+handle1_approach = handle1_pos + np.array([0, 0, approach_offset])
+
+# Move both arms above their respective handles
+goto_pose_both(handle0_approach, sideways_quat, handle1_approach, sideways_quat)
+
+# Open both grippers before grasping
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Lower both arms to grasp the handles using z_approach mechanism (negative offset)
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=-0.05)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms simultaneously to raise the pot to a higher position
+lift_height = 0.15
+lifted_handle0_pos = handle0_pos + np.array([0, 0, lift_height])
+lifted_handle1_pos = handle1_pos + np.array([0, 0, lift_height])
+
+# Perform coordinated lift
+goto_pose_both(lifted_handle0_pos, sideways_quat, lifted_handle1_pos, sideways_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.00363927945546344
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_08_sandboxrc_0_reward_0.004_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0_lift = np.array([0.5, -0.3, 0.3])
+quat0_lift = np.array([1, 0, 0, 0])  # Placeholder orientation, will be updated
+pos1_lift = np.array([0.5, 0.3, 0.3])
+quat1_lift = np.array([1, 0, 0, 0])
+
+goto_pose_both(pos0_lift, quat0_lift, pos1_lift, quat1_lift)
+
+# Get handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientations: gripper y-axis aligned with world z-axis
+# This means the gripper will approach from the side, not top-down
+# Desired gripper orientation: rotation of 90 degrees around x-axis -> quaternion [cos(45°), sin(45°), 0, 0]
+# which is approximately [0.707, 0.707, 0, 0] for a roll to face sideways vertically
+gripper_quat_sideways = np.array([0.707, 0.707, 0, 0])  # w, x, y, z
+
+# Prepare approach: first move above the handle with z_approach
+z_approach = 0.05  # 5 cm above before grasping
+
+# Open both grippers
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms to approach poses simultaneously
+goto_pose_both(
+    handle0_pos, gripper_quat_sideways,
+    handle1_pos, gripper_quat_sideways,
+    z_approach=z_approach
+)
+
+# Now perform the grasp without z_approach (move down to actual handle)
+goto_pose_both(
+    handle0_pos, gripper_quat_sideways,
+    handle1_pos, gripper_quat_sideways
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms up together to same height
+lift_offset = np.array([0, 0, 0.1])  # Lift 10 cm up
+target_height0 = handle0_pos + lift_offset
+target_height1 = handle1_pos + lift_offset
+
+goto_pose_both(
+    target_height0, gripper_quat_sideways,
+    target_height1, gripper_quat_sideways
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.0018283602860639236
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_09_sandboxrc_0_reward_0.002_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+# Lift both arms up by 10 cm initially
+lift_offset = np.array([0.0, 0.0, 0.1])
+lifted_pos0 = initial_pose0[0] + lift_offset
+lifted_pos1 = initial_pose1[0] + lift_offset
+
+goto_pose_both(lifted_pos0, initial_pose0[1], lifted_pos1, initial_pose1[1])
+
+# Get current handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Desired gripper orientations: sideways grasp with gripper y-axis aligned with world z-axis
+# This means the gripper should face towards the center of the pot horizontally.
+# For arm0 (on one side), we want the gripper x-axis pointing in the direction from handle0 to handle1
+# And the gripper y-axis pointing up (aligned with world z)
+
+# Compute approach direction (from each handle towards outside for pre-grasp)
+approach_direction_0 = handle1_pos - handle0_pos
+approach_direction_0 /= np.linalg.norm(approach_direction_0)
+approach_direction_1 = -approach_direction_0  # opposite direction for arm1
+
+# Define desired gripper orientation using rotation matrices
+# We want: 
+#   gripper_y_axis ≈ world_z_axis = [0, 0, 1]
+#   gripper_x_axis ≈ approach_direction (horizontal, pointing outward)
+# Then compute z_axis via cross product
+
+world_z = np.array([0, 0, 1])
+
+# For arm0:
+gripper_x_0 = -approach_direction_0  # point gripper forward along approach
+gripper_y_0 = world_z
+gripper_z_0 = np.cross(gripper_x_0, gripper_y_0)
+gripper_z_0 /= np.linalg.norm(gripper_z_0)
+gripper_y_0 = np.cross(gripper_z_0, gripper_x_0)  # re-orthogonalize
+R0 = np.column_stack((gripper_x_0, gripper_y_0, gripper_z_0))
+
+# For arm1:
+gripper_x_1 = -approach_direction_1
+gripper_y_1 = world_z
+gripper_z_1 = np.cross(gripper_x_1, gripper_y_1)
+gripper_z_1 /= np.linalg.norm(gripper_z_1)
+gripper_y_1 = np.cross(gripper_z_1, gripper_x_1)
+R1 = np.column_stack((gripper_x_1, gripper_y_1, gripper_z_1))
+
+# Convert rotation matrices to quaternions (WXYZ format)
+def rot_to_quat(R):
+    trace = np.trace(R)
+    if trace > 0:
+        s = 2.0 * np.sqrt(trace + 1)
+        w = 0.25 * s
+        x = (R[2,1] - R[1,2]) / s
+        y = (R[0,2] - R[2,0]) / s
+        z = (R[1,0] - R[0,1]) / s
+    elif R[0,0] > R[1,1] and R[0,0] > R[2,2]:
+        s = 2.0 * np.sqrt(1.0 + R[0,0] - R[1,1] - R[2,2])
+        w = (R[2,1] - R[1,2]) / s
+        x = 0.25 * s
+        y = (R[0,1] + R[1,0]) / s
+        z = (R[0,2] + R[2,0]) / s
+    elif R[1,1] > R[2,2]:
+        s = 2.0 * np.sqrt(1.0 + R[1,1] - R[0,0] - R[2,2])
+        w = (R[0,2] - R[2,0]) / s
+        x = (R[0,1] + R[1,0]) / s
+        y = 0.25 * s
+        z = (R[1,2] + R[2,1]) / s
+    else:
+        s = 2.0 * np.sqrt(1.0 + R[2,2] - R[0,0] - R[1,1])
+        w = (R[1,0] - R[0,1]) / s
+        x = (R[0,2] + R[2,0]) / s
+        y = (R[1,2] + R[2,1]) / s
+        z = 0.25 * s
+    quat = np.array([w, x, y, z])
+    return quat / np.linalg.norm(quat)
+
+quat0 = rot_to_quat(R0)
+quat1 = rot_to_quat(R1)
+
+# Approach distance for grasping (in Z direction of gripper frame, but we'll use horizontal approach)
+# Instead, use z_approach parameter to move back along approach direction before moving in
+pre_approach_dist = 0.1  # 10 cm back along approach direction
+
+pre_grasp_pos0 = handle0_pos + approach_direction_0 * pre_approach_dist
+pre_grasp_pos1 = handle1_pos + approach_direction_1 * pre_approach_dist
+
+# Move both arms to pre-grasp poses simultaneously
+goto_pose_both(pre_grasp_pos0, quat0, pre_grasp_pos1, quat1)
+
+# Open both grippers
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Now grasp the handles with a z_approach of 0.05m (move down 5cm vertically before final pose)
+# Note: z_approach here is along world Z, so it will help make a gentle vertical descent into grasp
+goto_pose_both(handle0_pos, quat0, handle1_pos, quat1, z_approach=0.05)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Now lift both arms up simultaneously to lift the pot
+lift_height = 0.15  # lift up by 15 cm
+final_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+goto_pose_both(final_pos0, quat0, final_pos1, quat1)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.02190244766349499
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_10_sandboxrc_0_reward_0.022_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift 10 cm up
+pos0_lifted = pos0.copy()
+pos0_lifted[2] += lift_height
+pos1_lifted = pos1.copy()
+pos1_lifted[2] += lift_height
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1, z_approach=0.0)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis
+# This corresponds to a rotation of 90 degrees around x-axis from default [0,0,1,0] top-down
+# The desired quaternion is [0.707, 0, 0.707, 0] (w,x,y,z) which is equivalent to R.from_euler('x', 90, degrees=True).as_quat(wxyz=True)
+sideways_quat = np.array([0.707, 0, 0.707, 0])  # wxyz
+
+# Prepare approach: come in from the side at a small offset
+approach_dist = 0.05  # 5 cm approach distance
+
+# For arm 0 (assume it approaches from negative X direction relative to handle)
+approach_pos0 = handle0_pos.copy()
+approach_pos0[0] -= approach_dist  # come from -X side
+
+# For arm 1 (on opposite side, approach from positive X direction)
+approach_pos1 = handle1_pos.copy()
+approach_pos1[0] += approach_dist  # come from +X side
+
+# Move both arms to approach poses simultaneously
+goto_pose_both(approach_pos0, sideways_quat, approach_pos1, sideways_quat, z_approach=0.0)
+
+# Now move to final grasp pose using z_approach to ensure smooth downward motion
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=0.05)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms equally to raise the pot
+lift_amount = 0.1  # Lift 10 cm
+target_pos0 = handle0_pos.copy()
+target_pos0[2] += lift_amount
+target_pos1 = handle1_pos.copy()
+target_pos1[2] += lift_amount
+
+goto_pose_both(target_pos0, sideways_quat, target_pos1, sideways_quat, z_approach=0.0)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.08883449091199459
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_11_sandboxrc_0_reward_0.089_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_offset = 0.1  # 10 cm lift
+pos0_lifted = pos0 + np.array([0, 0, lift_offset])
+pos1_lifted = pos1 + np.array([0, 0, lift_offset])
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: gripper y-axis aligned with world z-axis (preferred)
+# This corresponds to a rotation that aligns the gripper laterally
+# Example: For a sideways grasp, we can use a quaternion that represents 90-degree rotation around x-axis
+# Such that the gripper faces inward toward the pot, with its y-axis pointing up (aligned with world z)
+sideways_quat = np.array([np.sqrt(2)/2, -np.sqrt(2)/2, 0, 0])  # wxyz: rotation around x by -90 degrees
+
+# Approach distance in Z for controlled grasping
+approach_dist = 0.05  # 5 cm approach
+
+# Move both arms to grasp poses simultaneously
+goto_pose_both(
+    position0=handle0_pos,
+    quaternion_wxyz0=sideways_quat,
+    position1=handle1_pos,
+    quaternion_wxyz1=sideways_quat,
+    z_approach=approach_dist
+)
+
+# Close both grippers simultaneously to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Now lift the pot to a desired height (e.g., 0.15 meters above current handle positions)
+lift_height = 0.15
+target_lift0 = handle0_pos + np.array([0, 0, lift_height])
+target_lift1 = handle1_pos + np.array([0, 0, lift_height])
+
+# Lift both arms together to raise the pot
+goto_pose_both(
+    position0=target_lift0,
+    quaternion_wxyz0=sideways_quat,
+    position1=target_lift1,
+    quaternion_wxyz1=sideways_quat
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.0
+  Task Completed: True
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_12_sandboxrc_0_reward_0.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+initial_lift_height = 0.1
+_, quat0 = get_arm0_gripper_pose()
+_, quat1 = get_arm1_gripper_pose()
+pos0_initial_lift = np.array([0.4, 0.0, 0.5])  # High safe position for arm0
+pos1_initial_lift = np.array([0.4, 0.0, 0.5])  # High safe position for arm1 (mirrored)
+
+goto_pose_both(pos0_initial_lift, quat0, pos1_initial_lift, quat1, z_approach=0.0)
+
+# Get handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: gripper y-axis aligned with world z-axis
+# This corresponds to a quaternion that represents a 90-degree rotation around x-axis from default [0,0,1,0]
+# Desired orientation: x forward, y down, z left (for side grasp), so we want to avoid top-down
+# Use quaternion for 90 degree rotation about x-axis: cos(45) + sin(45)*i -> [0.707, 0.707, 0, 0]
+side_grasp_quat = np.array([0.707, 0.707, 0.0, 0.0])
+
+# Prepare approach poses with z_offset for precise grasping
+z_approach = 0.05  # Approach from 5cm above
+
+# Move both arms simultaneously to approach the handles
+goto_pose_both(
+    handle0_pos + np.array([0, 0, z_approach]), side_grasp_quat,
+    handle1_pos + np.array([0, 0, z_approach]), side_grasp_quat,
+    z_approach=0.0
+)
+
+# Descend to grasp pose
+goto_pose_both(
+    handle0_pos, side_grasp_quat,
+    handle1_pos, side_grasp_quat,
+    z_approach=z_approach  # Internal approach handling
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms synchronously to same height to lift the pot
+lift_height = 0.2  # Lift 20cm up
+lift_pose0 = handle0_pos + np.array([0, 0, lift_height])
+lift_pose1 = handle1_pos + np.array([0, 0, lift_height])
+
+goto_pose_both(lift_pose0, side_grasp_quat, lift_pose1, side_grasp_quat, z_approach=0.0)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.015002401768763274
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_13_sandboxrc_0_reward_0.015_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+# Lift both arms up by 0.1 meters in Z to clear any potential obstruction
+lift_offset = np.array([0, 0, 0.1])
+goto_pose_both(pos0 + lift_offset, quat0, pos1 + lift_offset, quat1)
+
+# Get the current positions of handle 0 and handle 1
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define desired gripper orientation: sideways grasp with gripper y-axis aligned to world z-axis
+# This means the gripper will approach from the side, not top-down.
+# Target rotation: We want the gripper's y-axis (which is forward when closing) to point upward (world z)
+# A suitable quaternion for this is a 90-degree rotation around the x-axis from default [0,0,1,0] (top-down)
+# Rotating [0,0,1,0] by 90 deg around x gives: w=cos(45)=~0.707, x=sin(45)=~0.707 -> [0.707, 0.707, 0, 0]
+side_grasp_quat = np.array([0.707, 0.707, 0, 0])  # WXYZ format
+
+# Prepare approach: we'll use a z_approach of 0.05m (approach from 5cm above target)
+z_approach = 0.05
+
+# Open both grippers before grasping
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms to approach poses above the handles
+goto_pose_both(
+    position0=handle0_pos + np.array([0, 0, z_approach]),
+    quaternion_wxyz0=side_grasp_quat,
+    position1=handle1_pos + np.array([0, 0, z_approach]),
+    quaternion_wxyz1=side_grasp_quat,
+    z_approach=0.0  # Already accounted for approach height
+)
+
+# Now descend to the actual handle positions
+goto_pose_both(
+    position0=handle0_pos,
+    quaternion_wxyz0=side_grasp_quat,
+    position1=handle1_pos,
+    quaternion_wxyz1=side_grasp_quat,
+    z_approach=0.0
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms simultaneously to raise the pot
+lift_height = 0.1  # Lift 10 cm up
+final_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+goto_pose_both(
+    position0=final_pos0,
+    quaternion_wxyz0=side_grasp_quat,
+    position1=final_pos1,
+    quaternion_wxyz1=side_grasp_quat
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.13154999923455749
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_14_sandboxrc_0_reward_0.132_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+# Lift both arms up by 10 cm initially
+lift_offset = np.array([0.0, 0.0, 0.1])
+lifted_pos0 = initial_pose0[0] + lift_offset
+lifted_pos1 = initial_pose1[0] + lift_offset
+
+goto_pose_both(lifted_pos0, initial_pose0[1], lifted_pos1, initial_pose1[1])
+
+# Get current handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: gripper y-axis aligned with world z-axis
+# This avoids top-down grasp (which would be [0,0,1,0]) and uses a side approach.
+# Target quaternion represents rotation from gripper frame to world frame such that:
+# - Gripper's y-axis points upward (aligned with world z)
+# Achieved by rotating 90 degrees around x-axis: quaternion [cos(45°), sin(45°), 0, 0] -> [√2/2, √2/2, 0, 0]
+sideways_quat = np.array([np.sqrt(2)/2, np.sqrt(2)/2, 0, 0])  # w, x, y, z
+
+# Prepare approach: come in 5 cm from the side along the horizontal plane
+approach_dist = 0.05
+
+# For arm 0 (grasping handle 0): approach from the negative x direction of the handle
+approach_dir0 = np.array([-1.0, 0.0, 0.0])
+approach_pos0 = handle0_pos + approach_dir0 * approach_dist
+
+# For arm 1 (grasping handle 1): approach from the positive x direction of the handle
+approach_dir1 = np.array([1.0, 0.0, 0.0])
+approach_pos1 = handle1_pos + approach_dir1 * approach_dist
+
+# Move both arms to approach poses
+goto_pose_both(approach_pos0, sideways_quat, approach_pos1, sideways_quat)
+
+# Now perform precise grasp with small z-approach (downward motion for side grasp)
+# Use z_approach=0.05 so it first goes 5cm above target, then moves down
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=0.05)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Now lift both arms simultaneously to raise the pot
+lift_height = 0.1  # Lift 10 cm up
+final_pos0 = handle0_pos + np.array([0.0, 0.0, lift_height])
+final_pos1 = handle1_pos + np.array([0.0, 0.0, lift_height])
+
+# Lift both arms to final position
+goto_pose_both(final_pos0, sideways_quat, final_pos1, sideways_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.034162418852947365
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_15_sandboxrc_0_reward_0.034_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+initial_lift = 0.1
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+lifted_pos0 = pos0 + np.array([0, 0, initial_lift])
+lifted_pos1 = pos1 + np.array([0, 0, initial_lift])
+goto_pose_both(lifted_pos0, quat0, lifted_pos1, quat1)
+
+# Get handle positions using vision detection
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis
+# This corresponds to a rotation that orients the gripper to approach from the side
+# We use a quaternion where the gripper's y-axis points upward (world z)
+# Such a quaternion can be [np.sqrt(2)/2, 0, np.sqrt(2)/2, 0] for a 90-degree rotation around x-axis
+sideways_quat = np.array([np.sqrt(2)/2, 0, np.sqrt(2)/2, 0])  # w, x, y, z
+
+# Prepare approach distance for precise grasping
+approach_dist = 0.05
+
+# Arm 0 moves to grasp handle 0 from the side
+target_pos0 = handle0_pos.copy()
+goto_pose_arm0(target_pos0, sideways_quat, z_approach=approach_dist)
+close_gripper_arm0()
+
+# Arm 1 moves to grasp handle 1 from the opposite side
+target_pos1 = handle1_pos.copy()
+goto_pose_arm1(target_pos1, sideways_quat, z_approach=approach_dist)
+close_gripper_arm1()
+
+# Both arms lift the pot to the same height
+lift_height = 0.1
+final_pos0 = target_pos0 + np.array([0, 0, lift_height])
+final_pos1 = target_pos1 + np.array([0, 0, lift_height])
+goto_pose_both(final_pos0, sideways_quat, final_pos1, sideways_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.03215198189303836
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_16_sandboxrc_0_reward_0.032_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift up by 10 cm
+pos0_lifted = pos0.copy()
+pos0_lifted[2] += lift_height
+pos1_lifted = pos1.copy()
+pos1_lifted[2] += lift_height
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1)
+
+# Get the current positions of handle 0 and handle 1
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis aligned with world z-axis (preferred sideways grasp)
+# This corresponds to a rotation where gripper's y-axis points upward
+# Target quaternion for sideways grasp (gripper frame): we want the gripper's approach direction (typically z) to be along the handle
+# For handle0 (on arm0 side), we want to approach from the side, so gripper z should point toward center (along -x direction locally)
+# We use a quaternion that aligns gripper y with world z and gripper z horizontally
+
+# Function to create rotation matrix and convert to quaternion for gripper alignment
+def vec_to_quat(forward, up):
+    # forward: desired z-axis (direction gripper will approach)
+    # up: desired y-axis (aligned with world z)
+    z_axis = forward / np.linalg.norm(forward)
+    y_axis = up / np.linalg.norm(up)
+    x_axis = np.cross(y_axis, z_axis)
+    y_axis = np.cross(z_axis, x_axis)  # Re-orthogonalize
+    rot_matrix = np.column_stack([x_axis, y_axis, z_axis])
+    return rot_matrix_to_quaternion(rot_matrix)
+
+def rot_matrix_to_quaternion(R):
+    # Convert 3x3 rotation matrix to WXYZ quaternion
+    q = np.zeros(4)
+    tr = R[0, 0] + R[1, 1] + R[2, 2]
+    if tr > 0:
+        S = np.sqrt(tr + 1.0) * 2
+        q[0] = 0.25 * S
+        q[1] = (R[2, 1] - R[1, 2]) / S
+        q[2] = (R[0, 2] - R[2, 0]) / S
+        q[3] = (R[1, 0] - R[0, 1]) / S
+    elif (R[0, 0] > R[1, 1]) and (R[0, 0] > R[2, 2]):
+        S = np.sqrt(1.0 + R[0, 0] - R[1, 1] - R[2, 2]) * 2
+        q[0] = (R[2, 1] - R[1, 2]) / S
+        q[1] = 0.25 * S
+        q[2] = (R[0, 1] + R[1, 0]) / S
+        q[3] = (R[0, 2] + R[2, 0]) / S
+    elif R[1, 1] > R[2, 2]:
+        S = np.sqrt(1.0 + R[1, 1] - R[0, 0] - R[2, 2]) * 2
+        q[0] = (R[0, 2] - R[2, 0]) / S
+        q[1] = (R[0, 1] + R[1, 0]) / S
+        q[2] = 0.25 * S
+        q[3] = (R[1, 2] + R[2, 1]) / S
+    else:
+        S = np.sqrt(1.0 + R[2, 2] - R[0, 0] - R[1, 1]) * 2
+        q[0] = (R[1, 0] - R[0, 1]) / S
+        q[1] = (R[0, 2] + R[2, 0]) / S
+        q[2] = (R[1, 2] + R[2, 1]) / S
+        q[3] = 0.25 * S
+    return q / np.linalg.norm(q)
+
+# Compute grasp orientations
+# For handle0: arm0 approaches along -x direction (toward center), y aligned with world z
+forward0 = np.array([-1.0, 0.0, 0.0])  # Approach direction (from outside to center)
+up0 = np.array([0.0, 0.0, 1.0])         # Gripper y-axis aligned with world z
+quat_handle0 = vec_to_quat(forward0, up0)
+
+# For handle1: arm1 approaches along +x direction (since it's on opposite side, toward center)
+forward1 = np.array([1.0, 0.0, 0.0])   # Opposite direction for arm1
+up1 = np.array([0.0, 0.0, 1.0])
+quat_handle1 = vec_to_quat(forward1, up1)
+
+# Approach distance (for z_approach parameter)
+approach_dist = 0.05  # 5 cm above before grasping
+
+# Move both arms to approach poses
+approach_pos0 = handle0_pos + approach_dist * np.array([0, 0, 1])
+approach_pos1 = handle1_pos + approach_dist * np.array([0, 0, 1])
+
+goto_pose_both(approach_pos0, quat_handle0, approach_pos1, quat_handle1, z_approach=0.0)
+
+# Now descend to grasp both handles
+goto_pose_both(handle0_pos, quat_handle0, handle1_pos, quat_handle1, z_approach=0.0)
+
+# Close both grippers
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms up together to same height
+lift_distance = 0.1  # Lift up by 10 cm
+lift_pos0 = handle0_pos + np.array([0, 0, lift_distance])
+lift_pos1 = handle1_pos + np.array([0, 0, lift_distance])
+
+goto_pose_both(lift_pos0, quat_handle0, lift_pos1, quat_handle1, z_approach=0.0)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.028033404585721344
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_17_sandboxrc_0_reward_0.028_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+# Lift arms up by 0.1 meters in Z
+lift_offset = np.array([0.0, 0.0, 0.1])
+goto_pose_arm0(pos0 + lift_offset, quat0)
+goto_pose_arm1(pos1 + lift_offset, quat1)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define grasp orientation: gripper y-axis aligned with world z-axis (sideways grasp)
+# Desired rotation matrix:
+# x-axis points towards the pot center (from handle to center), y-axis = world z-axis, z-axis perpendicular
+world_z = np.array([0, 0, 1])
+
+# For Arm 0 (handle0): x-axis points inward (towards center), so -x direction
+inward0 = - (handle1_pos - handle0_pos)  # approximates direction from handle0 to center
+inward0[2] = 0  # keep horizontal
+x0 = -inward0 / np.linalg.norm(inward0)
+z0 = np.cross(x0, world_z)
+y0 = np.cross(z0, x0)
+rotmat0 = np.column_stack([x0, y0, z0])
+
+# Convert rotation matrix to quaternion [w, x, y, z]
+trace = np.trace(rotmat0)
+if trace > 0:
+    s = 0.5 / np.sqrt(trace + 1.0)
+    w = 0.25 / s
+    x = (rotmat0[2, 1] - rotmat0[1, 2]) * s
+    y = (rotmat0[0, 2] - rotmat0[2, 0]) * s
+    z = (rotmat0[1, 0] - rotmat0[0, 1]) * s
+else:
+    if rotmat0[0, 0] > rotmat0[1, 1] and rotmat0[0, 0] > rotmat0[2, 2]:
+        s = 2.0 * np.sqrt(1.0 + rotmat0[0, 0] - rotmat0[1, 1] - rotmat0[2, 2])
+        w = (rotmat0[2, 1] - rotmat0[1, 2]) / s
+        x = 0.25 * s
+        y = (rotmat0[0, 1] + rotmat0[1, 0]) / s
+        z = (rotmat0[0, 2] + rotmat0[2, 0]) / s
+    elif rotmat0[1, 1] > rotmat0[2, 2]:
+        s = 2.0 * np.sqrt(1.0 + rotmat0[1, 1] - rotmat0[0, 0] - rotmat0[2, 2])
+        w = (rotmat0[0, 2] - rotmat0[2, 0]) / s
+        x = (rotmat0[0, 1] + rotmat0[1, 0]) / s
+        y = 0.25 * s
+        z = (rotmat0[1, 2] + rotmat0[2, 1]) / s
+    else:
+        s = 2.0 * np.sqrt(1.0 + rotmat0[2, 2] - rotmat0[0, 0] - rotmat0[1, 1])
+        w = (rotmat0[1, 0] - rotmat0[0, 1]) / s
+        x = (rotmat0[0, 2] + rotmat0[2, 0]) / s
+        y = (rotmat0[1, 2] + rotmat0[2, 1]) / s
+        z = 0.25 * s
+quat0_grasp = np.array([w, x, y, z])
+
+# For Arm 1 (handle1): x-axis points inward (towards center)
+inward1 = handle1_pos - handle0_pos
+inward1[2] = 0
+x1 = -inward1 / np.linalg.norm(inward1)
+z1 = np.cross(x1, world_z)
+y1 = np.cross(z1, x1)
+rotmat1 = np.column_stack([x1, y1, z1])
+
+# Convert rotation matrix to quaternion for arm1
+trace = np.trace(rotmat1)
+if trace > 0:
+    s = 0.5 / np.sqrt(trace + 1.0)
+    w = 0.25 / s
+    x = (rotmat1[2, 1] - rotmat1[1, 2]) * s
+    y = (rotmat1[0, 2] - rotmat1[2, 0]) * s
+    z = (rotmat1[1, 0] - rotmat1[0, 1]) * s
+else:
+    if rotmat1[0, 0] > rotmat1[1, 1] and rotmat1[0, 0] > rotmat1[2, 2]:
+        s = 2.0 * np.sqrt(1.0 + rotmat1[0, 0] - rotmat1[1, 1] - rotmat1[2, 2])
+        w = (rotmat1[2, 1] - rotmat1[1, 2]) / s
+        x = 0.25 * s
+        y = (rotmat1[0, 1] + rotmat1[1, 0]) / s
+        z = (rotmat1[0, 2] + rotmat1[2, 0]) / s
+    elif rotmat1[1, 1] > rotmat1[2, 2]:
+        s = 2.0 * np.sqrt(1.0 + rotmat1[1, 1] - rotmat1[0, 0] - rotmat1[2, 2])
+        w = (rotmat1[0, 2] - rotmat1[2, 0]) / s
+        x = (rotmat1[0, 1] + rotmat1[1, 0]) / s
+        y = 0.25 * s
+        z = (rotmat1[1, 2] + rotmat1[2, 1]) / s
+    else:
+        s = 2.0 * np.sqrt(1.0 + rotmat1[2, 2] - rotmat1[0, 0] - rotmat1[1, 1])
+        w = (rotmat1[1, 0] - rotmat1[0, 1]) / s
+        x = (rotmat1[0, 2] + rotmat1[2, 0]) / s
+        y = (rotmat1[1, 2] + rotmat1[2, 1]) / s
+        z = 0.25 * s
+quat1_grasp = np.array([w, x, y, z])
+
+# Use approach distance to safely descend onto handle
+approach_dist = 0.05  # 5 cm above
+
+# Move both arms simultaneously to approach poses
+goto_pose_both(
+    position0=handle0_pos + np.array([0, 0, approach_dist]),
+    quaternion_wxyz0=quat0_grasp,
+    position1=handle1_pos + np.array([0, 0, approach_dist]),
+    quaternion_wxyz1=quat1_grasp,
+    z_approach=0.0
+)
+
+# Descend and grasp both handles
+goto_pose_both(
+    position0=handle0_pos,
+    quaternion_wxyz0=quat0_grasp,
+    position1=handle1_pos,
+    quaternion_wxyz1=quat1_grasp,
+    z_approach=0.0
+)
+
+# Close both grippers
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift the pot up together by 0.2 meters
+lift_height = 0.2
+final_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+goto_pose_both(
+    position0=final_pos0,
+    quaternion_wxyz0=quat0_grasp,
+    position1=final_pos1,
+    quaternion_wxyz1=quat1_grasp,
+    z_approach=0.0
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.01647541339845926
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_18_sandboxrc_0_reward_0.016_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+lift_height = 0.1
+pos0_init, quat0_init = get_arm0_gripper_pose()
+pos1_init, quat1_init = get_arm1_gripper_pose()
+
+# Lift both arms up by lift_height in z-axis
+pos0_lifted = pos0_init + np.array([0, 0, lift_height])
+pos1_lifted = pos1_init + np.array([0, 0, lift_height])
+
+goto_pose_both(pos0_lifted, quat0_init, pos1_lifted, quat1_init)
+
+# Get handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Desired grasp orientation: sideways grasp with gripper y-axis aligned with world z-axis.
+# This means the gripper should approach horizontally.
+# For Franka Emika, a suitable quaternion for horizontal grasp from side is typically:
+# pointing in +x direction with y up -> corresponds to rotation of -90 degrees around z then -90 around y
+# But we want the gripper's y-axis aligned with world z-axis -> so the gripper is "on its side"
+# A good candidate: rotation that aligns gripper forward (usually -z) to point toward handle, and gripper y to world z.
+
+# We'll define quaternions based on desired rotation.
+# Let’s assume standard robot frame: x forward, y left, z up.
+# For arm0 (on one side), it should approach along the y-axis (toward center), so direction = normalized vector from arm0 side to handle0.
+# But since the pot is centered and handles are on opposite sides, arm0 likely approaches in +y direction, arm1 in -y.
+
+# Compute approach directions
+approach_dir0 = handle0_pos - pos0_lifted
+approach_dir0[2] = 0  # ignore height difference for direction
+approach_dir0 = approach_dir0 / np.linalg.norm(approach_dir0)
+
+approach_dir1 = handle1_pos - pos1_lifted
+approach_dir1[2] = 0
+approach_dir1 = approach_dir1 / np.linalg.norm(approach_dir1)
+
+# Define desired gripper orientations: sideways grasp, fingers opening along approach direction, gripper y-axis upward (aligned with world z)
+# This means:
+#   gripper forward (-z) should be aligned with approach direction
+#   gripper y-axis should be aligned with world z-axis (0,0,1)
+
+def vec_to_quat(forward, up):
+    """Convert forward and up vectors to WXYZ quaternion."""
+    # forward: direction gripper -z points (i.e., into the handle)
+    # up: direction gripper y-axis points (should be world z)
+    right = np.cross(up, forward)
+    right /= np.linalg.norm(right)
+    up = np.cross(forward, right)
+    rot_matrix = np.column_stack([right, up, forward])  # rotation matrix
+    # Convert rotation matrix to quaternion
+    trace = np.trace(rot_matrix)
+    if trace > 0:
+        s = np.sqrt(trace + 1.0) * 2
+        w = 0.25 * s
+        x = (rot_matrix[2, 1] - rot_matrix[1, 2]) / s
+        y = (rot_matrix[0, 2] - rot_matrix[2, 0]) / s
+        z = (rot_matrix[1, 0] - rot_matrix[0, 1]) / s
+    else:
+        if rot_matrix[0, 0] > rot_matrix[1, 1] and rot_matrix[0, 0] > rot_matrix[2, 2]:
+            s = np.sqrt(1.0 + rot_matrix[0, 0] - rot_matrix[1, 1] - rot_matrix[2, 2]) * 2
+            w = (rot_matrix[2, 1] - rot_matrix[1, 2]) / s
+            x = 0.25 * s
+            y = (rot_matrix[0, 1] + rot_matrix[1, 0]) / s
+            z = (rot_matrix[0, 2] + rot_matrix[2, 0]) / s
+        elif rot_matrix[1, 1] > rot_matrix[2, 2]:
+            s = np.sqrt(1.0 + rot_matrix[1, 1] - rot_matrix[0, 0] - rot_matrix[2, 2]) * 2
+            w = (rot_matrix[0, 2] - rot_matrix[2, 0]) / s
+            x = (rot_matrix[0, 1] + rot_matrix[1, 0]) / s
+            y = 0.25 * s
+            z = (rot_matrix[1, 2] + rot_matrix[2, 1]) / s
+        else:
+            s = np.sqrt(1.0 + rot_matrix[2, 2] - rot_matrix[0, 0] - rot_matrix[1, 1]) * 2
+            w = (rot_matrix[1, 0] - rot_matrix[0, 1]) / s
+            x = (rot_matrix[0, 2] + rot_matrix[2, 0]) / s
+            y = (rot_matrix[1, 2] + rot_matrix[2, 1]) / s
+            z = 0.25 * s
+    return np.array([w, x, y, z])
+
+# Normalize forward direction (gripper -z axis points along approach)
+# Flip to negative because gripper's forward is usually -z
+forward0 = -approach_dir0
+forward1 = -approach_dir1
+up_vec = np.array([0, 0, 1])  # world z-axis
+
+quat0_grasp = vec_to_quat(forward0, up_vec)
+quat1_grasp = vec_to_quat(forward1, up_vec)
+
+# Slightly offset above handle for z_approach
+approach_offset = 0.05
+
+# Open both grippers
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms to approach position above handles
+goto_pose_both(
+    handle0_pos + np.array([0, 0, approach_offset]), quat0_grasp,
+    handle1_pos + np.array([0, 0, approach_offset]), quat1_grasp
+)
+
+# Now perform precise grasp with z_approach
+goto_pose_both(
+    handle0_pos, quat0_grasp,
+    handle1_pos, quat1_grasp,
+    z_approach=approach_offset
+)
+
+# Close both grippers to grasp handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Now lift both arms to same height to lift the pot
+lift_distance = 0.1
+lift_pos0 = handle0_pos + np.array([0, 0, lift_distance])
+lift_pos1 = handle1_pos + np.array([0, 0, lift_distance])
+
+goto_pose_both(lift_pos0, quat0_grasp, lift_pos1, quat1_grasp)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.567044436014106
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_19_sandboxrc_0_reward_0.567_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift 10 cm up
+pos0_lifted = pos0.copy()
+pos0_lifted[2] += lift_height
+pos1_lifted = pos1.copy()
+pos1_lifted[2] += lift_height
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1, z_approach=0.0)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis
+# This corresponds to a rotation of 90 degrees around x-axis from default [0,0,1,0] top-down
+# The desired quaternion is [0.707, 0, 0.707, 0] (w,x,y,z) which is equivalent to R.from_euler('x', 90, degrees=True).as_quat(wxyz=True)
+sideways_quat = np.array([0.707, 0, 0.707, 0])  # wxyz
+
+# Prepare approach: come in from the side at a small offset
+approach_dist = 0.05  # 5 cm approach distance
+
+# For arm 0 (assume it approaches from negative X direction relative to handle)
+approach_pos0 = handle0_pos.copy()
+approach_pos0[0] -= approach_dist  # come from -X side
+
+# For arm 1 (on opposite side, so it approaches from positive X direction)
+approach_pos1 = handle1_pos.copy()
+approach_pos1[0] += approach_dist  # come from +X side
+
+# Move both arms to approach poses
+goto_pose_both(approach_pos0, sideways_quat, approach_pos1, sideways_quat, z_approach=0.05)
+
+# Now move directly to grasp poses without z-approach since we're doing sideways grasp
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=0.0)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms up together to same height
+lift_z = 0.1  # Lift 10 cm above current position
+target_pos0 = handle0_pos + np.array([0, 0, lift_z])
+target_pos1 = handle1_pos + np.array([0, 0, lift_z])
+
+goto_pose_both(target_pos0, sideways_quat, target_pos1, sideways_quat, z_approach=0.0)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.024853864467022757
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_20_sandboxrc_0_reward_0.025_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, lift both arms slightly to avoid occlusion
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+# Define a safe height offset (e.g. 10 cm) for initial lift
+safe_z_offset = 0.1
+
+# Lift arm0 and arm1 slightly in z-direction
+lifted_pos0 = initial_pose0[0] + np.array([0, 0, safe_z_offset])
+lifted_pos1 = initial_pose1[0] + np.array([0, 0, safe_z_offset])
+
+# Use current orientations during the lift
+goto_pose_both(lifted_pos0, initial_pose0[1], lifted_pos1, initial_pose1[1])
+
+# Detect handle positions after lifting
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Desired gripper orientation: sideways grasp with gripper y-axis aligned to world z-axis
+# This means the gripper should face horizontally toward the handle
+# Target orientation: x-axis forward (into handle), y-axis up (aligned with world z), z-axis left/right
+# Corresponds to quaternion [w, x, y, z] = [0.5**0.5, 0, 0, 0.5**0.5] -> 90-degree rotation around x-axis from default
+sideways_quat = np.array([np.sqrt(0.5), 0, 0, np.sqrt(0.5)])  # w, x, y, z
+
+# Approach distance in z-direction (before final grasp)
+approach_distance = 0.05  # 5 cm above the target for safer approach
+
+# Prepare target poses for grasping
+target_pos0 = handle0_pos.copy()
+target_pos1 = handle1_pos.copy()
+
+# We adjust approach: move in the direction perpendicular to the handle's position relative to center
+# Since pot is centered and handles are on opposite sides, we can infer approach direction from handle position
+# Assume table center is approximately [0.6, 0, 0.02] or similar, but we can compute direction from symmetry
+center_x = (handle0_pos[0] + handle1_pos[0]) / 2
+center_y = (handle0_pos[1] + handle1_pos[1]) / 2
+center_pos = np.array([center_x, center_y, handle0_pos[2]])
+
+# Direction from handle0 to center (arm0 approaches from outside to inside)
+approach_dir0 = (center_pos - handle0_pos)
+approach_dir0 = approach_dir0 / np.linalg.norm(approach_dir0)  # normalize
+
+# Direction from handle1 to center (arm1 approaches from opposite side)
+approach_dir1 = (center_pos - handle1_pos)
+approach_dir1 = approach_dir1 / np.linalg.norm(approach_dir1)  # normalize
+
+# Compute pre-grasp positions by stepping back along approach direction
+pre_grasp0 = handle0_pos + approach_dir0 * 0.1
+pre_grasp1 = handle1_pos + approach_dir1 * 0.1
+
+# Move both arms to pre-grasp positions with sideways orientation
+goto_pose_both(pre_grasp0, sideways_quat, pre_grasp1, sideways_quat)
+
+# Now perform precise grasp with z_approach to ensure smooth descent into grasp
+# We use z_approach = 0.05 so it goes 5cm above then moves down precisely
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=0.05)
+
+# Close both grippers simultaneously to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Now lift both arms vertically to raise the pot
+lift_height = 0.1  # lift pot by 10 cm
+final_pos0 = handle0_pos + np.array([0, 0, lift_height])
+final_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+# Maintain the same orientation during lift
+goto_pose_both(final_pos0, sideways_quat, final_pos1, sideways_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.014218806798101908
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_21_sandboxrc_0_reward_0.014_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift 10 cm up
+pos0_lifted = pos0.copy()
+pos0_lifted[2] += lift_height
+pos1_lifted = pos1.copy()
+pos1_lifted[2] += lift_height
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1, z_approach=0.0)
+
+# Get handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: gripper y-axis aligned with world z-axis
+# Desired rotation: align gripper frame such that:
+#   x-axis points into the handle (horizontally)
+#   y-axis points upward (aligned with world z)
+#   z-axis completes the right-hand rule (horizontal, perpendicular to x and y)
+# This corresponds to a quaternion that rotates from canonical [x,y,z] -> [-z,x,y] or similar depending on gripper mounting.
+
+# We'll construct a rotation matrix and convert to quaternion.
+# For arm0 (on one side), we want approach along -x direction, y aligned with world +z.
+forward0 = -np.array([1, 0, 0])  # Arm0 approaches along negative x
+left0 = np.array([0, 0, 1])      # Gripper y-axis points up (world z)
+up0 = np.cross(forward0, left0)   # Complete the frame
+
+R0 = np.column_stack((forward0, left0, up0))
+
+# For arm1 (opposite side), approach along +x direction, y still aligned with world +z
+forward1 = np.array([1, 0, 0])   # Arm1 approaches along positive x
+left1 = np.array([0, 0, 1])      # Gripper y-axis points up
+up1 = np.cross(forward1, left1)
+
+R1 = np.column_stack((forward1, left1, up1))
+
+# Convert rotation matrices to quaternions
+def rotmat_to_quat(R):
+    trace = np.trace(R)
+    if trace > 0:
+        s = 0.5 / np.sqrt(trace + 1.0)
+        w = 0.25 / s
+        x = (R[2, 1] - R[1, 2]) * s
+        y = (R[0, 2] - R[2, 0]) * s
+        z = (R[1, 0] - R[0, 1]) * s
+    else:
+        if R[0, 0] > R[1, 1] and R[0, 0] > R[2, 2]:
+            s = 2.0 * np.sqrt(1.0 + R[0, 0] - R[1, 1] - R[2, 2])
+            w = (R[2, 1] - R[1, 2]) / s
+            x = 0.25 * s
+            y = (R[0, 1] + R[1, 0]) / s
+            z = (R[0, 2] + R[2, 0]) / s
+        elif R[1, 1] > R[2, 2]:
+            s = 2.0 * np.sqrt(1.0 + R[1, 1] - R[0, 0] - R[2, 2])
+            w = (R[0, 2] - R[2, 0]) / s
+            x = (R[0, 1] + R[1, 0]) / s
+            y = 0.25 * s
+            z = (R[1, 2] + R[2, 1]) / s
+        else:
+            s = 2.0 * np.sqrt(1.0 + R[2, 2] - R[0, 0] - R[1, 1])
+            w = (R[1, 0] - R[0, 1]) / s
+            x = (R[0, 2] + R[2, 0]) / s
+            y = (R[1, 2] + R[2, 1]) / s
+            z = 0.25 * s
+    return np.array([w, x, y, z])
+
+quat0_grasp = rotmat_to_quat(R0)
+quat1_grasp = rotmat_to_quat(R1)
+
+# Normalize quaternions
+quat0_grasp /= np.linalg.norm(quat0_grasp)
+quat1_grasp /= np.linalg.norm(quat1_grasp)
+
+# Approach each handle from the side with z_approach to ensure safe descent
+approach_offset = 0.05  # 5 cm above the handle for initial approach
+
+# Prepare approach poses
+approach0 = handle0_pos.copy()
+approach0[2] += approach_offset
+approach1 = handle1_pos.copy()
+approach1[2] += approach_offset
+
+# Move both arms to approach poses
+goto_pose_both(approach0, quat0_grasp, approach1, quat1_grasp, z_approach=0.0)
+
+# Now move down to grasp poses with z_approach to ensure precise motion
+goto_pose_both(handle0_pos, quat0_grasp, handle1_pos, quat1_grasp, z_approach=approach_offset)
+
+# Close both grippers simultaneously
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift the pot together to same height
+lift_z = 0.2  # Lift 20 cm up from current position
+target0_lift = handle0_pos + np.array([0, 0, lift_z])
+target1_lift = handle1_pos + np.array([0, 0, lift_z])
+
+goto_pose_both(target0_lift, quat0_grasp, target1_lift, quat1_grasp, z_approach=0.0)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.011927750360447093
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_22_sandboxrc_0_reward_0.012_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occluding the pot and handles
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+# Lift both arms up by 0.1 meters in Z to clear any potential obstruction
+lift_offset = np.array([0, 0, 0.1])
+goto_pose_both(pos0 + lift_offset, quat0, pos1 + lift_offset, quat1)
+
+# Get the current positions of handle 0 and handle 1
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define desired gripper orientation: sideways grasp with gripper y-axis aligned to world z-axis
+# This means the gripper will approach from the side, not top-down.
+# Target rotation: We want the gripper's y-axis (which is forward when closing) to point upward (world z)
+# A suitable quaternion for this is a 90-degree rotation around the x-axis from default [0,0,1,0] top-down
+# Rotating 90 degrees around x-axis: gives quaternion [cos(45°), sin(45°), 0, 0] ≈ [0.707, 0.707, 0, 0]
+# But we need to ensure that the gripper fingers are vertical and grasp horizontally
+# Let's use a quaternion that orients the gripper so that it faces along the X-axis (for arm0 on left) 
+# and -X-axis (for arm1 on right), with Y pointing up.
+
+# For arm0 (left side): want gripper to face toward center (positive x-direction), Y up => use rotation: R_x(-90) * R_z(-90)
+# Final quaternion for arm0: approximately [0.5, 0.5, -0.5, 0.5] (needs normalization) -> actually better to construct properly
+
+# Instead, we define a standard sideways grasp where:
+#   gripper_forward_axis = world_x (for arm0 approaching from -x side)
+#   gripper_up_axis = world_z
+# Use a fixed known good sideways grasp: rotate base [0,0,1,0] by -90 degrees around x-axis -> [0.707, -0.707, 0, 0]
+
+sideways_quat = np.array([0.707, -0.707, 0, 0])  # From top-down to front-facing, y up
+
+# However, for correct alignment, let’s adjust based on expected setup:
+# Assume arm0 is on the -y side, arm1 on the +y side? Or opposite x?
+# Since pot is centered and handles are on opposite sides, assume:
+#   handle0 is on the left (arm0 side) at some (x, y-, z), handle1 on right (arm1 side) at (x, y+, z)
+# So arm0 should approach from negative y direction -> gripper should face in positive y
+# arm1 should approach from positive y direction -> gripper should face in negative y
+# To have gripper face in +Y (arm0): rotate identity (facing x) by -90 deg around z -> quat_z(-90) = [0.707, 0, 0, -0.707]
+# Then tilt down by 90 deg around x -> total quat = compose(quat_x(-90), quat_z(-90))
+
+# Simpler: use a known working sideways grasp for horizontal grasp with fingers vertical
+# After testing, common solution is to rotate [0,0,1,0] by 90 deg around x then adjust
+# Final safe sideways grasp with fingers vertical and palm facing inward:
+#   Use quaternion: w=0.5, x=0.5, y=0.5, z=0.5 (after proper construction)
+
+# Actually, use a standard one: rotating from default [0,0,1,0] (top-down) by -90 deg about x-axis gives [0.707, -0.707, 0, 0]
+# But this makes gripper face forward (along y). We want it to face radially toward the center.
+
+# Let's re-define based on direction:
+
+# For arm0: approaching handle0 from the side, we want:
+#   approach direction: from current position toward handle0
+# But since we know relative layout, assume:
+#   handle0 is at center_y - offset, so arm0 comes from below in y
+#   thus, arm0 should face in +y direction
+
+# We build quaternion that points gripper forward (+Y) with up = +Z
+# Forward vector = [0, 1, 0], Up vector = [0, 0, 1]
+# Can use look-at style construction
+
+def vec_to_quat(forward, up):
+    # Orthonormal basis
+    f = forward / np.linalg.norm(forward)
+    u = up / np.linalg.norm(up)
+    r = np.cross(f, u)  # right vector
+    u = np.cross(r, f)  # recompute up
+    # Rotation matrix
+    R = np.array([r, f, u])
+    # Convert to quaternion
+    tr = np.trace(R)
+    if tr > 0:
+        S = np.sqrt(tr + 1.0) * 2
+        w = 0.25 * S
+        x = (R[2,1] - R[1,2]) / S
+        y = (R[0,2] - R[2,0]) / S
+        z = (R[1,0] - R[0,1]) / S
+    else:
+        if R[0,0] > R[1,1] and R[0,0] > R[2,2]:
+            S = np.sqrt(1.0 + R[0,0] - R[1,1] - R[2,2]) * 2
+            w = (R[2,1] - R[1,2]) / S
+            x = 0.25 * S
+            y = (R[0,1] + R[1,0]) / S
+            z = (R[0,2] + R[2,0]) / S
+        elif R[1,1] > R[2,2]:
+            S = np.sqrt(1.0 + R[1,1] - R[0,0] - R[2,2]) * 2
+            w = (R[0,2] - R[2,0]) / S
+            x = (R[0,1] + R[1,0]) / S
+            y = 0.25 * S
+            z = (R[1,2] + R[2,1]) / S
+        else:
+            S = np.sqrt(1.0 + R[2,2] - R[0,0] - R[1,1]) * 2
+            w = (R[1,0] - R[0,1]) / S
+            x = (R[0,2] + R[2,0]) / S
+            y = (R[1,2] + R[2,1]) / S
+            z = 0.25 * S
+    quat = np.array([w, x, y, z])
+    return quat / np.linalg.norm(quat)
+
+# For arm0: wants to face toward handle0, but we already know handle0 position
+# Actually, gripper should face along the direction from arm0's approach side to handle0
+# But since arm0 is likely on the -y side, direction to handle0 is +y
+# However, after lifting, we just go directly.
+
+# Instead, use a fixed sideways orientation with fingers vertical and gripper facing inward
+# Use a known good quaternion for sideways grasp: [0.924, -0.383, 0, 0] (approximate 45deg tilt?) — no.
+
+# After standard practices: use quaternion that rotates from canonical [0,0,1,0] by -90 deg around x-axis
+# This gives: cos(-45)=0.707, sin(-45)=-0.707 -> [0.707, -0.707, 0, 0]
+# But this makes gripper face along y-axis.
+
+# Let's define the grasp quaternions as sideways with y up and fingers opening along x
+# Actually, Franka gripper: when quaternion is [0,0,1,0], it's top-down, fingers open along x/y
+# We want fingers open along x/z? No, we want to grasp the handle from the side, so the fingers should close vertically
+# So the gripper should be rotated so that its y-axis (forward) is along the horizontal radial direction
+# and its z-axis (up) is aligned with world z
+
+# Therefore, we can use:
+#   For arm0: approaching from the -y side, so forward = +y, up = +z
+#   For arm1: approaching from the +y side, so forward = -y, up = +z
+
+# Compute quaternions
+forward0 = np.array([0, 1, 0])  # arm0 faces +y
+up0 = np.array([0, 0, 1])
+quat0_desired = vec_to_quat(forward0, up0)
+
+forward1 = np.array([0, -1, 0])  # arm1 faces -y
+up1 = np.array([0, 0, 1])
+quat1_desired = vec_to_quat(forward1, up1)
+
+# Grasp height: directly at handle position
+# But first, approach from a small z offset to avoid collision
+approach_distance = 0.05  # 5 cm above the handle
+
+# Open both grippers
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms to approach poses (above the handles)
+approach_pos0 = handle0_pos + np.array([0, 0, approach_distance])
+approach_pos1 = handle1_pos + np.array([0, 0, approach_distance])
+
+goto_pose_both(approach_pos0, quat0_desired, approach_pos1, quat1_desired)
+
+# Now lower to grasp the handles without z_approach because we are controlling the path
+# Use z_approach=0.0 since we are already above
+goto_pose_both(handle0_pos, quat0_desired, handle1_pos, quat1_desired, z_approach=0.0)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Now lift both arms simultaneously to the same target height
+lift_height = 0.1  # lift 10 cm up from current handle position
+target_lift_pos0 = handle0_pos + np.array([0, 0, lift_height])
+target_lift_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+goto_pose_both(target_lift_pos0, quat0_desired, target_lift_pos1, quat1_desired)
+
+# Task complete
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.021473787816490286
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_23_sandboxrc_0_reward_0.021_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift 10 cm up
+pos0_lifted = pos0.copy()
+pos0_lifted[2] += lift_height
+pos1_lifted = pos1.copy()
+pos1_lifted[2] += lift_height
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1, z_approach=0.0)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis
+# This means the gripper will approach horizontally, not top-down
+# Desired rotation: align gripper forward (usually -Z) toward the handle, and gripper Y with world Z
+# Target quaternion for sideways grasp (gripper frame): X right, Y up (world Z), Z forward (pointing into handle)
+# We want a quaternion that represents a 90-degree rotation around X-axis from default [0,0,1,0] to make Y point up
+# Rotation of 90 degrees around X-axis: quaternion [cos(45°), sin(45°), 0, 0] -> [√2/2, √2/2, 0, 0]
+sideways_quat = np.array([np.sqrt(2)/2, np.sqrt(2)/2, 0, 0])  # wxyz
+
+# Approach distance in Z (before grasping)
+approach_dist = 0.05  # 5 cm approach
+
+# Move both arms to approach pose simultaneously
+goto_pose_both(
+    position0=handle0_pos,
+    quaternion_wxyz0=sideways_quat,
+    position1=handle1_pos,
+    quaternion_wxyz1=sideways_quat,
+    z_approach=approach_dist
+)
+
+# Now move to final grasp pose (without approach)
+goto_pose_both(
+    position0=handle0_pos,
+    quaternion_wxyz0=sideways_quat,
+    position1=handle1_pos,
+    quaternion_wxyz1=sideways_quat,
+    z_approach=0.0
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift the pot: compute lift target (raise both handles by same amount)
+lift_amount = 0.1  # Lift 10 cm
+target_height0 = handle0_pos + np.array([0, 0, lift_amount])
+target_height1 = handle1_pos + np.array([0, 0, lift_amount])
+
+# Lift both arms simultaneously to lift the pot
+goto_pose_both(
+    position0=target_height0,
+    quaternion_wxyz0=sideways_quat,
+    position1=target_height1,
+    quaternion_wxyz1=sideways_quat,
+    z_approach=0.0
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.004857137793350137
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_24_sandboxrc_0_reward_0.005_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+# Lift arms up by 0.1 meters in Z
+lift_offset = np.array([0.0, 0.0, 0.1])
+goto_pose_arm0(pos0 + lift_offset, quat0)
+goto_pose_arm1(pos1 + lift_offset, quat1)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Desired grasp orientation: gripper y-axis aligned with world z-axis (sideways grasp)
+# Avoid top-down grasp [0, 0, 1, 0]
+# Use a sideways grasp where the gripper approaches horizontally
+# For arm0 (on one side), we want gripper forward direction along -x, up along z -> results in specific quaternion
+# We compute a rotation that aligns gripper's y-axis with world z-axis and forward (-z) along handle radial direction
+
+def look_at_quaternion(forward_direction, up_direction=np.array([0, 0, 1])):
+    # Create rotation matrix using forward and up vectors
+    forward = -forward_direction / np.linalg.norm(forward_direction)
+    right = np.cross(up_direction, forward)
+    right /= np.linalg.norm(right)
+    up = np.cross(forward, right)
+    
+    rot_matrix = np.column_stack([right, up, forward])
+    
+    # Convert rotation matrix to quaternion [w, x, y, z]
+    trace = np.trace(rot_matrix)
+    if trace > 0:
+        s = 0.5 / np.sqrt(trace + 1.0)
+        w = 0.25 / s
+        x = (rot_matrix[2, 1] - rot_matrix[1, 2]) * s
+        y = (rot_matrix[0, 2] - rot_matrix[2, 0]) * s
+        z = (rot_matrix[1, 0] - rot_matrix[0, 1]) * s
+    else:
+        if rot_matrix[0, 0] > rot_matrix[1, 1] and rot_matrix[0, 0] > rot_matrix[2, 2]:
+            s = 2.0 * np.sqrt(1.0 + rot_matrix[0, 0] - rot_matrix[1, 1] - rot_matrix[2, 2])
+            w = (rot_matrix[2, 1] - rot_matrix[1, 2]) / s
+            x = 0.25 * s
+            y = (rot_matrix[0, 1] + rot_matrix[1, 0]) / s
+            z = (rot_matrix[0, 2] + rot_matrix[2, 0]) / s
+        elif rot_matrix[1, 1] > rot_matrix[2, 2]:
+            s = 2.0 * np.sqrt(1.0 + rot_matrix[1, 1] - rot_matrix[0, 0] - rot_matrix[2, 2])
+            w = (rot_matrix[0, 2] - rot_matrix[2, 0]) / s
+            x = (rot_matrix[0, 1] + rot_matrix[1, 0]) / s
+            y = 0.25 * s
+            z = (rot_matrix[1, 2] + rot_matrix[2, 1]) / s
+        else:
+            s = 2.0 * np.sqrt(1.0 + rot_matrix[2, 2] - rot_matrix[0, 0] - rot_matrix[1, 1])
+            w = (rot_matrix[1, 0] - rot_matrix[0, 1]) / s
+            x = (rot_matrix[0, 2] + rot_matrix[2, 0]) / s
+            y = (rot_matrix[1, 2] + rot_matrix[2, 1]) / s
+            z = 0.25 * s
+    
+    return np.array([w, x, y, z])
+
+# Compute approach directions for each arm
+# Arm0 should approach handle0 from the side (along -x direction relative to pot center)
+# Assume handle0 is on the negative x side, handle1 on positive x side
+approach_dir0 = handle0_pos - np.array([0, 0, handle0_pos[2]])  # horizontal direction toward handle0
+approach_dir1 = handle1_pos - np.array([0, 0, handle1_pos[2]])  # horizontal direction toward handle1
+
+# Normalize horizontal components
+approach_dir0[:2] = approach_dir0[:2] / np.linalg.norm(approach_dir0[:2])
+approach_dir1[:2] = approach_dir1[:2] / np.linalg.norm(approach_dir1[:2])
+
+# Generate quaternions for both arms
+quat_wxyz0 = look_at_quaternion(approach_dir0, np.array([0, 0, 1]))
+quat_wxyz1 = look_at_quaternion(approach_dir1, np.array([0, 0, 1]))
+
+# Approach distance in Z for pre-grasp pose
+approach_z = 0.05
+
+# Move both arms simultaneously to pre-grasp poses
+pre_grasp_pos0 = handle0_pos + approach_dir0 * 0.1  # 10cm away along approach direction
+pre_grasp_pos1 = handle1_pos + approach_dir1 * 0.1
+
+goto_pose_both(
+    position0=pre_grasp_pos0,
+    quaternion_wxyz0=quat_wxyz0,
+    position1=pre_grasp_pos1,
+    quaternion_wxyz1=quat_wxyz1,
+    z_approach=approach_z
+)
+
+# Open both grippers
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Now move to grasp poses (with z_approach for precise insertion)
+goto_pose_both(
+    position0=handle0_pos,
+    quaternion_wxyz0=quat_wxyz0,
+    position1=handle1_pos,
+    quaternion_wxyz1=quat_wxyz1,
+    z_approach=approach_z
+)
+
+# Close both grippers
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift the pot together to a higher position (e.g., 0.1m above current handle height)
+lift_height = 0.1
+lift_pos0 = handle0_pos + np.array([0, 0, lift_height])
+lift_pos1 = handle1_pos + np.array([0, 0, lift_height])
+
+goto_pose_both(
+    position0=lift_pos0,
+    quaternion_wxyz0=quat_wxyz0,
+    position1=lift_pos1,
+    quaternion_wxyz1=quat_wxyz1
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.007333128250493259
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_25_sandboxrc_0_reward_0.007_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, lift both arms slightly to avoid occlusion
+initial_pose0 = get_arm0_gripper_pose()
+initial_pose1 = get_arm1_gripper_pose()
+
+lift_offset = np.array([0.0, 0.0, 0.1])  # Lift 10 cm up
+goto_pose_arm0(initial_pose0[0] + lift_offset, initial_pose0[1])
+goto_pose_arm1(initial_pose1[0] + lift_offset, initial_pose1[1])
+
+# Get the current positions of handle 0 and handle 1
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis aligned with world z-axis
+# This corresponds to a quaternion that rotates x-axis to point towards the handle
+# and y-axis (gripper vertical) aligned with world z-axis.
+# Target gripper orientation: R = [[0, 0, -1],   x-axis pointing inward (towards pot center)
+#                                  [0, 1,  0],   y-axis aligned with world z-axis
+#                                  [1, 0,  0]]   z-axis pointing in original x direction
+# This gives quaternion wxyz: [0.7071, 0, 0.7071, 0] (approximate for 90 degree rotation about y)
+
+sideways_quat = np.array([0.7071, 0.0, 0.7071, 0.0])  # WXYZ
+
+# For Arm 0 (on one side), approach handle 0 from the side
+approach_offset0 = np.array([-0.05, 0.0, 0.0])  # Approach from negative X direction
+grasp_pos0 = handle0_pos + approach_offset0
+
+# For Arm 1 (opposite side), approach handle 1 from the opposite side
+approach_offset1 = np.array([0.05, 0.0, 0.0])  # Approach from positive X direction
+grasp_pos1 = handle1_pos + approach_offset1
+
+# Move both arms simultaneously to approach position with z_approach for precision
+goto_pose_both(grasp_pos0, sideways_quat, grasp_pos1, sideways_quat, z_approach=0.05)
+
+# Move to final grasp pose at handle locations
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=0.0)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Now lift both arms equally to lift the pot
+lift_height = np.array([0.0, 0.0, 0.1])  # Lift 10 cm up from current handle position
+lift_pos0 = handle0_pos + lift_height
+lift_pos1 = handle1_pos + lift_height
+
+# Move both arms up simultaneously to lift the pot
+goto_pose_both(lift_pos0, sideways_quat, lift_pos1, sideways_quat, z_approach=0.0)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.12199115130175098
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_26_sandboxrc_0_reward_0.122_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+# Lift arms up by 0.1 meters in Z to clear the workspace
+lifted_pos0 = pos0.copy()
+lifted_pos0[2] += 0.1
+lifted_pos1 = pos1.copy()
+lifted_pos1[2] += 0.1
+
+goto_pose_both(lifted_pos0, quat0, lifted_pos1, quat1)
+
+# Get current handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: gripper y-axis aligned with world z-axis
+# Desired gripper forward direction (x-axis) points toward handle center
+# We want the gripper's y-axis (lateral) to align with world z-axis (up)
+# This corresponds to a rotation of 90 degrees around x-axis from default [0,0,1,0]
+# Resulting quaternion is approximately [0.707, 0, 0, 0.707] for 90 deg around x
+
+sideways_quat = np.array([0.707, 0, 0, 0.707])  # w,x,y,z -> matches WXYZ format
+
+# Approach distance in Z for pre-grasp pose
+approach_distance = 0.05
+
+# Pre-grasp: move above the handle position with sideways orientation and approach from side
+pre_grasp_offset0 = np.array([0, 0, approach_distance])
+pre_grasp_pos0 = handle0_pos + pre_grasp_offset0
+
+pre_grasp_offset1 = np.array([0, 0, approach_distance])
+pre_grasp_pos1 = handle1_pos + pre_grasp_offset1
+
+# Move both arms simultaneously to pre-grasp poses
+goto_pose_both(pre_grasp_pos0, sideways_quat, pre_grasp_pos1, sideways_quat)
+
+# Now go directly to grasp poses without additional z_approach since we're already approaching from side
+# Use z_approach=0.0 here because we control the motion manually
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=0.0)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Slightly lift both arms together to raise the pot
+lift_height = 0.1
+final_pos0 = handle0_pos.copy()
+final_pos0[2] += lift_height
+final_pos1 = handle1_pos.copy()
+final_pos1[2] += lift_height
+
+goto_pose_both(final_pos0, sideways_quat, final_pos1, sideways_quat)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.014613498190946131
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_27_sandboxrc_0_reward_0.015_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0_lift = np.array([0.4, -0.2, 0.3])
+quat0_lift = np.array([1, 0, 0, 0])  # Default orientation
+pos1_lift = np.array([0.4, 0.2, 0.3])
+quat1_lift = np.array([1, 0, 0, 0])
+
+goto_pose_both(pos0_lift, quat0_lift, pos1_lift, quat1_lift)
+
+# Get handle positions using vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientations: gripper y-axis aligned with world z-axis
+# This corresponds to a rotation of 90 degrees around the x-axis from default
+# Resulting quaternion for such rotation: w=0.707, x=0.707, y=0, z=0 (approx)
+sideways_quat = np.array([np.sqrt(0.5), np.sqrt(0.5), 0, 0])
+
+# Approach from side: use z_approach to first come in higher, then move down
+z_approach = 0.1
+
+# Open both grippers before grasping
+open_gripper_arm0()
+open_gripper_arm1()
+
+# Move both arms to approach the handles from the side with z offset
+goto_pose_both(
+    handle0_pos + np.array([0, 0, z_approach]), sideways_quat,
+    handle1_pos + np.array([0, 0, z_approach]), sideways_quat,
+    z_approach=0.0  # We already added the offset manually
+)
+
+# Now lower to grasp position
+goto_pose_both(
+    handle0_pos, sideways_quat,
+    handle1_pos, sideways_quat,
+    z_approach=0.0
+)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift both arms simultaneously to same height
+lift_height = 0.2  # 20 cm up from current position
+lift_offset = np.array([0, 0, lift_height])
+
+goto_pose_both(
+    handle0_pos + lift_offset, sideways_quat,
+    handle1_pos + lift_offset, sideways_quat,
+    z_approach=0.0
+)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.001093906513913815
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_28_sandboxrc_0_reward_0.001_taskcompleted_0/code.py
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [39490]
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift 10 cm up
+pos0_lifted = pos0.copy()
+pos0_lifted[2] += lift_height
+pos1_lifted = pos1.copy()
+pos1_lifted[2] += lift_height
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1, z_approach=0.0)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis
+# This means the gripper will approach horizontally, not top-down
+# Desired rotation: align gripper forward (usually -Z) toward the handle, and gripper Y with world Z
+# Target quaternion for sideways grasp (gripper frame): X right, Y up (world Z), Z forward
+# Representing this as WXYZ quaternion: approximately [0.707, 0.707, 0, 0] for 90 deg around X axis
+
+sideways_quat_wxyz = np.array([0.707, 0.707, 0.0, 0.0])  # Rotate 90 degrees around X to align Y with Z
+
+# Approach distance in Z (horizontal approach, so we use lateral offset)
+approach_offset = 0.05  # 5 cm approach distance
+
+# For Arm 0: approach handle 0 from the side
+approach_dir0 = np.array([-1, 0, 0])  # Assuming handle 0 is on the negative X side
+target_approach0 = handle0_pos + approach_dir0 * approach_offset
+goto_pose_arm0(target_approach0, sideways_quat_wxyz, z_approach=0.0)
+goto_pose_arm0(handle0_pos, sideways_quat_wxyz, z_approach=0.0)  # Move to grasp
+close_gripper_arm0()
+
+# For Arm 1: approach handle 1 from the opposite side
+approach_dir1 = np.array([1, 0, 0])  # Opposite direction for handle 1
+target_approach1 = handle1_pos + approach_dir1 * approach_offset
+goto_pose_arm1(target_approach1, sideways_quat_wxyz, z_approach=0.0)
+goto_pose_arm1(handle1_pos, sideways_quat_wxyz, z_approach=0.0)  # Move to grasp
+close_gripper_arm1()
+
+# Now both arms have grasped the handles. Lift the pot together to same height.
+lift_amount = 0.1  # Lift pot by 10 cm
+lifted_handle0_pos = handle0_pos.copy()
+lifted_handle0_pos[2] += lift_amount
+lifted_handle1_pos = handle1_pos.copy()
+lifted_handle1_pos[2] += lift_amount
+
+goto_pose_both(lifted_handle0_pos, sideways_quat_wxyz, lifted_handle1_pos, sideways_quat_wxyz, z_approach=0.0)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.09832773960723498
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_29_sandboxrc_0_reward_0.098_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# First, slightly lift both arms to avoid occlusion
+pos0, quat0 = get_arm0_gripper_pose()
+pos1, quat1 = get_arm1_gripper_pose()
+
+lift_height = 0.1  # Lift 10 cm up
+pos0_lifted = pos0.copy()
+pos0_lifted[2] += lift_height
+pos1_lifted = pos1.copy()
+pos1_lifted[2] += lift_height
+
+goto_pose_both(pos0_lifted, quat0, pos1_lifted, quat1, z_approach=0.0)
+
+# Get handle positions from vision
+handle0_pos = get_handle0_pos()
+handle1_pos = get_handle1_pos()
+
+# Define sideways grasp orientation: y-axis of gripper aligned with world z-axis
+# This corresponds to a rotation of 90 degrees around x-axis from default [0,0,1,0] top-down
+# The desired quaternion is [0.707, 0, 0.707, 0] (w,x,y,z) which is equivalent to R.from_euler('x', 90, degrees=True).as_quat(wxyz=True)
+sideways_quat = np.array([0.707, 0, 0.707, 0])  # wxyz
+
+# Prepare approach: come in from the side at a small offset
+approach_dist = 0.05  # 5 cm approach distance
+
+# For arm 0 (assume it approaches from negative X direction relative to handle)
+approach_pos0 = handle0_pos.copy()
+approach_pos0[0] -= approach_dist  # come from -X side
+
+# For arm 1 (opposite side, so approaches from positive X direction)
+approach_pos1 = handle1_pos.copy()
+approach_pos1[0] += approach_dist  # come from +X side
+
+# Move both arms to approach poses
+goto_pose_both(approach_pos0, sideways_quat, approach_pos1, sideways_quat, z_approach=0.05)
+
+# Now move to final grasp pose without further z-approach since we're doing sideways grasp
+goto_pose_both(handle0_pos, sideways_quat, handle1_pos, sideways_quat, z_approach=0.0)
+
+# Close both grippers to grasp the handles
+close_gripper_arm0()
+close_gripper_arm1()
+
+# Lift the pot up by same amount
+lift_amount = 0.15  # Lift 15 cm
+final_pos0 = handle0_pos.copy()
+final_pos1 = handle1_pos.copy()
+final_pos0[2] += lift_amount
+final_pos1[2] += lift_amount
+
+# Move both arms up together to lift the pot
+goto_pose_both(final_pos0, sideways_quat, final_pos1, sideways_quat, z_approach=0.0)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.1443042437098459
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/two_arm_lift/trial_30_sandboxrc_0_reward_0.144_taskcompleted_0/code.py
+
+Summary Statistics:
+Model: qwen3-235b-a22b-instruct-2507
+Config Path: env_configs/two_arm_lift/franka_robosuite_two_arm_lift_privileged.yaml
+Git Commit: 53e9966 (Dirty: True)
+Total number of trials: 30
+Code generation success rate / Average reward / Task completed: 
+1.000/0.062/2
+Average code blocks: 1.000
+Average regenerations: 0.000
+Average finishes: 0.000
+Elapsed time: 669.03 seconds

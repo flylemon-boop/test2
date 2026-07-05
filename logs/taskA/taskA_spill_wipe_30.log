@@ -1,0 +1,2524 @@
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python /root/autodl-tmp/cap-x/capx/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:32)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:42)
+R1Pro not installed, skipping R1Pro APIs
+LIBERO not installed!
+R1Pro not installed!
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python /root/autodl-tmp/cap-x/capx/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:32)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:42)
+INFO:pyroki_server:Loading robot URDF 'panda_description' with Pyroki...
+INFO:jax._src.xla_bridge:Unable to initialize backend 'cuda': 
+INFO:jax._src.xla_bridge:Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:jax._src.xla_bridge:Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-07-05 13:52:26.204 | INFO     | pyroki.collision._robot_collision:from_sphere_decomposition:187 - Created RobotCollision (sphere mode) with 13 links, 41 total spheres, and 626 active pairs.
+INFO:pyroki_server:PyRoki loaded and ready!
+INFO:     Started server process [29824]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8116 (Press CTRL+C to quit)
+[robosuite INFO] Loading controller configuration from: capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+API server {'_target_': 'capx.serving.launch_pyroki_server.main', 'port': 8116, 'host': '127.0.0.1', 'robot': 'panda_description', 'target_link': 'panda_hand'} started
+API server on 127.0.0.1:8116 is ready
+init franka control api
+Running Trials:   0%|          | 0/30 [00:00<?, ?it/s]2026-07-05 13:52:32.795 | INFO     | jaxls._py310._problem:analyze:126 - Building optimization problem with 2 terms and 1 variables: 1 costs, 0 eq_zero, 1 leq_zero, 0 geq_zero
+2026-07-05 13:52:32.820 | INFO     | jaxls._py310._problem:analyze:226 - Vectorizing constraint group with 1 constraints (constraint_leq_zero), 1 variables each: augmented_limit_residual
+2026-07-05 13:52:32.918 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: _pose_cost_analytical_jac
+2026-07-05 13:52:32.929 | INFO     | jaxls._py310._problem:analyze:312 - Variable elimination: variable IDs are traced; solves will not use elimination
+R1Pro not installed, skipping R1Pro APIs
+LIBERO not installed!
+R1Pro not installed!
+INFO:     127.0.0.1:34846 - "POST /ik HTTP/1.1" 200 OK
+2026-07-05 13:52:35.625 | INFO     | jaxls._py310._problem:analyze:126 - Building optimization problem with 3 terms and 1 variables: 3 costs, 0 eq_zero, 0 leq_zero, 0 geq_zero
+2026-07-05 13:52:35.643 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: limit_residual
+2026-07-05 13:52:35.665 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: _pose_cost_analytical_jac
+2026-07-05 13:52:35.675 | INFO     | jaxls._py310._problem:analyze:234 - Vectorizing group with 1 costs, 1 variables each: limit_velocity_cost
+2026-07-05 13:52:35.685 | INFO     | jaxls._py310._problem:analyze:312 - Variable elimination: variable IDs are traced; solves will not use elimination
+INFO:     127.0.0.1:34850 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34862 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34878 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56920 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56936 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56944 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56950 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56964 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56970 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56986 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57000 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57012 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57018 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57022 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57026 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57042 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57070 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57080 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57084 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57094 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57106 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57120 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57132 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57144 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57150 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57158 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57170 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57186 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57188 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57190 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57202 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57210 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57214 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57216 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57232 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57242 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57244 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57248 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57254 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57266 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57272 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57276 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57290 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57294 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57310 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57314 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57326 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57336 - "POST /ik HTTP/1.1" 200 OK
+Time taken to query model: 5.28 seconds
+Running Trials:   3%|▎         | 1/30 [00:14<07:04, 14.62s/it]INFO:     127.0.0.1:43620 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43624 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43628 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43640 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43646 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43650 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43654 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43668 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43680 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43686 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43690 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43698 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43706 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43720 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43732 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43748 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43762 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43766 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43770 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43778 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43794 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43806 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43818 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43828 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43830 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43842 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43848 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43856 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43868 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43872 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43880 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43888 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43898 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 1 took 14.42 seconds
+Time taken to query model: 9.50 seconds
+Running Trials:   7%|▋         | 2/30 [00:27<06:19, 13.57s/it]INFO:     127.0.0.1:54754 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54766 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54772 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54788 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54800 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54804 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54820 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54824 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54838 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54840 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54842 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54844 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54854 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54870 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54894 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54904 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54910 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54920 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54926 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54934 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54948 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54966 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54982 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54990 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54998 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55006 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55016 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55024 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55028 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55036 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55038 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55052 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55056 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55070 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55080 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55084 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55096 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55104 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55108 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55120 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55124 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55126 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55132 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55148 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55156 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55172 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55174 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 2 took 12.60 seconds
+Time taken to query model: 5.31 seconds
+Running Trials:  10%|█         | 3/30 [00:37<05:22, 11.93s/it]INFO:     127.0.0.1:42434 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42436 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42450 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42466 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42476 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42486 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42502 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42518 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42530 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42544 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42560 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42574 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42584 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42592 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42608 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42618 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42620 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42622 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42632 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42640 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42656 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42672 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42686 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42692 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42696 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 3 took 9.79 seconds
+Time taken to query model: 6.09 seconds
+Running Trials:  13%|█▎        | 4/30 [00:46<04:38, 10.71s/it]INFO:     127.0.0.1:55798 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55804 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55808 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55824 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55834 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55848 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55856 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55864 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55866 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55872 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55874 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55890 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55900 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55904 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55908 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55912 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55918 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55926 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55932 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55934 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55946 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55960 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55974 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55978 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55992 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 4 took 8.64 seconds
+Time taken to query model: 5.45 seconds
+Running Trials:  17%|█▋        | 5/30 [00:54<04:04,  9.78s/it]INFO:     127.0.0.1:42210 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42224 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42238 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42248 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42256 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42272 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42282 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42292 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42308 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42314 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42318 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42320 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42328 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42338 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42344 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42346 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42356 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42372 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42388 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42402 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42408 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42416 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42428 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42438 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42446 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 5 took 7.91 seconds
+Time taken to query model: 6.48 seconds
+Running Trials:  20%|██        | 6/30 [01:03<03:49,  9.58s/it]INFO:     127.0.0.1:51418 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51426 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51440 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51452 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51458 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51462 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 6 took 9.00 seconds
+Time taken to query model: 9.83 seconds
+Running Trials:  23%|██▎       | 7/30 [01:14<03:50, 10.04s/it]INFO:     127.0.0.1:49744 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49746 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49760 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49764 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49776 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49780 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49782 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49798 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 7 took 10.82 seconds
+Time taken to query model: 10.92 seconds
+Running Trials:  27%|██▋       | 8/30 [01:26<03:56, 10.75s/it]INFO:     127.0.0.1:49516 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49532 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49536 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49540 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49542 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49554 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49560 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49564 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49570 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49574 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49588 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49600 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49610 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49618 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49622 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49636 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49640 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49652 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49664 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49678 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49688 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49694 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49706 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49716 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49720 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49730 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49746 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49756 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 8 took 12.11 seconds
+Time taken to query model: 13.76 seconds
+Running Trials:  30%|███       | 9/30 [01:43<04:22, 12.52s/it]INFO:     127.0.0.1:57316 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57332 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57338 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57344 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57350 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57352 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57360 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57370 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57382 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57386 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57388 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57404 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57418 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 9 took 16.17 seconds
+Time taken to query model: 11.67 seconds
+Running Trials:  33%|███▎      | 10/30 [01:56<04:15, 12.78s/it]INFO:     127.0.0.1:48828 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48844 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48848 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48860 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48876 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48882 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48890 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48902 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48918 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48932 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48948 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48958 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48970 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48978 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48992 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48994 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49006 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49022 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49036 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49040 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49056 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49068 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49078 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49090 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49096 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 10 took 13.15 seconds
+Time taken to query model: 7.38 seconds
+Running Trials:  37%|███▋      | 11/30 [02:06<03:46, 11.94s/it]INFO:     127.0.0.1:37374 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37376 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37386 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37400 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37410 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37416 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37428 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37436 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37446 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37450 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37454 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37470 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 11 took 9.85 seconds
+Time taken to query model: 8.30 seconds
+Running Trials:  40%|████      | 12/30 [02:16<03:24, 11.35s/it]INFO:     127.0.0.1:43664 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43668 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43674 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43688 - "POST /ik HTTP/1.1" 200 OK
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+INFO:     127.0.0.1:43702 - "POST /ik HTTP/1.1" 200 OK
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+INFO:     127.0.0.1:43712 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43716 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43726 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43738 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43750 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 12 took 9.77 seconds
+Time taken to query model: 7.80 seconds
+Running Trials:  43%|████▎     | 13/30 [02:25<03:02, 10.72s/it]INFO:     127.0.0.1:34080 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34086 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34102 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34104 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34108 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34120 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34128 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34134 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34144 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34148 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34162 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34178 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34194 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34202 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34208 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34224 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34238 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34254 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34266 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34282 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34294 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34300 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34306 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34314 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34316 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 13 took 9.06 seconds
+Time taken to query model: 6.43 seconds
+Running Trials:  47%|████▋     | 14/30 [02:34<02:43, 10.21s/it]INFO:     127.0.0.1:46768 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46772 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46782 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46786 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46798 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46804 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46820 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46822 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46826 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46830 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46844 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46858 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 14 took 8.86 seconds
+Time taken to query model: 7.25 seconds
+Running Trials:  50%|█████     | 15/30 [02:43<02:27,  9.81s/it]INFO:     127.0.0.1:47936 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47938 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47952 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47962 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47978 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47992 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47994 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48008 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48018 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48024 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48032 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48038 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48052 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48062 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48072 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48080 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48086 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48090 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48098 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48112 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48118 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48126 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48140 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48144 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48148 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 15 took 8.65 seconds
+Time taken to query model: 7.36 seconds
+Running Trials:  53%|█████▎    | 16/30 [02:53<02:18,  9.88s/it]INFO:     127.0.0.1:48160 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48170 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48178 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48180 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48190 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48198 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48208 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46560 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46564 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46568 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46580 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46590 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46600 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46606 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46618 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46622 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46636 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46650 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46652 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46656 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46670 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46680 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46688 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46694 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46698 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 16 took 9.83 seconds
+Time taken to query model: 5.82 seconds
+Running Trials:  57%|█████▋    | 17/30 [03:02<02:03,  9.47s/it]INFO:     127.0.0.1:46706 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46716 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46722 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46724 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46736 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46744 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46750 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46764 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46776 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46784 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46786 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46802 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48888 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48902 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 17 took 8.31 seconds
+Time taken to query model: 6.88 seconds
+Running Trials:  60%|██████    | 18/30 [03:11<01:50,  9.25s/it]INFO:     127.0.0.1:55916 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55926 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55938 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55946 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55956 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55970 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55986 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56002 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56018 - "POST /ik HTTP/1.1" 200 OK
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+INFO:     127.0.0.1:56032 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56040 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56046 - "POST /ik HTTP/1.1" 200 OK
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+INFO:     127.0.0.1:56050 - "POST /ik HTTP/1.1" 200 OK
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+[robosuite WARNING] Joint limit reached in joint 5 (robot.py:519)
+INFO:     127.0.0.1:56060 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56062 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56076 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 18 took 8.50 seconds
+Time taken to query model: 9.22 seconds
+Running Trials:  63%|██████▎   | 19/30 [03:22<01:47,  9.78s/it]INFO:     127.0.0.1:56078 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56090 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56092 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36768 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36776 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36782 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36786 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36802 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 19 took 10.81 seconds
+Time taken to query model: 7.87 seconds
+Running Trials:  67%|██████▋   | 20/30 [03:31<01:35,  9.59s/it]INFO:     127.0.0.1:36810 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36814 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36816 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36820 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36822 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36838 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36854 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36856 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36862 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36866 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36878 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36888 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36892 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36904 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36906 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36914 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36930 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36946 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36956 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36972 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36980 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36984 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36998 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37008 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37012 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 20 took 8.97 seconds
+Time taken to query model: 7.07 seconds
+Running Trials:  70%|███████   | 21/30 [03:41<01:26,  9.63s/it]INFO:     127.0.0.1:34744 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34760 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34772 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34788 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34790 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34806 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34808 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45574 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45584 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45592 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45594 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45602 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45608 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45614 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 21 took 9.52 seconds
+Time taken to query model: 8.75 seconds
+Running Trials:  73%|███████▎  | 22/30 [03:51<01:19,  9.88s/it]INFO:     127.0.0.1:58470 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58476 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58480 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58488 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58500 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58508 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58510 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 22 took 10.27 seconds
+Time taken to query model: 10.38 seconds
+Running Trials:  77%|███████▋  | 23/30 [04:03<01:12, 10.39s/it]INFO:     127.0.0.1:35138 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35146 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35160 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35172 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35188 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35190 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35198 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35202 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35214 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35228 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35238 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35250 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35264 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35276 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35280 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35296 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35306 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35320 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35330 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35340 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35348 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35350 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 23 took 11.39 seconds
+Time taken to query model: 10.07 seconds
+Running Trials:  80%|████████  | 24/30 [04:15<01:05, 10.90s/it]INFO:     127.0.0.1:37798 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37800 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37808 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37822 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37826 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37830 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37836 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37848 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37864 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37876 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 24 took 11.91 seconds
+Time taken to query model: 8.73 seconds
+Running Trials:  83%|████████▎ | 25/30 [04:25<00:53, 10.72s/it]INFO:     127.0.0.1:49728 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49738 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49744 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49760 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49766 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49772 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49774 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49790 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49794 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49808 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49812 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49818 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49828 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 25 took 10.06 seconds
+Time taken to query model: 8.65 seconds
+Running Trials:  87%|████████▋ | 26/30 [04:35<00:42, 10.61s/it]INFO:     127.0.0.1:50818 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50822 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50834 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50848 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50860 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50868 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50880 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50888 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 26 took 10.14 seconds
+Time taken to query model: 6.94 seconds
+Running Trials:  90%|█████████ | 27/30 [04:44<00:29,  9.91s/it]INFO:     127.0.0.1:57244 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57258 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57264 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57274 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57286 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57300 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57314 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57322 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57334 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57342 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57346 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57362 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57368 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57378 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57392 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57394 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57408 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57424 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57432 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57442 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57456 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 27 took 8.09 seconds
+Time taken to query model: 7.01 seconds
+Running Trials:  93%|█████████▎| 28/30 [04:53<00:19,  9.77s/it]INFO:     127.0.0.1:40712 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40726 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40728 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40740 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40750 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40762 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40778 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40790 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40806 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40816 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40830 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 28 took 9.24 seconds
+Time taken to query model: 8.36 seconds
+Running Trials:  97%|█████████▋| 29/30 [05:03<00:09,  9.79s/it]INFO:     127.0.0.1:36300 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36304 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36308 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36322 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36338 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36366 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36374 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36388 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36404 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36416 - "POST /ik HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36430 - "POST /ik HTTP/1.1" 200 OK
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 29 took 9.62 seconds
+Time taken to query model: 7.12 seconds
+Running Trials: 100%|██████████| 30/30 [05:12<00:00,  9.45s/it]Running Trials: 100%|██████████| 30/30 [05:12<00:00, 10.40s/it]
+Code block 1 done
+Number of code blocks: 1
+Code blocks done
+Trial 30 took 8.45 seconds
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping parameters based on spill extent
+half_length_x = spill_extent[0] / 2
+half_length_y = spill_extent[1] / 2
+
+# Set the wiping bounds
+min_x = spill_position[0] - half_length_x
+max_x = spill_position[0] + half_length_x
+min_y = spill_position[1] - half_length_y
+max_y = spill_position[1] + half_length_y
+
+# Use downward-facing orientation for wiping (z-axis down)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Wipe in a grid pattern with small overlapping motions to avoid large IK jumps
+num_strips = 5
+y_positions = np.linspace(min_y, max_y, num_strips)
+
+for i, y in enumerate(y_positions):
+    # Alternate direction for each pass to reduce motion discontinuities
+    x_range = np.linspace(max_x, min_x, 10) if i % 2 == 1 else np.linspace(min_x, max_x, 10)
+    for x in x_range:
+        goto_pose(np.array([x, y, 0.0]), wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_01_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute the bounds for wiping based on the spill's position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define a small step size to avoid large motions between IK solutions
+step_size = 0.05
+
+# Start from slightly above the table to ensure safe approach
+approach_height = 0.02
+safe_approach_position = np.array([spill_position[0], spill_position[1], approach_height])
+goto_pose(safe_approach_position, wiping_orientation)
+
+# Move down to the table surface (z = 0.0) for wiping
+table_surface_position = np.array([spill_position[0], spill_position[1], 0.0])
+goto_pose(table_surface_position, wiping_orientation)
+
+# Perform back-and-forth wiping motions along the x-axis within the spill bounds
+current_x = min_x
+direction = 1  # 1 for forward, -1 for backward
+
+while current_x <= max_x and current_x >= min_x:
+    # Wipe horizontally at current y-level
+    target_position = np.array([current_x, min_y, 0.0])
+    goto_pose(target_position, wiping_orientation)
+    
+    # Move across in steps along x
+    next_x = current_x + direction * step_size
+    if next_x > max_x or next_x < min_x:
+        # Reverse direction when hitting the boundary and move up in y
+        direction *= -1
+        min_y += step_size
+        if min_y > max_y:
+            break  # Stop if we've covered all y regions
+    else:
+        current_x = next_x
+
+# Final pose after wiping is complete
+final_position = np.array([spill_position[0], spill_position[1], approach_height])
+goto_pose(final_position, wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_02_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping parameters based on spill extent
+half_length_x = spill_extent[0] / 2
+half_length_y = spill_extent[1] / 2
+
+# Set the wiping bounds
+min_x = spill_position[0] - half_length_x
+max_x = spill_position[0] + half_length_x
+min_y = spill_position[1] - half_length_y
+max_y = spill_position[1] + half_length_y
+
+# Use downward-facing orientation for wiping (z-axis down)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Wipe in a grid pattern with small overlapping motions to avoid large IK jumps
+num_strips = 5
+y_positions = np.linspace(min_y, max_y, num_strips)
+
+for i, y in enumerate(y_positions):
+    # Alternate direction for each pass to reduce motion discontinuities
+    x_range = np.linspace(max_x, min_x, 10) if i % 2 == 1 else np.linspace(min_x, max_x, 10)
+    for x in x_range:
+        goto_pose(np.array([x, y, 0.0]), wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_03_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill center and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Set z height to table surface
+z_height = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, x in enumerate(x_points):
+    for j, y in enumerate(y_points):
+        # Alternate direction of y sweep to reduce large movements
+        if i % 2 == 1:
+            y = y_points[-(j+1)]
+        
+        current_position = np.array([x, y, z_height])
+        goto_pose(current_position, wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.94
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_04_sandboxrc_0_reward_0.940_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # w, x, y, z
+
+# Define bounds for wiping based on spill extent
+half_x_extent = spill_extent[0] / 2
+half_y_extent = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_x_extent
+max_x = spill_position[0] + half_x_extent
+min_y = spill_position[1] - half_y_extent
+max_y = spill_position[1] + half_y_extent
+
+# Set z height to table surface (z = 0.0 m)
+z_height = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, y in enumerate(y_points):
+    if i % 2 == 0:
+        # Left to right
+        x_sequence = x_points
+    else:
+        # Right to left
+        x_sequence = x_points[::-1]
+    
+    for x in x_sequence:
+        goto_pose(np.array([x, y, z_height]), wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_05_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # w, x, y, z
+
+# Define bounds for wiping based on spill extent
+half_x_extent = spill_extent[0] / 2
+half_y_extent = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_x_extent
+max_x = spill_position[0] + half_x_extent
+min_y = spill_position[1] - half_y_extent
+max_y = spill_position[1] + half_y_extent
+
+# Set z height to table surface (z = 0.0 m)
+z_height = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, y in enumerate(y_points):
+    if i % 2 == 0:
+        # Left to right
+        x_sequence = x_points
+    else:
+        # Right to left
+        x_sequence = x_points[::-1]
+    
+    for x in x_sequence:
+        goto_pose(np.array([x, y, z_height]), wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_06_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Table surface height is z = 0.0 m
+wipe_z_height = 0.0
+
+# Calculate bounds for wiping based on spill position and extent
+half_length_x = spill_extent[0] / 2
+half_length_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_length_x
+max_x = spill_position[0] + half_length_x
+min_y = spill_position[1] - half_length_y
+max_y = spill_position[1] + half_length_y
+
+# Small overlap between strokes to ensure full coverage
+stroke_step = 0.05  # 5 cm steps in y direction
+
+# Generate back-and-forth wiping motions along x within spill bounds, stepping in y
+current_y = min_y
+while current_y <= max_y:
+    # Left to right stroke
+    left_point = np.array([min_x, current_y, wipe_z_height])
+    right_point = np.array([max_x, current_y, wipe_z_height])
+    
+    # Move to start of stroke (left)
+    goto_pose(left_point, wiping_orientation)
+    
+    # Perform stroke to right
+    goto_pose(right_point, wiping_orientation)
+    
+    # Step in y for next stroke
+    current_y += stroke_step
+    
+    # Break if we exceed bounds
+    if current_y > max_y:
+        break
+        
+    # Right to left stroke on next line
+    next_left_point = np.array([min_x, current_y, wipe_z_height])
+    next_right_point = np.array([max_x, current_y, wipe_z_height])
+    
+    # Move to start of next stroke (right side)
+    goto_pose(next_right_point, wiping_orientation)
+    
+    # Stroke back to left
+    goto_pose(next_left_point, wiping_orientation)
+    
+    # Step in y again
+    current_y += stroke_step
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.68
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_07_sandboxrc_0_reward_0.680_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Table surface height is z = 0.0 m
+wipe_z_height = 0.0
+
+# Calculate bounds for wiping based on spill position and extent
+half_length_x = spill_extent[0] / 2
+half_length_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_length_x
+max_x = spill_position[0] + half_length_x
+min_y = spill_position[1] - half_length_y
+max_y = spill_position[1] + half_length_y
+
+# Small overlap between strokes to ensure full coverage
+stroke_step = 0.05  # 5 cm steps in y direction
+
+# Generate back-and-forth wiping motions along x within spill bounds, stepping in y
+current_y = min_y
+while current_y <= max_y:
+    # Left to right stroke
+    left_point = np.array([min_x, current_y, wipe_z_height])
+    right_point = np.array([max_x, current_y, wipe_z_height])
+    
+    # Move to start of stroke (left)
+    goto_pose(left_point, wiping_orientation)
+    
+    # Perform stroke to right
+    goto_pose(right_point, wiping_orientation)
+    
+    # Step in y for next stroke
+    current_y += stroke_step
+    
+    # Break if we exceed bounds
+    if current_y > max_y:
+        break
+        
+    # Right to left stroke on next line
+    next_left_point = np.array([min_x, current_y, wipe_z_height])
+    next_right_point = np.array([max_x, current_y, wipe_z_height])
+    
+    # Move to start of next stroke (right side)
+    goto_pose(next_right_point, wiping_orientation)
+    
+    # Stroke back to left
+    goto_pose(next_left_point, wiping_orientation)
+    
+    # Step in y again
+    current_y += stroke_step
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_08_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping parameters based on spill extent
+half_length_x = spill_extent[0] / 2
+half_length_y = spill_extent[1] / 2
+
+# Set the wiping bounds (min and max x, y)
+min_x = spill_position[0] - half_length_x
+max_x = spill_position[0] + half_length_x
+min_y = spill_position[1] - half_length_y
+max_y = spill_position[1] + half_length_y
+
+# Use downward-facing orientation for wiping: (0, 0, 1, 0) in wxyz
+down_quaternion = np.array([0, 0, 1, 0])
+
+# Wipe in a grid pattern with small overlapping strokes to avoid large motions
+num_strokes = 5
+x_positions = np.linspace(min_x, max_x, num_strokes)
+y_positions = np.linspace(min_y, max_y, num_strokes)
+
+# Start at a safe height above the table before wiping
+safe_z = 0.1
+goto_pose(np.array([spill_position[0], spill_position[1], safe_z]), down_quaternion)
+
+# Move down to wiping height (z = 0.0)
+goto_pose(np.array([spill_position[0], spill_position[1], 0.0]), down_quaternion)
+
+# Perform back-and-forth wiping motions in a grid
+for y in y_positions:
+    for i, x in enumerate(x_positions):
+        # Alternate direction for back-and-forth motion
+        if i % 2 == 1:
+            x = x_positions[-(i+1)]
+        goto_pose(np.array([x, y, 0.0]), down_quaternion)
+
+# Return to safe height after wiping
+goto_pose(np.array([spill_position[0], spill_position[1], safe_z]), down_quaternion)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.84
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_09_sandboxrc_0_reward_0.840_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Table surface height is z = 0.0 m
+wipe_z_height = 0.0
+
+# Calculate bounds for wiping based on spill position and extent
+half_length_x = spill_extent[0] / 2
+half_length_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_length_x
+max_x = spill_position[0] + half_length_x
+min_y = spill_position[1] - half_length_y
+max_y = spill_position[1] + half_length_y
+
+# Small overlap between strokes to ensure full coverage
+stroke_step = 0.05  # 5 cm step for overlapping strokes
+
+# Generate back-and-forth wiping pattern along y-axis, moving incrementally in x
+current_y = min_y
+y_direction = 1  # Start moving in positive y direction
+
+# Move to starting point above the spill area
+start_position = np.array([min_x, min_y, wipe_z_height])
+goto_pose(start_position, wiping_orientation)
+
+# Perform grid-like wiping motion within the spill bounds
+x = min_x
+while x <= max_x:
+    # Determine stroke endpoints in y for current x
+    y_start = min_y
+    y_end = max_y
+    
+    # Move to start of stroke at current x
+    stroke_start = np.array([x, y_start, wipe_z_height])
+    goto_pose(stroke_start, wiping_orientation)
+    
+    # Wipe to end of stroke
+    stroke_end = np.array([x, y_end, wipe_z_height])
+    goto_pose(stroke_end, wiping_orientation)
+    
+    # Increment x for next parallel stroke
+    x += stroke_step
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.75
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_10_sandboxrc_0_reward_0.750_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # w, x, y, z
+
+# Define bounds for wiping based on spill extent
+half_x_extent = spill_extent[0] / 2
+half_y_extent = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_x_extent
+max_x = spill_position[0] + half_x_extent
+min_y = spill_position[1] - half_y_extent
+max_y = spill_position[1] + half_y_extent
+
+# Set z height to table surface (z = 0.0 m)
+z_height = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, y in enumerate(y_points):
+    if i % 2 == 0:
+        # Left to right
+        x_sequence = x_points
+    else:
+        # Right to left
+        x_sequence = x_points[::-1]
+    
+    for x in x_sequence:
+        goto_pose(np.array([x, y, z_height]), wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_11_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Generate a back-and-forth wiping pattern along the x-axis, stepping in y
+current_y = min_y
+reversed_dir = False  # alternate direction for efficiency
+
+while current_y <= max_y:
+    # Determine start and end x based on current pass direction
+    if reversed_dir:
+        x_start, x_end = max_x, min_x
+    else:
+        x_start, x_end = min_x, max_x
+    
+    # Wipe from x_start to x_end at current_y and z = 0.0
+    goto_pose(np.array([x_start, current_y, 0.0]), wiping_orientation)
+    goto_pose(np.array([x_end, current_y, 0.0]), wiping_orientation)
+    
+    # Move to next y row (small step in y)
+    current_y += step_size
+    reversed_dir = not reversed_dir  # Alternate direction for next pass
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_12_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Start at one edge of the spill area
+current_x = min_x
+current_y = min_y
+
+# Perform back-and-forth wiping motion within spill bounds
+while current_y <= max_y:
+    # Move to start of next stroke with small steps
+    stroke_start = np.array([current_x, current_y, 0.0])
+    goto_pose(stroke_start, wiping_orientation)
+
+    # Wipe along x-direction (left to right)
+    stroke_end = np.array([max_x, current_y, 0.0])
+    goto_pose(stroke_end, wiping_orientation)
+
+    # Increment y for next stroke
+    current_y += step_size
+
+    # Ensure we don't exceed bounds
+    if current_y > max_y:
+        break
+
+    # Return stroke at next y level (right to left)
+    return_stroke_start = np.array([max_x, current_y, 0.0])
+    goto_pose(return_stroke_start, wiping_orientation)
+
+    return_stroke_end = np.array([min_x, current_y, 0.0])
+    goto_pose(return_stroke_end, wiping_orientation)
+
+    # Increment y again
+    current_y += step_size
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.56
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_13_sandboxrc_0_reward_0.560_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # w, x, y, z
+
+# Define bounds for wiping based on spill extent
+half_x_extent = spill_extent[0] / 2
+half_y_extent = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_x_extent
+max_x = spill_position[0] + half_x_extent
+min_y = spill_position[1] - half_y_extent
+max_y = spill_position[1] + half_y_extent
+
+# Set z height to table surface (z = 0.0 m)
+z_height = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, y in enumerate(y_points):
+    if i % 2 == 0:
+        # Left to right
+        x_sequence = x_points
+    else:
+        # Right to left
+        x_sequence = x_points[::-1]
+    
+    for x in x_sequence:
+        goto_pose(np.array([x, y, z_height]), wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_14_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Generate a back-and-forth wiping pattern along the x-axis, stepping in y
+current_y = min_y
+reversed_direction = False  # alternate direction per row
+
+while current_y <= max_y:
+    # Determine start and end x based on current pass direction
+    if reversed_direction:
+        x_start, x_end = max_x, min_x
+    else:
+        x_start, x_end = min_x, max_x
+
+    # Move to start point at table height (z=0.0)
+    goto_pose(np.array([x_start, current_y, 0.0]), wiping_orientation)
+
+    # Wipe to end point
+    goto_pose(np.array([x_end, current_y, 0.0]), wiping_orientation)
+
+    # Step in y for next pass
+    current_y += step_size
+    reversed_direction = not reversed_direction  # Alternate direction
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_15_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill center and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Set z height to table surface
+z_height = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, x in enumerate(x_points):
+    for j, y in enumerate(y_points):
+        # Alternate direction of y sweep to reduce large movements
+        if i % 2 == 1:
+            y = y_points[-(j+1)]
+        
+        current_position = np.array([x, y, z_height])
+        goto_pose(current_position, wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.81
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_16_sandboxrc_0_reward_0.810_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Use table surface height (z = 0.0) for wiping
+wipe_z = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, x in enumerate(x_points):
+    for j, y in enumerate(y_points):
+        # Alternate direction of y-sweep to reduce large motions
+        if i % 2 == 1:
+            y = y_points[-(j+1)]
+        
+        target_pos = np.array([x, y, wipe_z])
+        goto_pose(target_pos, wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.91
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_17_sandboxrc_0_reward_0.910_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Generate a back-and-forth wiping pattern along the x-axis, stepping in y
+current_y = min_y
+reversed_direction = False
+
+while current_y <= max_y:
+    # Determine start and end x based on direction for back-and-forth motion
+    if reversed_direction:
+        x_start, x_end = max_x, min_x
+    else:
+        x_start, x_end = min_x, max_x
+
+    # Move to the starting point at z=0.0
+    start_point = np.array([x_start, current_y, 0.0])
+    goto_pose(start_point, wiping_orientation)
+
+    # Wipe to the end point at z=0.0
+    end_point = np.array([x_end, current_y, 0.0])
+    goto_pose(end_point, wiping_orientation)
+
+    # Update for next line
+    current_y += step_size
+    reversed_direction = not reversed_direction
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.93
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_18_sandboxrc_0_reward_0.930_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Generate a back-and-forth wiping pattern along the x-axis, stepping in y
+current_y = min_y
+reversed_direction = False
+
+while current_y <= max_y:
+    # Determine start and end x based on direction for back-and-forth motion
+    if reversed_direction:
+        x_start, x_end = max_x, min_x
+    else:
+        x_start, x_end = min_x, max_x
+
+    # Move to the starting point at z=0.0
+    start_point = np.array([x_start, current_y, 0.0])
+    goto_pose(start_point, wiping_orientation)
+
+    # Wipe to the end point at z=0.0
+    end_point = np.array([x_end, current_y, 0.0])
+    goto_pose(end_point, wiping_orientation)
+
+    # Update for next line
+    current_y += step_size
+    reversed_direction = not reversed_direction
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.3
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_19_sandboxrc_0_reward_0.300_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Table surface height is z = 0.0 m
+wipe_z_height = 0.0
+
+# Calculate bounds for wiping based on spill position and extent
+half_length_x = spill_extent[0] / 2
+half_length_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_length_x
+max_x = spill_position[0] + half_length_x
+min_y = spill_position[1] - half_length_y
+max_y = spill_position[1] + half_length_y
+
+# Small overlap between strokes to ensure full coverage
+stroke_step = 0.05  # 5 cm step for overlapping strokes
+
+# Generate back-and-forth wiping pattern along y-axis, moving incrementally in x
+current_y = min_y
+while current_y <= max_y:
+    # Wipe from min_x to max_x at current_y
+    goto_pose(np.array([min_x, current_y, wipe_z_height]), wiping_orientation)
+    goto_pose(np.array([max_x, current_y, wipe_z_height]), wiping_orientation)
+    
+    # Move to next parallel line if still within bounds
+    current_y += stroke_step
+    if current_y > max_y:
+        break
+        
+    # Return stroke from max_x to min_x at updated y
+    goto_pose(np.array([max_x, current_y, wipe_z_height]), wiping_orientation)
+    goto_pose(np.array([min_x, current_y, wipe_z_height]), wiping_orientation)
+    
+    # Increment y again for next pass
+    current_y += stroke_step
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.48
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_20_sandboxrc_0_reward_0.480_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill center and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Set z height to table surface
+z_height = 0.0
+
+# Generate a grid of points within the spill area for small wiping motions
+num_steps_x = 5
+num_steps_y = 5
+x_points = np.linspace(min_x, max_x, num_steps_x)
+y_points = np.linspace(min_y, max_y, num_steps_y)
+
+# Perform back-and-forth wiping pattern with small motions
+for i, x in enumerate(x_points):
+    for j, y in enumerate(y_points):
+        # Alternate direction of y sweep to reduce large movements
+        if i % 2 == 1:
+            y = y_points[-(j+1)]
+        
+        current_position = np.array([x, y, z_height])
+        goto_pose(current_position, wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.96
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_21_sandboxrc_0_reward_0.960_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Generate a back-and-forth wiping pattern along the x-axis, stepping in y
+current_y = min_y
+reversed_direction = False
+
+while current_y <= max_y:
+    # Determine start and end x based on direction for back-and-forth motion
+    if reversed_direction:
+        x_start, x_end = max_x, min_x
+    else:
+        x_start, x_end = min_x, max_x
+
+    # Move to the starting point at z=0.0
+    start_point = np.array([x_start, current_y, 0.0])
+    goto_pose(start_point, wiping_orientation)
+
+    # Wipe to the end point at z=0.0
+    end_point = np.array([x_end, current_y, 0.0])
+    goto_pose(end_point, wiping_orientation)
+
+    # Update for next line
+    current_y += step_size
+    reversed_direction = not reversed_direction
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.83
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_22_sandboxrc_0_reward_0.830_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the pose and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Table surface height is z = 0.0 m; set wiping position at this height
+wipe_z = 0.0
+target_position = np.array([spill_position[0], spill_position[1], wipe_z])
+
+# Move to the center of the spill at table height with downward orientation
+goto_pose(target_position, wiping_orientation)
+
+# Compute bounds for small back-and-forth wiping motions within the spill area
+half_x_extent = spill_extent[0] / 2 * 0.8  # Use 80% of extent to avoid large motions
+half_y_extent = spill_extent[1] / 2 * 0.8
+
+# Small offset for wiping motion (e.g., 5 cm steps)
+step = 0.05
+
+# Perform a grid-style wiping pattern within the spill bounds
+x_min = target_position[0] - half_x_extent
+x_max = target_position[0] + half_x_extent
+y_min = target_position[1] - half_y_extent
+y_max = target_position[1] + half_y_extent
+
+y_current = y_min
+while y_current <= y_max:
+    # Left to right
+    goto_pose(np.array([x_min, y_current, wipe_z]), wiping_orientation)
+    goto_pose(np.array([x_max, y_current, wipe_z]), wiping_orientation)
+    
+    y_current += step
+
+    if y_current > y_max:
+        break
+
+    # Right to left on next line
+    goto_pose(np.array([x_max, y_current, wipe_z]), wiping_orientation)
+    goto_pose(np.array([x_min, y_current, wipe_z]), wiping_orientation)
+
+    y_current += step
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.58
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_23_sandboxrc_0_reward_0.580_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0.0, 0.0, 1.0, 0.0])  # wxyz
+
+# Table surface is at z = 0.0; we'll wipe exactly at that height with downward orientation
+wipe_z = 0.0
+
+# Compute min and max x and y bounds based on spill center and extent
+half_x = spill_extent[0] / 2
+half_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_x
+max_x = spill_position[0] + half_x
+min_y = spill_position[1] - half_y
+max_y = spill_position[1] + half_y
+
+# Plan small back-and-forth wiping motions along the x-axis, stepping in y
+step_size = 0.05  # Small steps to avoid large IK deltas
+current_y = min_y
+
+while current_y <= max_y:
+    # Alternate direction to minimize travel distance
+    if (current_y - min_y) // step_size % 2 == 0:
+        x_start, x_end = min_x, max_x
+    else:
+        x_start, x_end = max_x, min_x
+    
+    # Move to start of wipe line at slightly higher z to avoid collision
+    goto_pose(np.array([x_start, current_y, 0.05]), wiping_orientation)
+    
+    # Lower to wipe height
+    goto_pose(np.array([x_start, current_y, wipe_z]), wiping_orientation)
+    
+    # Wipe across in current direction
+    goto_pose(np.array([x_end, current_y, wipe_z]), wiping_orientation)
+    
+    # Step in y for next line
+    current_y += step_size
+
+# Final lift after wiping
+goto_pose(np.array([spill_position[0], spill_position[1], 0.05]), wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.89
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_24_sandboxrc_0_reward_0.890_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Generate a back-and-forth wiping pattern along the x-axis, stepping in y
+current_y = min_y
+reversed_dir = False  # alternate direction for efficiency
+
+while current_y <= max_y:
+    # Determine start and end x based on current pass direction
+    if reversed_dir:
+        x_start, x_end = max_x, min_x
+    else:
+        x_start, x_end = min_x, max_x
+    
+    # Wipe from x_start to x_end at current_y and z = 0.0
+    goto_pose(np.array([x_start, current_y, 0.0]), wiping_orientation)
+    goto_pose(np.array([x_end, current_y, 0.0]), wiping_orientation)
+    
+    # Move to next y row (small step in y)
+    current_y += step_size
+    reversed_dir = not reversed_dir  # Alternate direction for next pass
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_25_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping motion based on spill center and extent
+half_length_x = spill_extent[0] / 2
+half_length_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_length_x
+max_x = spill_position[0] + half_length_x
+min_y = spill_position[1] - half_length_y
+max_y = spill_position[1] + half_length_y
+
+# Number of passes in y-direction
+num_passes = 5
+y_step = (max_y - min_y) / num_passes
+
+# Small overlap between motions to ensure full coverage
+overlap = 0.02
+
+# Perform back-and-forth wiping motions along x, stepping in y
+for i in range(num_passes + 1):
+    y_current = min_y + i * y_step
+    
+    # Alternate direction for each pass to reduce large motions
+    if i % 2 == 0:
+        start_x, end_x = max_x, min_x
+    else:
+        start_x, end_x = min_x, max_x
+    
+    # First move to the starting point above the surface
+    goto_pose(np.array([start_x, y_current, 0.0]), wiping_orientation)
+    
+    # Wipe horizontally at table height (z=0.0)
+    goto_pose(np.array([end_x, y_current, 0.0]), wiping_orientation)
+
+# Final stabilization pose
+goto_pose(spill_position, wiping_orientation)
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.72
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_26_sandboxrc_0_reward_0.720_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Generate a back-and-forth wiping pattern along the x-axis, stepping in y
+current_y = min_y
+reversed_dir = False  # alternate direction for efficiency
+
+while current_y <= max_y:
+    # Determine start and end x based on current pass direction
+    if reversed_dir:
+        x_start, x_end = max_x, min_x
+    else:
+        x_start, x_end = min_x, max_x
+    
+    # Wipe from x_start to x_end at current_y and z = 0.0
+    goto_pose(np.array([x_start, current_y, 0.0]), wiping_orientation)
+    goto_pose(np.array([x_end, current_y, 0.0]), wiping_orientation)
+    
+    # Move to next y row (small step in y)
+    current_y += step_size
+    reversed_dir = not reversed_dir  # Alternate direction for next pass
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.93
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_27_sandboxrc_0_reward_0.930_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Table surface height is z = 0.0 m
+table_z = 0.0
+
+# Calculate bounding box for wiping based on spill position and extent
+half_size_x = spill_extent[0] / 2
+half_size_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_size_x
+max_x = spill_position[0] + half_size_x
+min_y = spill_position[1] - half_size_y
+max_y = spill_position[1] + half_size_y
+
+# Small step size for safe wiping motions to avoid large IK deltas
+step_x = 0.05
+step_y = 0.05
+
+# Start from one corner of the spill area
+current_x = min_x
+current_y = min_y
+
+# Perform back-and-forth wiping pattern within spill bounds
+while current_y <= max_y:
+    while current_x <= max_x:
+        # Move to next wiping point
+        goto_pose(np.array([current_x, current_y, table_z]), wiping_orientation)
+        current_x += step_x
+    # Move to next row, alternating direction for efficient coverage
+    current_y += step_y
+    if current_y > max_y:
+        break
+    # Reverse x-direction for zigzag pattern
+    current_x = max_x if current_x > max_x else min_x
+    while current_x >= min_x:
+        goto_pose(np.array([current_x, current_y, table_z]), wiping_orientation)
+        current_x -= step_x
+    current_y += step_y
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 1.0
+  Task Completed: True
+  Terminated: True, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_28_sandboxrc_0_reward_1.000_taskcompleted_1/code.py
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [29824]
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation: downward-facing (0, 0, 1, 0) in wxyz
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping motions based on spill extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+# Use spill center to define min and max x and y for wiping area
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Wipe at table height z = 0.0
+z_wipe = 0.0
+
+# Small overlap step size for back-and-forth wiping motion to ensure full coverage
+step_size = 0.05
+
+# Start from one corner above the spill area
+start_pos = np.array([min_x, min_y, z_wipe])
+goto_pose(start_pos, wiping_orientation)
+
+# Perform back-and-forth linear wiping motions along y-axis, stepping in x
+x = min_x
+while x <= max_x:
+    # Move forward in y
+    pos1 = np.array([x, min_y, z_wipe])
+    goto_pose(pos1, wiping_orientation)
+    
+    pos2 = np.array([x, max_y, z_wipe])
+    goto_pose(pos2, wiping_orientation)
+    
+    # Increment x for next pass
+    x += step_size
+    
+    # Alternate direction for zigzag pattern (improves coverage)
+    min_y, max_y = max_y, min_y
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.72
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_29_sandboxrc_0_reward_0.720_taskcompleted_0/code.py
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Generate a back-and-forth wiping pattern along the x-axis, stepping in y
+current_y = min_y
+reversed_dir = False  # alternate direction for efficiency
+
+while current_y <= max_y:
+    # Determine start and end x based on current pass direction
+    if reversed_dir:
+        x_start, x_end = max_x, min_x
+    else:
+        x_start, x_end = min_x, max_x
+    
+    # Wipe from x_start to x_end at current_y and z = 0.0
+    goto_pose(np.array([x_start, current_y, 0.0]), wiping_orientation)
+    goto_pose(np.array([x_end, current_y, 0.0]), wiping_orientation)
+    
+    # Move to next y row (small step in y)
+    current_y += step_size
+    reversed_dir = not reversed_dir  # Alternate direction for next pass
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.62
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------
+Code saved to outputs/taskA_qwen3-235b-a22b-instruct-2507_30/qwen3-235b-a22b-instruct-2507/spill_wipe/trial_30_sandboxrc_0_reward_0.620_taskcompleted_0/code.py
+
+Summary Statistics:
+Model: qwen3-235b-a22b-instruct-2507
+Config Path: env_configs/spill_wipe/franka_robosuite_spill_wipe_privileged.yaml
+Git Commit: 53e9966 (Dirty: True)
+Total number of trials: 30
+Code generation success rate / Average reward / Task completed: 
+1.000/0.848/12
+Average code blocks: 1.000
+Average regenerations: 0.000
+Average finishes: 0.000
+Elapsed time: 316.69 seconds

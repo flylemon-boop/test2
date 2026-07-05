@@ -1,0 +1,45 @@
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Table surface height is z = 0.0 m
+table_z = 0.0
+
+# Calculate bounding box for wiping based on spill position and extent
+half_size_x = spill_extent[0] / 2
+half_size_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_size_x
+max_x = spill_position[0] + half_size_x
+min_y = spill_position[1] - half_size_y
+max_y = spill_position[1] + half_size_y
+
+# Small step size for safe wiping motions to avoid large IK deltas
+step_x = 0.05
+step_y = 0.05
+
+# Start from one corner of the spill area
+current_x = min_x
+current_y = min_y
+
+# Perform back-and-forth wiping pattern within spill bounds
+while current_y <= max_y:
+    while current_x <= max_x:
+        # Move to next wiping point
+        goto_pose(np.array([current_x, current_y, table_z]), wiping_orientation)
+        current_x += step_x
+    # Move to next row, alternating direction for efficient coverage
+    current_y += step_y
+    if current_y > max_y:
+        break
+    # Reverse x-direction for zigzag pattern
+    current_x = max_x if current_x > max_x else min_x
+    while current_x >= min_x:
+        goto_pose(np.array([current_x, current_y, table_z]), wiping_orientation)
+        current_x -= step_x
+    current_y += step_y

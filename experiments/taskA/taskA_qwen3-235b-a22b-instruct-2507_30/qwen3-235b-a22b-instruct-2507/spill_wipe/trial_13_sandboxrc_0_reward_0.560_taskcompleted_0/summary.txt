@@ -1,0 +1,66 @@
+----------------------------------------------------------------------------------------------------
+Generated program:
+# Code block 0
+import numpy as np
+
+# Get the position and extent of the brown spill
+spill_position, _, spill_extent = get_object_pose("brown spill", return_bbox_extent=True)
+
+# Define the wiping orientation (downward-facing)
+wiping_orientation = np.array([0, 0, 1, 0])  # wxyz
+
+# Compute bounds for wiping based on spill position and extent
+half_extent_x = spill_extent[0] / 2
+half_extent_y = spill_extent[1] / 2
+
+min_x = spill_position[0] - half_extent_x
+max_x = spill_position[0] + half_extent_x
+min_y = spill_position[1] - half_extent_y
+max_y = spill_position[1] + half_extent_y
+
+# Define small overlap between strokes to ensure full coverage
+step_size = 0.05  # 5 cm steps for smooth and safe motions
+
+# Start at one edge of the spill area
+current_x = min_x
+current_y = min_y
+
+# Perform back-and-forth wiping motion within spill bounds
+while current_y <= max_y:
+    # Move to start of next stroke with small steps
+    stroke_start = np.array([current_x, current_y, 0.0])
+    goto_pose(stroke_start, wiping_orientation)
+
+    # Wipe along x-direction (left to right)
+    stroke_end = np.array([max_x, current_y, 0.0])
+    goto_pose(stroke_end, wiping_orientation)
+
+    # Increment y for next stroke
+    current_y += step_size
+
+    # Ensure we don't exceed bounds
+    if current_y > max_y:
+        break
+
+    # Return stroke at next y level (right to left)
+    return_stroke_start = np.array([max_x, current_y, 0.0])
+    goto_pose(return_stroke_start, wiping_orientation)
+
+    return_stroke_end = np.array([min_x, current_y, 0.0])
+    goto_pose(return_stroke_end, wiping_orientation)
+
+    # Increment y again
+    current_y += step_size
+
+
+Environment response:
+  Sandbox failed: 0
+  Stdout: 
+  Stderr: 
+  Reward: 0.56
+  Task Completed: False
+  Terminated: False, Truncated: False
+  Num Regenerations: 0
+  Num Finishes: 0
+  Num Code Blocks: 1
+----------------------------------------------------------------------------------------------------

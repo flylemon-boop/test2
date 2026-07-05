@@ -1,0 +1,58 @@
+# Code block 0
+import numpy as np
+from scipy.spatial.transform import Rotation
+
+# First, get the grasp pose for the extruded handle of the brown square nut
+handle_position, handle_quaternion = sample_grasp_pose('extruded handle of the brown square nut')
+
+# Approach from above the handle to grasp it safely
+goto_pose(handle_position, handle_quaternion, z_approach=0.1)
+
+# Move down to the actual grasp pose
+goto_pose(handle_position, handle_quaternion)
+
+# Close the gripper to grasp the nut
+close_gripper()
+
+# Now, get the center of the nut to understand its orientation relative to the handle
+center_position, center_quaternion = get_object_pose('white hollow center of the brown square nut')
+
+# Compute the fixed transform from the handle grasp pose to the nut's center
+# This helps us predict how the nut is oriented when we're holding the handle
+handle_rotation = Rotation.from_quat(handle_quaternion[[1, 2, 3, 0]])  # Convert to xyzw for scipy
+center_rotation = Rotation.from_quat(center_quaternion[[1, 2, 3, 0]])
+
+# Relative rotation from handle frame to center frame
+relative_rotation = handle_rotation.inv() * center_rotation
+relative_translation = center_position - handle_position
+
+# Now, get the target peg position (the brown square block has a peg where the nut should be inserted)
+peg_position, peg_quaternion = get_object_pose('brown square block')
+
+# We want to insert the nut so that its center aligns with the peg top and orientation
+# Use the same relative transform to compute desired handle pose during insertion
+desired_center_position = peg_position  # Assume peg top is at object center
+desired_center_rotation = Rotation.from_quat(peg_quaternion[[1, 2, 3, 0]])
+
+# Apply inverse of relative transform to get desired handle pose
+desired_handle_rotation = desired_center_rotation * relative_rotation.inv()
+desired_handle_position = desired_center_position - desired_handle_rotation.apply(relative_translation)
+
+# Convert back to WXYZ quaternion
+desired_handle_quaternion = desired_handle_rotation.as_quat()[[3, 0, 1, 2]]  # Convert to wxyz
+
+# Lift slightly above the peg for approach
+insertion_approach_position = desired_handle_position.copy()
+insertion_approach_position[2] += 0.1
+
+goto_pose(insertion_approach_position, desired_handle_quaternion)
+
+# Insert the nut by moving down precisely
+goto_pose(desired_handle_position, desired_handle_quaternion, z_approach=0.0)
+
+# Optionally wait or apply slight downward force (simulated by staying in place)
+# Then release
+open_gripper()
+
+# Return to home position
+goto_home_joint_position()

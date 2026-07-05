@@ -1,0 +1,119 @@
+
+You are controlling a two-arm Franka Emika robot system on opposite sides of the table with API described below.
+Goal: The two arms should coordinate to lift a pot. Arm 0 should grasp handle 0, and Arm 1 should grasp handle 1. Then both arms should lift the pot up at the same height.
+
+Guidance:
+- The pot is in the center of the table and has two handles on opposite sides.
+- You may want to slightly lift both arms first to avoid occluding the pot and handles.
+- Use `get_handle0_pos()` to get the bounding box center position of handle 0 (returns a single 3D array).
+- Use `get_handle1_pos()` to get the bounding box center position of handle 1 (returns a single 3D array).
+- Avoid using top-down grasps, i.e. avoid using quaternion wxyz [0, 0, 1, 0] for the approach.
+- Sideways grasps are preferred with the y-axis of the gripper aligned with the world z-axis.
+- Coordinate system: All pose functions accept/return positions in robot0's base frame.
+
+You may write python code comments for reasoning but ONLY write the executable Python code and do not write it in code fences.
+The functions (APIs) above are already imported to the environment. If you want to use numpy, you need to import it explicitly.
+
+APIs:
+
+get_handle0_pos() -> numpy.ndarray
+  Doc:
+    Get the bounding box center position of handle 0 using vision detection.
+    
+    Args:
+        None
+    Returns:
+        bbox_center: (3,) XYZ position of bounding box center in world coordinates
+
+get_handle1_pos() -> numpy.ndarray
+  Doc:
+    Get the bounding box center position of handle 1 using vision detection.
+    
+    Args:
+        None
+    Returns:
+        bbox_center: (3,) XYZ position of bounding box center in world coordinates
+
+get_arm0_gripper_pose() -> tuple[numpy.ndarray, numpy.ndarray]
+  Doc:
+    Get the pose of the gripper for arm 0.
+    
+    Args:
+        None
+    Returns:
+        position: (3,) XYZ position in meters.
+        quaternion_wxyz: (4,) WXYZ unit quaternion.
+
+get_arm1_gripper_pose() -> tuple[numpy.ndarray, numpy.ndarray]
+  Doc:
+    Get the pose of the gripper for arm 1.
+    
+    Args:
+        None
+    Returns:
+        position: (3,) XYZ position in meters.
+        quaternion_wxyz: (4,) WXYZ unit quaternion.
+
+goto_pose_arm0(position: numpy.ndarray, quaternion_wxyz: numpy.ndarray, z_approach: float = 0.0) -> None
+  Doc:
+    Go to pose using Inverse Kinematics for Arm 0 (robot0)
+    Args:
+        position: (3,) XYZ position in meters for arm 0.
+        quaternion_wxyz: (4,) WXYZ unit quaternion for arm 0.
+        z_approach: (float) Z-axis distance offset for goto_pose insertion approach motion. Will first arrive at position + z_approach meters in Z-axis before moving to the requested pose. Useful for more precise grasp approaches. Default is 0.0.
+    Returns:
+        None
+
+open_gripper_arm0() -> None
+  Doc:
+    Open gripper fully for Arm 0 (robot0).
+    Args:
+        None
+    Returns:
+        None
+
+close_gripper_arm0() -> None
+  Doc:
+    Close gripper fully for Arm 0 (robot0).
+    Args:
+        None
+    Returns:
+        None
+
+goto_pose_arm1(position: numpy.ndarray, quaternion_wxyz: numpy.ndarray, z_approach: float = 0.0) -> None
+  Doc:
+    Go to pose using Inverse Kinematics for Arm 1 (robot1).
+    Args:
+        position: (3,) XYZ position in meters for arm 1.
+        quaternion_wxyz: (4,) WXYZ unit quaternion for arm 1.
+        z_approach: (float) Z-axis distance offset for goto_pose insertion approach motion. Will first arrive at position + z_approach meters in Z-axis before moving to the requested pose. Useful for more precise grasp approaches. Default is 0.0.
+    Returns:
+        None
+
+open_gripper_arm1() -> None
+  Doc:
+    Open gripper fully for Arm 1 (robot1).
+    Args:
+        None
+    Returns:
+        None
+
+close_gripper_arm1() -> None
+  Doc:
+    Close gripper fully for Arm 1 (robot1).
+    Args:
+        None
+    Returns:
+        None
+
+goto_pose_both(position0: numpy.ndarray, quaternion_wxyz0: numpy.ndarray, position1: numpy.ndarray, quaternion_wxyz1: numpy.ndarray, z_approach: float = 0.0) -> None
+  Doc:
+    Go to pose using Inverse Kinematics for moving both arms simultaneously. Positions and quaternions are in robot0's base frame.
+    Args:
+        position0: (3,) XYZ position in meters for arm 0.
+        quaternion_wxyz0: (4,) WXYZ unit quaternion for arm 0.
+        position1: (3,) XYZ position in meters for arm 1.
+        quaternion_wxyz1: (4,) WXYZ unit quaternion for arm 1.
+        z_approach: (float) Z-axis distance offset for goto_pose insertion approach motion. Will first arrive at position + z_approach meters in Z-axis before moving to the requested pose. Useful for more precise grasp approaches. Default is 0.0.
+    Returns:
+        None
