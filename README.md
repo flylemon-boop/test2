@@ -9,7 +9,8 @@ AlphaApollo code-as-action migration artifacts for the Robosuite mini-project.
   `cube_lifting`, `cube_stack`, `spill_wipe`, `nut_assembly`,
   `two_arm_lift`, and `two_arm_handover`.
 - Added a reproducible Task A runner at `scripts/run_taskA_s1.sh`.
-- Added the Task B AlphaApollo bridge under `code/AlphaApollo/`:
+- Added the Task B AlphaApollo bridge under `TaskB/AlphaApollo/` and
+  `code/AlphaApollo/`:
   - `alphaapollo/core/environments/embodied_robosuite/`
   - `alphaapollo/core/tools/embodied_robosuite.py`
   - `alphaapollo/core/environments/env_manager.py`
@@ -192,6 +193,8 @@ frame buffer to an episode mp4 and records the path in the episode JSON.
 ## Repository Layout
 
 ```text
+TaskB/
+TaskB/AlphaApollo/
 code/cap-x/
 code/AlphaApollo/
 scripts/run_taskA_s1.sh
@@ -202,6 +205,10 @@ results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/
 logs/taskA/
 experiments/taskA/taskA_qwen3-235b-a22b-instruct-2507_30/
 ```
+
+`TaskB/` contains the directly readable and runnable AlphaApollo Task B code
+copied from the remote CUDA machine. `code/AlphaApollo/` is the submitted source
+snapshot used for the Task B run.
 
 Runtime artifacts are excluded where possible: virtual environments, Git
 metadata, cache files, and local API key files are not committed.

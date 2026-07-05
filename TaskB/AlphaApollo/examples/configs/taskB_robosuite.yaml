@@ -1,0 +1,18 @@
+runner:
+  launcher: python
+  module: alphaapollo.core.generation.verl.trainer.main_generation
+  overrides:
+    - trainer.nnodes=1
+    - trainer.n_gpus_per_node=1
+    - data.train_batch_size=1
+    - data.val_batch_size=1
+    - env.env_name=embodied_robosuite
+    - env.seed=0
+    - env.max_steps=8
+    - env.history_length=8
+    - env.rollout.n=1
+    - env.resources_per_worker.num_cpus=1
+    - env.embodied_robosuite.task_name=cube_lift
+    - env.embodied_robosuite.max_steps=8
+    - env.embodied_robosuite.record_video=false
+    - env.embodied_robosuite.log_requests=false
