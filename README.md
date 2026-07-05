@@ -78,6 +78,29 @@ The run used 30 trials per task.
 
 Machine-readable Task A results are in `results/taskA_s1_summary.csv`.
 
+### Figure 17 Alignment
+
+The selected model corresponds to the `Qwen-235b` row in CaP-X Figure 17.
+The comparison below uses the S1 columns in the Task Success Rate panel.
+The paper reports N=100 per cell, while this reproduction uses N=30 per task.
+
+| Task | Figure 17 Qwen-235b S1 | Ours | Delta |
+| --- | ---: | ---: | ---: |
+| Cube Lift | 96.0% | 100.0% | +4.0 pp |
+| Cube Stack | 95.0% | 96.7% | +1.7 pp |
+| Spill Wipe | 39.0% | 40.0% | +1.0 pp |
+| Peg / Nut Assembly | 11.0% | 13.3% | +2.3 pp |
+| Two-Arm Lift | 6.0% | 6.7% | +0.7 pp |
+| Two-Arm Handover | 3.0% | 0.0% | -3.0 pp |
+| Macro average | 41.7% | 42.8% | +1.1 pp |
+
+The reproduction is aligned with Figure 17: the macro-average success rate is
+within 1.1 percentage points, and the task difficulty ordering is preserved
+up to small sampling noise from using 30 instead of 100 trials.
+
+Machine-readable Figure 17 comparison is in
+`results/taskA_vs_figure17_qwen235b_s1.csv`.
+
 ## 4. Issues and Fixes
 
 ### EGL initialization
