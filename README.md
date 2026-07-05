@@ -170,6 +170,8 @@ not blockers for Task A Robosuite experiments.
 ## Repository Layout
 
 ```text
+TaskA/
+TaskA/archive/TaskA_capx_code.tar.gz.part_*
 code/cap-x/
 scripts/run_taskA_s1.sh
 results/taskA_s1_summary.csv
@@ -179,10 +181,13 @@ logs/taskA/
 experiments/taskA/taskA_qwen3-235b-a22b-instruct-2507_30/
 ```
 
-`code/cap-x/` is a source snapshot from the CUDA machine used for the Task A
-run. It includes the local Robosuite/MuJoCo compatibility patch used during
-evaluation. Runtime artifacts are excluded: `.venv`, `outputs`, Git metadata,
-cache files, and local API key files are not committed.
+`TaskA/` contains a split `tar.gz` archive of the readable Task A CaP-X code
+bundle copied from the remote CUDA machine. It is split into sub-100MB parts so
+ordinary GitHub pushes work without Git LFS. `code/cap-x/` is the submitted
+source snapshot used for the Task A run. Both include the local
+Robosuite/MuJoCo compatibility patch used during evaluation. Runtime artifacts
+are excluded: `.venv`, `outputs`, Git metadata, cache files, and local API key
+files are not committed.
 
 Secrets such as API keys, SSH passwords, and proxy key files are intentionally
 not committed.
