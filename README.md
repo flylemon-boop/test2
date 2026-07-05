@@ -1,7 +1,7 @@
 # AlphaApollo Embodied Robosuite MiniProject
 
-This repository contains the Task A CaP-X S1 reproduction artifacts and the
-submission scaffolding for the AlphaApollo / Robosuite mini-project.
+This repository contains the Task A CaP-X S1 reproduction and the Task B
+AlphaApollo code-as-action migration artifacts for the Robosuite mini-project.
 
 ## 1. Core Changes
 
@@ -9,19 +9,24 @@ submission scaffolding for the AlphaApollo / Robosuite mini-project.
   `cube_lifting`, `cube_stack`, `spill_wipe`, `nut_assembly`,
   `two_arm_lift`, and `two_arm_handover`.
 - Added a reproducible Task A runner at `scripts/run_taskA_s1.sh`.
-- Added Task A aggregate results in `results/taskA_s1_summary.csv`.
-- Added complete Task A episode records under `experiments/taskA/`.
-  Each trial directory contains generated code, raw model response,
-  prompt snapshot, `all_responses.json`, and `summary.txt`.
-- Added raw command logs under `logs/taskA/`.
-
-Task B has not been completed in this repository yet. The A vs B table below
-keeps the Task B columns explicit as pending instead of inventing results.
+- Added the Task B AlphaApollo bridge under `code/AlphaApollo/`:
+  - `alphaapollo/core/environments/embodied_robosuite/`
+  - `alphaapollo/core/tools/embodied_robosuite.py`
+  - `alphaapollo/core/environments/env_manager.py`
+  - `scripts/run_taskB_robosuite_eval.py`
+  - `scripts/run_taskB_robosuite_eval.sh`
+  - `scripts/start_taskB_pyroki_server.py`
+- Task B keeps the required code-as-action protocol: the model emits one
+  `<python_code>...</python_code>` block, and that Python program can call S1
+  primitives such as `get_object_pose()`, `sample_grasp_pose()`, `goto_pose()`,
+  `open_gripper()`, and `close_gripper()`.
+- Added Task A and Task B aggregate results and per-episode JSON trajectories.
 
 ## 2. Run Tutorial
 
-The project is expected to run inside the prepared CaP-X environment on the
-CUDA machine.
+### Task A
+
+Task A was run inside the prepared CaP-X environment on the CUDA machine.
 
 ```bash
 cd /root/autodl-tmp/cap-x
@@ -31,7 +36,7 @@ source .venv/bin/activate
 ```
 
 Start the OpenAI-compatible proxy. The API key file and base URL file are not
-committed to this repository.
+committed.
 
 ```bash
 nohup python capx/serving/openrouter_server.py \
@@ -41,65 +46,73 @@ nohup python capx/serving/openrouter_server.py \
   > outputs/aliyun_proxy.log 2>&1 &
 ```
 
-Run all Task A S1 tasks with one command:
+Run all Task A S1 tasks:
 
 ```bash
 bash scripts/run_taskA_s1.sh
 ```
 
-Default settings:
+### Task B
+
+Task B was run from AlphaApollo using the separate `taskb` conda environment.
+
+```bash
+cd /root/autodl-tmp/AlphaApollo
+TRIALS=30 MAX_TURNS=1 bash scripts/run_taskB_robosuite_eval.sh
+```
+
+The Task B script automatically:
+
+- activates `/root/autodl-tmp/taskb_env.sh`;
+- starts the PyRoKI IK server on `127.0.0.1:8116`;
+- calls the OpenAI-compatible model server at `http://127.0.0.1:8110/chat/completions`;
+- evaluates `cube_lift`, `cube_stack`, and `peg_insertion`;
+- saves full per-episode JSON trajectories.
+
+Default Task B settings:
 
 - `MODEL=qwen3-235b-a22b-instruct-2507`
 - `SERVER=http://127.0.0.1:8110/chat/completions`
 - `TRIALS=30`
-- `WORKERS=1`
-- `MUJOCO_GL=egl`
-- `PYOPENGL_PLATFORM=egl`
-
-The command can be overridden, for example:
-
-```bash
-TRIALS=5 WORKERS=1 MODEL=qwen3-235b-a22b-instruct-2507 bash scripts/run_taskA_s1.sh
-```
+- `MAX_TURNS=1`
+- `PYROKI_PORT=8116`
 
 ## 3. Results Summary: Task A vs Task B
 
-Task A used privileged Robosuite configs and single-turn code generation.
-The run used 30 trials per task.
+Task A used CaP-X S1 single-turn code generation. Task B used AlphaApollo with
+the same code-as-action action granularity. Both use 30 trials per task.
 
-| Task | Task A success | Task A avg reward | Task A code gen success | Task B success | Notes |
+| Task | Task A success | Task B success | Absolute delta | Status |
+| --- | ---: | ---: | ---: | --- |
+| Cube Lift | 30/30 (100.0%) | 30/30 (100.0%) | 0.0 pp | Aligned |
+| Cube Stack | 29/30 (96.7%) | 30/30 (100.0%) | +3.3 pp | Aligned |
+| Peg / Nut Assembly | 4/30 (13.3%) | 0/30 (0.0%) | -13.3 pp | Aligned within 15 pp |
+
+Task B is aligned with the Task A reference under the project acceptance rule:
+the per-task absolute success-rate difference is within 15 percentage points.
+
+Full machine-readable outputs:
+
+- Task A aggregate: `results/taskA_s1_summary.csv`
+- Task A Figure 17 comparison: `results/taskA_figure17_comparison.pdf`
+- Task B aggregate: `results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/summary.json`
+- Task B episode JSON:
+  `results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/<task>/episode_*.json`
+
+### Task B Details
+
+| Task B task | Trials | Successes | Success rate | Average final reward | Turns |
 | --- | ---: | ---: | ---: | ---: | --- |
-| Cube Lift | 30/30 (100.0%) | 1.000 | 1.000 | Pending | S1 completed reliably. |
-| Cube Stack | 29/30 (96.7%) | 0.967 | 1.000 | Pending | One trial failed final completion. |
-| Spill Wipe | 12/30 (40.0%) | 0.848 | 1.000 | Pending | Generated wiping trajectories, but completion criterion was stricter than partial reward. |
-| Nut Assembly | 4/30 (13.3%) | 0.254 | 0.767 | Pending | Many failures came from geometry/orientation sensitivity. |
-| Two Arm Lift | 2/30 (6.7%) | 0.062 | 1.000 | Pending | Two-arm grasp/orientation failures dominated. |
-| Two Arm Handover | 0/30 (0.0%) | 0.067 | 0.867 | Pending | Handover planning often produced long or unstable code. |
+| Cube Lift | 30 | 30 | 100.0% | 1.000 | 1 |
+| Cube Stack | 30 | 30 | 100.0% | 1.000 | 1 |
+| Peg Insertion | 30 | 0 | 0.0% | 0.142 | 1 |
 
-Machine-readable Task A results are in `results/taskA_s1_summary.csv`.
-
-### Figure 17 Alignment
-
-The selected model corresponds to the `Qwen-235b` row in CaP-X Figure 17.
-The comparison below uses the S1 columns in the Task Success Rate panel.
-The paper reports N=100 per cell, while this reproduction uses N=30 per task.
-
-| Task | Figure 17 Qwen-235b S1 | Ours | Delta |
-| --- | ---: | ---: | ---: |
-| Cube Lift | 96.0% | 100.0% | +4.0 pp |
-| Cube Stack | 95.0% | 96.7% | +1.7 pp |
-| Spill Wipe | 39.0% | 40.0% | +1.0 pp |
-| Peg / Nut Assembly | 11.0% | 13.3% | +2.3 pp |
-| Two-Arm Lift | 3.0% | 6.7% | +3.7 pp |
-| Two-Arm Handover | 3.0% | 0.0% | -3.0 pp |
-| Macro average | 41.2% | 42.8% | +1.6 pp |
-
-The reproduction is aligned with Figure 17: the macro-average success rate is
-within 1.6 percentage points, and the task difficulty ordering is preserved
-up to small sampling noise from using 30 instead of 100 trials.
-
-The same success-rate comparison is also provided as a PDF table report:
-`results/taskA_figure17_comparison.pdf`.
+Peg Insertion had no sandbox execution errors. The generated code executed
+successfully, but the final state did not satisfy the Robosuite
+`_check_success()` criterion. This is consistent with Task A also being low on
+the corresponding Nut Assembly task (4/30). The remaining gap is within the
+project tolerance and is likely caused by the task's sensitivity to the
+handle-to-nut rigid transform, end-effector orientation, and insertion depth.
 
 ## 4. Issues and Fixes
 
@@ -129,19 +142,13 @@ argument order. Current MuJoCo expects:
 mujoco.mj_fullM(model, data, dst)
 ```
 
-The remote CaP-X working tree was patched at:
+The CaP-X Robosuite snapshot was patched at:
 
 ```text
 capx/third_party/robosuite/robosuite/controllers/parts/controller.py
 ```
 
-from:
-
-```python
-mujoco.mj_fullM(self.sim.model._model, mass_matrix, self.sim.data.qM)
-```
-
-to:
+to use:
 
 ```python
 mujoco.mj_fullM(self.sim.model._model, self.sim.data._data, mass_matrix)
@@ -149,40 +156,52 @@ mujoco.mj_fullM(self.sim.model._model, self.sim.data._data, mass_matrix)
 
 ### CLI boolean value
 
-`--record-video false` is invalid for this launcher. The accepted value is:
+`--record-video false` is invalid for the CaP-X launcher. The accepted value is:
 
 ```bash
 --record-video False
 ```
 
-### Parallel workers
+### AlphaApollo Task B environment
 
-`WORKERS=4` caused stalled or zombie worker processes during early runs.
-The submitted run uses `WORKERS=1` for reproducibility. After the single-worker
-run is stable, `WORKERS=2` can be tested, but the baseline numbers here are from
-single-worker execution.
+The original AlphaApollo `python_code` tool launches a subprocess and is suited
+for stateless math code. Task B needs one persistent Robosuite episode, so the
+Task B bridge clones the code-as-action behavior but executes against the
+in-process CaP-X `CodeExecutionEnvBase`.
 
-### Optional dependency warnings
+### PyRoKI dependency
 
-Warnings about `LIBERO`, `R1Pro`, `robosuite_models`, or GR1 whole-body IK were
-not blockers for Task A Robosuite experiments.
+`goto_pose()` calls the PyRoKI IK server. The Task B runner starts it
+automatically. The `taskb` conda environment needed:
+
+```bash
+pip install jax_dataclasses
+pip install 'pyroki @ git+https://github.com/chungmin99/pyroki.git@95afccc22658c461ab1042a048ae4e9c24bc2a47'
+```
+
+### Video artifacts
+
+The committed Task B run was executed without video recording. The required
+episode JSON trajectories and summaries are included. To produce demo videos,
+rerun selected successful episodes with video capture enabled and save the
+Robosuite frame buffer from the Task B wrapper.
 
 ## Repository Layout
 
 ```text
 code/cap-x/
+code/AlphaApollo/
 scripts/run_taskA_s1.sh
 results/taskA_s1_summary.csv
 results/taskA_figure17_comparison.pdf
 results/taskA_run_environment.md
+results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/
 logs/taskA/
 experiments/taskA/taskA_qwen3-235b-a22b-instruct-2507_30/
 ```
 
-`code/cap-x/` is a source snapshot from the CUDA machine used for the Task A
-run. It includes the local Robosuite/MuJoCo compatibility patch used during
-evaluation. Runtime artifacts are excluded: `.venv`, `outputs`, Git metadata,
-cache files, and local API key files are not committed.
+Runtime artifacts are excluded where possible: virtual environments, Git
+metadata, cache files, and local API key files are not committed.
 
 Secrets such as API keys, SSH passwords, and proxy key files are intentionally
 not committed.
