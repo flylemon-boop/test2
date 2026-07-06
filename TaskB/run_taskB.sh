@@ -22,6 +22,43 @@ fi
 export MUJOCO_GL="${MUJOCO_GL:-egl}"
 export PYOPENGL_PLATFORM="${PYOPENGL_PLATFORM:-egl}"
 
+API_CSV="${API_CSV:-}"
+for candidate in \
+  "${SCRIPT_DIR}/../api.csv" \
+  "${SCRIPT_DIR}/api.csv" \
+  "/root/autodl-tmp/api.csv"; do
+  if [[ -z "${API_CSV}" && -f "${candidate}" ]]; then
+    API_CSV="${candidate}"
+  fi
+done
+
+if [[ -n "${API_CSV}" && -f "${API_CSV}" && ( -z "${OPENAI_API_KEY:-}" || -z "${SERVER:-}" ) ]]; then
+  api_env_file="$(mktemp)"
+  "${PYTHON:-python}" - "${API_CSV}" >"${api_env_file}" <<'PY'
+import csv
+import shlex
+import sys
+from pathlib import Path
+
+kv = {}
+with Path(sys.argv[1]).open(newline="", encoding="utf-8-sig") as f:
+    for row in csv.reader(f):
+        if len(row) >= 2:
+            kv[row[0].strip()] = row[1].strip()
+
+if "apiKey" in kv:
+    print("export OPENAI_API_KEY=" + shlex.quote(kv["apiKey"]))
+base = (kv.get("openAiCompatible") or kv.get("apiHost") or "").rstrip("/")
+if base:
+    if not base.endswith("/chat/completions"):
+        base = base + "/chat/completions"
+    print("export SERVER=" + shlex.quote(base))
+PY
+  # shellcheck disable=SC1090
+  source "${api_env_file}"
+  rm -f "${api_env_file}"
+fi
+
 MODEL="${MODEL:-qwen3-235b-a22b-instruct-2507}"
 SERVER="${SERVER:-http://127.0.0.1:8110/chat/completions}"
 TRIALS="${TRIALS:-30}"
