@@ -59,23 +59,24 @@ Task B was run from AlphaApollo using the separate `taskb` conda environment.
 
 ```bash
 cd /root/autodl-tmp/AlphaApollo
-TRIALS=30 MAX_TURNS=1 bash scripts/run_taskB_robosuite_eval.sh
+TRIALS=30 MAX_TURNS=4 bash scripts/run_taskB_robosuite_eval.sh
 ```
 
 The Task B script automatically:
 
 - activates `/root/autodl-tmp/taskb_env.sh`;
 - starts the PyRoKI IK server on `127.0.0.1:8116`;
-- calls the OpenAI-compatible model server at `http://127.0.0.1:8110/chat/completions`;
+- calls an OpenAI-compatible model server, either through the local proxy at
+  `http://127.0.0.1:8110/chat/completions` or the configured remote API URL;
 - evaluates `cube_lift`, `cube_stack`, and `peg_insertion`;
 - saves full per-episode JSON trajectories.
 
 Default Task B settings:
 
 - `MODEL=qwen3-235b-a22b-instruct-2507`
-- `SERVER=http://127.0.0.1:8110/chat/completions`
+- `SERVER=<OpenAI-compatible chat completions URL>`
 - `TRIALS=30`
-- `MAX_TURNS=1`
+- `MAX_TURNS=4`
 - `PYROKI_PORT=8116`
 
 ## 3. Results Summary: Task A vs Task B
@@ -87,7 +88,7 @@ the same code-as-action action granularity. Both use 30 trials per task.
 | --- | ---: | ---: | ---: | --- |
 | Cube Lift | 30/30 (100.0%) | 30/30 (100.0%) | 0.0 pp | Aligned |
 | Cube Stack | 29/30 (96.7%) | 30/30 (100.0%) | +3.3 pp | Aligned |
-| Peg / Nut Assembly | 4/30 (13.3%) | 0/30 (0.0%) | -13.3 pp | Aligned within 15 pp |
+| Peg / Nut Assembly | 4/30 (13.3%) | 5/30 (16.7%) | +3.3 pp | Aligned |
 
 Task B is aligned with the Task A reference under the project acceptance rule:
 the per-task absolute success-rate difference is within 15 percentage points.
@@ -107,16 +108,15 @@ Full machine-readable outputs:
 
 | Task B task | Trials | Successes | Success rate | Average final reward | Turns |
 | --- | ---: | ---: | ---: | ---: | --- |
-| Cube Lift | 30 | 30 | 100.0% | 1.000 | 1 |
+| Cube Lift | 30 | 30 | 100.0% | 1.000 | 2 |
 | Cube Stack | 30 | 30 | 100.0% | 1.000 | 1 |
-| Peg Insertion | 30 | 0 | 0.0% | 0.142 | 1 |
+| Peg Insertion | 30 | 5 | 16.7% | 0.233 | 3 |
 
-Peg Insertion had no sandbox execution errors. The generated code executed
-successfully, but the final state did not satisfy the Robosuite
-`_check_success()` criterion. This is consistent with Task A also being low on
-the corresponding Nut Assembly task (4/30). The remaining gap is within the
-project tolerance and is likely caused by the task's sensitivity to the
-handle-to-nut rigid transform, end-effector orientation, and insertion depth.
+Peg Insertion remained the hardest Task B task. The new run improved it to
+5/30 successes, which is within 3.3 percentage points of the corresponding
+Task A Nut Assembly result (4/30). The remaining failures are likely caused by
+the task's sensitivity to the handle-to-nut rigid transform, end-effector
+orientation, and insertion depth.
 
 ## 4. Issues and Fixes
 

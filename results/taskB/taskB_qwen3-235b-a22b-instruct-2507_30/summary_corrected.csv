@@ -1,0 +1,4 @@
+task,trials,successes,success_rate,average_reward,task_completed
+cube_lift,30,30,1.0,1.0,30
+cube_stack,30,30,1.0,1.0,30
+peg_insertion,30,7,0.23333333333333334,0.29991826250438003,7

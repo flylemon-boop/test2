@@ -1,8 +1,10 @@
 {
+  "runner": "alphaapollo_api_manager",
   "model": "qwen3-235b-a22b-instruct-2507",
-  "server_url": "http://127.0.0.1:8110/chat/completions",
-  "max_turns": 1,
+  "server_url": "https://llm-gel2tsb2bgyzuw0n.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "max_turns": 4,
   "seed_start": 0,
+  "batch_size": 1,
   "tasks": [
     {
       "task": "cube_lift",
@@ -19,8 +21,8 @@
     {
       "task": "peg_insertion",
       "trials": 30,
-      "successes": 0,
-      "success_rate": 0.0
+      "successes": 5,
+      "success_rate": 0.16666666666666666
     }
   ]
 }

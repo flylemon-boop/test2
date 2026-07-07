@@ -18,7 +18,7 @@ Typical remote run:
 
 ```bash
 cd TaskB/AlphaApollo
-TRIALS=30 MAX_TURNS=1 bash scripts/run_taskB_robosuite_eval.sh
+TRIALS=30 MAX_TURNS=4 bash scripts/run_taskB_robosuite_eval.sh
 ```
 
 Runtime artifacts and secrets are not included: `.git`, `.venv`, `outputs`,

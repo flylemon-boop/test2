@@ -1,0 +1,4 @@
+task,trials,successes,success_rate
+cube_lift,30,30,1.0
+cube_stack,30,30,1.0
+peg_insertion,30,5,0.16666666666666666

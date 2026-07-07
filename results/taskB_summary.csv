@@ -1,4 +1,4 @@
 task,trials,successes,success_rate,taskA_success_rate,absolute_delta_pp,avg_final_reward,max_turns
-cube_lift,30,30,1.0000,1.0000,0.0,1.0000,1
+cube_lift,30,30,1.0000,1.0000,0.0,1.0000,2
 cube_stack,30,30,1.0000,0.9667,3.3,1.0000,1
-peg_insertion,30,0,0.0000,0.1333,13.3,0.1418,1
+peg_insertion,30,5,0.1667,0.1333,3.3,0.2330,3

@@ -5,32 +5,38 @@
   "success": true,
   "final_reward": 1.0,
   "turns": 1,
-  "elapsed_sec": 4.710898160934448,
+  "elapsed_sec": 3.891308546066284,
   "error": null,
   "trajectory": [
     {
       "turn": 0,
-      "model_output": "<python_code>\nimport numpy as np\n\n# Get the grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach from 10 cm above to ensure safe descent\nz_approach_distance = 0.10\n\n# Open the gripper before attempting the grasp\nopen_gripper()\n\n# Move to the approach point above the grasp pose\ngoto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)\n\n# Perform the actual grasp motion (move down to the grasp pose)\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.0)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in Z-axis by 10 cm\nlifted_position = grasp_position + np.array([0.0, 0.0, 0.10])\ngoto_pose(lifted_position, grasp_quaternion, z_approach=0.0)\n</python_code>",
-      "executed_action": "<python_code>\nimport numpy as np\n\n# Get the grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach from 10 cm above to ensure safe descent\nz_approach_distance = 0.10\n\n# Open the gripper before attempting the grasp\nopen_gripper()\n\n# Move to the approach point above the grasp pose\ngoto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)\n\n# Perform the actual grasp motion (move down to the grasp pose)\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.0)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in Z-axis by 10 cm\nlifted_position = grasp_position + np.array([0.0, 0.0, 0.10])\ngoto_pose(lifted_position, grasp_quaternion, z_approach=0.0)\n</python_code>",
+      "model_output": "<python_code>\nimport numpy as np\n\n# Open the gripper before attempting to pick up the red cube\nopen_gripper()\n\n# Sample a grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach the red cube with a z_approach offset to avoid collision\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.05)\n\n# Move down to the actual grasp position\ngoto_pose(grasp_position, grasp_quaternion)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in the z-axis\nlift_position = grasp_position + np.array([0.0, 0.0, 0.1])\ngoto_pose(lift_position, grasp_quaternion)\n</python_code>",
+      "executed_action": "<python_code>\nimport numpy as np\n\n# Open the gripper before attempting to pick up the red cube\nopen_gripper()\n\n# Sample a grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach the red cube with a z_approach offset to avoid collision\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.05)\n\n# Move down to the actual grasp position\ngoto_pose(grasp_position, grasp_quaternion)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in the z-axis\nlift_position = grasp_position + np.array([0.0, 0.0, 0.1])\ngoto_pose(lift_position, grasp_quaternion)\n</python_code>",
       "observation": "",
       "reward": 1.0,
       "done": true,
       "metadata": {
-        "tool_calling": true,
-        "tool_group": "EmbodiedRobosuiteToolGroup",
-        "tool_name": "python_code",
-        "tool_input": "import numpy as np\n\n# Get the grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach from 10 cm above to ensure safe descent\nz_approach_distance = 0.10\n\n# Open the gripper before attempting the grasp\nopen_gripper()\n\n# Move to the approach point above the grasp pose\ngoto_pose(grasp_position, grasp_quaternion, z_approach=z_approach_distance)\n\n# Perform the actual grasp motion (move down to the grasp pose)\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.0)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in Z-axis by 10 cm\nlifted_position = grasp_position + np.array([0.0, 0.0, 0.10])\ngoto_pose(lifted_position, grasp_quaternion, z_approach=0.0)",
-        "data_source": "cube_lift",
-        "task_name": "cube_lift",
-        "task_completed": true,
-        "terminated": true,
-        "truncated": false,
-        "sandbox_status": "success"
+        "tool_infos": {
+          "tool_calling": true,
+          "tool_group": "EmbodiedRobosuiteToolGroup",
+          "tool_name": "python_code",
+          "tool_input": "import numpy as np\n\n# Open the gripper before attempting to pick up the red cube\nopen_gripper()\n\n# Sample a grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach the red cube with a z_approach offset to avoid collision\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.05)\n\n# Move down to the actual grasp position\ngoto_pose(grasp_position, grasp_quaternion)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in the z-axis\nlift_position = grasp_position + np.array([0.0, 0.0, 0.1])\ngoto_pose(lift_position, grasp_quaternion)",
+          "data_source": "cube_lift",
+          "task_name": "cube_lift",
+          "task_completed": true,
+          "terminated": true,
+          "truncated": false,
+          "sandbox_status": "success"
+        },
+        "postprocessed_action": "<python_code>import numpy as np\n\n# Open the gripper before attempting to pick up the red cube\nopen_gripper()\n\n# Sample a grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach the red cube with a z_approach offset to avoid collision\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.05)\n\n# Move down to the actual grasp position\ngoto_pose(grasp_position, grasp_quaternion)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in the z-axis\nlift_position = grasp_position + np.array([0.0, 0.0, 0.1])\ngoto_pose(lift_position, grasp_quaternion)</python_code>",
+        "won": true,
+        "is_action_valid": 1
       }
     }
   ],
   "env_info": {
     "data_source": "cube_lift",
     "task_name": "cube_lift"
-  }
+  },
+  "video_path": null
 }
