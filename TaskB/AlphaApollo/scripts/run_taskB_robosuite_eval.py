@@ -71,10 +71,27 @@ def run_episode(args: argparse.Namespace, task_name: str, trial_idx: int) -> Dic
             "record_video": args.record_video,
             "log_requests": False,
         }
-    )
-    env = EmbodiedRobosuiteEnv(cfg)
-    env.reset({"seed": seed, "data_source": task_name})
+    ) #临时创建一个配置对象cfg，然后传给env = EmbodiedRobosuiteEnv(cfg)
+    env = EmbodiedRobosuiteEnv(cfg) #为当前episode创建临时环境，env 是一个 EmbodiedRobosuiteEnv 对象。
+    # env 是 AlphaApollo 对 CaP-X / Robosuite 机器人任务的封装对象；外层负责文本对话和工具调用，内层负责真正执行 Python 代码控制机器人仿真。
+    env.reset({"seed": seed, "data_source": task_name}) #重置当前episode的环境状态
     prompt, info = env.init([])
+    '''env.init([])
+    ↓
+    返回 prompt 和 info
+
+    prompt:
+    来自 self.task_prompt
+    self.task_prompt:
+    来自 env.reset(...) 时 self.capx_env.reset(...) 返回的 obs/info
+    再经过 _extract_prompt(...) 整理和追加格式要求
+
+    info:
+    来自 self.data_source 和 self.task_name
+    self.task_name:
+    来自 cfg["task_name"]
+    self.data_source:
+    来自 env.reset({"data_source": task_name})'''
     messages: List[Dict[str, Any]] = [
         {
             "role": "system",
@@ -85,9 +102,8 @@ def run_episode(args: argparse.Namespace, task_name: str, trial_idx: int) -> Dic
             ),
         },
         {"role": "user", "content": prompt[0]["content"]},
-    ]
-
-    trajectory: List[Dict[str, Any]] = []
+    ]#要给模型的prompt
+    trajectory: List[Dict[str, Any]] = [] #这是一个轨迹记录列表，用来保存当前 episode 每一轮发生了什么。
     success = False
     final_reward = 0.0
     error = None
@@ -103,9 +119,9 @@ def run_episode(args: argparse.Namespace, task_name: str, trial_idx: int) -> Dic
                 temperature=args.temperature,
                 max_tokens=args.max_tokens,
                 timeout=args.request_timeout,
-            )
-            action = ensure_python_code(model_output)
-            step_out = env.step(action, action)
+            ) #得到需要执行的代码
+            action = ensure_python_code(model_output) #保证模型输出一定被包裹在<python_code></python_code>
+            step_out = env.step(action, action) #把模型生成的 <python_code> 动作交给环境执行，执行后拿回奖励、是否结束、环境反馈和执行元信息。
             reward = float(step_out["reward"])
             done = bool(step_out["done"])
             metadata = step_out.get("metadata", {})

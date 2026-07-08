@@ -61,7 +61,9 @@ fi
 
 MODEL="${MODEL:-qwen3-235b-a22b-instruct-2507}"
 SERVER="${SERVER:-http://127.0.0.1:8110/chat/completions}"
+TASKS="${TASKS:-cube_lift cube_stack peg_insertion}"
 TRIALS="${TRIALS:-30}"
+BATCH_SIZE="${BATCH_SIZE:-1}"
 MAX_TURNS="${MAX_TURNS:-4}"
 SEED_START="${SEED_START:-0}"
 PYROKI_PORT="${PYROKI_PORT:-8116}"
@@ -106,10 +108,12 @@ video_args=()
 if [[ "${RECORD_VIDEO}" == "1" || "${RECORD_VIDEO}" == "true" || "${RECORD_VIDEO}" == "True" ]]; then
   video_args+=(--record-video)
 fi
+read -r -a task_args <<<"${TASKS}"
 
-"${PYTHON_BIN}" scripts/run_taskB_robosuite_eval.py \
-  --tasks cube_lift cube_stack peg_insertion \
+"${PYTHON_BIN}" scripts/run_taskB_robosuite_api.py \
+  --tasks "${task_args[@]}" \
   --trials "${TRIALS}" \
+  --batch-size "${BATCH_SIZE}" \
   --seed-start "${SEED_START}" \
   --max-turns "${MAX_TURNS}" \
   --server-url "${SERVER}" \

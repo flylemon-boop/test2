@@ -5,13 +5,13 @@
   "success": true,
   "final_reward": 1.0,
   "turns": 1,
-  "elapsed_sec": 4.442152976989746,
+  "elapsed_sec": 5.853552579879761,
   "error": null,
   "trajectory": [
     {
       "turn": 0,
-      "model_output": "<python_code>\nimport numpy as np\n\n# Step 1: Open the gripper before attempting the grasp\nopen_gripper()\n\n# Step 2: Sample a valid grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Step 3: Approach the grasp position from above with a z_approach offset to avoid collision\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Step 4: Perform the actual grasp motion without approach (z_approach=0.0)\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.0)\n\n# Step 5: Close the gripper to pick up the red cube\nclose_gripper()\n\n# Step 6: Lift the red cube by moving upward in Z after grasping\nlift_position = grasp_position + np.array([0, 0, 0.1])\ngoto_pose(lift_position, grasp_quaternion, z_approach=0.0)\n</python_code>",
-      "executed_action": "<python_code>\nimport numpy as np\n\n# Step 1: Open the gripper before attempting the grasp\nopen_gripper()\n\n# Step 2: Sample a valid grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Step 3: Approach the grasp position from above with a z_approach offset to avoid collision\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Step 4: Perform the actual grasp motion without approach (z_approach=0.0)\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.0)\n\n# Step 5: Close the gripper to pick up the red cube\nclose_gripper()\n\n# Step 6: Lift the red cube by moving upward in Z after grasping\nlift_position = grasp_position + np.array([0, 0, 0.1])\ngoto_pose(lift_position, grasp_quaternion, z_approach=0.0)\n</python_code>",
+      "model_output": "<python_code>\nimport numpy as np\n\n# Get the grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach the red cube from above with a z_approach of 0.1 meters\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in the z-axis by 0.2 meters\nlift_position = grasp_position + np.array([0.0, 0.0, 0.2])\ngoto_pose(lift_position, grasp_quaternion)\n</python_code>",
+      "executed_action": "<python_code>\nimport numpy as np\n\n# Get the grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach the red cube from above with a z_approach of 0.1 meters\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in the z-axis by 0.2 meters\nlift_position = grasp_position + np.array([0.0, 0.0, 0.2])\ngoto_pose(lift_position, grasp_quaternion)\n</python_code>",
       "observation": "",
       "reward": 1.0,
       "done": true,
@@ -20,7 +20,7 @@
           "tool_calling": true,
           "tool_group": "EmbodiedRobosuiteToolGroup",
           "tool_name": "python_code",
-          "tool_input": "import numpy as np\n\n# Step 1: Open the gripper before attempting the grasp\nopen_gripper()\n\n# Step 2: Sample a valid grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Step 3: Approach the grasp position from above with a z_approach offset to avoid collision\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Step 4: Perform the actual grasp motion without approach (z_approach=0.0)\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.0)\n\n# Step 5: Close the gripper to pick up the red cube\nclose_gripper()\n\n# Step 6: Lift the red cube by moving upward in Z after grasping\nlift_position = grasp_position + np.array([0, 0, 0.1])\ngoto_pose(lift_position, grasp_quaternion, z_approach=0.0)",
+          "tool_input": "import numpy as np\n\n# Get the grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach the red cube from above with a z_approach of 0.1 meters\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in the z-axis by 0.2 meters\nlift_position = grasp_position + np.array([0.0, 0.0, 0.2])\ngoto_pose(lift_position, grasp_quaternion)",
           "data_source": "cube_lift",
           "task_name": "cube_lift",
           "task_completed": true,
@@ -28,7 +28,7 @@
           "truncated": false,
           "sandbox_status": "success"
         },
-        "postprocessed_action": "<python_code>import numpy as np\n\n# Step 1: Open the gripper before attempting the grasp\nopen_gripper()\n\n# Step 2: Sample a valid grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Step 3: Approach the grasp position from above with a z_approach offset to avoid collision\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Step 4: Perform the actual grasp motion without approach (z_approach=0.0)\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.0)\n\n# Step 5: Close the gripper to pick up the red cube\nclose_gripper()\n\n# Step 6: Lift the red cube by moving upward in Z after grasping\nlift_position = grasp_position + np.array([0, 0, 0.1])\ngoto_pose(lift_position, grasp_quaternion, z_approach=0.0)</python_code>",
+        "postprocessed_action": "<python_code>import numpy as np\n\n# Get the grasp pose for the red cube\ngrasp_position, grasp_quaternion = sample_grasp_pose(\"red cube\")\n\n# Approach the red cube from above with a z_approach of 0.1 meters\ngoto_pose(grasp_position, grasp_quaternion, z_approach=0.1)\n\n# Close the gripper to pick up the red cube\nclose_gripper()\n\n# Lift the red cube by moving upward in the z-axis by 0.2 meters\nlift_position = grasp_position + np.array([0.0, 0.0, 0.2])\ngoto_pose(lift_position, grasp_quaternion)</python_code>",
         "won": true,
         "is_action_valid": 1
       }

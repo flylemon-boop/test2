@@ -13,7 +13,7 @@ class EmbodiedRobosuiteToolGroup(ToolGroup):
         super().__init__(name="EmbodiedRobosuiteToolGroup")
 
     @tool
-    def python_code(self, code: str) -> Dict[str, Any]:
+    def python_code(self, code: str) -> Dict[str, Any]: #把 AlphaApollo 的工具调用转成 CaP-X 的环境执行
         if not code or not code.strip():
             return {
                 "text_result": json.dumps(

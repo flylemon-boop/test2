@@ -12,7 +12,7 @@ from alphaapollo.core.environments.informal_math_training.base_text_env import (
 )
 from alphaapollo.core.tools.embodied_robosuite import EmbodiedRobosuiteToolGroup
 
-
+# TASK_SPECS 把任务名映射到 CaP-X 的高层环境类、底层 robosuite 类和 API 名称。
 TASK_SPECS = {
     "cube_lift": {
         "env_cls": "capx.envs.tasks.franka.franka_lift.FrankaLiftCodeEnv",
@@ -42,7 +42,7 @@ TASK_SPECS = {
 }
 
 
-def _load_symbol(path: str):
+def _load_symbol(path: str): #把 "某个模块.某个类名" 这种字符串，转换成真正可用的 Python 类/函数对象。
     module_name, symbol_name = path.rsplit(".", 1)
     module = __import__(module_name, fromlist=[symbol_name])
     return getattr(module, symbol_name)
@@ -56,7 +56,7 @@ def _to_plain_dict(cfg: Any) -> Dict[str, Any]:
     return dict(cfg)
 
 
-class EmbodiedRobosuiteEnv(BaseTextEnv):
+class EmbodiedRobosuiteEnv(BaseTextEnv): #继承 BaseTextEnv 拥有 AlphaApollo 文本环境接口 init / step / close
     """AlphaApollo text env wrapper around CaP-X Robosuite code execution envs."""
 
     def __init__(self, env_config: DictConfig):
@@ -67,12 +67,12 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
         self.log_requests = bool(getattr(env_config, "log_requests", False))
         self.record_video = bool(getattr(env_config, "record_video", False))
         self.video_dir = str(getattr(env_config, "video_dir", "outputs/taskB_videos"))
-        self.capx_env = self._build_capx_env()
-        self.tool_group = EmbodiedRobosuiteToolGroup(
+        self.capx_env = self._build_capx_env() #创建真正的 CaP-X / Robosuite 环境。这里就有了FrankaLiftCodeEnv的prompt
+        self.tool_group = EmbodiedRobosuiteToolGroup(  #执行这个的时候父类 ToolGroup.__init__ 会扫描到 python_code
             self.capx_env,
-            log_requests=self.log_requests,
-        )
-        self.init_tool_groups([self.tool_group])
+            log_requests=self.log_requests, #创建 EmbodiedRobosuiteToolGroup，并通过 init_tool_groups() 注册到 BaseTextEnv 的工具系统里
+        ) #把 self.capx_env.step(code) 包装成 AlphaApollo 可以调用的工具。把 AlphaApollo 的“工具调用机制”和 CaP-X 的“执行 Python 控制机器人”机制接起来。
+        self.init_tool_groups([self.tool_group]) #注册工具组
         self.reset({})
 
     def _build_capx_env(self):
@@ -84,14 +84,14 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
         # Register only the privileged APIs needed by Task B. Importing
         # capx.integrations top-level also imports optional visual APIs.
         from capx.envs.tasks.base import CodeExecEnvConfig
-        from capx.integrations.base_api import list_apis, register_api
+        from capx.integrations.base_api import list_apis, register_api    # 把 CaP-X API 类注册到 CaP-X 的 API registry
         from capx.integrations.franka.control_privileged import (
             FrankaControlPrivilegedApi,
         )
         from capx.integrations.franka.nut_assembly_privileged import (
             FrankaControlNutAssemblyPrivilegedApi,
         )
-
+        # CodeExecEnvConfig(apis=[spec["api"]]) 把 API 名字传给 CaP-X high-level env。
         if "FrankaControlPrivilegedApi" not in list_apis():
             register_api("FrankaControlPrivilegedApi", FrankaControlPrivilegedApi)
         if "FrankaControlNutAssemblyPrivilegedApi" not in list_apis():
@@ -100,8 +100,10 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
                 FrankaControlNutAssemblyPrivilegedApi,
             )
 
-        low_level_cls = _load_symbol(spec["low_level_cls"])
+        low_level_cls = _load_symbol(spec["low_level_cls"]) #low-level env 类本来就在 CaP-X 里，TaskB 只是根据字符串路径把它们导入出来，并传参数创建实例。
+        # 在类似TaskA/cap-x/capx/envs/simulators/robosuite_cube_lift.py:22地方有定义
         env_cls = _load_symbol(spec["env_cls"])
+        #"env_cls"定义在 TaskA 的这里：TaskA/cap-x/capx/envs/tasks/franka/franka_lift.py:35 它是一个 CaP-X high-level env 类
         capx_root = Path(__import__("capx").__file__).resolve().parents[1]
         controller_cfg = spec.get(
             "controller_cfg",
@@ -109,40 +111,78 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
                 capx_root
                 / "capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json"
             ),
-        )
+        ) # 告诉 Robosuite：Franka/Panda 机械臂用什么控制器。
         low_level = low_level_cls(
             controller_cfg=controller_cfg,
             privileged=bool(spec.get("privileged", True)),
             enable_render=bool(spec.get("enable_render", self.record_video)),
             max_steps=int(spec.get("sim_max_steps", 1500)),
-        )
-        cfg = CodeExecEnvConfig(
+        ) # 实例化上面拿到的low_level_cls 创建低层 Robosuite 环境，low_level 是真正的 Robosuite 仿真环境，里面有桌子、Panda 机械臂、红色 cube。
+        cfg = CodeExecEnvConfig(   #CodeExecEnvConfig 是 CaP-X 里的配置 dataclass，定义在：TaskA/cap-x/capx/envs/tasks/base.py
             low_level=low_level,
             apis=[spec["api"]],
             privileged=bool(spec.get("privileged", True)),
             enable_render=bool(spec.get("enable_render", self.record_video)),
-        )
-        return env_cls(cfg)
+        ) # 创建 CaP-X 高层代码执行配置
+        '''它告诉 high-level env：
 
+        你底下控制的是这个 low_level Robosuite 环境
+        你要暴露的 API 是 FrankaControlPrivilegedApi
+        你可以使用 privileged 模式
+        是否开启渲染取决于 record_video'''
+        #这个返回值就是 self.capx_env。例如 cube_lift 时，实际就是创建 FrankaLiftCodeEnv(CodeExecEnvConfig(...))
+        #这里会拿到prompt等参数
+        return env_cls(cfg) #env_cls实际就是FrankaLiftCodeEnv  而 FrankaLiftCodeEnv 定义在 CaP-X 里，
+        #例如：TaskA/cap-x/capx/envs/tasks/franka/franka_lift.py:35
+        #重点是：FrankaLiftCodeEnv 自己没有写 __init__()，所以当执行：
+
+        #env_cls(cfg)
+
+        #也就是：
+
+        #FrankaLiftCodeEnv(cfg)
+
+        #Python 会自动调用它父类的构造函数：
+
+        #TaskA/cap-x/capx/envs/tasks/base.py:91
+
+        #class CodeExecutionEnvBase(Env):
+        #   def __init__(self, cfg: CodeExecEnvConfig) -> None:
+
+        #所以调用链是：
+
+        #EmbodiedRobosuiteEnv.__init__()
+        #   ↓
+        #self.capx_env = self._build_capx_env()
+        # ↓
+        #env_cls = _load_symbol(spec["env_cls"])
+        # ↓
+        #return env_cls(cfg)
+        #  ↓
+        #FrankaLiftCodeEnv(cfg)
+         # ↓
+        #因为 FrankaLiftCodeEnv 没有 __init__
+        # ↓
+        #自动调用 CodeExecutionEnvBase.__init__(cfg)
     def reset(self, extras: Optional[Dict[str, Any]] = None) -> None:
         extras = extras or {}
         self.seed = extras.get("seed")
-        self.data_source = extras.get("data_source", self.task_name)
+        self.data_source = extras.get("data_source", self.task_name) #保存 seed 和 data_source
         self.turns = 0
         self.done = False
         self.last_reward = 0.0
         self.last_info: Dict[str, Any] = {}
-        self.chat_history: ConversationType = []
-        obs, info = self.capx_env.reset(seed=self.seed)
+        self.chat_history: ConversationType = []        # 会让 CaP-X 生成完整任务 prompt，其中包括任务说明和 API 文档
+        obs, info = self.capx_env.reset(seed=self.seed) # 重置底层 cap-X 环境调用的是TaskA/cap-x/capx/envs/tasks/base.py:243
         if self.record_video and hasattr(self.capx_env, "enable_video_capture"):
             self.capx_env.enable_video_capture(True, clear=True)
         self.initial_obs = obs
         self.reset_info = info
-        self.task_prompt = self._extract_prompt(obs, info)
+        self.task_prompt = self._extract_prompt(obs, info) #得到他的prompt
 
     def _extract_prompt(self, obs: Dict[str, Any], info: Dict[str, Any]) -> str:
         full_prompt = obs.get("full_prompt")
-        if isinstance(full_prompt, list):
+        if isinstance(full_prompt, list):   #把 CaP-X 返回的复杂 prompt 结构，转换成 TaskB 里可以直接发给模型的纯文本 prompt。
             parts = []
             for message in full_prompt:
                 content = message.get("content", "")
@@ -194,7 +234,7 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
             {"role": "assistant", "content": raw_action, "text_actions": raw_action}
         )
 
-        tool_name, tool_input = self._parse_action(raw_action)
+        tool_name, tool_input = self._parse_action(raw_action) #提取真正的代码
         if tool_name is None:
             self.done = True
             return BaseTextEnvStepOutput(
@@ -213,8 +253,8 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
             "EmbodiedRobosuiteToolGroup",
             "python_code",
             {"code": tool_input},
-        )
-        payload = json.loads(tool_output.get("text_result", "{}"))
+        ) #调用工具执行这段代码
+        payload = json.loads(tool_output.get("text_result", "{}")) #解析执行结果
         self.last_reward = float(payload.get("reward", 0.0))
         self.last_info = payload
         self.done = self._is_done()

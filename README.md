@@ -58,8 +58,8 @@ bash scripts/run_taskA_s1.sh
 Task B was run from AlphaApollo using the separate `taskb` conda environment.
 
 ```bash
-cd /root/autodl-tmp/AlphaApollo
-TRIALS=30 MAX_TURNS=4 bash scripts/run_taskB_robosuite_eval.sh
+cd /root/autodl-tmp/TaskB
+TRIALS=30 MAX_TURNS=4 bash run_taskB.sh
 ```
 
 The Task B script automatically:
@@ -88,7 +88,7 @@ the same code-as-action action granularity. Both use 30 trials per task.
 | --- | ---: | ---: | ---: | --- |
 | Cube Lift | 30/30 (100.0%) | 30/30 (100.0%) | 0.0 pp | Aligned |
 | Cube Stack | 29/30 (96.7%) | 30/30 (100.0%) | +3.3 pp | Aligned |
-| Peg / Nut Assembly | 4/30 (13.3%) | 5/30 (16.7%) | +3.3 pp | Aligned |
+| Peg / Nut Assembly | 4/30 (13.3%) | 8/30 (26.7%) | +13.3 pp | Aligned within 15 pp |
 
 Task B is aligned with the Task A reference under the project acceptance rule:
 the per-task absolute success-rate difference is within 15 percentage points.
@@ -110,10 +110,10 @@ Full machine-readable outputs:
 | --- | ---: | ---: | ---: | ---: | --- |
 | Cube Lift | 30 | 30 | 100.0% | 1.000 | 2 |
 | Cube Stack | 30 | 30 | 100.0% | 1.000 | 1 |
-| Peg Insertion | 30 | 5 | 16.7% | 0.233 | 3 |
+| Peg Insertion | 30 | 8 | 26.7% | 0.355 | 3 |
 
 Peg Insertion remained the hardest Task B task. The new run improved it to
-5/30 successes, which is within 3.3 percentage points of the corresponding
+8/30 successes, which is within 13.3 percentage points of the corresponding
 Task A Nut Assembly result (4/30). The remaining failures are likely caused by
 the task's sensitivity to the handle-to-nut rigid transform, end-effector
 orientation, and insertion depth.
