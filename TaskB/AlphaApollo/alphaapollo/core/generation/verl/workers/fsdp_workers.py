@@ -207,7 +207,12 @@ class ActorRolloutRefWorker(Worker):
             torch_dtype = PrecisionType.to_dtype(torch_dtype)
 
         # override model kwargs
-        actor_model_config = AutoConfig.from_pretrained(local_path, trust_remote_code=trust_remote_code, attn_implementation="flash_attention_2")
+        attn_implementation = self.config.model.get("attn_implementation", "sdpa")
+        actor_model_config = AutoConfig.from_pretrained(
+            local_path,
+            trust_remote_code=trust_remote_code,
+            attn_implementation=attn_implementation,
+        )
                 
         # patch for kimi-vl
         if getattr(actor_model_config, "model_type", None) == "kimi_vl":
@@ -634,7 +639,12 @@ class ActorRolloutRefWorker(Worker):
         return output
 
     @register(dispatch_mode=Dispatch.DP_COMPUTE_PROTO)
-    def generate_sequences(self, prompts: DataProto):
+    def generate_sequences(self, prompts: DataProto):                   
+        ''' 1. 把 prompts 放到 GPU
+            2. 补 eos_token_id / pad_token_id
+            3. 通过 rollout_sharding_manager 做并行切分/预处理
+            4. 调 self.rollout.generate_sequences(...)
+            5. 把结果转回 CPU'''
         # Support all hardwares
         prompts = prompts.to(get_torch_device().current_device())
 
@@ -649,7 +659,7 @@ class ActorRolloutRefWorker(Worker):
             log_gpu_memory_usage("After entering rollout sharding manager", logger=logger)
 
             prompts = self.rollout_sharding_manager.preprocess_data(prompts)
-            output = self.rollout.generate_sequences(prompts=prompts)
+            output = self.rollout.generate_sequences(prompts=prompts) #TaskB/AlphaApollo/alphaapollo/core/generation/verl/workers/rollout/vllm_rollout/vllm_rollout.py:184
             
             log_gpu_memory_usage("After rollout generation", logger=logger)
 
@@ -869,7 +879,12 @@ class CriticWorker(Worker):
 
         from transformers import AutoConfig, AutoModelForTokenClassification
 
-        critic_model_config = AutoConfig.from_pretrained(local_path, attn_implementation="flash_attention_2", trust_remote_code=config.model.get("trust_remote_code", False))
+        attn_implementation = config.model.get("attn_implementation", "sdpa")
+        critic_model_config = AutoConfig.from_pretrained(
+            local_path,
+            attn_implementation=attn_implementation,
+            trust_remote_code=config.model.get("trust_remote_code", False),
+        )
         critic_model_config.num_labels = 1
         # patch for kimi-vl
         if getattr(critic_model_config, "model_type", None) == "kimi_vl":
@@ -1193,7 +1208,7 @@ class RewardModelWorker(Worker):
                 pretrained_model_name_or_path=local_path,
                 config=model_config,
                 torch_dtype=torch.bfloat16,
-                attn_implementation="flash_attention_2",
+                attn_implementation=config.model.get("attn_implementation", "sdpa"),
                 trust_remote_code=trust_remote_code,
             )
 

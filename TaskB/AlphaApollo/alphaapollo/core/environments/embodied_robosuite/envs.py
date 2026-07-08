@@ -53,12 +53,18 @@ class EmbodiedRobosuiteMultiProcessEnv(gym.Env):
         info = {"tool_infos": out.get("metadata", {})}
         info["postprocessed_action"] = out.get("postprocessed_action")
         tool_infos = info["tool_infos"]
-        task_completed = bool(tool_infos.get("task_completed")) if isinstance(tool_infos, dict) else False
-        info["won"] = bool(task_completed or reward == 1.0)
+        if isinstance(tool_infos, dict) and tool_infos.get("task_completed") is not None:
+            task_completed = bool(tool_infos.get("task_completed"))
+        else:
+            task_completed = bool(reward == 1.0)
+        info["won"] = task_completed
         return obs, reward, done, info
 
     def reset(self, kwargs: List[Dict]): #接收一批 kwargs，给每个单独环境分配一个 kw，并发调用 _sync_reset(env, kw)，收集每个环境返回的 obs 和 info
-        kwargs = kwargs or [{} for _ in range(self.batch_size)]
+        if kwargs is None:
+            kwargs = [{} for _ in range(self.batch_size)]
+        else:
+            kwargs = list(kwargs)
         if len(kwargs) > self.batch_size: #如果传进来的 reset 参数数量超过了环境数量，就报错。
             raise ValueError(
                 f"Got {len(kwargs)} kwarg dicts, but total envs is {self.batch_size}"

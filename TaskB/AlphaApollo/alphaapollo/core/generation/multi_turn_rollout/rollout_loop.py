@@ -297,7 +297,7 @@ class TrajectoryCollector:
         # Initial observations from the environment
         # obs, infos = envs.reset(kwargs=gen_batch.non_tensor_batch.pop('env_kwargs', None))
         env_kwargs = gen_batch.non_tensor_batch.get("env_kwargs", None)
-        obs, infos = envs.reset(kwargs=env_kwargs)
+        obs, infos = envs.reset(kwargs=env_kwargs) #env_kwargs 来自你脚本生成的 parquet，reset 环境
 
         lenght_obs = len(obs['text']) if obs['text'] is not None else len(obs['image'])
         assert len(gen_batch.batch) == lenght_obs, f"gen_batch size {len(gen_batch.batch)} does not match obs size {lenght_obs}"
@@ -324,7 +324,7 @@ class TrajectoryCollector:
             # TODO: modify the active_mask to threshold the rollout based on the top-reward index. 
             active_masks = np.logical_not(is_done)
 
-            batch = self.preprocess_batch(gen_batch=gen_batch, obs=obs)
+            batch = self.preprocess_batch(gen_batch=gen_batch, obs=obs) #预处理 observation，它会取 obs["text"]，套 tokenizer 的 chat template，变成模型输入 token
 
             batch_keys_to_pop = ["input_ids", "attention_mask", "position_ids"]
             non_tensor_batch_keys_to_pop = ["raw_prompt_ids"]
@@ -341,9 +341,9 @@ class TrajectoryCollector:
 
             batch_input.meta_info = gen_batch.meta_info
 
-            # pad to be divisible by dp_size
-            batch_input_padded, pad_size = pad_dataproto_to_divisor(batch_input, actor_rollout_wg.world_size)
-            batch_output_padded = actor_rollout_wg.generate_sequences(batch_input_padded)
+            # pad to be divisible by dp_size ，模型开始生成
+            batch_input_padded, pad_size = pad_dataproto_to_divisor(batch_input, actor_rollout_wg.world_size) #把 batch size 补齐到能被 world_size 整除。
+            batch_output_padded = actor_rollout_wg.generate_sequences(batch_input_padded) #TaskB/AlphaApollo/alphaapollo/core/generation/verl/workers/fsdp_workers.py:637
             # # unpad
             batch_output = unpad_dataproto(batch_output_padded, pad_size=pad_size)
 
@@ -352,9 +352,9 @@ class TrajectoryCollector:
 
             batch = batch.union(batch_output)
             
-            text_actions = self.tokenizer.batch_decode(batch.batch['responses'], skip_special_tokens=True)
+            text_actions = self.tokenizer.batch_decode(batch.batch['responses'], skip_special_tokens=True) #解码
             
-            next_obs, rewards, dones, infos = envs.step(text_actions)
+            next_obs, rewards, dones, infos = envs.step(text_actions) #交给环境去执行，/Users/zhouzhida/Desktop/test/TaskB/AlphaApollo/alphaapollo/core/environments/env_manager.py
 
             
 
@@ -525,7 +525,7 @@ class TrajectoryCollector:
                 actor_rollout_wg=actor_rollout_wg,
                 envs=envs,
             )
-        else:
+        else:   #不会走训练时的 dynamic sampling，而是普通评测/生成流程
             # Vanilla Sampling   
             total_batch_list, total_episode_rewards, total_episode_lengths, total_success, total_traj_uid, totoal_tool_callings = \
                 self.vanilla_multi_turn_loop(

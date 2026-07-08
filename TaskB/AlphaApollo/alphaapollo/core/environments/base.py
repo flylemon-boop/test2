@@ -59,7 +59,7 @@ class EnvironmentManagerBase:
           - 'image' (np.ndarray or torch.Tensor): The image observation as either a NumPy array or a PyTorch tensor.
           - 'anchor' (None or Any): Anchor observation without any histories or additional info.
         """
-        obs, infos = self.envs.reset()
+        obs, infos = self.envs.reset() #实际传入TaskB/AlphaApollo/alphaapollo/core/environments/env_manager.py:411
         return {'text': None, 'image': obs, 'anchor': None}, infos
     
     def step(self, text_actions: List[str]):

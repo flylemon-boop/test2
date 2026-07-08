@@ -415,8 +415,8 @@ class EmbodiedRobosuiteEnvironmentManager(EnvironmentManagerBase):
         self.memory = SimpleMemory()
         super().__init__(envs, projection_f, config)
 
-    def reset(self, kwargs) -> Tuple[Dict[str, Any], List[Dict]]:
-        obs, infos = self.envs.reset(kwargs=kwargs)
+    def reset(self, kwargs) -> Tuple[Dict[str, Any], List[Dict]]: #把 reset 请求转发给底层 batch 环境 self.envs.reset(...)，把返回的 obs 包装成 AlphaApollo 统一 observation 格式：
+        obs, infos = self.envs.reset(kwargs=kwargs) #进入TaskB/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/envs.py:10              
         self.tasks = obs
         self.memory.reset(batch_size=len(obs))
         observations = {
@@ -427,8 +427,8 @@ class EmbodiedRobosuiteEnvironmentManager(EnvironmentManagerBase):
         return observations, infos
 
     def step(self, text_actions: List[str], env_dones: List[bool] | None = None):
-        actions, valids = self.projection_f(text_actions)
-        next_obs, rewards, dones, infos = self.envs.step(actions, text_actions)
+        actions, valids = self.projection_f(text_actions) # 投影动作，从模型输出中提取 <python_code>...</python_code>
+        next_obs, rewards, dones, infos = self.envs.step(actions, text_actions) #执行开始去TaskB/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/envs.py
 
         if env_dones is not None:
             for i, already_done in enumerate(env_dones):
@@ -479,21 +479,33 @@ class EmbodiedRobosuiteEnvironmentManager(EnvironmentManagerBase):
         return processed
 
     def _process_batch(self, batch_idx, total_batch_list, total_infos, success):
+        final_info = None
+        final_won_value = 0.0
         for i in reversed(range(len(total_batch_list[batch_idx]))):
             batch_item = total_batch_list[batch_idx][i]
             if batch_item['active_masks']:
                 info = total_infos[batch_idx][i]
-                won_value = float(info.get('won', False))
-                success['success_rate'].append(won_value)
-                data_source = info.get('data_source')
-                if data_source is None:
-                    tool_infos = info.get('tool_infos')
-                    if isinstance(tool_infos, dict):
-                        data_source = tool_infos.get('data_source', 'embodied_robosuite')
-                    else:
-                        data_source = 'embodied_robosuite'
-                success[f"{data_source}_success_rate"].append(won_value)
-                return
+                final_info = info
+                final_won_value = float(info.get('won', False))
+                break
+
+        if final_info is None:
+            return
+
+        for batch_item in total_batch_list[batch_idx]:
+            if batch_item['active_masks']:
+                batch_item['episode_success'] = final_won_value
+
+        success['success_rate'].append(final_won_value)
+        data_source = final_info.get('data_source')
+        if data_source is None:
+            tool_infos = final_info.get('tool_infos')
+            if isinstance(tool_infos, dict):
+                data_source = tool_infos.get('data_source', 'embodied_robosuite')
+            else:
+                data_source = 'embodied_robosuite'
+        success[f"{data_source}_success_rate"].append(final_won_value)
+        return
 
 
 
@@ -504,7 +516,7 @@ def make_envs(config):
     # check if config.env.rollout.n is an integer
     if not isinstance(config.env.rollout.n, int):
         raise ValueError("config.env.rollout.n should be an integer")
-    group_n = config.env.rollout.n if config.env.rollout.n > 0 else 1
+    group_n = config.env.rollout.n if config.env.rollout.n > 0 else 1 # 每个训练样本要复制多少个环境 rollout
     resources_per_worker = OmegaConf.to_container(config.env.resources_per_worker, resolve=True)
 
     # ======================= 
@@ -512,8 +524,8 @@ def make_envs(config):
     # ======================= 
     if "informal_math_training" in config.env.env_name.lower():
         from .informal_math_training import (
-            build_informal_math_training_envs,
-            informal_math_training_projection)
+            build_informal_math_training_envs, # 创建底层批量环境
+            informal_math_training_projection) # 把模型输出的文本 action 解析成环境能执行的 action
         _envs = build_informal_math_training_envs(seed=config.env.seed, env_num=config.data.train_batch_size, group_n=group_n, is_train=True, env_config=config.env)
         _val_envs = build_informal_math_training_envs(seed=config.env.seed + 1000, env_num=config.data.val_batch_size, group_n=1, is_train=False, env_config=config.env)
 
@@ -538,7 +550,7 @@ def make_envs(config):
         return envs, val_envs
     
     # ======================= 
-    # Embodied Robosuite / Task B
+    # Embodied Robosuite 
     # ======================= 
     elif "embodied_robosuite" in config.env.env_name.lower():
         from .embodied_robosuite import (
@@ -561,8 +573,8 @@ def make_envs(config):
         )
 
         projection_f = partial(embodied_robosuite_projection)
-        envs = EmbodiedRobosuiteEnvironmentManager(_envs, projection_f, config)
-        val_envs = EmbodiedRobosuiteEnvironmentManager(_val_envs, projection_f, config)
+        envs = EmbodiedRobosuiteEnvironmentManager(_envs, projection_f, config) # _envs 是前面这一步创建出来的训练环境容器，它的实际类型是EmbodiedRobosuiteMultiProcessEnv
+        val_envs = EmbodiedRobosuiteEnvironmentManager(_val_envs, projection_f, config) # 把训练用的一组 embodied robosuite 环境 _envs 包装成 AlphaApollo 标准的环境管理器
         return envs, val_envs
     
     else:

@@ -6,9 +6,12 @@ remote CUDA machine.
 Main entry points:
 
 ```text
+run_taskB.sh
+run_taskB_generation.sh
 AlphaApollo/alphaapollo/core/environments/embodied_robosuite/
 AlphaApollo/alphaapollo/core/tools/embodied_robosuite.py
 AlphaApollo/scripts/run_taskB_robosuite_api.py
+AlphaApollo/scripts/run_alphaapollo_taskB_generation.sh
 AlphaApollo/scripts/run_taskB_robosuite_eval.py
 AlphaApollo/scripts/run_taskB_robosuite_eval.sh
 AlphaApollo/scripts/start_taskB_pyroki_server.py

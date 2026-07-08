@@ -104,7 +104,7 @@ class ResourcePoolManager:
     mapping: dict[Role, str]
     resource_pool_dict: dict[str, RayResourcePool] = field(default_factory=dict)
 
-    def create_resource_pool(self):
+    def create_resource_pool(self): #根据配置创建 RayResourcePool。
         for resource_pool_name, process_on_nodes in self.resource_pool_spec.items():
             # max_colocate_count means the number of WorkerGroups (i.e. processes) in each RayResourcePool
             # For FSDP backend, we recommend using max_colocate_count=1 that merge all WorkerGroups into one.
@@ -809,34 +809,34 @@ class RayPPOTrainer:
 
         return metric_dict
 
-    def init_workers(self):
+    def init_workers(self): # 真正创建并初始化分布式训练 workers：
         """Initialize distributed training workers using Ray backend.
 
         Creates:
         1. Ray resource pools from configuration
         2. Worker groups for each role (actor, critic, etc.)
         """
-        self.resource_pool_manager.create_resource_pool()
+        self.resource_pool_manager.create_resource_pool() # 创建资源池
 
         self.resource_pool_to_cls = {pool: {} for pool in self.resource_pool_manager.resource_pool_dict.values()}
 
         # create actor and rollout
         if self.hybrid_engine:
-            resource_pool = self.resource_pool_manager.get_resource_pool(Role.ActorRollout)
+            resource_pool = self.resource_pool_manager.get_resource_pool(Role.ActorRollout) #actor_rollout 对应资源池
             actor_rollout_cls = RayClassWithInitArgs(
                 cls=self.role_worker_mapping[Role.ActorRollout],
                 config=self.config.actor_rollout_ref,
                 role="actor_rollout",
-            )
-            self.resource_pool_to_cls[resource_pool]["actor_rollout"] = actor_rollout_cls
+            ) # 封装 actor_rollout worker 类和初始化参数
+            self.resource_pool_to_cls[resource_pool]["actor_rollout"] = actor_rollout_cls # 把刚才封装好的 actor_rollout_cls 放进资源池字典里。
         else:
             raise NotImplementedError
 
-        # create critic
+        # create critic worker
         if self.use_critic:
             resource_pool = self.resource_pool_manager.get_resource_pool(Role.Critic)
             critic_cls = RayClassWithInitArgs(cls=self.role_worker_mapping[Role.Critic], config=self.config.critic)
-            self.resource_pool_to_cls[resource_pool]["critic"] = critic_cls
+            self.resource_pool_to_cls[resource_pool]["critic"] = critic_cls # 登记 critic worker
 
         # create reference policy if needed
         if self.use_reference_policy:
@@ -862,7 +862,7 @@ class RayPPOTrainer:
             wg_kwargs["ray_wait_register_center_timeout"] = self.config.trainer.ray_wait_register_center_timeout
 
         for resource_pool, class_dict in self.resource_pool_to_cls.items():
-            worker_dict_cls = create_colocated_worker_cls(class_dict=class_dict)
+            worker_dict_cls = create_colocated_worker_cls(class_dict=class_dict) # 创建 colocated worker class
             wg_dict = self.ray_worker_group_cls(resource_pool=resource_pool, ray_cls_with_init=worker_dict_cls, device_name=self.device_name, **wg_kwargs)
             spawn_wg = wg_dict.spawn(prefix_set=class_dict.keys())
             all_wg.update(spawn_wg)

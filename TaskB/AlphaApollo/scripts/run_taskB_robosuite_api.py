@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Run TaskB through AlphaApollo's API-style loop and env manager.
+"""Run TaskB through AlphaApollo's rollout loop with an API model backend.
 
-This runner keeps the AlphaApollo environment path intact:
-  EmbodiedRobosuiteEnvironmentManager -> EmbodiedRobosuiteEnv -> python_code tool
+This runner keeps AlphaApollo's multi-turn rollout path intact:
+  TrajectoryCollector.multi_turn_loop -> EnvironmentManager -> python_code tool
 
-The LLM side uses an OpenAI-compatible API, matching AlphaApollo's terminal API
-demo style, while avoiding local vLLM model loading.
+The model side uses an OpenAI-compatible API worker instead of local vLLM.
 """
 
 from __future__ import annotations
@@ -19,12 +18,17 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List
 
+import numpy as np
 import requests
+import torch
 from omegaconf import OmegaConf
 from openai import OpenAI
+from tensordict import TensorDict
 
 from alphaapollo.core.environments import make_envs
 from alphaapollo.core.environments.env_manager import EmbodiedRobosuiteEnvironmentManager
+from alphaapollo.core.generation.multi_turn_rollout import TrajectoryCollector
+from alphaapollo.core.generation.verl import DataProto
 
 
 TASKS = ["cube_lift", "cube_stack", "peg_insertion"]
@@ -132,6 +136,162 @@ def ensure_python_code(text: str) -> str:
     return f"<python_code>\n{text}\n</python_code>"
 
 
+def scalar_float(value: Any, default: float = 0.0) -> float:
+    if isinstance(value, np.ndarray):
+        if value.size == 0:
+            return default
+        return float(value.astype(float).sum())
+    if isinstance(value, (list, tuple)):
+        if not value:
+            return default
+        return float(np.array(value, dtype=float).sum())
+    if value is None:
+        return default
+    return float(value)
+
+
+class SimpleChatTokenizer:
+    """Small reversible tokenizer for API-driven rollout.
+
+    AlphaApollo's TrajectoryCollector expects a tokenizer because the normal
+    worker talks in token tensors. For an API backend we only need reversible
+    text <-> ids conversion; the remote model does the real tokenization.
+    """
+
+    pad_token_id = 0
+    eos_token_id = 1
+    pad_token = "<pad>"
+    eos_token = "<eos>"
+
+    def apply_chat_template(
+        self,
+        chat,
+        add_generation_prompt: bool = True,
+        tokenize: bool = False,
+        **_: Any,
+    ):
+        parts = []
+        for message in list(chat):
+            role = str(message.get("role", "user"))
+            content = str(message.get("content", ""))
+            parts.append(f"{role}: {content}")
+        if add_generation_prompt:
+            parts.append("assistant:")
+        text = "\n".join(parts)
+        return self.encode(text, add_special_tokens=False) if tokenize else text
+
+    def encode(self, text: str, add_special_tokens: bool = False, **_: Any) -> List[int]:
+        ids = [ord(ch) + 2 for ch in text]
+        if add_special_tokens:
+            ids.append(self.eos_token_id)
+        return ids
+
+    def decode(self, ids, skip_special_tokens: bool = True, **_: Any) -> str:
+        if isinstance(ids, torch.Tensor):
+            ids = ids.detach().cpu().tolist()
+        chars = []
+        for token_id in ids:
+            token_id = int(token_id)
+            if skip_special_tokens and token_id in {self.pad_token_id, self.eos_token_id}:
+                continue
+            if token_id >= 2:
+                chars.append(chr(token_id - 2))
+        return "".join(chars)
+
+    def batch_decode(self, sequences, skip_special_tokens: bool = True, **kwargs: Any) -> List[str]:
+        return [self.decode(seq, skip_special_tokens=skip_special_tokens, **kwargs) for seq in sequences]
+
+    def __call__(
+        self,
+        text: str,
+        return_tensors: str | None = None,
+        add_special_tokens: bool = False,
+        **_: Any,
+    ) -> Dict[str, torch.Tensor | List[int]]:
+        ids = self.encode(text, add_special_tokens=add_special_tokens)
+        attention = [1] * len(ids)
+        if return_tensors == "pt":
+            return {
+                "input_ids": torch.tensor([ids], dtype=torch.long),
+                "attention_mask": torch.tensor([attention], dtype=torch.long),
+            }
+        return {"input_ids": ids, "attention_mask": attention}
+
+
+class ApiRolloutWorkerGroup:
+    """Drop-in worker group for TrajectoryCollector using chat completions API."""
+
+    world_size = 1
+
+    def __init__(self, client: ApiClient, tokenizer: SimpleChatTokenizer, response_length: int):
+        self.client = client
+        self.tokenizer = tokenizer
+        self.response_length = response_length
+
+    def _prompt_to_messages(self, prompt_ids: List[int]) -> List[Dict[str, str]]:
+        prompt_text = self.tokenizer.decode(prompt_ids, skip_special_tokens=True)
+        if prompt_text.endswith("assistant:"):
+            prompt_text = prompt_text[: -len("assistant:")].rstrip()
+        if prompt_text.startswith("user:"):
+            prompt_text = prompt_text[len("user:"):].strip()
+        return [
+            {
+                "role": "system",
+                "content": (
+                    "You control a Robosuite Franka robot through Python code. "
+                    "Respond with exactly one <python_code>...</python_code> block. "
+                    "Inside the block, write executable Python that may call the available S1 APIs."
+                ),
+            },
+            {"role": "user", "content": prompt_text},
+        ]
+
+    def generate_sequences(self, prompts: DataProto) -> DataProto:
+        prompt_ids_batch = prompts.non_tensor_batch.get("raw_prompt_ids")
+        if prompt_ids_batch is None:
+            prompt_ids_batch = [
+                row.tolist()
+                for row in prompts.batch["input_ids"].detach().cpu()
+            ]
+
+        responses = []
+        for prompt_ids in prompt_ids_batch:
+            prompt_ids = list(prompt_ids)
+            output = self.client.generate(self._prompt_to_messages(prompt_ids))
+            action = ensure_python_code(output)
+            response_ids = self.tokenizer.encode(action, add_special_tokens=True)
+            response_ids = response_ids[: self.response_length]
+            if len(response_ids) < self.response_length:
+                response_ids += [self.tokenizer.pad_token_id] * (self.response_length - len(response_ids))
+            responses.append(response_ids)
+
+        response = torch.tensor(responses, dtype=torch.long)
+        idx = prompts.batch["input_ids"].detach().cpu()
+        attention_mask = prompts.batch["attention_mask"].detach().cpu()
+        position_ids = prompts.batch["position_ids"].detach().cpu()
+        response_attention_mask = (response != self.tokenizer.pad_token_id).long()
+        seq = torch.cat([idx, response], dim=-1)
+        response_positions = (
+            position_ids[:, -1:] + torch.arange(1, response.shape[1] + 1).unsqueeze(0)
+        )
+        full_attention_mask = torch.cat([attention_mask, response_attention_mask], dim=-1)
+        full_position_ids = torch.cat([position_ids, response_positions], dim=-1)
+        rollout_log_probs = torch.zeros_like(response, dtype=torch.float32)
+
+        batch = TensorDict(
+            {
+                "prompts": idx,
+                "responses": response,
+                "input_ids": seq,
+                "rollout_log_probs": rollout_log_probs,
+                "attention_mask": full_attention_mask,
+                "position_ids": full_position_ids,
+            },
+            batch_size=response.shape[0],
+        )
+        return DataProto(batch=batch)
+
+
 def make_manager(task_name: str, batch_size: int, args: argparse.Namespace) -> EmbodiedRobosuiteEnvironmentManager:
     cfg = OmegaConf.create(
         {
@@ -159,6 +319,72 @@ def make_manager(task_name: str, batch_size: int, args: argparse.Namespace) -> E
     envs, val_envs = make_envs(cfg)
     val_envs.envs.close()
     return envs
+
+
+def make_rollout_config(task_name: str, batch_size: int, args: argparse.Namespace):
+    return OmegaConf.create(
+        {
+            "data": {
+                "max_prompt_length": args.max_prompt_length,
+                "max_response_length": args.max_response_length,
+                "truncation": "right",
+                "return_raw_chat": True,
+            },
+            "env": {
+                "env_name": "embodied_robosuite",
+                "seed": args.seed_start,
+                "max_steps": args.max_turns,
+                "history_length": args.history_length,
+                "rollout": {"n": 1},
+                "resources_per_worker": {"num_cpus": 1},
+                "embodied_robosuite": {
+                    "task_name": task_name,
+                    "max_steps": args.max_turns,
+                    "record_video": args.record_video,
+                    "log_requests": args.log_requests,
+                    "video_dir": str(Path(args.output_dir) / task_name / "videos"),
+                },
+            },
+            "algorithm": {
+                "filter_groups": {"enable": False},
+            },
+        }
+    )
+
+
+def make_gen_batch(task_name: str, reset_kwargs: List[Dict[str, Any]], tokenizer: SimpleChatTokenizer) -> DataProto:
+    batch_size = len(reset_kwargs)
+    input_ids = torch.full((batch_size, 1), tokenizer.pad_token_id, dtype=torch.long)
+    attention_mask = torch.ones((batch_size, 1), dtype=torch.long)
+    position_ids = torch.zeros((batch_size, 1), dtype=torch.long)
+    batch = TensorDict(
+        {
+            "input_ids": input_ids,
+            "attention_mask": attention_mask,
+            "position_ids": position_ids,
+        },
+        batch_size=batch_size,
+    )
+    non_tensors = {
+        "raw_prompt": np.array(
+            [[{"role": "user", "content": "Start the embodied Robosuite task."}] for _ in range(batch_size)],
+            dtype=object,
+        ),
+        "index": np.arange(batch_size, dtype=object),
+        "data_source": np.array([task_name for _ in range(batch_size)], dtype=object),
+        "env_kwargs": np.array(reset_kwargs, dtype=object),
+    }
+    return DataProto(
+        batch=batch,
+        non_tensor_batch=non_tensors,
+        meta_info={
+            "eos_token_id": tokenizer.eos_token_id,
+            "pad_token_id": tokenizer.pad_token_id,
+            "recompute_log_prob": False,
+            "do_sample": False,
+            "validate": False,
+        },
+    )
 
 
 def save_episode_video(manager: EmbodiedRobosuiteEnvironmentManager, local_idx: int, output_dir: Path, task_name: str, trial_idx: int, success: bool) -> str | None:
@@ -202,97 +428,71 @@ def run_task(task_name: str, client: ApiClient, args: argparse.Namespace, out_ro
                 }
                 for trial_idx in range(batch_start, batch_start + batch_count)
             ]
-            obs, infos = manager.reset(kwargs=reset_kwargs)
-            messages: List[List[Dict[str, str]]] = []
-            trajectories: List[List[Dict[str, Any]]] = [[] for _ in range(batch_count)]
-            final_rewards = [0.0 for _ in range(batch_count)]
-            errors: List[str | None] = [None for _ in range(batch_count)]
-            dones = [False for _ in range(batch_count)]
-            episode_success = [False for _ in range(batch_count)]
+            tokenizer = SimpleChatTokenizer()
+            rollout_cfg = make_rollout_config(task_name, batch_count, args)
+            traj_collector = TrajectoryCollector(config=rollout_cfg, tokenizer=tokenizer, processor=None)
+            api_rollout_wg = ApiRolloutWorkerGroup(
+                client=client,
+                tokenizer=tokenizer,
+                response_length=args.max_response_length,
+            )
+            gen_batch = make_gen_batch(task_name, reset_kwargs, tokenizer)
+            rollout_output = traj_collector.multi_turn_loop(
+                gen_batch=gen_batch,
+                actor_rollout_wg=api_rollout_wg,
+                envs=manager,
+                is_train=False,
+            )
 
-            for prompt_text in obs["text"]:
-                messages.append(    # 构造要发送的prompt
-                    [
-                        {
-                            "role": "system",
-                            "content": (
-                                "You control a Robosuite Franka robot through Python code. "
-                                "Respond with exactly one <python_code>...</python_code> block. "
-                                "Inside the block, write executable Python that may call the available S1 APIs."
-                            ),
-                        },
-                        {"role": "user", "content": prompt_text},
-                    ]
-                )
-
-            for turn in range(args.max_turns):
-                active_indices = [i for i, done in enumerate(dones) if not done]
-                if not active_indices:
-                    break
-
-                model_outputs: List[str] = ["" for _ in range(batch_count)]
-                actions: List[str] = ["" for _ in range(batch_count)]
-                for i in active_indices:
-                    try:
-                        model_outputs[i] = client.generate(messages[i]) # 模型输出如何变成工具调用
-                        actions[i] = ensure_python_code(model_outputs[i]) # 保证输出被包装成 <python_code> 动作
-                    except Exception as exc:
-                        errors[i] = repr(exc)
-                        dones[i] = True
-
-                step_actions = [actions[i] if not dones[i] else "" for i in range(batch_count)]
-                next_obs, rewards, next_dones, step_infos = manager.step(step_actions, env_dones=dones)
-
-                for i in range(batch_count):
-                    if errors[i] and dones[i]:
-                        continue
-                    reward = float(rewards[i])
-                    done = bool(next_dones[i])
-                    info = step_infos[i] if i < len(step_infos) else {}
-                    obs_text = next_obs["anchor"][i] if i < len(next_obs["anchor"]) else ""
-                    tool_infos = info.get("tool_infos", {}) if isinstance(info, dict) else {}
-                    task_completed = bool(tool_infos.get("task_completed") or info.get("won"))
-
-                    trajectories[i].append(
-                        {
-                            "turn": turn,
-                            "model_output": model_outputs[i],
-                            "executed_action": actions[i],
-                            "observation": obs_text,
-                            "reward": reward,
-                            "done": done,
-                            "metadata": info,
-                        }
-                    )
-                    final_rewards[i] = reward
-                    episode_success[i] = episode_success[i] or task_completed
-                    dones[i] = done or task_completed
-                    messages[i].append({"role": "assistant", "content": actions[i]}) #记录轨迹并更新
-                    if obs_text:
-                        messages[i].append({"role": "user", "content": obs_text})
+            by_index: Dict[int, List[Any]] = {idx: [] for idx in range(batch_count)}
+            for item_idx in range(len(rollout_output)):
+                item = rollout_output[item_idx]
+                index = int(item.non_tensor_batch.get("index", item_idx % batch_count))
+                if index in by_index:
+                    by_index[index].append(item)
 
             for local_idx in range(batch_count):
                 trial_idx = batch_start + local_idx
-                success = bool(episode_success[local_idx])
+                items = by_index.get(local_idx, [])
+                trajectory: List[Dict[str, Any]] = []
+                final_reward = 0.0
+                success = False
+                error = None
+                for turn, item in enumerate(items):
+                    response_ids = item.batch["responses"] if item.batch is not None else []
+                    action = tokenizer.decode(response_ids, skip_special_tokens=True)
+                    reward = scalar_float(item.non_tensor_batch.get("rewards", 0.0))
+                    final_reward = reward
+                    success = success or bool(scalar_float(item.non_tensor_batch.get("episode_success", 0.0)))
+                    trajectory.append(
+                        {
+                            "turn": turn,
+                            "model_output": action,
+                            "executed_action": action,
+                            "reward": reward,
+                            "metadata": to_jsonable(item.non_tensor_batch),
+                        }
+                    )
+                success = bool(success)
                 successes += int(success)
                 video_path = None
                 if args.record_video:
                     try:
                         video_path = save_episode_video(manager, local_idx, out_root, task_name, trial_idx, success)
                     except Exception as exc:
-                        errors[local_idx] = f"{errors[local_idx]}; video_error={exc!r}" if errors[local_idx] else f"video_error={exc!r}"
+                        error = f"video_error={exc!r}"
 
                 result = {
                     "task": task_name,
                     "trial": trial_idx,
                     "seed": args.seed_start + trial_idx,
                     "success": success,
-                    "final_reward": final_rewards[local_idx],
-                    "turns": len(trajectories[local_idx]),
+                    "final_reward": final_reward,
+                    "turns": len(trajectory),
                     "elapsed_sec": time.time() - started,
-                    "error": errors[local_idx],
-                    "trajectory": trajectories[local_idx],
-                    "env_info": infos[local_idx] if local_idx < len(infos) else {},
+                    "error": error,
+                    "trajectory": trajectory,
+                    "env_info": {},
                     "video_path": video_path,
                 }
                 all_results.append(result)
@@ -300,8 +500,8 @@ def run_task(task_name: str, client: ApiClient, args: argparse.Namespace, out_ro
                 traj_path.write_text(json.dumps(to_jsonable(result), indent=2, ensure_ascii=False))
                 print(
                     f"TaskB {task_name} trial {trial_idx + 1}/{args.trials}: "
-                    f"success={success} reward={final_rewards[local_idx]:.4f} "
-                    f"turns={len(trajectories[local_idx])} error={errors[local_idx]}",
+                    f"success={success} reward={final_reward:.4f} "
+                    f"turns={len(trajectory)} error={error}",
                     flush=True,
                 )
         finally:
@@ -333,6 +533,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--api-csv", default=os.environ.get("API_CSV", ""))
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--max-tokens", type=int, default=4096)
+    parser.add_argument("--max-prompt-length", type=int, default=8192)
+    parser.add_argument("--max-response-length", type=int, default=4096)
     parser.add_argument("--request-timeout", type=int, default=300)
     parser.add_argument("--record-video", action="store_true")
     parser.add_argument("--log-requests", action="store_true")
@@ -368,7 +570,7 @@ def main() -> None:
 
     rows = [run_task(task_name, client, args, out_root) for task_name in args.tasks]
     summary = {
-        "runner": "alphaapollo_api_manager",
+        "runner": "alphaapollo_api_rollout",
         "model": args.model,
         "server_url": args.server_url,
         "max_turns": args.max_turns,

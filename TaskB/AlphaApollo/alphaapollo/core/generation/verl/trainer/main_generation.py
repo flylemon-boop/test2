@@ -38,7 +38,7 @@ from verl.workers.fsdp_workers import ActorRolloutRefWorker
 from verl.utils.device import is_cuda_available
 
 
-@hydra.main(config_path="config", config_name="generation", version_base=None)
+@hydra.main(config_path="config", config_name="generation", version_base=None) # Hydra 把合并后的 config 传给 main(config)。
 def main(config):
     run_generation(config)
 
@@ -58,7 +58,7 @@ def run_generation(config) -> None:
 def main_task(config):
     pprint(OmegaConf.to_container(config, resolve=True))  # resolve=True will eval symbol values
     OmegaConf.resolve(config)
-
+    # 准备模型和 tokenizer
     local_path = copy_to_local(config.model.path)
     trust_remote_code = config.data.get("trust_remote_code", False)
     tokenizer = hf_tokenizer(local_path, trust_remote_code=trust_remote_code)
@@ -70,8 +70,8 @@ def main_task(config):
 
     # Read original dataset for saving results (same as reference implementation)
     data_path = config.data.path
-    if data_path.endswith(".parquet"):
-        original_dataset = pd.read_parquet(data_path)
+    if data_path.endswith(".parquet"):  #读取脚本刚生成的 parquet
+        original_dataset = pd.read_parquet(data_path) #保存一份原始 dataframe，后面把 history 和 rewards 两列加上去，再写到 output_path。
     elif data_path.endswith(".jsonl") or data_path.endswith(".json"):
         original_dataset = pd.read_json(data_path, lines=True)
     else:
@@ -84,11 +84,11 @@ def main_task(config):
     # create environments if needed (for multi-turn generation)
     from alphaapollo.core.environments import make_envs
     config.data.train_batch_size = config.data.batch_size
-    _, envs = make_envs(config)
+    _, envs = make_envs(config) # 脚本里设置了，env.env_name=embodied_robosuite envs=val_envs只用测评环境，不用训练环境
     
     # create trajectory collector for multi-turn generation
     from alphaapollo.core.multi_turn_rollout import TrajectoryCollector
-    traj_collector = TrajectoryCollector(config=config, tokenizer=tokenizer, processor=processor)
+    traj_collector = TrajectoryCollector(config=config, tokenizer=tokenizer, processor=processor) #创建 TrajectoryCollector，负责把“模型生成”和“环境 step”串起来
     
     # Create dataset and dataloader
     from verl.trainer.main_ppo import create_rl_dataset
@@ -96,9 +96,9 @@ def main_task(config):
     from torch.utils.data import SequentialSampler
     from torchdata.stateful_dataloader import StatefulDataLoader
     
-    
+    # 创建 RL dataset 和 dataloader
     rl_dataset = create_rl_dataset([config.data.path], config.data, tokenizer, processor)
-    sampler = SequentialSampler(data_source=rl_dataset)
+    sampler = SequentialSampler(data_source=rl_dataset) 
     
     dataloader = StatefulDataLoader(
         dataset=rl_dataset,
@@ -107,18 +107,30 @@ def main_task(config):
         drop_last=False,
         collate_fn=collate_fn,
         sampler=sampler,
-    )
-    
+    ) # 如果TRIALS=3，那么config.data.batch_size == 3，dataloader 一次会吐出 3 条数据组成一个 batch。
+     
     ray_cls_with_init = RayClassWithInitArgs(cls=ray.remote(ActorRolloutRefWorker), config=config, role="rollout")
     resource_pool = RayResourcePool(process_on_nodes=[config.trainer.n_gpus_per_node] * config.trainer.nnodes)
     wg = RayWorkerGroup(resource_pool=resource_pool, ray_cls_with_init=ray_cls_with_init, device_name="cuda" if is_cuda_available else "npu")
-    wg.init_model()
+    wg.init_model() #加载 MODEL_PATH 指定的模型，并准备 rollout 生成。
 
     num_batch = len(dataloader)
     output_lst = [[] for _ in range(config.data.n_samples)]
     total_prompt_lst = [[] for _ in range(config.data.n_samples)]
     history_lst = [[] for _ in range(config.data.n_samples)]  # Store step_str for each question
     rewards_lst = [[] for _ in range(config.data.n_samples)]  # Store rewards for each question
+
+    def transpose_samples(sample_items, default_factory=list):
+        max_len = max((len(items) for items in sample_items), default=0)
+        return [
+            [
+                sample_items[sample_idx][item_idx]
+                if item_idx < len(sample_items[sample_idx])
+                else default_factory()
+                for sample_idx in range(len(sample_items))
+            ]
+            for item_idx in range(max_len)
+        ]
 
     for batch_idx, batch_dict in enumerate(dataloader):
         print(f"[{batch_idx + 1}/{num_batch}] Start to process.")
@@ -156,7 +168,7 @@ def main_task(config):
             "validate": False,
         }
 
-        # START TO GENERATE FOR n_samples TIMES
+        # START TO GENERATE FOR n_samples TIMES 真正开始使用环境跑 episode。
         print(f"[{batch_idx + 1}/{num_batch}] Start to generate.")
         for n_sample in range(config.data.n_samples):
             # Restore env_kwargs before each call to multi_turn_loop
@@ -165,12 +177,12 @@ def main_task(config):
                 gen_batch.non_tensor_batch["env_kwargs"] = saved_env_kwargs.copy()
             
             # use multi_turn_loop instead of direct generate_sequences
-            gen_batch_output = traj_collector.multi_turn_loop(
+            gen_batch_output = traj_collector.multi_turn_loop(    #TaskB/AlphaApollo/alphaapollo/core/generation/multi_turn_rollout/rollout_loop.py:497
                 gen_batch=gen_batch,
                 actor_rollout_wg=wg,
                 envs=envs,
                 is_train=False,
-            )
+            )   #这里的 envs 就是前面 make_envs() 返回的 EmbodiedRobosuiteEnvironmentManager
             
             output_texts = []
             total_prompts = []
@@ -214,33 +226,26 @@ def main_task(config):
             output_lst[n_sample].extend(output_texts)
             total_prompt_lst[n_sample].extend(total_prompts)
 
-    # convert output_lst from (n_samples, n_data) to (n_data, n_sampels)
-    output_lst = np.array(output_lst, dtype=object)
-    output_lst = np.transpose(output_lst, axes=(1, 0)).tolist()
+    # convert output_lst from (n_samples, n_data) to (n_data, n_samples)
+    output_lst = transpose_samples(output_lst, default_factory=str)
     
 
     
     # convert history_lst from (n_samples, n_data) to (n_data, n_samples)
     # Each element is a list of lists: [step_str1, step_str2, ...] for each question
-    arr = np.array(history_lst, dtype=object)
-    if arr.ndim == 3 and arr.shape[-1] == 1:
-        arr = arr.squeeze(-1)
-    arr = np.transpose(arr, axes=(1, 0))
+    arr = transpose_samples(history_lst)
     history_lst = [
         [x if isinstance(x, list) else [x] for x in row]
-        for row in arr.tolist()
+        for row in arr
     ]
 
 
     # convert rewards_lst from (n_samples, n_data) to (n_data, n_samples)
     # Each element is a list of lists: [rewards1, rewards2, ...] for each question
-    arr = np.array(rewards_lst, dtype=object)
-    if arr.ndim == 3 and arr.shape[-1] == 1:
-        arr = arr.squeeze(-1)
-    arr = np.transpose(arr, axes=(1, 0))
+    arr = transpose_samples(rewards_lst)
     rewards_lst = [
         [x if isinstance(x, list) else [x] for x in row]
-        for row in arr.tolist()
+        for row in arr
     ]
 
     # add to the data frame
