@@ -34,7 +34,7 @@ class BaseTextEnv(Env[str, str]):
         self.max_turns = 1
 
         # Tool groups
-        self.tool_groups = [] # 开始看有什么工具可以加入
+        self.tool_groups = []
         self.tool_to_toolgroup = {}
 
     def init_tool_groups(self, tool_groups: List = []) -> None:

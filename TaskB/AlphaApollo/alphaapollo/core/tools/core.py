@@ -1,7 +1,7 @@
 from typing import Dict, Callable, Any, Optional, List
 
 
-class tool:  # @tool 把某个方法标记成一个可注册工具。它不是立即执行工具，而是在 ToolGroup 初始化时被扫描出来。
+class tool:
     """
     A tool that can be used to execute a function.
     """
@@ -30,17 +30,8 @@ class ToolGroup:
         return self.name
 
     def _register_tools(self):
-        '''原来的方法：
-        def python_code(self, code):
-        ...
-        加上装饰器：
-        @tool
-        def python_code(self, code):
-        ...
-        在 Python 里等价于：
-        python_code = tool(python_code)'''
         # Register all methods decorated with @tool
-        # 只要某个方法上有 @tool，它就会进入 _tool_registry
+
         # Tool names must be unique across tool groups.
         # TODO: Support duplicate tool names across tool groups via namespacing
         for attr_name in dir(self):
