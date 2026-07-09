@@ -17,11 +17,15 @@ for the Robosuite mini-project.
   `<python_code>...</python_code>` block, and that Python program can call S1
   primitives such as `get_object_pose()`, `sample_grasp_pose()`, `goto_pose()`,
   `open_gripper()`, and `close_gripper()`.
+- Added `TaskA/cap-x/` from the `taskA` branch because the Task B runner imports
+  the CaP-X Robosuite environment and S1 API implementation at runtime.
 - Added Task B aggregate results and per-episode JSON trajectories.
 
 ## 2. Run Tutorial
 
 Task B was run from AlphaApollo using the separate `taskb` conda environment.
+Keep `TaskA/` and `TaskB/` as sibling directories; `TaskB/run_taskB.sh` adds
+`../TaskA/cap-x` to `PYTHONPATH` automatically.
 
 ```bash
 cd /root/autodl-tmp/TaskB
@@ -157,6 +161,8 @@ frame buffer to an episode mp4 and records the path in the episode JSON.
 ## Repository Layout
 
 ```text
+TaskA/
+TaskA/cap-x/
 TaskB/
 TaskB/AlphaApollo/
 code/cap-x/
