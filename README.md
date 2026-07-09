@@ -1,59 +1,25 @@
 # AlphaApollo Embodied Robosuite MiniProject
 
-This repository contains the Task A CaP-X S1 reproduction and the Task B
-AlphaApollo code-as-action migration artifacts for the Robosuite mini-project.
+This branch contains the Task B AlphaApollo code-as-action migration artifacts
+for the Robosuite mini-project.
 
 ## 1. Core Changes
 
-- Reproduced the CaP-X S1 baseline on the six required Robosuite tasks:
-  `cube_lifting`, `cube_stack`, `spill_wipe`, `nut_assembly`,
-  `two_arm_lift`, and `two_arm_handover`.
-- Added a reproducible Task A runner at `scripts/run_taskA_s1.sh`.
 - Added the Task B AlphaApollo bridge under `TaskB/AlphaApollo/` and
   `code/AlphaApollo/`:
   - `alphaapollo/core/environments/embodied_robosuite/`
   - `alphaapollo/core/tools/embodied_robosuite.py`
   - `alphaapollo/core/environments/env_manager.py`
-  - `scripts/run_taskB_robosuite_eval.py`
-  - `scripts/run_taskB_robosuite_eval.sh`
+  - `scripts/run_taskB_robosuite_api.py`
+  - `scripts/run_alphaapollo_taskB_generation.sh`
   - `scripts/start_taskB_pyroki_server.py`
 - Task B keeps the required code-as-action protocol: the model emits one
   `<python_code>...</python_code>` block, and that Python program can call S1
   primitives such as `get_object_pose()`, `sample_grasp_pose()`, `goto_pose()`,
   `open_gripper()`, and `close_gripper()`.
-- Added Task A and Task B aggregate results and per-episode JSON trajectories.
+- Added Task B aggregate results and per-episode JSON trajectories.
 
 ## 2. Run Tutorial
-
-### Task A
-
-Task A was run inside the prepared CaP-X environment on the CUDA machine.
-
-```bash
-cd /root/autodl-tmp/cap-x
-source /root/miniconda3/etc/profile.d/conda.sh
-conda activate capx
-source .venv/bin/activate
-```
-
-Start the OpenAI-compatible proxy. The API key file and base URL file are not
-committed.
-
-```bash
-nohup python capx/serving/openrouter_server.py \
-  --key-file aliyun_key \
-  --base-url "$(cat aliyun_base_url)" \
-  --port 8110 \
-  > outputs/aliyun_proxy.log 2>&1 &
-```
-
-Run all Task A S1 tasks:
-
-```bash
-bash scripts/run_taskA_s1.sh
-```
-
-### Task B
 
 Task B was run from AlphaApollo using the separate `taskb` conda environment.
 
@@ -93,10 +59,8 @@ the same code-as-action action granularity. Both use 30 trials per task.
 Task B is aligned with the Task A reference under the project acceptance rule:
 the per-task absolute success-rate difference is within 15 percentage points.
 
-Full machine-readable outputs:
+Full machine-readable Task B outputs:
 
-- Task A aggregate: `results/taskA_s1_summary.csv`
-- Task A Figure 17 comparison: `results/taskA_figure17_comparison.pdf`
 - Task B aggregate: `results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/summary.json`
 - Task B episode JSON:
   `results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/<task>/episode_*.json`
@@ -197,13 +161,9 @@ TaskB/
 TaskB/AlphaApollo/
 code/cap-x/
 code/AlphaApollo/
-scripts/run_taskA_s1.sh
-results/taskA_s1_summary.csv
-results/taskA_figure17_comparison.pdf
-results/taskA_run_environment.md
 results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/
-logs/taskA/
-experiments/taskA/taskA_qwen3-235b-a22b-instruct-2507_30/
+results/taskB/videos/
+results/taskB_summary.csv
 ```
 
 `TaskB/` contains the directly readable and runnable AlphaApollo Task B code
