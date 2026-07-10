@@ -23,23 +23,77 @@ for the Robosuite mini-project.
 
 ## 2. Run Tutorial
 
-Task B was run from AlphaApollo using the separate `taskb` conda environment.
-Keep `TaskA/` and `TaskB/` as sibling directories; `TaskB/run_taskB.sh` adds
-`../TaskA/cap-x` to `PYTHONPATH` automatically.
+Clone the repository into any directory. The commands below use `$REPO` to mean
+the repository root:
 
 ```bash
-cd /root/autodl-tmp/TaskB
+git clone -b taskB https://github.com/flylemon-boop/test2.git
+cd test2
+export REPO="$(pwd)"
+```
+
+Task B was run from AlphaApollo using a `taskb` conda environment. The exact
+conda path is machine-specific. Either activate the environment manually before
+running the script, or point `TASKB_ENV` to your own setup script:
+
+```bash
+# Option A: activate manually
+conda activate taskb
+
+# Option B: let the runner source your environment file
+export TASKB_ENV="$REPO/taskb_env.sh"
+```
+
+An environment setup file should activate Python and export any machine-specific
+paths. For example:
+
+```bash
+source /path/to/miniconda3/etc/profile.d/conda.sh
+conda activate taskb
+export MUJOCO_GL=egl
+export PYOPENGL_PLATFORM=egl
+export PYTHONPATH="$REPO/TaskB/AlphaApollo:$REPO/TaskA/cap-x:${PYTHONPATH:-}"
+```
+
+For compatibility with the submitted remote machine, `TaskB/run_taskB.sh` still
+auto-sources `/root/autodl-tmp/taskb_env.sh` when that file exists, but this
+absolute path is not required on a new machine.
+
+Keep `TaskA/` and `TaskB/` as sibling directories. `TaskB/run_taskB.sh` adds
+`../TaskA/cap-x` to `PYTHONPATH` automatically.
+
+Run all Task B tasks:
+
+```bash
+cd "$REPO/TaskB"
 TRIALS=30 MAX_TURNS=4 bash run_taskB.sh
 ```
 
 The Task B script automatically:
 
-- activates `/root/autodl-tmp/taskb_env.sh`;
+- sources `TASKB_ENV` if provided;
 - starts the PyRoKI IK server on `127.0.0.1:8116`;
 - calls an OpenAI-compatible model server, either through the local proxy at
   `http://127.0.0.1:8110/chat/completions` or the configured remote API URL;
 - evaluates `cube_lift`, `cube_stack`, and `peg_insertion`;
 - saves full per-episode JSON trajectories.
+
+It can read `api.csv` automatically from:
+
+```text
+$REPO/api.csv
+$REPO/TaskB/api.csv
+/root/autodl-tmp/api.csv
+```
+
+Secrets are intentionally not committed. You can also configure the API
+manually:
+
+```bash
+export OPENAI_API_KEY=<your key>
+export SERVER=<OpenAI-compatible /chat/completions URL>
+export MODEL=qwen3-235b-a22b-instruct-2507
+```
 
 Default Task B settings:
 
@@ -157,6 +211,20 @@ Two successful Task B demo videos from different tasks are included under
 `results/taskB/videos/`: one Cube Lift episode and one Cube Stack episode.
 The Task B runner now supports `--record-video`, which exports the Robosuite
 frame buffer to an episode mp4 and records the path in the episode JSON.
+
+To generate a new video on another machine, run a small seeded evaluation with
+recording enabled:
+
+```bash
+cd "$REPO/TaskB"
+OUT="$REPO/results/taskB/videos/cube_lift_seed0" \
+TASKS=cube_lift \
+TRIALS=1 \
+SEED_START=0 \
+MAX_TURNS=4 \
+RECORD_VIDEO=1 \
+bash run_taskB.sh
+```
 
 ## Repository Layout
 
