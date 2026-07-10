@@ -1,0 +1,19 @@
+{
+  "runner": "alphaapollo_api_rollout_tool_call",
+  "action_mode": "tool-call-as-action",
+  "model": "qwen3-235b-a22b-instruct-2507",
+  "server_url": "https://llm-gel2tsb2bgyzuw0n.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "max_turns": 25,
+  "seed_start": 1,
+  "batch_size": 1,
+  "tasks": [
+    {
+      "task": "cube_lift",
+      "trials": 1,
+      "successes": 1,
+      "success_rate": 1.0,
+      "avg_turns": 16.0,
+      "avg_total_tokens": 0.0
+    }
+  ]
+}

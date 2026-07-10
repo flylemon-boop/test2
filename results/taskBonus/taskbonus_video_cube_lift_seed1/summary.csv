@@ -1,0 +1,2 @@
+task,trials,successes,success_rate,avg_turns,avg_total_tokens,avg_prompt_chars,avg_completion_chars
+cube_lift,1,1,1.0,16.0,0.0,,
