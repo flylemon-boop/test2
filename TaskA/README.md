@@ -11,14 +11,20 @@ cap-x/capx/envs/launch.py
 cap-x/env_configs/
 ```
 
-Typical remote run:
+Typical run from a fresh clone:
 
 ```bash
-cd TaskA/cap-x
-source /root/miniconda3/etc/profile.d/conda.sh
+git clone -b taskA https://github.com/flylemon-boop/test2.git
+cd test2
+export REPO="$(pwd)"
+
+# Use the conda path for the current machine.
+source /path/to/miniconda3/etc/profile.d/conda.sh
 conda activate capx
+cd "$REPO/TaskA/cap-x"
 source .venv/bin/activate
-bash ../run_taskA_s1.sh
+cd "$REPO/TaskA"
+bash run_taskA_s1.sh
 ```
 
 Runtime artifacts and secrets are not included: `.git`, `.venv`, `outputs`,

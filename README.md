@@ -8,7 +8,7 @@ submission scaffolding for the AlphaApollo / Robosuite mini-project.
 - Reproduced the CaP-X S1 baseline on the six required Robosuite tasks:
   `cube_lifting`, `cube_stack`, `spill_wipe`, `nut_assembly`,
   `two_arm_lift`, and `two_arm_handover`.
-- Added a reproducible Task A runner at `scripts/run_taskA_s1.sh`.
+- Added a reproducible Task A runner at `TaskA/run_taskA_s1.sh`.
 - Added Task A aggregate results in `results/taskA_s1_summary.csv`.
 - Added complete Task A episode records under `experiments/taskA/`.
   Each trial directory contains generated code, raw model response,
@@ -20,31 +20,45 @@ keeps the Task B columns explicit as pending instead of inventing results.
 
 ## 2. Run Tutorial
 
-The project is expected to run inside the prepared CaP-X environment on the
-CUDA machine.
+Clone the repository into any directory. The commands below use `$REPO` to mean
+the repository root:
 
 ```bash
-cd /root/autodl-tmp/cap-x
-source /root/miniconda3/etc/profile.d/conda.sh
+git clone -b taskA https://github.com/flylemon-boop/test2.git
+cd test2
+export REPO="$(pwd)"
+```
+
+Activate the CaP-X environment. The exact conda path is machine-specific; the
+following is only an example:
+
+```bash
+source /path/to/miniconda3/etc/profile.d/conda.sh
 conda activate capx
+cd "$REPO/TaskA/cap-x"
 source .venv/bin/activate
 ```
 
-Start the OpenAI-compatible proxy. The API key file and base URL file are not
-committed to this repository.
+Start the OpenAI-compatible proxy if you use a local proxy. The API key file
+and base URL file are not committed to this repository. Put them wherever is
+appropriate for the current machine and pass their paths explicitly:
 
 ```bash
 nohup python capx/serving/openrouter_server.py \
-  --key-file aliyun_key \
-  --base-url "$(cat aliyun_base_url)" \
+  --key-file /path/to/aliyun_key \
+  --base-url "$(cat /path/to/aliyun_base_url)" \
   --port 8110 \
   > outputs/aliyun_proxy.log 2>&1 &
 ```
 
+If you already have an OpenAI-compatible chat completions endpoint, skip the
+proxy and set `SERVER` directly when running the script.
+
 Run all Task A S1 tasks with one command:
 
 ```bash
-bash scripts/run_taskA_s1.sh
+cd "$REPO/TaskA"
+bash run_taskA_s1.sh
 ```
 
 Default settings:
@@ -59,7 +73,8 @@ Default settings:
 The command can be overridden, for example:
 
 ```bash
-TRIALS=5 WORKERS=1 MODEL=qwen3-235b-a22b-instruct-2507 bash scripts/run_taskA_s1.sh
+cd "$REPO/TaskA"
+TRIALS=5 WORKERS=1 MODEL=qwen3-235b-a22b-instruct-2507 bash run_taskA_s1.sh
 ```
 
 ## 3. Results Summary: Task A vs Task B
@@ -174,7 +189,7 @@ TaskA/
 TaskA/cap-x/
 TaskA/run_taskA_s1.sh
 code/cap-x/
-scripts/run_taskA_s1.sh
+TaskA/run_taskA_s1.sh
 results/taskA_s1_summary.csv
 results/taskA_figure17_comparison.pdf
 results/taskA_run_environment.md
