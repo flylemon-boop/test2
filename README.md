@@ -38,15 +38,43 @@ per model turn.
 
 ## 2. Environment Setup
 
-The remote machine used for evaluation already had a shared environment file:
+Clone the repository into any directory. The commands below use `$REPO` to mean
+the repository root:
 
 ```bash
-/root/autodl-tmp/taskb_env.sh
+git clone -b taskBonus https://github.com/flylemon-boop/test2.git
+cd test2
+export REPO="$(pwd)"
 ```
 
-`TaskBonus/run_task_bonus.sh` sources this file automatically when it exists.
-The environment file activates the `taskb` conda environment and sets basic
-Robosuite / MuJoCo paths.
+The submitted remote run used a shared environment file at
+`/root/autodl-tmp/taskb_env.sh`, but that absolute path is not required. On a
+new machine, either activate your conda environment before running the script,
+or point `TASKBONUS_ENV` to your own setup script:
+
+```bash
+# Option A: activate manually
+conda activate taskb
+
+# Option B: let the runner source your environment file
+export TASKBONUS_ENV="$REPO/taskbonus_env.sh"
+```
+
+An environment setup file should activate Python and export any machine-specific
+paths. For example:
+
+```bash
+source /path/to/miniconda3/etc/profile.d/conda.sh
+conda activate taskb
+export MUJOCO_GL=egl
+export PYOPENGL_PLATFORM=egl
+export PYTHONPATH="$REPO/TaskBonus/AlphaApollo:$REPO/TaskA/cap-x:${PYTHONPATH:-}"
+```
+
+`TaskBonus/run_task_bonus.sh` also works without `TASKBONUS_ENV` if the active
+shell already has the right Python environment. For compatibility with the
+original remote machine, it still auto-sources `/root/autodl-tmp/taskb_env.sh`
+when that file exists.
 
 Important runtime requirements:
 
@@ -81,6 +109,13 @@ first valid one to `PYTHONPATH`:
 /root/autodl-tmp/cap-x
 ```
 
+In this repository, the expected relative layout is:
+
+```text
+$REPO/TaskA/cap-x
+$REPO/TaskBonus
+```
+
 ## 3. API Configuration
 
 The runner uses an OpenAI-compatible chat completions endpoint. It can read the
@@ -89,8 +124,8 @@ API key and server URL from `api.csv` automatically.
 Search order:
 
 ```text
-../api.csv
-TaskBonus/api.csv
+$REPO/api.csv
+$REPO/TaskBonus/api.csv
 /root/autodl-tmp/api.csv
 ```
 
@@ -101,10 +136,11 @@ apiKey
 openAiCompatible
 ```
 
-Secrets are intentionally not committed. On the remote machine, the file was:
+Secrets are intentionally not committed. Put `api.csv` at the repository root
+or under `TaskBonus/` before running:
 
 ```text
-/root/autodl-tmp/api.csv
+$REPO/api.csv
 ```
 
 You can also configure the model manually:
@@ -120,22 +156,22 @@ export MODEL=qwen3-235b-a22b-instruct-2507
 Run the full TaskBonus evaluation:
 
 ```bash
-cd /root/autodl-tmp/TaskBonus
+cd "$REPO/TaskBonus"
 MAX_TURNS=25 TRIALS=30 BATCH_SIZE=1 bash run_task_bonus.sh
 ```
 
 Run only one task:
 
 ```bash
-cd /root/autodl-tmp/TaskBonus
+cd "$REPO/TaskBonus"
 TASKS=cube_lift MAX_TURNS=25 TRIALS=30 BATCH_SIZE=1 bash run_task_bonus.sh
 ```
 
 Run one successful demo episode with video recording:
 
 ```bash
-cd /root/autodl-tmp/TaskBonus
-OUT=/root/autodl-tmp/results/taskbonus_video_cube_lift_seed1 \
+cd "$REPO/TaskBonus"
+OUT="$REPO/results/taskBonus/taskbonus_video_cube_lift_seed1" \
 TASKS=cube_lift \
 TRIALS=1 \
 SEED_START=1 \
