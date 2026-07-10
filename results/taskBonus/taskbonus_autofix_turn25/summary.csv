@@ -1,0 +1,4 @@
+task,trials,successes,success_rate,avg_turns,avg_total_tokens,avg_prompt_chars,avg_completion_chars
+cube_lift,30,26,0.8666666666666667,9.766666666666667,0.0,,
+cube_stack,30,0,0.0,24.6,0.0,,
+peg_insertion,30,0,0.0,24.2,0.0,,

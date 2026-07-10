@@ -1,0 +1,8 @@
+{
+  "task": "cube_lift",
+  "trials": 30,
+  "successes": 26,
+  "success_rate": 0.8666666666666667,
+  "avg_turns": 9.766666666666667,
+  "avg_total_tokens": 0.0
+}

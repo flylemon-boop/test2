@@ -1,0 +1,35 @@
+{
+  "runner": "alphaapollo_api_rollout_tool_call",
+  "action_mode": "tool-call-as-action",
+  "model": "qwen3-235b-a22b-instruct-2507",
+  "server_url": "https://llm-gel2tsb2bgyzuw0n.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "max_turns": 25,
+  "seed_start": 0,
+  "batch_size": 1,
+  "tasks": [
+    {
+      "task": "cube_lift",
+      "trials": 30,
+      "successes": 26,
+      "success_rate": 0.8666666666666667,
+      "avg_turns": 9.766666666666667,
+      "avg_total_tokens": 0.0
+    },
+    {
+      "task": "cube_stack",
+      "trials": 30,
+      "successes": 0,
+      "success_rate": 0.0,
+      "avg_turns": 24.6,
+      "avg_total_tokens": 0.0
+    },
+    {
+      "task": "peg_insertion",
+      "trials": 30,
+      "successes": 0,
+      "success_rate": 0.0,
+      "avg_turns": 24.2,
+      "avg_total_tokens": 0.0
+    }
+  ]
+}
