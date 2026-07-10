@@ -1,183 +1,210 @@
-# AlphaApollo Embodied Robosuite MiniProject
+# AlphaApollo Embodied Robosuite MiniProject - TaskBonus
 
-This branch contains the Task B AlphaApollo code-as-action migration artifacts
-for the Robosuite mini-project.
+This branch contains the TaskBonus tool-call-as-action implementation for the
+Robosuite mini-project. It keeps the AlphaApollo multi-turn rollout loop, but
+changes the model action format from Task B's single `python_code` tool to
+one XML tool call per turn.
 
-## 1. Core Changes
+## 1. What Is Included
 
-- Added the Task B AlphaApollo bridge under `TaskB/AlphaApollo/` and
-  `code/AlphaApollo/`:
-  - `alphaapollo/core/environments/embodied_robosuite/`
-  - `alphaapollo/core/tools/embodied_robosuite.py`
-  - `alphaapollo/core/environments/env_manager.py`
-  - `scripts/run_taskB_robosuite_api.py`
-  - `scripts/run_alphaapollo_taskB_generation.sh`
-  - `scripts/start_taskB_pyroki_server.py`
-- Task B keeps the required code-as-action protocol: the model emits one
-  `<python_code>...</python_code>` block, and that Python program can call S1
-  primitives such as `get_object_pose()`, `sample_grasp_pose()`, `goto_pose()`,
-  `open_gripper()`, and `close_gripper()`.
-- Added `TaskA/cap-x/` from the `taskA` branch because the Task B runner imports
-  the CaP-X Robosuite environment and S1 API implementation at runtime.
-- Added Task B aggregate results and per-episode JSON trajectories.
+- TaskBonus source code under `TaskBonus/`.
+- AlphaApollo Robosuite environment bridge:
+  - `TaskBonus/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/`
+  - `TaskBonus/AlphaApollo/alphaapollo/core/environments/env_manager.py`
+- Tool-call wrapper for CaP-X S1 primitives:
+  - `TaskBonus/AlphaApollo/alphaapollo/core/tools/embodied_robosuite.py`
+- API rollout runner:
+  - `TaskBonus/AlphaApollo/scripts/run_taskbonus_robosuite_api.py`
+- One-command runner:
+  - `TaskBonus/run_task_bonus.sh`
+- Full TaskBonus evaluation results:
+  - `results/taskBonus/taskbonus_autofix_turn25/`
+- One successful tool-call demo video:
+  - `results/taskBonus/taskbonus_video_cube_lift_seed1/cube_lift/videos/episode_000_success_1.mp4`
 
-## 2. Run Tutorial
+TaskBonus exposes each S1 primitive as an independent tool. The model must
+output exactly one XML call per turn, for example:
 
-Task B was run from AlphaApollo using the separate `taskb` conda environment.
-Keep `TaskA/` and `TaskB/` as sibling directories; `TaskB/run_taskB.sh` adds
-`../TaskA/cap-x` to `PYTHONPATH` automatically.
-
-```bash
-cd /root/autodl-tmp/TaskB
-TRIALS=30 MAX_TURNS=4 bash run_taskB.sh
+```xml
+<open_gripper>{}</open_gripper>
+<sample_grasp_pose>{"object_name":"red cube"}</sample_grasp_pose>
+<goto_pose>{"position":[0.1,0.2,0.3],"quaternion_wxyz":[0,0,1,0],"z_approach":0.1}</goto_pose>
 ```
 
-The Task B script automatically:
+The primitive set and parameter semantics match the Task B S1 API. The
+difference is action granularity: Task B uses one `python_code` tool that may
+call multiple primitives in one program; TaskBonus uses one primitive tool call
+per model turn.
 
-- activates `/root/autodl-tmp/taskb_env.sh`;
-- starts the PyRoKI IK server on `127.0.0.1:8116`;
-- calls an OpenAI-compatible model server, either through the local proxy at
-  `http://127.0.0.1:8110/chat/completions` or the configured remote API URL;
-- evaluates `cube_lift`, `cube_stack`, and `peg_insertion`;
-- saves full per-episode JSON trajectories.
+## 2. Environment Setup
 
-Default Task B settings:
-
-- `MODEL=qwen3-235b-a22b-instruct-2507`
-- `SERVER=<OpenAI-compatible chat completions URL>`
-- `TRIALS=30`
-- `MAX_TURNS=4`
-- `PYROKI_PORT=8116`
-
-## 3. Results Summary: Task A vs Task B
-
-Task A used CaP-X S1 single-turn code generation. Task B used AlphaApollo with
-the same code-as-action action granularity. Both use 30 trials per task.
-
-| Task | Task A success | Task B success | Absolute delta | Status |
-| --- | ---: | ---: | ---: | --- |
-| Cube Lift | 30/30 (100.0%) | 30/30 (100.0%) | 0.0 pp | Aligned |
-| Cube Stack | 29/30 (96.7%) | 30/30 (100.0%) | +3.3 pp | Aligned |
-| Peg / Nut Assembly | 4/30 (13.3%) | 5/30 (16.7%) | +3.3 pp | Aligned |
-
-Task B is aligned with the Task A reference under the project acceptance rule:
-the per-task absolute success-rate difference is within 15 percentage points.
-
-Full machine-readable Task B outputs:
-
-- Task B aggregate: `results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/summary.json`
-- Task B episode JSON:
-  `results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/<task>/episode_*.json`
-- Task B demo videos:
-  `results/taskB/videos/cube_lift_seed0/episode_000_success_1.mp4` and
-  `results/taskB/videos/cube_stack_seed0/episode_000_success_1.mp4`
-
-### Task B Details
-
-| Task B task | Trials | Successes | Success rate | Average final reward | Turns |
-| --- | ---: | ---: | ---: | ---: | --- |
-| Cube Lift | 30 | 30 | 100.0% | 1.000 | 1 |
-| Cube Stack | 30 | 30 | 100.0% | 1.000 | 1 |
-| Peg Insertion | 30 | 5 | 16.7% | 0.246 | 4 |
-
-Peg Insertion remained the hardest Task B task. The new run improved it to
-5/30 successes, which is within 3.3 percentage points of the corresponding
-Task A Nut Assembly result (4/30). The remaining failures are likely caused by
-the task's sensitivity to the handle-to-nut rigid transform, end-effector
-orientation, and insertion depth.
-
-## 4. Issues and Fixes
-
-### EGL initialization
-
-Initial Robosuite import failed with:
-
-```text
-AttributeError: 'NoneType' object has no attribute 'eglQueryString'
-```
-
-Fix:
+The remote machine used for evaluation already had a shared environment file:
 
 ```bash
-apt-get update
-apt-get install -y libegl1 libgl1
+/root/autodl-tmp/taskb_env.sh
+```
+
+`TaskBonus/run_task_bonus.sh` sources this file automatically when it exists.
+The environment file activates the `taskb` conda environment and sets basic
+Robosuite / MuJoCo paths.
+
+Important runtime requirements:
+
+```bash
 export MUJOCO_GL=egl
 export PYOPENGL_PLATFORM=egl
 ```
 
-### MuJoCo API compatibility
-
-The bundled Robosuite controller called `mujoco.mj_fullM` with the older
-argument order. Current MuJoCo expects:
-
-```python
-mujoco.mj_fullM(model, data, dst)
-```
-
-The CaP-X Robosuite snapshot was patched at:
-
-```text
-capx/third_party/robosuite/robosuite/controllers/parts/controller.py
-```
-
-to use:
-
-```python
-mujoco.mj_fullM(self.sim.model._model, self.sim.data._data, mass_matrix)
-```
-
-### CLI boolean value
-
-`--record-video false` is invalid for the CaP-X launcher. The accepted value is:
+System packages needed for EGL rendering:
 
 ```bash
---record-video False
+apt-get update
+apt-get install -y libegl1 libgl1
 ```
 
-### AlphaApollo Task B environment
-
-The original AlphaApollo `python_code` tool launches a subprocess and is suited
-for stateless math code. Task B needs one persistent Robosuite episode, so the
-Task B bridge clones the code-as-action behavior but executes against the
-in-process CaP-X `CodeExecutionEnvBase`.
-
-### PyRoKI dependency
-
-`goto_pose()` calls the PyRoKI IK server. The Task B runner starts it
-automatically. The `taskb` conda environment needed:
+PyRoKI is required because `goto_pose()` uses the IK server. The runner starts
+the PyRoKI server automatically on `127.0.0.1:8116`. The environment should
+contain:
 
 ```bash
 pip install jax_dataclasses
 pip install 'pyroki @ git+https://github.com/chungmin99/pyroki.git@95afccc22658c461ab1042a048ae4e9c24bc2a47'
 ```
 
-### Video artifacts
+The runner also needs the CaP-X code. It searches these locations and adds the
+first valid one to `PYTHONPATH`:
 
-Two successful Task B demo videos from different tasks are included under
-`results/taskB/videos/`: one Cube Lift episode and one Cube Stack episode.
-The Task B runner now supports `--record-video`, which exports the Robosuite
-frame buffer to an episode mp4 and records the path in the episode JSON.
+```text
+../TaskA/cap-x
+../cap-x
+../../cap-x
+/root/autodl-tmp/cap-x
+```
 
-## Repository Layout
+## 3. API Configuration
+
+The runner uses an OpenAI-compatible chat completions endpoint. It can read the
+API key and server URL from `api.csv` automatically.
+
+Search order:
+
+```text
+../api.csv
+TaskBonus/api.csv
+/root/autodl-tmp/api.csv
+```
+
+Expected CSV keys:
+
+```text
+apiKey
+openAiCompatible
+```
+
+Secrets are intentionally not committed. On the remote machine, the file was:
+
+```text
+/root/autodl-tmp/api.csv
+```
+
+You can also configure the model manually:
+
+```bash
+export OPENAI_API_KEY=<your key>
+export SERVER=<OpenAI-compatible /chat/completions URL>
+export MODEL=qwen3-235b-a22b-instruct-2507
+```
+
+## 4. Run Commands
+
+Run the full TaskBonus evaluation:
+
+```bash
+cd /root/autodl-tmp/TaskBonus
+MAX_TURNS=25 TRIALS=30 BATCH_SIZE=1 bash run_task_bonus.sh
+```
+
+Run only one task:
+
+```bash
+cd /root/autodl-tmp/TaskBonus
+TASKS=cube_lift MAX_TURNS=25 TRIALS=30 BATCH_SIZE=1 bash run_task_bonus.sh
+```
+
+Run one successful demo episode with video recording:
+
+```bash
+cd /root/autodl-tmp/TaskBonus
+OUT=/root/autodl-tmp/results/taskbonus_video_cube_lift_seed1 \
+TASKS=cube_lift \
+TRIALS=1 \
+SEED_START=1 \
+MAX_TURNS=25 \
+BATCH_SIZE=1 \
+RECORD_VIDEO=1 \
+bash run_task_bonus.sh
+```
+
+Default settings in `run_task_bonus.sh`:
+
+```text
+MODEL=qwen3-235b-a22b-instruct-2507
+TASKS="cube_lift cube_stack peg_insertion"
+TRIALS=30
+BATCH_SIZE=1
+MAX_TURNS=12
+PYROKI_PORT=8116
+RECORD_VIDEO=0
+```
+
+For the submitted run, `MAX_TURNS` was set to 25.
+
+## 5. Results
+
+Full TaskBonus run:
+
+```text
+results/taskBonus/taskbonus_autofix_turn25/summary.csv
+```
+
+| Task | Trials | Successes | Success rate | Average turns |
+| --- | ---: | ---: | ---: | ---: |
+| cube_lift | 30 | 26 | 86.67% | 9.77 |
+| cube_stack | 30 | 0 | 0.00% | 24.60 |
+| peg_insertion | 30 | 0 | 0.00% | 24.20 |
+
+Successful tool-call demo video:
+
+```text
+results/taskBonus/taskbonus_video_cube_lift_seed1/cube_lift/videos/episode_000_success_1.mp4
+```
+
+Video episode summary:
+
+```text
+task,trials,successes,success_rate,avg_turns
+cube_lift,1,1,1.0,16.0
+```
+
+## 6. Notes
+
+- `TaskBonus/run_task_bonus.sh` starts PyRoKI automatically if the server is
+  not already running.
+- The tool-call runner normalizes minor XML formatting errors. For example,
+  `<open_gripper>{}` is completed to `<open_gripper>{}</open_gripper>` when the
+  body is valid JSON.
+- Invalid JSON is not repaired and is left for the environment to reject.
+- Runtime artifacts such as virtual environments, Git metadata, cache files,
+  API keys, SSH passwords, and proxy key files are intentionally not committed.
+
+## 7. Repository Layout
 
 ```text
 TaskA/
-TaskA/cap-x/
-TaskB/
-TaskB/AlphaApollo/
+TaskBonus/
+TaskBonus/AlphaApollo/
+TaskBonus/run_task_bonus.sh
 code/cap-x/
-code/AlphaApollo/
-results/taskB/taskB_qwen3-235b-a22b-instruct-2507_30/
-results/taskB/videos/
-results/taskB_summary.csv
+results/taskBonus/taskbonus_autofix_turn25/
+results/taskBonus/taskbonus_video_cube_lift_seed1/
 ```
-
-`TaskB/` contains the directly readable and runnable AlphaApollo Task B code
-copied from the remote CUDA machine. `code/AlphaApollo/` is the submitted source
-snapshot used for the Task B run.
-
-Runtime artifacts are excluded where possible: virtual environments, Git
-metadata, cache files, and local API key files are not committed.
-
-Secrets such as API keys, SSH passwords, and proxy key files are intentionally
-not committed.
