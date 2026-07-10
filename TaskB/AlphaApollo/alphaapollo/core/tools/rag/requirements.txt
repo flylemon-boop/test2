@@ -1,7 +1,0 @@
-adalflow
-boto3
-azure-identity
-azure-core
-azure-ai-formrecognizer
-azure-ai-textanalytics
-faiss-cpu
