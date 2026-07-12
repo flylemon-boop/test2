@@ -1,8 +1,16 @@
 import json
 from typing import Any, Dict
 
-import numpy as np
-
+from alphaapollo.core.tools.capx_close_gripper import execute_close_gripper
+from alphaapollo.core.tools.capx_get_object_pose import execute_get_object_pose
+from alphaapollo.core.tools.capx_goto_home_joint_position import (
+    execute_goto_home_joint_position,
+)
+from alphaapollo.core.tools.capx_goto_pose import execute_goto_pose
+from alphaapollo.core.tools.capx_open_gripper import execute_open_gripper
+from alphaapollo.core.tools.capx_sample_grasp_pose import execute_sample_grasp_pose
+from alphaapollo.core.tools.capx_python_code import execute_capx_python_code
+from alphaapollo.core.tools.capx_tool_utils import get_capx_api_functions
 from alphaapollo.core.tools.core import ToolGroup, tool
 
 
@@ -17,125 +25,64 @@ class EmbodiedToolGroup(ToolGroup):
         self._tool_registry = {
             name: tool_fn
             for name, tool_fn in self._tool_registry.items()
-            if name in available
+            if name in available or name == "python_code"
         }
 
     def _api_functions(self) -> Dict[str, Any]:
-        funcs: Dict[str, Any] = {}
-        for api in getattr(self.capx_env, "_apis", {}).values():
-            funcs.update(api.functions())
-        return funcs
+        return get_capx_api_functions(self.capx_env)
 
-    def _jsonable(self, value: Any) -> Any:
-        if isinstance(value, np.ndarray):
-            return value.tolist()
-        if isinstance(value, (np.floating, np.integer)):
-            return value.item()
-        if isinstance(value, tuple):
-            return [self._jsonable(v) for v in value]
-        if isinstance(value, list):
-            return [self._jsonable(v) for v in value]
-        if isinstance(value, dict):
-            return {k: self._jsonable(v) for k, v in value.items()}
-        return value
-
-    def _status_payload(self, status: str, result: Any = None, stderr: str = "") -> Dict[str, Any]:
-        reward = float(self.capx_env.compute_reward())
-        low_level = self.capx_env.low_level_env
-        task_completed = low_level.task_completed() if hasattr(low_level, "task_completed") else None
-        truncated = getattr(low_level, "_sim_step_count", 0) >= getattr(low_level, "max_steps", 999999)
-        return {
-            "status": status,
-            "result": self._jsonable(result),
-            "stderr": stderr,
-            "reward": reward,
-            "terminated": bool(reward == 1.0),
-            "truncated": bool(truncated),
-            "task_completed": bool(task_completed) if task_completed is not None else None,
-        }
-
-    def _pose_dict(self, result: Any) -> Any:
-        if not isinstance(result, tuple) or len(result) < 2:
-            return result
-        pose = {
-            "position": self._jsonable(result[0]),
-            "quaternion_wxyz": self._jsonable(result[1]),
-        }
-        if len(result) >= 3 and result[2] is not None:
-            pose["bbox_extent"] = self._jsonable(result[2])
-        return pose
-
-    def _payload_with_pose(self, raw_result: Any) -> Dict[str, Any]:
-        result = self._pose_dict(raw_result)
-        return self._status_payload("success", result=result)
-
-    def _call_primitive(self, name: str, **kwargs: Any) -> Dict[str, Any]:
-        funcs = self._api_functions()
-        if name not in funcs:
+    @tool
+    def python_code(self, code: str) -> Dict[str, Any]:
+        if not code or not code.strip():
             return {
                 "text_result": json.dumps(
-                    self._status_payload("error", stderr=f"Primitive '{name}' is not available.")
+                    {"status": "error", "result": "No code provided."}
                 ),
                 "score": 0,
             }
 
         try:
-            result = funcs[name](**kwargs)
-            payload = self._status_payload("success", result=self._pose_dict(result))
-            score = 1
+            execution_result = execute_capx_python_code(
+                capx_env=self.capx_env,
+                code=code,
+                log_requests=self.log_requests,
+            )
+            run_status = execution_result.get("run_status", "Unknown")
+            payload = {
+                "status": "success" if run_status == "Finished" else "failed",
+                "result": execution_result.get("stdout", ""),
+                "stderr": execution_result.get("stderr", ""),
+                "reward": float(execution_result.get("reward", 0.0)),
+                "terminated": bool(execution_result.get("terminated", False)),
+                "truncated": bool(execution_result.get("truncated", False)),
+                "task_completed": execution_result.get("task_completed"),
+            }
+            score = 1 if payload["status"] == "success" else 0
         except Exception as exc:
-            payload = self._status_payload("error", stderr=repr(exc))
+            payload = {
+                "status": "error",
+                "result": "",
+                "stderr": repr(exc),
+                "reward": 0.0,
+                "terminated": False,
+                "truncated": False,
+                "task_completed": False,
+            }
             score = 0
 
         return {"text_result": json.dumps(payload), "score": score}
 
     @tool
     def get_object_pose(self, object_name: str, return_bbox_extent: bool = False) -> Dict[str, Any]:
-        kwargs = {"object_name": object_name}
-        funcs = self._api_functions()
-        if "get_object_pose" in funcs:
-            try:
-                result = funcs["get_object_pose"](**kwargs, return_bbox_extent=return_bbox_extent)
-                return {
-                    "text_result": json.dumps(self._payload_with_pose(result)),
-                    "score": 1,
-                }
-            except TypeError:
-                try:
-                    result = funcs["get_object_pose"](**kwargs)
-                    return {
-                        "text_result": json.dumps(self._payload_with_pose(result)),
-                        "score": 1,
-                    }
-                except Exception as exc:
-                    return {
-                        "text_result": json.dumps(self._status_payload("error", stderr=repr(exc))),
-                        "score": 0,
-                    }
-            except Exception as exc:
-                return {
-                    "text_result": json.dumps(self._status_payload("error", stderr=repr(exc))),
-                    "score": 0,
-                }
-        result = self._call_primitive("get_object_pose", **kwargs)
-        return result
+        return execute_get_object_pose(
+            self.capx_env,
+            object_name=object_name,
+            return_bbox_extent=return_bbox_extent,
+        )
 
     @tool
     def sample_grasp_pose(self, object_name: str) -> Dict[str, Any]:
-        funcs = self._api_functions()
-        if "sample_grasp_pose" not in funcs:
-            return self._call_primitive("sample_grasp_pose", object_name=object_name)
-        try:
-            raw_result = funcs["sample_grasp_pose"](object_name=object_name)
-            return {
-                "text_result": json.dumps(self._payload_with_pose(raw_result)),
-                "score": 1,
-            }
-        except Exception as exc:
-            return {
-                "text_result": json.dumps(self._status_payload("error", stderr=repr(exc))),
-                "score": 0,
-            }
+        return execute_sample_grasp_pose(self.capx_env, object_name=object_name)
 
     @tool
     def goto_pose(
@@ -144,24 +91,24 @@ class EmbodiedToolGroup(ToolGroup):
         quaternion_wxyz: list[float],
         z_approach: float = 0.0,
     ) -> Dict[str, Any]:
-        return self._call_primitive(
-            "goto_pose",
-            position=np.asarray(position, dtype=np.float64),
-            quaternion_wxyz=np.asarray(quaternion_wxyz, dtype=np.float64),
-            z_approach=float(z_approach),
+        return execute_goto_pose(
+            self.capx_env,
+            position=position,
+            quaternion_wxyz=quaternion_wxyz,
+            z_approach=z_approach,
         )
 
     @tool
     def open_gripper(self) -> Dict[str, Any]:
-        return self._call_primitive("open_gripper")
+        return execute_open_gripper(self.capx_env)
 
     @tool
     def close_gripper(self) -> Dict[str, Any]:
-        return self._call_primitive("close_gripper")
+        return execute_close_gripper(self.capx_env)
 
     @tool
     def goto_home_joint_position(self) -> Dict[str, Any]:
-        return self._call_primitive("goto_home_joint_position")
+        return execute_goto_home_joint_position(self.capx_env)
 
 
 EmbodiedRobosuiteToolGroup = EmbodiedToolGroup

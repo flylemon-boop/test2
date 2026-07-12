@@ -13,10 +13,13 @@ one XML tool call per turn.
   - `TaskBonus/AlphaApollo/alphaapollo/core/environments/env_manager.py`
 - Tool-call wrapper for CaP-X S1 primitives:
   - `TaskBonus/AlphaApollo/alphaapollo/core/tools/embodied_robosuite.py`
-- API rollout runner:
-  - `TaskBonus/AlphaApollo/scripts/run_taskbonus_robosuite_api.py`
+- Demo-style API runner:
+  - `TaskBonus/AlphaApollo/examples/demo/taskbonus_robosuite_api.py`
+  - `TaskBonus/AlphaApollo/examples/configs/demo_taskbonus_robosuite_api.yaml`
 - One-command runner:
   - `TaskBonus/run_task_bonus.sh`
+- Bundled CaP-X backend:
+  - `TaskBonus/AlphaApollo/cap-x`
 - Full TaskBonus evaluation results:
   - `results/taskBonus/taskbonus_autofix_turn25/`
 - One successful tool-call demo video:
@@ -68,7 +71,7 @@ source /path/to/miniconda3/etc/profile.d/conda.sh
 conda activate taskb
 export MUJOCO_GL=egl
 export PYOPENGL_PLATFORM=egl
-export PYTHONPATH="$REPO/TaskBonus/AlphaApollo:$REPO/TaskA/cap-x:${PYTHONPATH:-}"
+export PYTHONPATH="$REPO/TaskBonus/AlphaApollo:$REPO/TaskBonus/AlphaApollo/cap-x:${PYTHONPATH:-}"
 ```
 
 `TaskBonus/run_task_bonus.sh` also works without `TASKBONUS_ENV` if the active
@@ -99,21 +102,22 @@ pip install jax_dataclasses
 pip install 'pyroki @ git+https://github.com/chungmin99/pyroki.git@95afccc22658c461ab1042a048ae4e9c24bc2a47'
 ```
 
-The runner also needs the CaP-X code. It searches these locations and adds the
-first valid one to `PYTHONPATH`:
+The runner also needs the CaP-X code. This branch bundles the required CaP-X
+backend under:
 
 ```text
+$REPO/TaskBonus/AlphaApollo/cap-x
+```
+
+`run_task_bonus.sh` adds the bundled path to `PYTHONPATH` first, then falls
+back to these locations for compatibility:
+
+```text
+TaskBonus/cap-x
 ../TaskA/cap-x
 ../cap-x
 ../../cap-x
 /root/autodl-tmp/cap-x
-```
-
-In this repository, the expected relative layout is:
-
-```text
-$REPO/TaskA/cap-x
-$REPO/TaskBonus
 ```
 
 ## 3. API Configuration
@@ -158,6 +162,18 @@ Run the full TaskBonus evaluation:
 ```bash
 cd "$REPO/TaskBonus"
 MAX_TURNS=25 TRIALS=30 BATCH_SIZE=1 bash run_task_bonus.sh
+```
+
+`run_task_bonus.sh` now calls the AlphaApollo demo-style API runner:
+
+```text
+TaskBonus/AlphaApollo/examples/demo/taskbonus_robosuite_api.py
+```
+
+with config:
+
+```text
+TaskBonus/AlphaApollo/examples/configs/demo_taskbonus_robosuite_api.yaml
 ```
 
 Run only one task:
@@ -226,6 +242,19 @@ cube_lift,1,1,1.0,16.0
 
 - `TaskBonus/run_task_bonus.sh` starts PyRoKI automatically if the server is
   not already running.
+- The current API path follows AlphaApollo's original demo style:
+
+```text
+run_task_bonus.sh
+  -> examples/demo/taskbonus_robosuite_api.py
+  -> LLMClient calls an OpenAI-compatible API
+  -> make_envs(config)
+  -> EmbodiedRobosuiteEnvironmentManager.reset/step
+  -> EmbodiedRobosuiteEnv.step
+  -> EmbodiedToolGroup single S1 XML tool
+  -> CaP-X API / Robosuite
+```
+
 - The tool-call runner normalizes minor XML formatting errors. For example,
   `<open_gripper>{}` is completed to `<open_gripper>{}</open_gripper>` when the
   body is valid JSON.
@@ -236,9 +265,11 @@ cube_lift,1,1,1.0,16.0
 ## 7. Repository Layout
 
 ```text
-TaskA/
 TaskBonus/
 TaskBonus/AlphaApollo/
+TaskBonus/AlphaApollo/cap-x/
+TaskBonus/AlphaApollo/examples/demo/taskbonus_robosuite_api.py
+TaskBonus/AlphaApollo/examples/configs/demo_taskbonus_robosuite_api.yaml
 TaskBonus/run_task_bonus.sh
 code/cap-x/
 results/taskBonus/taskbonus_autofix_turn25/

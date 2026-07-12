@@ -73,6 +73,8 @@ OUT="${OUT:-${SCRIPT_DIR}/results/task_bonus_${MODEL}_${TRIALS}}"
 
 export PYTHONPATH="${PROJECT_DIR}:${PYTHONPATH:-}"
 for candidate in \
+  "${PROJECT_DIR}/cap-x" \
+  "${SCRIPT_DIR}/cap-x" \
   "${SCRIPT_DIR}/../TaskA/cap-x" \
   "${SCRIPT_DIR}/../cap-x" \
   "${SCRIPT_DIR}/../../cap-x" \
@@ -110,13 +112,14 @@ if [[ "${RECORD_VIDEO}" == "1" || "${RECORD_VIDEO}" == "true" || "${RECORD_VIDEO
 fi
 read -r -a task_args <<<"${TASKS}"
 
-"${PYTHON_BIN}" scripts/run_taskbonus_robosuite_api.py \
+"${PYTHON_BIN}" examples/demo/taskbonus_robosuite_api.py \
+  --config examples/configs/demo_taskbonus_robosuite_api.yaml \
   --tasks "${task_args[@]}" \
   --trials "${TRIALS}" \
   --batch-size "${BATCH_SIZE}" \
   --seed-start "${SEED_START}" \
-  --max-turns "${MAX_TURNS}" \
-  --server-url "${SERVER}" \
+  --max-steps "${MAX_TURNS}" \
+  --base-url "${SERVER}" \
   --model "${MODEL}" \
   --temperature 0.0 \
   --max-tokens 2048 \

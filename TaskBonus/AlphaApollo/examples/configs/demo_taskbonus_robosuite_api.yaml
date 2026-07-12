@@ -1,0 +1,31 @@
+backend: api
+
+llm:
+  model_name: qwen3-235b-a22b-instruct-2507
+  base_url: http://127.0.0.1:8110/chat/completions
+  api_key: ""
+  temperature: 0.0
+  max_tokens: 2048
+  request_timeout: 300
+  system_prompt: >-
+    You control a Robosuite Franka robot through XML tool calls. Respond with
+    exactly one XML tool call and no extra text. Never respond with
+    <python_code>, Python imports, comments, assignments, or a multi-step
+    program. Each turn may call only one S1 primitive. Use JSON arguments
+    inside the XML tag and use prior <tool_response> values for later calls.
+
+env:
+  tasks:
+    - cube_lift
+    - cube_stack
+    - peg_insertion
+  trials: 30
+  batch_size: 1
+  seed_start: 0
+  max_steps: 12
+  history_length: 2
+  record_video: false
+  log_requests: false
+
+output:
+  dir: outputs/taskbonus_robosuite_api_demo
