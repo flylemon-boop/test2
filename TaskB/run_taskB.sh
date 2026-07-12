@@ -112,13 +112,14 @@ if [[ "${RECORD_VIDEO}" == "1" || "${RECORD_VIDEO}" == "true" || "${RECORD_VIDEO
 fi
 read -r -a task_args <<<"${TASKS}"
 
-"${PYTHON_BIN}" scripts/run_taskB_robosuite_api.py \
+"${PYTHON_BIN}" examples/demo/taskB_robosuite_api.py \
+  --config examples/configs/demo_taskB_robosuite_api.yaml \
   --tasks "${task_args[@]}" \
   --trials "${TRIALS}" \
   --batch-size "${BATCH_SIZE}" \
   --seed-start "${SEED_START}" \
-  --max-turns "${MAX_TURNS}" \
-  --server-url "${SERVER}" \
+  --max-steps "${MAX_TURNS}" \
+  --base-url "${SERVER}" \
   --model "${MODEL}" \
   --temperature 0.0 \
   --max-tokens 4096 \

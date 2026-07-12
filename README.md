@@ -8,11 +8,12 @@ the Embodied Robosuite mini-project.
 ```text
 TaskB/
   run_taskB.sh
-  run_taskB_generation.sh
   AlphaApollo/
     alphaapollo/
-    scripts/
     examples/
+      demo/taskB_robosuite_api.py
+      configs/demo_taskB_robosuite_api.yaml
+    scripts/
     cap-x/
 ```
 
@@ -26,41 +27,30 @@ TaskB/AlphaApollo/cap-x
 The runner adds this bundled CaP-X path to `PYTHONPATH` before falling back to
 any external CaP-X checkout.
 
-## Main Entry Point
-
-Run Task B from the repository root with:
+## Run
 
 ```bash
 cd TaskB
 TRIALS=30 MAX_TURNS=4 bash run_taskB.sh
 ```
 
-For a quick smoke test:
+Quick smoke test:
 
 ```bash
 cd TaskB
 TASKS=cube_lift TRIALS=1 BATCH_SIZE=1 MAX_TURNS=1 bash run_taskB.sh
 ```
 
-## Environment
-
-The script can source a machine-local setup file before running:
-
-```bash
-export TASKB_ENV=/path/to/taskb_env.sh
-```
-
-On the submitted remote machine it also auto-sources:
+`run_taskB.sh` now calls the AlphaApollo demo-style API runner:
 
 ```text
-/root/autodl-tmp/taskb_env.sh
+TaskB/AlphaApollo/examples/demo/taskB_robosuite_api.py
 ```
 
-The runner sets the Robosuite rendering defaults:
+with config:
 
-```bash
-MUJOCO_GL=egl
-PYOPENGL_PLATFORM=egl
+```text
+TaskB/AlphaApollo/examples/configs/demo_taskB_robosuite_api.yaml
 ```
 
 ## API Configuration
@@ -83,7 +73,7 @@ export MODEL=qwen3-235b-a22b-instruct-2507
 
 Secrets are not committed.
 
-## Task B Implementation
+## Implementation
 
 Task B keeps the code-as-action interface:
 
@@ -91,34 +81,18 @@ Task B keeps the code-as-action interface:
 model -> <python_code>...</python_code> -> AlphaApollo tool -> CaP-X env.step(code)
 ```
 
-Important files:
+The current API path follows AlphaApollo's original demo style:
 
 ```text
-TaskB/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/env.py
-TaskB/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/envs.py
-TaskB/AlphaApollo/alphaapollo/core/environments/env_manager.py
-TaskB/AlphaApollo/alphaapollo/core/tools/embodied_robosuite.py
-TaskB/AlphaApollo/alphaapollo/core/tools/capx_python_code.py
-TaskB/AlphaApollo/scripts/run_taskB_robosuite_api.py
-```
-
-`capx_python_code.py` mirrors the original AlphaApollo pattern where the
-ToolGroup method delegates execution to a separate helper:
-
-```text
-EmbodiedRobosuiteToolGroup.python_code
+run_taskB.sh
+  -> examples/demo/taskB_robosuite_api.py
+  -> LLMClient calls an OpenAI-compatible API
+  -> make_envs(config)
+  -> EmbodiedRobosuiteEnvironmentManager.reset/step
+  -> EmbodiedRobosuiteEnv.step
+  -> EmbodiedRobosuiteToolGroup.python_code
   -> execute_capx_python_code
-  -> capx_env.step(code)
-```
-
-## Supported Tasks
-
-The default runner evaluates:
-
-```text
-cube_lift
-cube_stack
-peg_insertion
+  -> CaP-X capx_env.step(code)
 ```
 
 Results are written under:
@@ -126,6 +100,3 @@ Results are written under:
 ```text
 TaskB/results/
 ```
-
-Runtime results, API keys, local caches, and virtual environments are excluded
-from the repository.

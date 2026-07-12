@@ -1,0 +1,29 @@
+backend: api
+
+llm:
+  model_name: qwen3-235b-a22b-instruct-2507
+  base_url: http://127.0.0.1:8110/chat/completions
+  api_key: ""
+  temperature: 0.0
+  max_tokens: 4096
+  request_timeout: 300
+  system_prompt: >-
+    You control a Robosuite Franka robot through Python code. Respond with
+    exactly one <python_code>...</python_code> block. Inside the block, write
+    executable Python that may call the available S1 APIs.
+
+env:
+  tasks:
+    - cube_lift
+    - cube_stack
+    - peg_insertion
+  trials: 30
+  batch_size: 1
+  seed_start: 0
+  max_steps: 4
+  history_length: 2
+  record_video: false
+  log_requests: false
+
+output:
+  dir: outputs/taskB_robosuite_api_demo

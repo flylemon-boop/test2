@@ -7,16 +7,17 @@ Robosuite mini-project.
 
 ```text
 run_taskB.sh
-run_taskB_generation.sh
 AlphaApollo/
   alphaapollo/
-  scripts/
   examples/
+    demo/taskB_robosuite_api.py
+    configs/demo_taskB_robosuite_api.yaml
+  scripts/
   cap-x/
 ```
 
 `AlphaApollo/cap-x` is the bundled CaP-X dependency used by this Task B runner.
-The branch no longer needs a sibling `TaskA/cap-x` directory.
+The branch does not require a sibling `TaskA/cap-x` directory.
 
 ## Run
 
@@ -34,15 +35,17 @@ For a quick smoke test:
 TASKS=cube_lift TRIALS=1 BATCH_SIZE=1 MAX_TURNS=1 bash run_taskB.sh
 ```
 
-The script will:
+The actual Python entry point is:
 
-- source `TASKB_ENV` when provided;
-- auto-source `/root/autodl-tmp/taskb_env.sh` on the remote machine when it
-  exists;
-- add `AlphaApollo` and `AlphaApollo/cap-x` to `PYTHONPATH`;
-- start or reuse the PyRoKI IK server on `127.0.0.1:8116`;
-- call the configured OpenAI-compatible chat completion API;
-- write outputs under `results/`.
+```text
+AlphaApollo/examples/demo/taskB_robosuite_api.py
+```
+
+with configuration:
+
+```text
+AlphaApollo/examples/configs/demo_taskB_robosuite_api.yaml
+```
 
 ## API
 
@@ -57,11 +60,13 @@ export MODEL=qwen3-235b-a22b-instruct-2507
 
 ## Implementation Notes
 
-Task B uses AlphaApollo's rollout and tool abstractions while delegating actual
-robot code execution to CaP-X:
+Task B uses AlphaApollo's environment manager and tool abstractions while
+delegating actual robot code execution to CaP-X:
 
 ```text
-TrajectoryCollector
+examples/demo/taskB_robosuite_api.py
+  -> LLMClient
+  -> make_envs(config)
   -> EmbodiedRobosuiteEnvironmentManager
   -> EmbodiedRobosuiteEnv.step
   -> EmbodiedRobosuiteToolGroup.python_code
@@ -69,14 +74,10 @@ TrajectoryCollector
   -> CaP-X capx_env.step(code)
 ```
 
-The model still emits exactly one code-as-action block:
+The model emits exactly one code-as-action block:
 
 ```xml
 <python_code>
 ...
 </python_code>
 ```
-
-Inside that block it may call the CaP-X S1 APIs exposed by the task prompt,
-such as `get_object_pose`, `sample_grasp_pose`, `goto_pose`, `open_gripper`,
-and `close_gripper`.
