@@ -182,6 +182,11 @@ def merge_config(args: argparse.Namespace) -> Dict[str, Any]:
             OmegaConf.merge(OmegaConf.create(file_cfg), OmegaConf.create(cfg)),
             resolve=True,
         )
+        if not args.system_prompt:
+            cfg["llm"]["system_prompt"] = (
+                file_cfg.get("llm", {}).get("system_prompt")
+                or cfg["llm"].get("system_prompt", "")
+            )
 
     csv_values = load_api_csv(args.api_csv or os.environ.get("API_CSV", ""))
     if not cfg["llm"]["api_key"]:
@@ -271,6 +276,7 @@ def run_task(task_name: str, client: LLMClient, cfg: Dict[str, Any], out_root: P
                 for trial_idx in range(batch_start, batch_start + batch_count)
             ]
             obs, _infos = manager.reset(kwargs=reset_kwargs)
+            initial_prompts = list(obs["text"])
             dones = [False] * batch_count
             trajectories: List[List[Dict[str, Any]]] = [[] for _ in range(batch_count)]
             final_rewards = [0.0] * batch_count
@@ -282,7 +288,11 @@ def run_task(task_name: str, client: LLMClient, cfg: Dict[str, Any], out_root: P
                     if dones[local_idx]:
                         actions.append("")
                         continue
-                    prompt_text = obs["text"][local_idx]
+                    prompt_text = (
+                        initial_prompts[local_idx]
+                        + "\n\nCurrent observation:\n"
+                        + obs["text"][local_idx]
+                    )
                     model_output = client.generate(prompt_text, cfg["llm"]["system_prompt"])
                     actions.append(ensure_python_code(model_output))
 
