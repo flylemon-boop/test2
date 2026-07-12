@@ -6,7 +6,7 @@ import numpy as np
 
 def get_capx_api_functions(capx_env: Any) -> Dict[str, Any]:
     funcs: Dict[str, Any] = {}
-    for api in getattr(capx_env, "_apis", {}).values():
+    for api in getattr(capx_env, "_apis", {}).values():  # 去 capx_env._apis 里找当前任务注册的 API 函数
         funcs.update(api.functions())
     return funcs
 
@@ -86,8 +86,8 @@ def execute_named_primitive(
         )
         return tool_result(payload, 0)
 
-    try:
-        result = funcs[name](**kwargs) #TaskBonus copy/AlphaApollo/cap-x/capx/integrations/franka/control_privileged.py
+    try:                               # TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/nut_assembly_privileged.py
+        result = funcs[name](**kwargs) #TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/control_privileged.py
         payload = status_payload(capx_env, "success", result=pose_dict(result))
         return tool_result(payload, 1)
     except Exception as exc:

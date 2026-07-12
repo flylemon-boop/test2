@@ -50,7 +50,7 @@ class ToolGroup:
 
     def execute_tool(self, name: str, *args, **kwargs) -> Any:
         # Execute a tool by name with given arguments
-        tool_func = self.get_tool(name)
+        tool_func = self.get_tool(name) # tool_func = EmbodiedRobosuiteToolGroup.一个东西
         if tool_func:
             # If only one argument is passed and it's a dict, pass it as a single argument
             if len(args) == 1 and isinstance(args[0], dict):

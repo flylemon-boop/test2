@@ -19,7 +19,7 @@ def execute_sample_grasp_pose(capx_env: Any, object_name: str) -> Dict[str, Any]
         )
 
     try:
-        raw_result = funcs["sample_grasp_pose"](object_name=object_name)
+        raw_result = funcs["sample_grasp_pose"](object_name=object_name) #TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/control_privileged.py
         return tool_result(payload_with_pose(capx_env, raw_result), 1)
     except Exception as exc:
         payload = status_payload(capx_env, "error", stderr=repr(exc))

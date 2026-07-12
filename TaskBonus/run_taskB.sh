@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="${SCRIPT_DIR}/AlphaApollo"
@@ -9,15 +9,15 @@ if [[ ! -d "${PROJECT_DIR}" ]]; then
   exit 1
 fi
 
-if [[ -n "${TASKBONUS_ENV:-}" && -f "${TASKBONUS_ENV}" ]]; then
+# Optional environment bootstrap. On the remote machine this is usually:
+#   /root/autodl-tmp/taskb_env.sh
+if [[ -n "${TASKB_ENV:-}" && -f "${TASKB_ENV}" ]]; then
   # shellcheck disable=SC1090
-  source "${TASKBONUS_ENV}"
+  source "${TASKB_ENV}"
 elif [[ -f /root/autodl-tmp/taskb_env.sh ]]; then
   # shellcheck disable=SC1091
   source /root/autodl-tmp/taskb_env.sh
 fi
-
-set -u
 
 export MUJOCO_GL="${MUJOCO_GL:-egl}"
 export PYOPENGL_PLATFORM="${PYOPENGL_PLATFORM:-egl}"
@@ -61,15 +61,13 @@ fi
 
 MODEL="${MODEL:-qwen3-235b-a22b-instruct-2507}"
 SERVER="${SERVER:-http://127.0.0.1:8110/chat/completions}"
-TASKS="${TASKS:-cube_lift cube_stack peg_insertion}"
 TRIALS="${TRIALS:-30}"
-BATCH_SIZE="${BATCH_SIZE:-1}"
-MAX_TURNS="${MAX_TURNS:-12}"
+MAX_TURNS="${MAX_TURNS:-4}"
 SEED_START="${SEED_START:-0}"
 PYROKI_PORT="${PYROKI_PORT:-8116}"
 RECORD_VIDEO="${RECORD_VIDEO:-0}"
 PYTHON_BIN="${PYTHON:-python}"
-OUT="${OUT:-${SCRIPT_DIR}/results/task_bonus_${MODEL}_${TRIALS}}"
+OUT="${OUT:-${SCRIPT_DIR}/results/taskB_${MODEL}_${TRIALS}}"
 
 export PYTHONPATH="${PROJECT_DIR}:${PYTHONPATH:-}"
 for candidate in \
@@ -109,19 +107,16 @@ video_args=()
 if [[ "${RECORD_VIDEO}" == "1" || "${RECORD_VIDEO}" == "true" || "${RECORD_VIDEO}" == "True" ]]; then
   video_args+=(--record-video)
 fi
-read -r -a task_args <<<"${TASKS}"
 
-"${PYTHON_BIN}" examples/demo/taskbonus_robosuite_api.py \
-  --config examples/configs/demo_taskbonus_robosuite_api.yaml \
-  --tasks "${task_args[@]}" \
+"${PYTHON_BIN}" scripts/run_taskB_robosuite_eval.py \
+  --tasks cube_lift cube_stack peg_insertion \
   --trials "${TRIALS}" \
-  --batch-size "${BATCH_SIZE}" \
   --seed-start "${SEED_START}" \
-  --max-steps "${MAX_TURNS}" \
-  --base-url "${SERVER}" \
+  --max-turns "${MAX_TURNS}" \
+  --server-url "${SERVER}" \
   --model "${MODEL}" \
   --temperature 0.0 \
-  --max-tokens 2048 \
+  --max-tokens 4096 \
   --output-dir "${OUT}" \
   "${video_args[@]}"
 
@@ -139,22 +134,12 @@ if not summary_path.exists():
 summary = json.loads(summary_path.read_text())
 rows = summary.get("tasks", [])
 csv_path = out / "summary.csv"
-fieldnames = [
-    "task",
-    "trials",
-    "successes",
-    "success_rate",
-    "avg_turns",
-    "avg_total_tokens",
-    "avg_prompt_chars",
-    "avg_completion_chars",
-]
 with csv_path.open("w", newline="") as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames)
+    writer = csv.DictWriter(f, fieldnames=["task", "trials", "successes", "success_rate"])
     writer.writeheader()
     writer.writerows(rows)
 
-print(f"TaskBonus results saved to: {out}")
+print(f"TaskB results saved to: {out}")
 print(f"Summary JSON: {summary_path}")
 print(f"Summary CSV: {csv_path}")
 PY

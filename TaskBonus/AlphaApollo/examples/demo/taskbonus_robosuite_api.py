@@ -192,7 +192,7 @@ def merge_config(args: argparse.Namespace) -> Dict[str, Any]:
             "temperature": args.temperature,
             "max_tokens": args.max_tokens,
             "request_timeout": args.request_timeout,
-            "system_prompt": args.system_prompt,
+            "system_prompt": args.system_prompt, # 读入system_prompt
         },
         "env": {
             "tasks": args.tasks,

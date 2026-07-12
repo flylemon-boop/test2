@@ -19,9 +19,9 @@ one XML tool call per turn.
 - One-command runner:
   - `TaskBonus/run_task_bonus.sh`
 - Bundled CaP-X backend:
-  - `TaskBonus/AlphaApollo/cap-x`
+  - `TaskBonus/AlphaApollo/third_party/cap-x`
 - Full TaskBonus evaluation results:
-  - `results/taskBonus/taskbonus_autofix_turn25/`
+  - `results/taskBonus/taskBonus_improved_turn25/`
 - One successful tool-call demo video:
   - `results/taskBonus/taskbonus_video_cube_lift_seed1/cube_lift/videos/episode_000_success_1.mp4`
 
@@ -71,7 +71,7 @@ source /path/to/miniconda3/etc/profile.d/conda.sh
 conda activate taskb
 export MUJOCO_GL=egl
 export PYOPENGL_PLATFORM=egl
-export PYTHONPATH="$REPO/TaskBonus/AlphaApollo:$REPO/TaskBonus/AlphaApollo/cap-x:${PYTHONPATH:-}"
+export PYTHONPATH="$REPO/TaskBonus/AlphaApollo:$REPO/TaskBonus/AlphaApollo/third_party/cap-x:${PYTHONPATH:-}"
 ```
 
 `TaskBonus/run_task_bonus.sh` also works without `TASKBONUS_ENV` if the active
@@ -106,14 +106,14 @@ The runner also needs the CaP-X code. This branch bundles the required CaP-X
 backend under:
 
 ```text
-$REPO/TaskBonus/AlphaApollo/cap-x
+$REPO/TaskBonus/AlphaApollo/third_party/cap-x
 ```
 
 `run_task_bonus.sh` adds the bundled path to `PYTHONPATH` first, then falls
 back to these locations for compatibility:
 
 ```text
-TaskBonus/cap-x
+TaskBonus/AlphaApollo/third_party/cap-x
 ../TaskA/cap-x
 ../cap-x
 ../../cap-x
@@ -216,14 +216,14 @@ For the submitted run, `MAX_TURNS` was set to 25.
 Full TaskBonus run:
 
 ```text
-results/taskBonus/taskbonus_autofix_turn25/summary.csv
+results/taskBonus/taskBonus_improved_turn25/summary.csv
 ```
 
 | Task | Trials | Successes | Success rate | Average turns |
 | --- | ---: | ---: | ---: | ---: |
-| cube_lift | 30 | 26 | 86.67% | 9.77 |
-| cube_stack | 30 | 0 | 0.00% | 24.60 |
-| peg_insertion | 30 | 0 | 0.00% | 24.20 |
+| cube_lift | 30 | 30 | 100.00% | 8.50 |
+| cube_stack | 30 | 11 | 36.67% | 21.87 |
+| peg_insertion | 30 | 0 | 0.00% | 24.77 |
 
 Successful tool-call demo video:
 
@@ -267,11 +267,10 @@ run_task_bonus.sh
 ```text
 TaskBonus/
 TaskBonus/AlphaApollo/
-TaskBonus/AlphaApollo/cap-x/
+TaskBonus/AlphaApollo/third_party/cap-x/
 TaskBonus/AlphaApollo/examples/demo/taskbonus_robosuite_api.py
 TaskBonus/AlphaApollo/examples/configs/demo_taskbonus_robosuite_api.yaml
 TaskBonus/run_task_bonus.sh
-code/cap-x/
-results/taskBonus/taskbonus_autofix_turn25/
+results/taskBonus/taskBonus_improved_turn25/
 results/taskBonus/taskbonus_video_cube_lift_seed1/
 ```

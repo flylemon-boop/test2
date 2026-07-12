@@ -14,7 +14,7 @@ def execute_capx_python_code(
     if log_requests:
         logger.info("Executing python_code in CaP-X Robosuite environment")
 
-    _obs, reward, terminated, truncated, info = capx_env.step(code)
+    _obs, reward, terminated, truncated, info = capx_env.step(code) # TaskBonus/AlphaApollo/third_party/cap-x/capx/envs/tasks/base.py
     sandbox_rc = info.get("sandbox_rc", 1)
     run_status = "Finished" if sandbox_rc == 0 else "Error"
     return {

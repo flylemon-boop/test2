@@ -14,7 +14,7 @@ def execute_get_object_pose(
     object_name: str,
     return_bbox_extent: bool = False,
 ) -> Dict[str, Any]:
-    funcs = get_capx_api_functions(capx_env)
+    funcs = get_capx_api_functions(capx_env) # 先从环境里找到对应的所有api
     kwargs = {"object_name": object_name}
     if "get_object_pose" not in funcs:
         return execute_named_primitive(capx_env, "get_object_pose", **kwargs)

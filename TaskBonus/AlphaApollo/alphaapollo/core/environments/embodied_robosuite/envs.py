@@ -39,8 +39,8 @@ class EmbodiedRobosuiteMultiProcessEnv(gym.Env):
         self._closed = False
 
     def _sync_reset(self, env, kwargs: Dict[str, Any]):
-        env.reset(kwargs)
-        prompt, info = env.init([])
+        env.reset(kwargs) # TaskBonus/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/env.py
+        prompt, info = env.init([]) # TaskBonus/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/env.py
         obs = prompt[0]["content"]
         return obs, info
 

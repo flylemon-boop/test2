@@ -416,7 +416,7 @@ class EmbodiedRobosuiteEnvironmentManager(EnvironmentManagerBase):
         super().__init__(envs, projection_f, config)
 
     def reset(self, kwargs) -> Tuple[Dict[str, Any], List[Dict]]:
-        obs, infos = self.envs.reset(kwargs=kwargs)
+        obs, infos = self.envs.reset(kwargs=kwargs) # TaskBonus/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/envs.py
         self.tasks = obs
         self.memory.reset(batch_size=len(obs))
         observations = {

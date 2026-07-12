@@ -17,27 +17,27 @@ TASK_SPECS = {
     "cube_lift": {
         "env_cls": "capx.envs.tasks.franka.franka_lift.FrankaLiftCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_cube_lift.FrankaRobosuiteCubeLiftLowLevel",
-        "api": "FrankaControlPrivilegedApi",
+        "api": "FrankaControlPrivilegedApi", # TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/control_privileged.py
     },
     "cube_lifting": {
         "env_cls": "capx.envs.tasks.franka.franka_lift.FrankaLiftCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_cube_lift.FrankaRobosuiteCubeLiftLowLevel",
-        "api": "FrankaControlPrivilegedApi",
+        "api": "FrankaControlPrivilegedApi", # TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/control_privileged.py
     },
     "cube_stack": {
         "env_cls": "capx.envs.tasks.franka.franka_pick_place.FrankaPickPlaceCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_cubes.FrankaRobosuiteCubesLowLevel",
-        "api": "FrankaControlPrivilegedApi",
+        "api": "FrankaControlPrivilegedApi", # TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/control_privileged.py
     },
     "peg_insertion": {
         "env_cls": "capx.envs.tasks.franka.franka_nut_assembly.FrankaNutAssemblyCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_nut_assembly.FrankaRobosuiteNutAssembly",
-        "api": "FrankaControlNutAssemblyPrivilegedApi",
+        "api": "FrankaControlNutAssemblyPrivilegedApi", # TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/nut_assembly_privileged.py
     },
     "nut_assembly": {
         "env_cls": "capx.envs.tasks.franka.franka_nut_assembly.FrankaNutAssemblyCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_nut_assembly.FrankaRobosuiteNutAssembly",
-        "api": "FrankaControlNutAssemblyPrivilegedApi",
+        "api": "FrankaControlNutAssemblyPrivilegedApi", # TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/nut_assembly_privileged.py
     },
 }
 
@@ -101,9 +101,9 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
             )
 
         low_level_cls = _load_symbol(spec["low_level_cls"]) #low-level env 类本来就在 CaP-X 里，TaskB 只是根据字符串路径把它们导入出来，并传参数创建实例。
-        # 在类似TaskA/cap-x/capx/envs/simulators/robosuite_cube_lift.py:22地方有定义
+        # 在类似cap-x/capx/envs/simulators/robosuite_cube_lift.py:22地方有定义
         env_cls = _load_symbol(spec["env_cls"])
-        #"env_cls"定义在 TaskA 的这里：TaskA/cap-x/capx/envs/tasks/franka/franka_lift.py:35 它是一个 CaP-X high-level env 类
+        #"env_cls"定义在 TaskA 的这里：cap-x/capx/envs/tasks/franka/franka_lift.py:35 它是一个 CaP-X high-level env 类
         capx_root = Path(__import__("capx").__file__).resolve().parents[1]
         controller_cfg = spec.get(
             "controller_cfg",
@@ -118,7 +118,7 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
             enable_render=bool(spec.get("enable_render", self.record_video)),
             max_steps=int(spec.get("sim_max_steps", 1500)),
         ) # 实例化上面拿到的low_level_cls 创建低层 Robosuite 环境
-        cfg = CodeExecEnvConfig(   #CodeExecEnvConfig 是 CaP-X 里的配置 dataclass，定义在：TaskA/cap-x/capx/envs/tasks/base.py
+        cfg = CodeExecEnvConfig(   #CodeExecEnvConfig 是 CaP-X 里的配置 dataclass，定义在: cap-x/capx/envs/tasks/base.py
             low_level=low_level,
             apis=[spec["api"]],
             privileged=bool(spec.get("privileged", True)),
@@ -131,7 +131,7 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
         你可以使用 privileged 模式
         是否开启渲染取决于 record_video'''
         return env_cls(cfg) #env_cls实际就是FrankaLiftCodeEnv  而 FrankaLiftCodeEnv 定义在 CaP-X 里，
-        #例如：TaskA/cap-x/capx/envs/tasks/franka/franka_lift.py:35
+        #例如：cap-x/capx/envs/tasks/franka/franka_lift.py:35
         #重点是：FrankaLiftCodeEnv 自己没有写 __init__()，所以当执行：
 
         #env_cls(cfg)
@@ -171,7 +171,7 @@ class EmbodiedRobosuiteEnv(BaseTextEnv):
         self.last_reward = 0.0
         self.last_info: Dict[str, Any] = {}
         self.chat_history: ConversationType = []
-        obs, info = self.capx_env.reset(seed=self.seed) #重置底层 cap-X 环境调用的是TaskA/cap-x/capx/envs/tasks/base.py:243
+        obs, info = self.capx_env.reset(seed=self.seed) #重置底层 cap-X 环境调用的是cap-x/capx/envs/tasks/base.py:243
         if self.record_video and hasattr(self.capx_env, "enable_video_capture"):
             self.capx_env.enable_video_capture(True, clear=True)
         self.initial_obs = obs
