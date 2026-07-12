@@ -238,21 +238,108 @@ task,trials,successes,success_rate,avg_turns
 cube_lift,1,1,1.0,16.0
 ```
 
-## 6. Notes
+## 6. Architecture and Data Flow
 
 - `TaskBonus/run_task_bonus.sh` starts PyRoKI automatically if the server is
   not already running.
-- The current API path follows AlphaApollo's original demo style:
+
+TaskBonus keeps AlphaApollo's multi-turn rollout structure, but changes the
+model action from one `python_code` block to exactly one XML tool call per turn:
 
 ```text
-run_task_bonus.sh
-  -> examples/demo/taskbonus_robosuite_api.py
-  -> LLMClient calls an OpenAI-compatible API
-  -> make_envs(config)
-  -> EmbodiedRobosuiteEnvironmentManager.reset/step
-  -> EmbodiedRobosuiteEnv.step
-  -> EmbodiedToolGroup single S1 XML tool
-  -> CaP-X API / Robosuite
+model -> <tool_name>{json_args}</tool_name> -> EmbodiedToolGroup -> CaP-X S1 API
+```
+
+The execution path and data flow are:
+
+```text
+Shell env / api.csv / CLI vars
+        |
+        v
++---------------------------------+
+| TaskBonus/run_task_bonus.sh     |
+| - load API key + base URL       |
+| - set model / trials / tasks    |
+| - start PyRoKI if needed        |
++----------------+----------------+
+                 |
+                 | command-line args + environment
+                 v
++----------------------------------------------------------------+
+| AlphaApollo demo runner                                        |
+| TaskBonus/AlphaApollo/examples/demo/taskbonus_robosuite_api.py |
+|                                                                |
+|  config YAML + task list + seeds                               |
+|          |                                                     |
+|          v                                                     |
+|  +----------------------+    prompt/messages       +---------+ |
+|  | make_envs/reset      | -----------------------> | LLM API | |
+|  | Robosuite task envs  |                          | client  | |
+|  +----------+-----------+ <----------------------- +---------+ |
+|             |              one XML tool call per turn          |
+|             v                                                  |
+|  +----------------------+    tool call XML + JSON args         |
+|  | EnvManager.step      | ----------------------------------+  |
+|  | batch episode loop   |                                   |  |
+|  +----------+-----------+                                   |  |
++-------------|-----------------------------------------------|--+
+              |                                               |
+              v                                               v
++-----------------------------+        +-----------------------------+
+| EmbodiedRobosuiteEnv.step   |        | EmbodiedToolGroup           |
+| - parse XML tool token      | -----> | registered S1 primitive     |
+| - validate JSON arguments   | call   | one tool per model turn     |
++--------------+--------------+        +--------------+--------------+
+               |                                      |
+               | selected primitive + parameters      |
+               v                                      v
++--------------------------------------------------------------+
+| CaP-X + Robosuite backend                                    |
+| TaskBonus/AlphaApollo/third_party/cap-x                      |
+|                                                              |
+| <get_object_pose> / <sample_grasp_pose> / <goto_pose> /      |
+| <open_gripper> / <close_gripper> / reward + success check    |
++------------------------------+-------------------------------+
+                               |
+                               | <tool_response> + observation
+                               v
++--------------------------------------------------------------+
+| Next-turn prompt / result store                              |
+| - tool response is appended to conversation history           |
+| - per-episode JSON logs                                      |
+| - summary.json / summary.csv                                 |
+| - optional videos                                            |
++--------------------------------------------------------------+
+```
+
+Important data flows:
+
+```text
+api.csv or environment variables
+  -> OPENAI_API_KEY / SERVER / MODEL
+  -> LLMClient chat-completions request
+
+demo_taskbonus_robosuite_api.yaml + TASKS/TRIALS/MAX_TURNS/SEED_START
+  -> runner config
+  -> make_envs()
+  -> Robosuite episodes
+
+task prompt + current observation + previous <tool_response> messages
+  -> LLM messages
+  -> model output containing one XML S1 tool call
+
+XML tool call, for example <goto_pose>{...}</goto_pose>
+  -> XML parser / minor close-tag normalization
+  -> JSON argument validation
+  -> EmbodiedToolGroup registered method
+  -> CaP-X S1 primitive
+  -> Robosuite state transition
+
+primitive return value / observation / reward / success
+  -> <tool_response>
+  -> next model turn if unfinished
+  -> episode JSON
+  -> summary.csv / summary.json
 ```
 
 - The tool-call runner normalizes minor XML formatting errors. For example,
