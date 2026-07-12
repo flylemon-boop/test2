@@ -60,6 +60,7 @@ export TASK_NAME TRIALS SEED_START DATA_PATH
 #   2. alphaapollo/core/generation: imports verl.*
 export PYTHONPATH="${PROJECT_DIR}/alphaapollo/core/generation:${PROJECT_DIR}:${PYTHONPATH:-}"
 for candidate in \
+  "${PROJECT_DIR}/third_party/cap-x" \
   "${SCRIPT_DIR}/../TaskA/cap-x" \
   "${SCRIPT_DIR}/../cap-x" \
   "${SCRIPT_DIR}/../../cap-x" \

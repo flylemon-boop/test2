@@ -17,27 +17,27 @@ TASK_SPECS = {
     "cube_lift": {
         "env_cls": "capx.envs.tasks.franka.franka_lift.FrankaLiftCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_cube_lift.FrankaRobosuiteCubeLiftLowLevel",
-        "api": "FrankaControlPrivilegedApi",
+        "api": "FrankaControlPrivilegedApi",# TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/control_privileged.py
     },
     "cube_lifting": {
         "env_cls": "capx.envs.tasks.franka.franka_lift.FrankaLiftCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_cube_lift.FrankaRobosuiteCubeLiftLowLevel",
-        "api": "FrankaControlPrivilegedApi",
+        "api": "FrankaControlPrivilegedApi",# TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/control_privileged.py
     },
     "cube_stack": {
         "env_cls": "capx.envs.tasks.franka.franka_pick_place.FrankaPickPlaceCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_cubes.FrankaRobosuiteCubesLowLevel",
-        "api": "FrankaControlPrivilegedApi",
+        "api": "FrankaControlPrivilegedApi",# TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/control_privileged.py
     },
     "peg_insertion": {
         "env_cls": "capx.envs.tasks.franka.franka_nut_assembly.FrankaNutAssemblyCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_nut_assembly.FrankaRobosuiteNutAssembly",
-        "api": "FrankaControlNutAssemblyPrivilegedApi",
+        "api": "FrankaControlNutAssemblyPrivilegedApi",# TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/nut_assembly_privileged.py
     },
     "nut_assembly": {
         "env_cls": "capx.envs.tasks.franka.franka_nut_assembly.FrankaNutAssemblyCodeEnv",
         "low_level_cls": "capx.envs.simulators.robosuite_nut_assembly.FrankaRobosuiteNutAssembly",
-        "api": "FrankaControlNutAssemblyPrivilegedApi",
+        "api": "FrankaControlNutAssemblyPrivilegedApi",# TaskBonus/AlphaApollo/third_party/cap-x/capx/integrations/franka/nut_assembly_privileged.py
     },
 }
 

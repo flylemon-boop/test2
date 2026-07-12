@@ -73,8 +73,7 @@ OUT="${OUT:-${SCRIPT_DIR}/results/taskB_${MODEL}_${TRIALS}}"
 
 export PYTHONPATH="${PROJECT_DIR}:${PYTHONPATH:-}"
 for candidate in \
-  "${PROJECT_DIR}/cap-x" \
-  "${SCRIPT_DIR}/cap-x" \
+  "${PROJECT_DIR}/third_party/cap-x" \
   "${SCRIPT_DIR}/../TaskA/cap-x" \
   "${SCRIPT_DIR}/../cap-x" \
   "${SCRIPT_DIR}/../../cap-x" \

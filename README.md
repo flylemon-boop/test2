@@ -14,14 +14,15 @@ TaskB/
       demo/taskB_robosuite_api.py
       configs/demo_taskB_robosuite_api.yaml
     scripts/
-    cap-x/
+    third_party/
+      cap-x/
 ```
 
 `TaskA/` is intentionally not included on this branch. The CaP-X code needed by
 Task B is bundled under:
 
 ```text
-TaskB/AlphaApollo/cap-x
+TaskB/AlphaApollo/third_party/cap-x
 ```
 
 The runner adds this bundled CaP-X path to `PYTHONPATH` before falling back to
@@ -31,14 +32,14 @@ any external CaP-X checkout.
 
 ```bash
 cd TaskB
-TRIALS=30 MAX_TURNS=4 bash run_taskB.sh
+TRIALS=30 MAX_TURNS=25 bash run_taskB.sh
 ```
 
 Quick smoke test:
 
 ```bash
 cd TaskB
-TASKS=cube_lift TRIALS=1 BATCH_SIZE=1 MAX_TURNS=1 bash run_taskB.sh
+TASKS=cube_lift TRIALS=1 BATCH_SIZE=1 MAX_TURNS=25 bash run_taskB.sh
 ```
 
 `run_taskB.sh` now calls the AlphaApollo demo-style API runner:
@@ -100,3 +101,15 @@ Results are written under:
 ```text
 TaskB/results/
 ```
+
+The improved turn-25 summary committed with this branch is available at:
+
+```text
+results/taskB/taskB_improved_turn25/summary.csv
+```
+
+| Task | Trials | Successes | Success rate |
+| --- | ---: | ---: | ---: |
+| cube_lift | 30 | 30 | 100.00% |
+| cube_stack | 30 | 30 | 100.00% |
+| peg_insertion | 30 | 3 | 10.00% |
