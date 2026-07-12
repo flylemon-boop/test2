@@ -1,7 +1,7 @@
 from typing import Dict, Callable, Any, Optional, List
 
 
-class tool:
+class tool:  # @tool 把某个方法标记成一个可注册工具。它不是立即执行工具，而是在 ToolGroup 初始化时被扫描出来。
     """
     A tool that can be used to execute a function.
     """
@@ -30,14 +30,23 @@ class ToolGroup:
         return self.name
 
     def _register_tools(self):
+        '''原来的方法：
+        def python_code(self, code):
+        ...
+        加上装饰器：
+        @tool
+        def python_code(self, code):
+        ...
+        在 Python 里等价于：
+        python_code = tool(python_code)'''
         # Register all methods decorated with @tool
-
+        # 只要某个方法上有 @tool，它就会进入 _tool_registry
         # Tool names must be unique across tool groups.
         # TODO: Support duplicate tool names across tool groups via namespacing
-        for attr_name in dir(self):
+        for attr_name in dir(self): # dir(self) 会列出当前对象能访问到的所有属性名和方法名。
             # Look for the descriptor on the class, not the instance
             raw = getattr(type(self), attr_name, None)
-            if isinstance(raw, tool):
+            if isinstance(raw, tool): # 判断这个类属性是不是一个 tool 对象。
                 self._tool_registry[raw.name] = getattr(self, attr_name)
 
     def get_tool(self, name: str) -> Optional[Callable]:
@@ -50,11 +59,11 @@ class ToolGroup:
 
     def execute_tool(self, name: str, *args, **kwargs) -> Any:
         # Execute a tool by name with given arguments
-        tool_func = self.get_tool(name)
+        tool_func = self.get_tool(name)  # tool_func = EmbodiedRobosuiteToolGroup.python_code
         if tool_func:
             # If only one argument is passed and it's a dict, pass it as a single argument
-            if len(args) == 1 and isinstance(args[0], dict):
-                return tool_func(**args[0])
+            if len(args) == 1 and isinstance(args[0], dict):  # equal self.python_code(code=tool_input)
+                return tool_func(**args[0]) #直接执行 go to /Users/zhouzhida/Desktop/test/TaskB/AlphaApollo/alphaapollo/core/tools/embodied_robosuite.py
             else:
                 return tool_func(*args, **kwargs)
         raise ValueError(f"Tool '{name}' not found in group '{self.name}'.")

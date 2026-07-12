@@ -412,16 +412,9 @@ def run_task(task_name: str, client: ApiClient, args: argparse.Namespace, out_ro
     for batch_start in range(0, args.trials, args.batch_size):
         batch_count = min(args.batch_size, args.trials - batch_start)
         manager = make_manager(task_name, batch_count, args)
-        ''' EmbodiedRobosuiteEnvironmentManager
-            └── envs: EmbodiedRobosuiteMultiProcessEnv
-                └── envs: list[EmbodiedRobosuiteEnv]
-                    ├── EmbodiedRobosuiteEnv # trial 0
-                    ├── EmbodiedRobosuiteEnv # trial 1
-                    ├── EmbodiedRobosuiteEnv # trial 2
-                    └── ...'''
         started = time.time()
         try:
-            reset_kwargs = [
+            reset_kwargs = [  # 这个东西后面会传给环境 reset，用来决定当前 episode 的 seed 和任务名。
                 {
                     "seed": args.seed_start + trial_idx,
                     "data_source": task_name,
@@ -436,34 +429,37 @@ def run_task(task_name: str, client: ApiClient, args: argparse.Namespace, out_ro
                 tokenizer=tokenizer,
                 response_length=args.max_response_length,
             )
-            gen_batch = make_gen_batch(task_name, reset_kwargs, tokenizer)
+            gen_batch = make_gen_batch(task_name, reset_kwargs, tokenizer)  # 把当前要跑的 trials 包装成DataProto。
             rollout_output = traj_collector.multi_turn_loop(
-                gen_batch=gen_batch,
-                actor_rollout_wg=api_rollout_wg,
-                envs=manager,
+                gen_batch=gen_batch,    # 当前要跑哪些 episode，以及 reset 参数是什么。
+                actor_rollout_wg=api_rollout_wg, # 模型生成器是谁。
+                envs=manager, # 环境 manager 是谁
                 is_train=False,
             )
 
-            by_index: Dict[int, List[Any]] = {idx: [] for idx in range(batch_count)}
+            by_index: Dict[int, List[Any]] = {idx: [] for idx in range(batch_count)} # 创建一个 dict，用来按当前 batch 里的 trial 编号分组。
             for item_idx in range(len(rollout_output)):
                 item = rollout_output[item_idx]
-                index = int(item.non_tensor_batch.get("index", item_idx % batch_count))
+                index = int(item.non_tensor_batch.get("index", item_idx % batch_count)) # 这个 item 属于当前 batch 里的哪个 trial。
                 if index in by_index:
-                    by_index[index].append(item)
-
+                    by_index[index].append(item)  # 把当前 item 放进对应 trial 的 list 里。
+            '''by_index = {
+                0: [trial0_turn0, trial0_turn1, trial0_turn2],
+                1: [trial1_turn0, trial1_turn1],
+                }'''
             for local_idx in range(batch_count):
                 trial_idx = batch_start + local_idx
-                items = by_index.get(local_idx, [])
+                items = by_index.get(local_idx, []) # 取出这个 trial 对应的所有 turn 数据。
                 trajectory: List[Dict[str, Any]] = []
                 final_reward = 0.0
                 success = False
                 error = None
-                for turn, item in enumerate(items):
-                    response_ids = item.batch["responses"] if item.batch is not None else []
-                    action = tokenizer.decode(response_ids, skip_special_tokens=True)
-                    reward = scalar_float(item.non_tensor_batch.get("rewards", 0.0))
+                for turn, item in enumerate(items): # 遍历当前 trial 的每一轮。
+                    response_ids = item.batch["responses"] if item.batch is not None else [] # 从 item 里拿模型输出的 token ids。
+                    action = tokenizer.decode(response_ids, skip_special_tokens=True)# 解码
+                    reward = scalar_float(item.non_tensor_batch.get("rewards", 0.0)) # 提取reward
                     final_reward = reward
-                    success = success or bool(scalar_float(item.non_tensor_batch.get("episode_success", 0.0)))
+                    success = success or bool(scalar_float(item.non_tensor_batch.get("episode_success", 0.0))) # 判断成功
                     trajectory.append(
                         {
                             "turn": turn,
@@ -474,7 +470,7 @@ def run_task(task_name: str, client: ApiClient, args: argparse.Namespace, out_ro
                         }
                     )
                 success = bool(success)
-                successes += int(success)
+                successes += int(success) # 总成功数+1
                 video_path = None
                 if args.record_video:
                     try:

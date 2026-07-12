@@ -24,21 +24,21 @@ from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 from verl.trainer.ppo.reward import load_reward_manager
 
 
-@hydra.main(config_path="config", config_name="ppo_trainer", version_base=None)
+@hydra.main(config_path="config", config_name="ppo_trainer", version_base=None) #hydra会去当前文件旁边的 config/ 目录下找 ppo_trainer.yaml，读取它，生成一个 OmegaConf DictConfig 对象，
 def main(config):
     run_ppo(config)
 
 
-def run_ppo(config) -> None:
-    if not ray.is_initialized():
+def run_ppo(config) -> None: # Ray 是一个分布式/多进程任务调度框架，初始化Ray
+    if not ray.is_initialized(): 
         # this is for local ray cluster
         ray.init(
             runtime_env={"env_vars": {"TOKENIZERS_PARALLELISM": "true", "NCCL_DEBUG": "WARN", "VLLM_LOGGING_LEVEL": "WARN", "VLLM_ALLOW_RUNTIME_LORA_UPDATING": "true"}},
             num_cpus=config.ray_init.num_cpus,
         )
 
-    runner = TaskRunner.remote()
-    ray.get(runner.run.remote(config))
+    runner = TaskRunner.remote() # Ray 创建一个远程 TaskRunner actor，Ray 标记成 remote actor。也就是说它不是普通类，而是在 Ray worker 进程里运行。
+    ray.get(runner.run.remote(config)) # 远程actor 里执行真正训练逻辑。
 
 
 @ray.remote(num_cpus=1)  # please make sure main_task is not scheduled on head
@@ -51,22 +51,22 @@ class TaskRunner:
 
         from verl.utils.fs import copy_to_local
 
-        pprint(OmegaConf.to_container(config, resolve=True))  # resolve=True will eval symbol values
+        pprint(OmegaConf.to_container(config, resolve=True))  # resolve=True will eval symbol values，打印时变成真实的值
         OmegaConf.resolve(config)
 
-        # download the checkpoint from hdfs
+        # download the checkpoint from hdfs，准备模型路径
         local_path = copy_to_local(config.actor_rollout_ref.model.path, use_shm=config.actor_rollout_ref.model.get("use_shm", False))
 
         from alphaapollo.core.environments import make_envs
-        envs, val_envs = make_envs(config)
+        envs, val_envs = make_envs(config) #创建训练环境和验证环境
 
         # instantiate tokenizer
-        from verl.utils import hf_processor, hf_tokenizer
+        from verl.utils import hf_processor, hf_tokenizer # 导入 HuggingFace tokenizer / processor 加载工具。
 
         trust_remote_code = config.data.get("trust_remote_code", False)
         tokenizer = hf_tokenizer(local_path, trust_remote_code=trust_remote_code)
         processor = hf_processor(local_path, trust_remote_code=trust_remote_code, use_fast=True)  # used for multimodal LLM, could be none
-
+        # processor 主要用于多模态模型，比如图像文本模型。纯文本模型可能是 None 或简单 processor。
         # vllm early verify
         if config.actor_rollout_ref.rollout.name in ["vllm"]:
             from verl.utils.vllm_utils import is_version_ge
@@ -75,11 +75,11 @@ class TaskRunner:
                 if not is_version_ge(pkg="vllm", minver="0.7.3"):
                     raise NotImplementedError("PPO LoRA is not supported before vllm 0.7.3")
 
-        # define worker classes
+        # define worker classes 选择worker类型
         if config.actor_rollout_ref.actor.strategy in ["fsdp", "fsdp2"]:
             assert config.critic.strategy in ["fsdp", "fsdp2"]
-            from verl.single_controller.ray import RayWorkerGroup
-            from verl.workers.fsdp_workers import ActorRolloutRefWorker, AsyncActorRolloutRefWorker, CriticWorker
+            from verl.single_controller.ray import RayWorkerGroup # 导入 RayWorkerGroup
+            from verl.workers.fsdp_workers import ActorRolloutRefWorker, AsyncActorRolloutRefWorker, CriticWorker # 导入 FSDP worker 类
 
             actor_rollout_cls = AsyncActorRolloutRefWorker if config.actor_rollout_ref.rollout.mode == "async" else ActorRolloutRefWorker
             ray_worker_group_cls = RayWorkerGroup
@@ -100,7 +100,7 @@ class TaskRunner:
         role_worker_mapping = {
             Role.ActorRollout: ray.remote(actor_rollout_cls),
             Role.Critic: ray.remote(CriticWorker),
-        }
+        }   # 定义每个角色用哪个 Ray remote worker 类。
 
         global_pool_id = "global_pool"
         resource_pool_spec = {
@@ -135,7 +135,7 @@ class TaskRunner:
         reward_manager_name = config.reward_model.get("reward_manager", "episode")
         if reward_manager_name == 'episode':
             from alphaapollo.core.reward_manager import EpisodeRewardManager
-            reward_manager_cls = EpisodeRewardManager
+            reward_manager_cls = EpisodeRewardManager #根据环境返回的 episode reward 计算训练需要的 reward。
         else:
             raise NotImplementedError
 
@@ -175,8 +175,8 @@ class TaskRunner:
             traj_collector=traj_collector,
             envs=envs,
             val_envs=val_envs,
-        )
-        trainer.init_workers()
+        ) # 创建 PPO 训练器对象，也就是把前面准备好的所有组件塞进 RayPPOTrainer 里
+        trainer.init_workers() 
         trainer.fit()
 
 

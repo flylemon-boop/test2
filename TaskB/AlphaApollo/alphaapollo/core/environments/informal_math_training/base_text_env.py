@@ -34,7 +34,7 @@ class BaseTextEnv(Env[str, str]):
         self.max_turns = 1
 
         # Tool groups
-        self.tool_groups = []
+        self.tool_groups = [] # 开始看有什么工具可以加入
         self.tool_to_toolgroup = {}
 
     def init_tool_groups(self, tool_groups: List = []) -> None:
@@ -45,7 +45,7 @@ class BaseTextEnv(Env[str, str]):
         self.tool_groups = tool_groups
         self.tool_to_toolgroup = {}
         for tool_group in self.tool_groups:
-            self.tool_to_toolgroup.update(tool_group.get_tool_to_group_mapping())
+            self.tool_to_toolgroup.update(tool_group.get_tool_to_group_mapping()) #go to TaskB/AlphaApollo/alphaapollo/core/tools/core.py
 
     def _execute_tool(self, tool_group_name: str, tool_name: str, tool_input: Any) -> str:
         """
@@ -55,7 +55,7 @@ class BaseTextEnv(Env[str, str]):
             if group.name == tool_group_name:
                 # If tool_input is a dict, pass it as a single argument
                 if isinstance(tool_input, dict):
-                    return group.execute_tool(tool_name, tool_input)
+                    return group.execute_tool(tool_name, tool_input) #go to /Users/zhouzhida/Desktop/test/TaskB/AlphaApollo/alphaapollo/core/tools/core.py
                 else:
                     return group.execute_tool(tool_name, *tool_input)  # tool_input must be tuple or list
 

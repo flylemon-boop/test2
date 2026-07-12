@@ -297,12 +297,12 @@ class TrajectoryCollector:
         # Initial observations from the environment
         # obs, infos = envs.reset(kwargs=gen_batch.non_tensor_batch.pop('env_kwargs', None))
         env_kwargs = gen_batch.non_tensor_batch.get("env_kwargs", None)
-        obs, infos = envs.reset(kwargs=env_kwargs)
+        obs, infos = envs.reset(kwargs=env_kwargs) #env_kwargs 来自你脚本生成的 parquet，reset 环境
 
         lenght_obs = len(obs['text']) if obs['text'] is not None else len(obs['image'])
         assert len(gen_batch.batch) == lenght_obs, f"gen_batch size {len(gen_batch.batch)} does not match obs size {lenght_obs}"
         
-        if self.config.env.rollout.n > 0: # env grouping
+        if self.config.env.rollout.n > 0: # env grouping 给 batch 里的 rollout 分组。
             uid_batch = []
             for i in range(batch_size):
                 if i % self.config.env.rollout.n == 0:
@@ -312,21 +312,21 @@ class TrajectoryCollector:
         else: # no env grouping, set all to the same uid
             uid = str(uuid.uuid4())
             uid_batch = np.array([uid for _ in range(len(gen_batch.batch))], dtype=object)
-        is_done = np.zeros(batch_size, dtype=bool)
-        traj_uid = np.array([str(uuid.uuid4()) for _ in range(batch_size)], dtype=object)
-        total_batch_list = [[] for _ in range(batch_size)]
+        is_done = np.zeros(batch_size, dtype=bool) # 每个环境当前是否结束
+        traj_uid = np.array([str(uuid.uuid4()) for _ in range(batch_size)], dtype=object) # 给每一条具体轨迹一个唯一 ID。
+        total_batch_list = [[] for _ in range(batch_size)] # 每个环境每一轮生成的数据。
         total_infos = [[] for _ in range(batch_size)]
-        episode_lengths = np.zeros(batch_size, dtype=np.float32)
-        episode_rewards = np.zeros(batch_size, dtype=np.float32)
-        tool_callings = np.zeros(batch_size, dtype=np.float32)
+        episode_lengths = np.zeros(batch_size, dtype=np.float32) # 每个环境当前 episode 跑了几步。
+        episode_rewards = np.zeros(batch_size, dtype=np.float32) # 每个环境累计 reward。
+        tool_callings = np.zeros(batch_size, dtype=np.float32) # 记录每个环境调用工具的次数。
         # Trajectory collection loop
         for _step in range(self.config.env.max_steps):
             # TODO: modify the active_mask to threshold the rollout based on the top-reward index. 
             active_masks = np.logical_not(is_done)
 
-            batch = self.preprocess_batch(gen_batch=gen_batch, obs=obs)
-
-            batch_keys_to_pop = ["input_ids", "attention_mask", "position_ids"]
+            batch = self.preprocess_batch(gen_batch=gen_batch, obs=obs) #预处理 observation，它会取 obs["text"]，套 tokenizer 的 chat template，变成模型输入 token
+                                                                        #obs 已经被更新成上一轮的 next_obs。所以新的 prompt 里会包含上一轮的工具反馈。
+            batch_keys_to_pop = ["input_ids", "attention_mask", "position_ids"] # 指定：待会儿要从 batch 里面取出哪些字段交给模型生成。
             non_tensor_batch_keys_to_pop = ["raw_prompt_ids"]
             if "multi_modal_data" in batch.non_tensor_batch:
                 non_tensor_batch_keys_to_pop.append("multi_modal_data")
@@ -340,10 +340,10 @@ class TrajectoryCollector:
             )
 
             batch_input.meta_info = gen_batch.meta_info
-
-            # pad to be divisible by dp_size
-            batch_input_padded, pad_size = pad_dataproto_to_divisor(batch_input, actor_rollout_wg.world_size)
-            batch_output_padded = actor_rollout_wg.generate_sequences(batch_input_padded)
+            '''batch_input 是当前这轮要送给模型的输入'''
+            # pad to be divisible by dp_size ，模型开始生成
+            batch_input_padded, pad_size = pad_dataproto_to_divisor(batch_input, actor_rollout_wg.world_size) #把 batch size 补齐到能被 world_size 整除。
+            batch_output_padded = actor_rollout_wg.generate_sequences(batch_input_padded) # 模型生成prompt
             # # unpad
             batch_output = unpad_dataproto(batch_output_padded, pad_size=pad_size)
 
@@ -352,10 +352,9 @@ class TrajectoryCollector:
 
             batch = batch.union(batch_output)
             
-            text_actions = self.tokenizer.batch_decode(batch.batch['responses'], skip_special_tokens=True)
+            text_actions = self.tokenizer.batch_decode(batch.batch['responses'], skip_special_tokens=True) #解码
             
-            next_obs, rewards, dones, infos = envs.step(text_actions)
-
+            next_obs, rewards, dones, infos = envs.step(text_actions) #交给环境去执行，  /Users/zhouzhida/Desktop/test/TaskB/AlphaApollo/alphaapollo/core/environments/base.py
             
 
             if len(rewards.shape) == 2:
@@ -364,7 +363,7 @@ class TrajectoryCollector:
                 # dones is numpy, delete a dimension
                 dones = dones.squeeze(1)
 
-            if 'is_action_valid' in infos[0]:
+            if 'is_action_valid' in infos[0]: #  这个字段表示模型输出的 action 是否合法，模型输出里有没有合法的
                 batch.non_tensor_batch['is_action_valid'] = np.array([info['is_action_valid'] for info in infos], dtype=bool)
             else:
                 batch.non_tensor_batch['is_action_valid'] = np.ones(batch_size, dtype=bool)
@@ -374,9 +373,9 @@ class TrajectoryCollector:
                 tool_callings[active_masks] += np.array([info['tool_calling'] for info in infos], dtype=np.float32)[active_masks]
             '''
             tool_calling_values = []
-            for info in infos:
-                tool_calling = False
-                if 'tool_calling' in info:
+            for info in infos: # 遍历每个环境返回的 info
+                tool_calling = False #   默认认为当前环境这一轮没有成功调用工具
+                if 'tool_calling' in info: 
                     tool_calling = bool(info['tool_calling'])
                 elif 'tool_infos' in info:
                     tool_infos = info['tool_infos']
@@ -386,12 +385,12 @@ class TrajectoryCollector:
                         # Check if any tool_info has tool_calling=True
                         tool_calling = any(tool_info.get('tool_calling', False) if isinstance(tool_info, dict) else False 
                                          for tool_info in tool_infos)
-                tool_calling_values.append(1.0 if tool_calling else 0.0)
+                tool_calling_values.append(1.0 if tool_calling else 0.0) # 把 bool 转成 float
 
-            tool_callings[active_masks] += np.array(tool_calling_values, dtype=np.float32)[active_masks]
+            tool_callings[active_masks] += np.array(tool_calling_values, dtype=np.float32)[active_masks] #   把当前轮的工具调用次数加到累计数组里
             # Create reward tensor, only assign rewards for active environments
             # episode_rewards += torch_to_numpy(rewards) * torch_to_numpy(active_masks)
-            episode_rewards[active_masks] += torch_to_numpy(rewards)[active_masks]
+            episode_rewards[active_masks] += torch_to_numpy(rewards)[active_masks] # active_masks 表示哪些环境还没结束
             episode_lengths[active_masks] += 1
 
             assert len(rewards) == batch_size, f"env should return rewards for all environments, got {len(rewards)} rewards for {batch_size} environments"
@@ -403,7 +402,7 @@ class TrajectoryCollector:
 
             for i in range(batch_size):
                 total_batch_list[i].append(batch_list[i])
-                total_infos[i].append(infos[i])
+                total_infos[i].append(infos[i]) # 当前环境当前轮的 info 也保存起来
 
             # Update done states
             is_done = np.logical_or(is_done, dones)
@@ -525,7 +524,7 @@ class TrajectoryCollector:
                 actor_rollout_wg=actor_rollout_wg,
                 envs=envs,
             )
-        else:
+        else:   #不会走训练时的 dynamic sampling，而是普通评测/生成流程
             # Vanilla Sampling   
             total_batch_list, total_episode_rewards, total_episode_lengths, total_success, total_traj_uid, totoal_tool_callings = \
                 self.vanilla_multi_turn_loop(

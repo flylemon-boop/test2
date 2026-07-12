@@ -1,0 +1,24 @@
+# Usage: uv run capx/envs/launch.py --config-path env_configs/cube_lifting/franka_robosuite_cube_lifting_privileged.yaml
+#YAML 配置文件。它告诉 capx/envs/launch.py：这次要跑哪个机器人任务、用哪个环境类、给模型开放哪些 API、是否录像、结果保存到哪里、跑多少次。
+env: #定义高层环境
+  _target_: capx.envs.tasks.franka.franka_lift.FrankaLiftCodeEnv
+  cfg:
+    _target_: capx.envs.tasks.base.CodeExecEnvConfig
+    low_level: franka_robosuite_cube_lift_low_level  
+    privileged: true #启用 privileged 模式。模型/代码可以访问更“理想化”的环境信息，比如直接拿到物体位置，而不是完全依赖视觉识别。
+    apis:
+      - FrankaControlPrivilegedApi
+    # prompt is inherited from FrankaLiftCodeEnv class default
+
+api_servers: #定义需要启动的服务。它会启动：capx.serving.launch_pyroki_server.main 启动的是 PyRoKi server。它不是大模型，而是给机器人控制 API 用的服务，比如做 IK / 运动规划。
+  - _target_: capx.serving.launch_pyroki_server.main
+    port: 8116
+    host: 127.0.0.1
+    robot: panda_description
+    target_link: panda_hand
+    
+record_video: true
+output_dir: ./outputs/franka_robosuite_cube_lifting_privileged
+
+trials: 100
+num_workers: 12

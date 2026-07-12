@@ -67,7 +67,7 @@ class DataProtoConfig(metaclass=_DataProtoConfigMeta):
 _padding_size_key = "_padding_size_key_x123d"
 
 
-def pad_dataproto_to_divisor(data: "DataProto", size_divisor: int):
+def pad_dataproto_to_divisor(data: "DataProto", size_divisor: int): #把 batch size 补齐到能被 world_size 整除。
     """Pad a DataProto to size divisible by size_divisor
 
     Args:
@@ -77,7 +77,7 @@ def pad_dataproto_to_divisor(data: "DataProto", size_divisor: int):
         data: (DataProto): the padded DataProto
         pad_size (int)
     """
-    assert isinstance(data, DataProto), "data must be a DataProto"
+    assert isinstance(data, DataProto), "data must be a DataProto" 
     if len(data) % size_divisor != 0:
         pad_size = size_divisor - len(data) % size_divisor
         padding_protos = []

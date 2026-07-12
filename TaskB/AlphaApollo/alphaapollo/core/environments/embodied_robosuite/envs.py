@@ -37,9 +37,13 @@ class EmbodiedRobosuiteMultiProcessEnv(gym.Env):
         self._loop = asyncio.new_event_loop()
         asyncio.set_event_loop(self._loop)
         self._closed = False
-
+        '''{
+            "seed": 0,
+            "data_source": "cube_lift",
+            }
+        '''
     def _sync_reset(self, env, kwargs: Dict[str, Any]):
-        env.reset(kwargs) #  env 是 EmbodiedRobosuiteEnv
+        env.reset(kwargs) #  env 是 EmbodiedRobosuiteEnv go to /Users/zhouzhida/Desktop/test/TaskB/AlphaApollo/alphaapollo/core/environments/embodied_robosuite/env.py
         prompt, info = env.init([])
         obs = prompt[0]["content"]
         return obs, info

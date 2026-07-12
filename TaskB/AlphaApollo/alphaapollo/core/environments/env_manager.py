@@ -440,14 +440,14 @@ class EmbodiedRobosuiteEnvironmentManager(EnvironmentManagerBase):
                         next_obs[i] = ""
 
         self.memory.store({
-            "text_obs": next_obs,
-            "action": text_actions,
+            "text_obs": next_obs, # 环境执行完当前这一轮模型代码之后，返回给下一轮模型看的新 observation。
+            "action": text_actions, # 上一轮环境返回 tool_response
         })
 
         next_observations = {
-            "text": self.build_text_obs(next_obs),
+            "text": self.build_text_obs(next_obs), # 构造下一轮的prompt
             "image": None,
-            "anchor": next_obs.copy(),
+            "anchor": next_obs.copy(), # 原始 observation 的备份
         }
         for i, info in enumerate(infos):
             info["is_action_valid"] = to_numpy(valids[i])
@@ -464,8 +464,10 @@ class EmbodiedRobosuiteEnvironmentManager(EnvironmentManagerBase):
 
         if history_length <= 0:
             return text_obs
-
-        memory_ctx, _ = self.memory.fetch(
+        '''拿最近 history_length 轮的：
+            模型 action
+            环境 text_obs'''
+        memory_ctx, _ = self.memory.fetch(  
             history_length,
             obs_key="text_obs",
             action_key="action",
@@ -557,7 +559,7 @@ def make_envs(config):
             build_embodied_robosuite_envs,
             embodied_robosuite_projection,
         )
-        _envs = build_embodied_robosuite_envs(
+        _envs = build_embodied_robosuite_envs( # 创建训练环境容器
             seed=config.env.seed,
             env_num=config.data.train_batch_size,
             group_n=group_n,
@@ -572,7 +574,7 @@ def make_envs(config):
             env_config=config.env,
         )
 
-        projection_f = partial(embodied_robosuite_projection)
+        projection_f = partial(embodied_robosuite_projection) # 会把模型输出里多余的解释文字去掉，只保留真正的 Python 代码块。
         envs = EmbodiedRobosuiteEnvironmentManager(_envs, projection_f, config) # _envs 是前面这一步创建出来的训练环境容器，它的实际类型是EmbodiedRobosuiteMultiProcessEnv
         val_envs = EmbodiedRobosuiteEnvironmentManager(_val_envs, projection_f, config) # 把训练用的一组 embodied robosuite 环境 _envs 包装成 AlphaApollo 标准的环境管理器
         return envs, val_envs

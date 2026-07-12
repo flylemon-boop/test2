@@ -1,6 +1,7 @@
 import json
 from typing import Any, Dict
 
+from alphaapollo.core.tools.capx_python_code import execute_capx_python_code
 from alphaapollo.core.tools.core import ToolGroup, tool
 
 
@@ -13,7 +14,7 @@ class EmbodiedRobosuiteToolGroup(ToolGroup):
         super().__init__(name="EmbodiedRobosuiteToolGroup")
 
     @tool
-    def python_code(self, code: str) -> Dict[str, Any]:
+    def python_code(self, code: str) -> Dict[str, Any]: #把 AlphaApollo 的工具调用转成 CaP-X 的环境执行
         if not code or not code.strip():
             return {
                 "text_result": json.dumps(
@@ -23,15 +24,20 @@ class EmbodiedRobosuiteToolGroup(ToolGroup):
             }
 
         try:
-            _obs, reward, terminated, truncated, info = self.capx_env.step(code)
+            execution_result = execute_capx_python_code(
+                capx_env=self.capx_env,
+                code=code,
+                log_requests=self.log_requests,
+            )
+            run_status = execution_result.get("run_status", "Unknown")
             payload = {
-                "status": "success" if info.get("sandbox_rc", 1) == 0 else "failed",
-                "result": info.get("stdout", ""),
-                "stderr": info.get("stderr", ""),
-                "reward": float(reward),
-                "terminated": bool(terminated),
-                "truncated": bool(truncated),
-                "task_completed": bool(info.get("task_completed")) if info.get("task_completed") is not None else None,
+                "status": "success" if run_status == "Finished" else "failed",
+                "result": execution_result.get("stdout", ""),
+                "stderr": execution_result.get("stderr", ""),
+                "reward": float(execution_result.get("reward", 0.0)),
+                "terminated": bool(execution_result.get("terminated", False)),
+                "truncated": bool(execution_result.get("truncated", False)),
+                "task_completed": execution_result.get("task_completed"),
             }
             score = 1 if payload["status"] == "success" else 0
         except Exception as exc:
