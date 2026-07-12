@@ -74,7 +74,7 @@ export MODEL=qwen3-235b-a22b-instruct-2507
 
 Secrets are not committed.
 
-## Implementation
+## Architecture and Data Flow
 
 Task B keeps the code-as-action interface:
 
@@ -82,18 +82,94 @@ Task B keeps the code-as-action interface:
 model -> <python_code>...</python_code> -> AlphaApollo tool -> CaP-X env.step(code)
 ```
 
-The current API path follows AlphaApollo's original demo style:
+The execution path follows AlphaApollo's demo-style API runner, with CaP-X
+used as the Robosuite control backend:
 
 ```text
-run_taskB.sh
-  -> examples/demo/taskB_robosuite_api.py
-  -> LLMClient calls an OpenAI-compatible API
-  -> make_envs(config)
-  -> EmbodiedRobosuiteEnvironmentManager.reset/step
-  -> EmbodiedRobosuiteEnv.step
+Shell env / api.csv / CLI vars
+        |
+        v
++------------------------------+
+| TaskB/run_taskB.sh           |
+| - load API key + base URL    |
+| - set model / trials / tasks |
+| - start PyRoKI if needed     |
++---------------+--------------+
+                |
+                | command-line args + environment
+                v
++--------------------------------------------------------------+
+| AlphaApollo demo runner                                      |
+| TaskB/AlphaApollo/examples/demo/taskB_robosuite_api.py       |
+|                                                              |
+|  config YAML + task list + seeds                             |
+|          |                                                   |
+|          v                                                   |
+|  +----------------------+    prompt/messages     +---------+ |
+|  | make_envs/reset      | ---------------------> | LLM API | |
+|  | Robosuite task envs  |                        | client  | |
+|  +----------+-----------+ <--------------------- +---------+ |
+|             |              <python_code>...</python_code>    |
+|             v                                                |
+|  +----------------------+    executable code                 |
+|  | EnvManager.step      | --------------------------------+  |
+|  | batch episode loop   |                                 |  |
+|  +----------+-----------+                                 |  |
++-------------|---------------------------------------------|--+
+              |                                             |
+              v                                             v
++-----------------------------+        +-----------------------------+
+| EmbodiedRobosuiteEnv.step   |        | EmbodiedRobosuiteToolGroup  |
+| - parse model action        | -----> | python_code tool            |
+| - call selected tool        | code   | execute_capx_python_code    |
++--------------+--------------+        +--------------+--------------+
+               |                                      |
+               | Python code calls S1 primitives      |
+               v                                      v
++--------------------------------------------------------------+
+| CaP-X + Robosuite backend                                    |
+| TaskB/AlphaApollo/third_party/cap-x                          |
+|                                                              |
+| get_object_pose / sample_grasp_pose / goto_pose /            |
+| open_gripper / close_gripper / task reward + success check   |
++------------------------------+-------------------------------+
+                               |
+                               | observation + reward + success
+                               v
++--------------------------------------------------------------+
+| Result store                                                 |
+| - per-episode JSON logs                                      |
+| - summary.json / summary.csv                                 |
+| - optional videos                                            |
++--------------------------------------------------------------+
+```
+
+Important data flows:
+
+```text
+api.csv or environment variables
+  -> OPENAI_API_KEY / SERVER / MODEL
+  -> LLMClient chat-completions request
+
+demo_taskB_robosuite_api.yaml + TASKS/TRIALS/MAX_TURNS/SEED_START
+  -> runner config
+  -> make_envs()
+  -> Robosuite episodes
+
+environment prompt + current observation
+  -> LLM messages
+  -> model output containing one <python_code> block
+
+<python_code> block
   -> EmbodiedRobosuiteToolGroup.python_code
   -> execute_capx_python_code
-  -> CaP-X capx_env.step(code)
+  -> CaP-X S1 primitive calls
+  -> Robosuite state transition
+
+Robosuite observation/reward/success
+  -> next model turn if unfinished
+  -> episode JSON
+  -> summary.csv / summary.json
 ```
 
 Results are written under:
