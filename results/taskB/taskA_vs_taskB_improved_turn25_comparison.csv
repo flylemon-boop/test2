@@ -1,0 +1,4 @@
+task_group,taskA_task,taskA_trials,taskA_successes,taskA_success_rate,taskA_average_reward,taskB_task,taskB_trials,taskB_successes,taskB_success_rate,success_rate_delta_pp,notes
+Cube lift,cube_lifting,30,30,1.000,1.000,cube_lift,30,30,1.000,0.0,
+Cube stack,cube_stack,30,29,0.967,0.967,cube_stack,30,30,1.000,3.3,
+Peg / nut insertion,nut_assembly,30,4,0.133,0.254,peg_insertion,30,3,0.100,-3.3,"TaskB peg_insertion is compared with TaskA nut_assembly because both are insertion-style Robosuite manipulation tasks."

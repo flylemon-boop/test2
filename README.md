@@ -113,3 +113,18 @@ results/taskB/taskB_improved_turn25/summary.csv
 | cube_lift | 30 | 30 | 100.00% |
 | cube_stack | 30 | 30 | 100.00% |
 | peg_insertion | 30 | 3 | 10.00% |
+
+TaskA vs TaskB improved turn-25 comparison:
+
+```text
+results/taskB/taskA_vs_taskB_improved_turn25_comparison.csv
+```
+
+| Task group | TaskA task | TaskA success | TaskA avg reward | TaskB task | TaskB success | Delta |
+| --- | --- | ---: | ---: | --- | ---: | ---: |
+| Cube lift | cube_lifting | 30/30 = 100.0% | 1.000 | cube_lift | 30/30 = 100.0% | +0.0 pp |
+| Cube stack | cube_stack | 29/30 = 96.7% | 0.967 | cube_stack | 30/30 = 100.0% | +3.3 pp |
+| Peg / nut insertion | nut_assembly | 4/30 = 13.3% | 0.254 | peg_insertion | 3/30 = 10.0% | -3.3 pp |
+
+`peg_insertion` is compared with TaskA `nut_assembly` because both are
+insertion-style Robosuite manipulation tasks.
