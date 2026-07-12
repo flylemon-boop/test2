@@ -1,0 +1,8 @@
+{
+  "task": "peg_insertion",
+  "trials": 30,
+  "successes": 0,
+  "success_rate": 0.0,
+  "avg_turns": 24.633333333333333,
+  "avg_total_tokens": 0.0
+}

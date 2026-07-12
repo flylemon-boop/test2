@@ -1,0 +1,8 @@
+{
+  "task": "cube_stack",
+  "trials": 30,
+  "successes": 0,
+  "success_rate": 0.0,
+  "avg_turns": 23.966666666666665,
+  "avg_total_tokens": 0.0
+}

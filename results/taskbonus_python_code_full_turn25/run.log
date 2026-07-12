@@ -1,0 +1,600 @@
+PyRoKI IK server already running on 127.0.0.1:8116
+[robosuite WARNING] No private macro file found! (macros.py:57)
+WARNING:2026-07-12 09:12:20,609:No private macro file found!
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+WARNING:2026-07-12 09:12:20,609:It is recommended to use a private macro file
+[robosuite WARNING] To setup, run: python /root/autodl-tmp/cap-x/capx/third_party/robosuite/robosuite/scripts/setup_macros.py (macros.py:59)
+WARNING:2026-07-12 09:12:20,609:To setup, run: python /root/autodl-tmp/cap-x/capx/third_party/robosuite/robosuite/scripts/setup_macros.py
+[robosuite WARNING] Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install. (__init__.py:32)
+WARNING:2026-07-12 09:12:20,838:Could not import robosuite_models. Some robots may not be available. If you want to use these robots, please install robosuite_models from source (https://github.com/ARISE-Initiative/robosuite_models) or through pip install.
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:42)
+WARNING:2026-07-12 09:12:20,998:Could not load the mink-based whole-body IK. Make sure you install related import properly, otherwise you will not be able to use the default IK controller setting for GR1 robot.
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:12:22,098:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:12:22,902:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+R1Pro not installed, skipping R1Pro APIs
+LIBERO not installed!
+R1Pro not installed!
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 1/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:12:31,831:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:12:32,313:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 2/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:12:40,408:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:12:40,938:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 3/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:12:51,205:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:12:51,695:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 4/30: success=True reward=1.0000 turns=8 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:01,185:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:01,708:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 5/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:10,437:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:11,032:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 6/30: success=True reward=1.0000 turns=10 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:23,009:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:23,611:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 7/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:40,309:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:40,834:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 8/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:49,947:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:50,456:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 9/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:59,197:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:13:59,758:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 10/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:08,709:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:09,279:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 11/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:17,224:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:17,796:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 12/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:26,158:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:26,680:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 13/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:34,621:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:35,135:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 14/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:42,736:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:43,273:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 15/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:51,251:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:14:51,792:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 16/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:15:04,585:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:15:05,137:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 17/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:15:13,404:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:15:14,011:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 18/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:15:25,123:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:15:25,655:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 19/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:15:37,518:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:15:38,036:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 20/30: success=True reward=1.0000 turns=17 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:05,230:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:05,939:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 21/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:14,481:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:15,043:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 22/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:23,878:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:24,386:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 23/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:33,937:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:34,458:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 24/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:45,487:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:16:46,274:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 25/30: success=True reward=1.0000 turns=8 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:00,411:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:01,075:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 26/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:08,916:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:09,509:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 27/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:18,221:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:18,881:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 28/30: success=True reward=1.0000 turns=7 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:29,287:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:29,872:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 29/30: success=True reward=1.0000 turns=6 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:37,554:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:38,277:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([1.]), 'cube_lift_success_rate': array([1.])}
+TaskBonus cube_lift trial 30/30: success=True reward=1.0000 turns=7 error=None
+===== Summary cube_lift: 30/30 = 1.000 =====
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:47,239:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:17:47,945:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 1/30: success=False reward=0.0000 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:18:22,750:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:18:23,420:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 2/30: success=False reward=0.7237 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:18:56,838:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:18:57,477:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 3/30: success=False reward=0.0000 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:19:30,054:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:19:30,669:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 4/30: success=False reward=0.0054 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:20:07,078:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:20:08,021:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 5/30: success=False reward=0.6472 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:20:50,270:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:20:50,998:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 6/30: success=False reward=0.2485 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:21:27,863:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:21:28,557:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 7/30: success=False reward=0.6668 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:22:08,633:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:22:09,350:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 8/30: success=False reward=0.7300 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:22:47,550:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:22:48,246:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 9/30: success=False reward=0.7306 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:23:26,349:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:23:27,044:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 10/30: success=False reward=0.2461 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:24:02,802:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:24:03,527:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 11/30: success=False reward=0.7300 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:24:43,341:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:24:44,038:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 12/30: success=False reward=0.0000 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:25:23,591:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:25:24,237:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 13/30: success=False reward=0.6834 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:25:58,186:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:25:58,829:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 14/30: success=False reward=0.7053 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:26:46,426:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:26:47,130:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 15/30: success=False reward=0.2220 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:27:25,806:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:27:26,488:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 16/30: success=False reward=0.7122 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:27:59,309:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:27:59,969:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 17/30: success=False reward=0.0000 turns=3 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:28:03,759:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:28:04,319:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 18/30: success=False reward=0.7348 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:28:41,638:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:28:42,370:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 19/30: success=False reward=0.0006 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:29:13,781:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:29:14,516:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 20/30: success=False reward=0.7229 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:29:53,714:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:29:54,452:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 21/30: success=False reward=0.0006 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:30:32,772:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:30:33,464:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 22/30: success=False reward=0.7044 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:31:05,663:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:31:06,398:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 23/30: success=False reward=0.6656 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:31:42,799:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:31:43,503:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 24/30: success=False reward=0.6879 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:32:16,025:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:32:16,700:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 25/30: success=False reward=0.0000 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:32:51,792:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:32:52,465:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 26/30: success=False reward=0.0006 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:33:29,698:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:33:30,420:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 27/30: success=False reward=0.0001 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:34:11,413:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:34:12,096:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 28/30: success=False reward=0.2480 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:34:43,701:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:34:44,389:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 29/30: success=False reward=0.0000 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:35:21,399:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:35:22,074:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'cube_stack_success_rate': array([0.])}
+TaskBonus cube_stack trial 30/30: success=False reward=0.0000 turns=16 error=None
+===== Summary cube_stack: 0/30 = 0.000 =====
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:35:40,725:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:35:42,752:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 1/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:36:10,343:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:36:12,304:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 2/30: success=False reward=0.0003 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:36:42,232:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:36:44,194:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 3/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:37:13,935:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:37:15,860:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 4/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:37:48,587:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:37:50,558:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 5/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:38:23,281:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:38:25,326:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 6/30: success=False reward=0.0003 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:38:55,116:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:38:57,086:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 7/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:39:27,139:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:39:29,078:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 8/30: success=False reward=0.0000 turns=17 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:39:49,429:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:39:51,449:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 9/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:40:20,575:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:40:22,558:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 10/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:40:48,447:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:40:50,198:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 11/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:41:20,662:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:41:22,342:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 12/30: success=False reward=0.0003 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:41:52,705:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:41:54,667:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 13/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:42:26,344:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:42:28,127:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 14/30: success=False reward=0.0003 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:42:59,312:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:43:01,119:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 15/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:43:30,276:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:43:32,058:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 16/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:44:04,903:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:44:06,654:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 17/30: success=False reward=0.0004 turns=23 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:44:43,842:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:44:45,574:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 18/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:45:14,143:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:45:15,977:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 19/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:45:45,915:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:45:47,655:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 20/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:46:19,931:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:46:21,669:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 21/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:46:52,690:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:46:54,613:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 22/30: success=False reward=0.0003 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:47:24,096:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:47:26,062:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 23/30: success=False reward=0.0003 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:47:57,637:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:47:59,417:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 24/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:48:27,605:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:48:29,563:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 25/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:48:57,959:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:48:59,996:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 26/30: success=False reward=0.0003 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:49:29,221:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:49:31,240:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 27/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:50:04,024:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:50:05,779:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 28/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:50:45,358:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:50:47,374:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 29/30: success=False reward=0.0004 turns=25 error=None
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:51:17,297:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+[robosuite INFO] Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json (composite_controller_factory.py:121)
+INFO:2026-07-12 09:51:19,282:Loading controller configuration from: /root/autodl-tmp/cap-x/capx/integrations/robosuite/controllers/config/robots/panda_joint_ctrl.json
+success: {'success_rate': array([0.]), 'peg_insertion_success_rate': array([0.])}
+TaskBonus peg_insertion trial 30/30: success=False reward=0.0004 turns=24 error=None
+===== Summary peg_insertion: 0/30 = 0.000 =====
+{
+  "runner": "alphaapollo_api_rollout_tool_call",
+  "action_mode": "tool-call-as-action",
+  "enable_calculator_tool": false,
+  "enable_python_code_tool": true,
+  "enable_action_sequence_tool": false,
+  "action_sequence_only": false,
+  "replay_task_prompt": false,
+  "model": "qwen3-235b-a22b-instruct-2507",
+  "server_url": "https://llm-gel2tsb2bgyzuw0n.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "max_turns": 25,
+  "seed_start": 0,
+  "batch_size": 1,
+  "tasks": [
+    {
+      "task": "cube_lift",
+      "trials": 30,
+      "successes": 30,
+      "success_rate": 1.0,
+      "avg_turns": 7.1,
+      "avg_total_tokens": 0.0
+    },
+    {
+      "task": "cube_stack",
+      "trials": 30,
+      "successes": 0,
+      "success_rate": 0.0,
+      "avg_turns": 23.966666666666665,
+      "avg_total_tokens": 0.0
+    },
+    {
+      "task": "peg_insertion",
+      "trials": 30,
+      "successes": 0,
+      "success_rate": 0.0,
+      "avg_turns": 24.633333333333333,
+      "avg_total_tokens": 0.0
+    }
+  ]
+}
+TaskBonus results saved to: /root/autodl-tmp/results/taskbonus_python_code_full_turn25
+Summary JSON: /root/autodl-tmp/results/taskbonus_python_code_full_turn25/summary.json
+Summary CSV: /root/autodl-tmp/results/taskbonus_python_code_full_turn25/summary.csv
