@@ -241,6 +241,28 @@ Both runs use the same three Robosuite tasks, the same `TRIALS=30`, and
 `MAX_TURNS=25`. TaskB is the code-as-action baseline; TaskBonus is the
 tool-call-as-action variant.
 
+Analysis of the TaskBonus gap:
+
+1. TaskBonus has weaker variable binding than TaskB. In TaskB, the model can
+   store values in Python variables such as `green_pos`, `red_ext`, or
+   `grasp_quat`, and reuse them later in the same executable program. In
+   TaskBonus, the model must read numeric values from previous
+   `<tool_response>` messages and manually copy them into the next JSON tool
+   arguments. This makes long-horizon state reuse much less reliable.
+
+2. Geometric computation is less stable in TaskBonus. Computations such as
+   stacking height, relative pose offsets, and quaternion/vector transforms can
+   be written directly as Python expressions in TaskB. In TaskBonus, the same
+   computations become cross-turn reasoning steps spread across tool calls,
+   which is easier to interrupt or copy incorrectly.
+
+3. The feedback is still not semantic enough. A reward increase can indicate
+   that a local motion was useful, but it does not explicitly tell the model
+   missing high-level facts such as "the green cube has not been queried yet"
+   or "the handle-to-center transform has not been applied." As a result,
+   TaskBonus can receive local feedback without recovering the missing planning
+   step that caused the failure.
+
 Successful tool-call demo video:
 
 ```text
