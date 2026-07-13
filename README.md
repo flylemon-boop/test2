@@ -225,6 +225,22 @@ results/taskBonus/taskBonus_improved_turn25/summary.csv
 | cube_stack | 30 | 11 | 36.67% | 21.87 |
 | peg_insertion | 30 | 0 | 0.00% | 24.77 |
 
+TaskB vs TaskBonus improved turn-25 comparison:
+
+```text
+results/taskBonus/taskB_vs_taskBonus_improved_turn25_comparison.csv
+```
+
+| Task | TaskB success | TaskBonus success | TaskBonus avg turns | Delta |
+| --- | ---: | ---: | ---: | ---: |
+| cube_lift | 30/30 = 100.00% | 30/30 = 100.00% | 8.50 | +0.0 pp |
+| cube_stack | 30/30 = 100.00% | 11/30 = 36.67% | 21.87 | -63.3 pp |
+| peg_insertion | 3/30 = 10.00% | 0/30 = 0.00% | 24.77 | -10.0 pp |
+
+Both runs use the same three Robosuite tasks, the same `TRIALS=30`, and
+`MAX_TURNS=25`. TaskB is the code-as-action baseline; TaskBonus is the
+tool-call-as-action variant.
+
 Successful tool-call demo video:
 
 ```text

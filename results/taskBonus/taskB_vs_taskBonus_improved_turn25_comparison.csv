@@ -1,0 +1,4 @@
+task,taskB_trials,taskB_successes,taskB_success_rate,taskBonus_trials,taskBonus_successes,taskBonus_success_rate,taskBonus_avg_turns,success_rate_delta_pp
+cube_lift,30,30,1.000,30,30,1.000,8.50,0.0
+cube_stack,30,30,1.000,30,11,0.367,21.87,-63.3
+peg_insertion,30,3,0.100,30,0,0.000,24.77,-10.0
